@@ -17,7 +17,7 @@ ví dụ : git checkout branch-vinhntse
 
 
 Để deploy lên github sẽ sử dụng như sau:
- 	git add .   -->  git commit -m ""   --> git push
+ 	git add .   -->  git commit -m ""   --> git push --set-upstream origin <Tên branch>
 
 +++++++ mọi người lưu ý sẽ chia mỗi branch làm nếu oke thì 
 ++++++ check rồi deploy lên branch main nhé
