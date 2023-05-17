@@ -1,75 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;0,800;0,900;1,100;1,300;1,500;1,600;1,700;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .title {
+    @apply font-bold text-[40px] leading-[60px];
+  }
 
-html,
-body,
-:root{
-    height: 100%;
-      /* fonts */
-      --font-main: 'Poppins', sans-serif;
-      --font-sub: 'Roboto', sans-serif; 
+  .heading-01 {
+    @apply font-bold text-[24px] leading-[36px];
+  }
 
-  /* font sizes */
-  --body03-size: 14px;
-  --font-size-17xl: 36px;
-  --heading-01-size: 26px;
-  --title-size: 40px;
-  --font-size-2xs: 11px;
-  --body-01-size: 16px;
-  --font-size-lg: 18px;
-  --heading-02-size: 20px;
-  --font-size-smi: 13px;
-  --font-size-13xl: 32px;
+  .heading-02 {
+    @apply font-bold text-[20px] leading-[30px];
+  }
 
-  
+  .body-01 {
+    @apply font-semibold text-[16px] leading-[24px];
+  }
 
-  /* Colors */
-  --color-white: #fff;
-  --color-slategray-100: #6c757d;
-  --color-slategray-200: #687188;
-  --color-black: #000;
-  --primary: #f79c43;
-  --color-crimson-100: #ff324d;
-  --color-crimson-200: rgba(255, 50, 77, 0.2);
-  --color-gainsboro: #ddd;
-  --color-gray-100: #878787;
-  --color-gray-200: #292b2c;
-  --color-gray-300: #212529;
-  --color-lightgray: #ced4da;
-  --color-darkslategray: #333;
-  --color-orange: #ff9f00;
+  .body-02 {
+    @apply font-normal text-[16px] leading-[24px];
+  }
 
-  /* Paddings */
-  --padding-smi: 13px;
+  .body-02 {
+    @apply font-normal text-[14px] leading-[20px];
+  }
 
-  /* border radiuses */
-  --br-31xl: 50px;
-  --br-9xs: 4px;
-  --br-59xl: 78px;
+  .caption {
+    @apply font-normal text-[12px] leading-[20px];
+  }
+  .icon-nav {
+    @apply w-8 md:w-12 h-8 md:h-12 
+    rounded-full 
+    flex justify-center items-center 
+    hover:bg-black/[0.05]
+    cursor-pointer 
+    relative;
+  }
+
+  .p-13 {
+    @apply p-[13px];
+  }
+
+  .rounded-50 {
+    @apply rounded-[50px];
+  }
+
+  .rounded-4 {
+    @apply rounded-[4px];
+  }
+
+  .rounded-78 {
+    @apply rounded-[78px];
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-start;
+  }
+
+  .flex-end {
+    @apply flex justify-end items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
 }
-
-/* Tailwind Styles */
-
-
-/* Cart, Heart , User Icon  */
-.icon-nav{
-  @apply   w-8 md:w-12 h-8 md:h-12 
-  rounded-full 
-  flex justify-center items-center 
-  hover:bg-black/[0.05]
-  cursor-pointer 
-  relative;
-
-}
-
-
-
-
-
-/* Cart, Heart , User Icon END  */
-
-
-
-

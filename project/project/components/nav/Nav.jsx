@@ -49,14 +49,14 @@ const Nav = () => {
       className={`
     w-full 
     h-[50px]
-    md:h-[66.61px] bg-orange-400
+    md:h-[65px] bg-orange
     flex items-center justify-between 
     z-20 sticky top-0 
     transition-transform duration-300 ${show}`}
     >
       <Wrapper
         className="
-      h-[60px] 
+      h-full
       flex justify-between items-center"
       >
         {/* button category */}
