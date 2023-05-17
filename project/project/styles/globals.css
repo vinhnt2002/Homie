@@ -50,5 +50,26 @@ body,
   --br-59xl: 78px;
 }
 
+/* Tailwind Styles */
+
+
+/* Cart, Heart , User Icon  */
+.icon-nav{
+  @apply   w-8 md:w-12 h-8 md:h-12 
+  rounded-full 
+  flex justify-center items-center 
+  hover:bg-black/[0.05]
+  cursor-pointer 
+  relative;
+
+}
+
+
+
+
+
+/* Cart, Heart , User Icon END  */
+
+
 
 
