@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Wrapper from "./Wrapper";
 import { BiMap } from "react-icons/bi";
 import { TfiEmail } from "react-icons/tfi";
 import { BsPhone } from "react-icons/bs";
+import { AiFillFacebook, AiFillGooglePlusSquare } from "react-icons/ai";
 
 const FAQS = [
   { id: 1, name: "About Us", url: "/" },
@@ -25,105 +27,137 @@ const ABOUT = [
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-[#687188]">
+    <footer>
       <Wrapper>
-        {/* div tong */}
-        <div className="py-8 flex flex-wrap items-center justify-between">
-          {/* div Ngoai cung trai */}
-          <div className="flex flex-col">
-            <div
-              className="w-full flex flex-row justify-center gap-1 
-            items-center md:w-auto mb-6 md:mb-6"
-            >
-              <Image
-                src="/assets/images/image-141@2x.png"
-                width={73}
-                height={73}
-                alt="Hommie Logo"
-                className="rounded-full"
-              />
-              <div className="text-xl font-bold">Tiệm Hommie</div>
+        <div className="flex items-start justify-center md:flex-between flex-col lg:flex-row px-5 md:px-0 lg:gap-[40px] gap-0">
+          <div className="w-full lg:w-1/3">
+            <div className="flex gap-2 justify-start mb-[44px]">
+              <Link href={"/"} className="flex-center gap-1">
+                <Image
+                  src={"/assets/images/logo.png"}
+                  width={73}
+                  height={73}
+                  alt="Logo"
+                />
+                <span className=" text-[36px] leading-[34px] font-bold">
+                  Tiệm Hommie
+                </span>
+              </Link>
             </div>
-
-            <div className="w-full md:w-auto mb-6 md:mb-0">
-              <h2 className=" text-lg font-semibold">Liên hệ với chúng tôi</h2>
-            </div>
-
-            <div className="w-full md:w-auto mb-6 md:mb-0">
-              <div className="flex items-center mb-2 gap-2">
-                <BiMap />
-                <div>32 Bến Vân Đồn P6 Q4, TP. Hồ Chí Minh</div>
-              </div>
-              <div className="flex items-center mb-2 gap-2">
-                <TfiEmail />
-                <a
-                  className="border-b-2 "
-                  href="mailto:chieunganvo88@gmail.com"
-                  target="_blank"
-                >
-                  chieunganvo88@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <BsPhone />
-                <div>093 839 30 84</div>
-              </div>
+            <div className="">
+              <h2 className=" text-[18px] leading-[22px] font-semibold my-[23px]">
+                Liên hệ với chúng tôi
+              </h2>
+              <ul className="flex flex-col gap-y-[10px]">
+                <li>
+                  <Link
+                    href={"/"}
+                    className="flex items-center gap-2 text-slategray-200"
+                  >
+                    <BiMap size={18} />
+                    <span className="text-[14px] leading-[26px] ">
+                      132 Bến Vân Đồn P6 Q4, TP. Hồ Chí Minh
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    className="flex items-center gap-2 text-slategray-200"
+                    type="email"
+                    href="mailto:chieunganvo88@gmail.com"
+                  >
+                    <TfiEmail />
+                    <span className="text-[14px] leading-[26px]">
+                      mailto:chieunganvo88@gmail.com
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="flex items-center gap-2 text-slategray-200"
+                    type="tel"
+                    href="tel:093 839 30 84"
+                  >
+                    <TfiEmail />
+                    <span className="text-[14px] leading-[26px]">
+                      093 839 30 84
+                    </span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
+          <div className=" w-fit md:w-full lg:w-2/3 mt-0 md:mt-7 lg:mt-0">
+            <div className="flex relative">
 
-          {/* col 2  */}
-          <div className="w-full md:w-auto mb-6 md:mb-0">
-            <h2 className="text-xl font-bold mb-4">FAQS</h2>
-            <ul>
-              {FAQS.map((item) => {
-                return (
-                  <React.Fragment key={item.id}>
-                    <li className="text-inherit">
-                      <Link href="/" >
-                        {item.name}
+              <div className="flex items-start justify-between w-fit md:w-full md:flex-row flex-col">
+                <div className="w-full mt-7 md:mt-0 ">
+                  <h2 className="text-[18px] leading-[22px] font-semibold mb-[10px]">
+                    FAQS
+                  </h2>
+                  <ul className="flex flex-col gap-y-[10px]">
+                    {FAQS.map((item) => {
+                      return (
+                        <li className="" key={item.id}>
+                          <Link
+                            href={item.url}
+                            className="flex items-center gap-2 text-slategray-200"
+                          >
+                            <span className="">{item.name}</span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                <div className="w-full mt-7 md:mt-0 ">
+                  <h2 className="text-[18px] leading-[22px] font-semibold mb-[10px]">
+                    About
+                  </h2>
+                  <ul className="flex flex-col gap-y-[10px]">
+                    {ABOUT.map((item) => {
+                      return (
+                        <li className="" key={item.id}>
+                          <Link
+                            href={item.url}
+                            className="flex items-center gap-2 text-slategray-200"
+                          >
+                            <span className="">{item.name}</span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                <div className="w-full mt-7 md:mt-0 ">
+                  <h2 className="text-[18px] leading-[22px] font-semibold mb-[10px]">
+                    Social Media
+                  </h2>
+                  <ul className="flex flex-col gap-y-[10px]">
+                    <li className="">
+                      <Link
+                        href={"https://www.facebook.com/tiemhomie.sg"}
+                        className=""
+                      >
+                        <AiFillFacebook size={36} color="#3b5998" />
                       </Link>
                     </li>
-                  </React.Fragment>
-                );
-              })}
-            </ul>
-          </div>
+                  </ul>
+                </div>
+              </div>
+              <div className="">
+                <div className=" absolute md:hidden w-[339px] h-[142px] top-[50%] transform translate-y-[-50%] left-[130px]">
+                  <Image
+                    src={"/assets/images/footerimage.png"}
+                    height={142}
+                    width={339}
+                    alt="footer"
+                  />
+                </div>
 
-          {/* col 3 */}
-          <div className="w-full md:w-auto mb-6 md:mb-0">
-            <h2 className="text-xl font-bold mb-4">About</h2>
-            <ul>
-              {ABOUT.map((item) => {
-                return (
-                  <React.Fragment key={item.id}>
-                    <li className="text-inherit">
-                      <Link href="/" >
-                        {item.name}
-                      </Link>
-                    </li>
-                  </React.Fragment>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* col 4 */}
-          <div className="w-full md:w-auto mb-6 md:mb-0">
-            <h2 className="text-xl font-bold mb-4">Facebook</h2>
-
-            <Link
-              href="https://www.facebook.com/tiemhomie.sg"
-              className="text-inherit border-b-2"
-            >
-              This is the Link
-            </Link>
-            <div className="w-full md:w-auto">
-              <Image
-                src="/assets/images/image-29@2x.png"
-                width={339}
-                height={142}
-                alt="hello"
-              />
+              </div>
             </div>
           </div>
         </div>
