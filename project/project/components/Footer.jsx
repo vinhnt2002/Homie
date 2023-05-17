@@ -42,7 +42,7 @@ const Footer = () => {
                 alt="Hommie Logo"
                 className="rounded-full"
               />
-              <div className="text-xl font-bold">Tiệm Homie</div>
+              <div className="text-xl font-bold">Tiệm Hommie</div>
             </div>
 
             <div className="w-full md:w-auto mb-6 md:mb-0">
