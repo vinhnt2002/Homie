@@ -61,7 +61,7 @@ const Nav = () => {
       >
         {/* button category */}
         <Link href="/">
-          <img src="" alt="" className="w-10 md:w-15" />
+          <img src="" alt="" className="w-[40px] md:w-[60px]" />
         </Link>
 
         {/* submenu */}

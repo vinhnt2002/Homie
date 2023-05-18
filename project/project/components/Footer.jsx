@@ -29,6 +29,7 @@ const Footer = () => {
   return (
     <footer>
       <Wrapper>
+        <div className="h-[170px] bg-primary w-[1920px]" >hello</div>
         <div className="flex items-start justify-center md:flex-between flex-col lg:flex-row px-5 md:px-0 lg:gap-[40px] gap-0">
           <div className="w-full lg:w-1/3">
             <div className="flex gap-2 justify-start mb-[44px]">

@@ -62,7 +62,7 @@ const Menu = ({ showCatMenu, setShowCatMenu }) => {
                 
               </li>
             ) : (
-              <li className="cursor-pointer h-full flex items-center">
+              <li className="cursor-pointer h-full flex items-center mr-1">
                 <Link className="" href={item?.url}>
                   {item.name}
                 </Link>
