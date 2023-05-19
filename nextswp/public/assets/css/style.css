@@ -1552,7 +1552,7 @@ button:focus:not(:focus-visible) {
 	color: #333 !important;
 }
 .cart_list img {
-	border: 1px solid #ddd
+	border: 1px solid #ddd;
 	background-color: #ffffff;
 	float: left;
 	margin-right: 10px;
@@ -2397,8 +2397,8 @@ input.text {
 	font-weight: 500;
 }
 .categories_btn {
-	background-color: #FF324D;
-	border: 1px solid #FF324D;
+	background-color: #F6D18B;
+	border: 1px solid #F6D18B;
 	padding: 20px 15px;
 	color: #fff;
 	text-align: left;
@@ -4296,7 +4296,7 @@ footer .widget_title {
 	top: 0;
 	bottom: 0;
 	background-color: #FF324D;
-	z-index: ;
+	/* z-index: ; */
 	transition: all 0.5s ease-in-out;
 	-moz-transform: scale(0);
 	-webkit-transform: scale(0);
