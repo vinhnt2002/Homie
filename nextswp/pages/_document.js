@@ -10,25 +10,25 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+          <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
           <link rel="stylesheet" href="css/animate.css" />
           <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
-          <link rel="stylesheet" href="css/all.min.css" />
-          <link rel="stylesheet" href="css/ionicons.min.css" />
-          <link rel="stylesheet" href="css/themify-icons.css" />
-          <link rel="stylesheet" href="css/linearicons.css" />
-          <link rel="stylesheet" href="css/flaticon.css" />
-          <link rel="stylesheet" href="css/simple-line-icons.css" />
-          <link rel="stylesheet" href="owlcarousel/css/owl.carousel.min.css" />
-          <link rel="stylesheet" href="owlcarousel/css/owl.theme.css" />
-          <link rel="stylesheet" href="owlcarousel/css/owl.theme.default.min.css" />
-          <link rel="stylesheet" href="css/magnific-popup.css" />
-          <link rel="stylesheet" href="css/slick.css" />
-          <link rel="stylesheet" href="css/slick-theme.css" />
-          <link rel="stylesheet" href="css/style.css" />
-          <link rel="stylesheet" href="css/responsive.css" />
-          <link rel="stylesheet" href="css/rtl-style.css" />
+          <link rel="stylesheet" href="assets/css/all.min.css" />
+          <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+          <link rel="stylesheet" href="assets/css/themify-icons.css" />
+          <link rel="stylesheet" href="assets/css/linearicons.css" />
+          <link rel="stylesheet" href="assets/css/flaticon.css" />
+          <link rel="stylesheet" href="assets/css/simple-line-icons.css" />
+          <link rel="stylesheet" href="assets/owlcarousel/css/owl.carousel.min.css" />
+          <link rel="stylesheet" href="assets/owlcarousel/css/owl.theme.css" />
+          <link rel="stylesheet" href="assets/owlcarousel/css/owl.theme.default.min.css" />
+          <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+          <link rel="stylesheet" href="assets/css/slick.css" />
+          <link rel="stylesheet" href="assets/css/slick-theme.css" />
+          <link rel="stylesheet" href="assets/css/style.css" />
+          <link rel="stylesheet" href="assets/css/responsive.css" />
+          <link rel="stylesheet" href="assets/css/rtl-style.css" />
         </Head>
         <body>
           <Main />
