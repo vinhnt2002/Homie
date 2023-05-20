@@ -3215,7 +3215,8 @@ input.text {
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-align: center;
-	align-items: center;
+	padding-top: 40px;
+	/* align-items: center; */
 }
 .icon_box.icon_box_style3 {
 	border: 1px solid #ddd;
