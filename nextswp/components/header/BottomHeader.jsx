@@ -359,10 +359,6 @@ const BottomHeader = () => {
                       </div>
                     </li>
 
-
-
-
-
                     <li className="dropdown dropdown-mega-menu">
                       <a
                         className="dropdown-item nav-link dropdown-toggler"

@@ -129,7 +129,7 @@ const Footer = () => {
                     <a href="#" className="text-decoration-none">About</a>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">Discount</a>
+                    <a href="/about" className="text-decoration-none">Discount</a>
                   </li>
                   <li>
                     <a href="#" className="text-decoration-none">Returns</a>
