@@ -8,11 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@react-icons/all-files": "^4.1.0",
-=======
-    "boostrap": "^2.0.0",
->>>>>>> origin/branch-nguyentppse161945
     "bootstrap": "^5.2.3",
     "next": "^13.4.2",
     "react": "18.2.0",

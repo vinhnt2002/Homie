@@ -1,5 +1,7 @@
 import React from "react";
 import classes from "./Footer.module.css"
+import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -78,7 +80,7 @@ const Footer = () => {
                     </div>
                   </a>
                 </div>
-                <h5>Liên hệ với chúng tôi</h5>
+                <h5 >Liên hệ với chúng tôi</h5>
                 <ul className="contact_info">
                   <li>
                     <i className="ti-location-pin" />
@@ -86,7 +88,9 @@ const Footer = () => {
                   </li>
                   <li>
                     <i className="ti-email" />
-                    <a href="mailto:info@sitename.com">chieunganvo88@gmail.com</a>
+                    <Link className="text-decoration-none" href="mailto:info@sitename.com">
+                    chieunganvo88@gmail.com
+                    </Link>
                   </li>
                   <li>
                     <i className="ti-mobile" />
@@ -145,19 +149,14 @@ const Footer = () => {
                 <ul className="widget_links">
                  <div className={classes.link_img}>
                  <li>
-                    <a href="https://www.facebook.com/tiemhomie.sg">
-                      
-                     <div className="linkk">
-                       <p>https://www.facebook.com/tiemhomie.sg</p>
-                     </div>
-                      
-                    </a>
+                    <Link className="text-decoration-none" href="https://www.facebook.com/tiemhomie.sg">
+                       <p >https://www.facebook.com/tiemhomie.sg</p>
+                    </Link>
                   </li>
                   <li>
-                    <a href="https://www.facebook.com/tiemhomie.sg">
-                      
+                    <Link className="text-decoration-none" href="https://www.facebook.com/tiemhomie.sg">
                     <img src=".\assets\images\image-29@2x.png" alt="logo" />
-                    </a>
+                    </Link>
                   </li>
                  </div>
                   
