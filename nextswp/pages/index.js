@@ -4,146 +4,41 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
+import BannerSlider from '../components/Banner'
 function Home() {
+  const slides = [
+    {
+      image: 'assets/images/banner4.jpg',
+      discount: 'Get up to 50% off Today Only!',
+      title: 'Woman Fashion',
+      buttonLink: 'shop-left-sidebar.html',
+      buttonText: 'Shop Now',
+    },
+    {
+      image: 'assets/images/banner5.jpg',
+      discount: '50% off in all products',
+      title: 'Man Fashion',
+      buttonLink: 'shop-left-sidebar.html',
+      buttonText: 'Shop Now',
+    },
+    {
+      image: 'assets/images/banner6.jpg',
+      discount: 'Taking your Viewing Experience to Next Level',
+      title: 'Summer Sale',
+      buttonLink: 'shop-left-sidebar.html',
+      buttonText: 'Shop Now',
+    },
+  ];
   return (
     <>
 
 
 
       {/* <!-- START SECTION BANNER --> */}
-      <>
-        <div className="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-9 offset-lg-3">
-                <div
-                  id="carouselExampleControls"
-                  className="carousel slide light_arrow"
-                  data-bs-ride="carousel"
-                >
-                  <div className="carousel-inner">
-                    <div
-                      className="carousel-item active background_bg"
-                      data-img-src="assets/images/banner4.jpg"
-                    >
-                      <div className="banner_slide_content banner_content_inner">
-                        <div className="col-lg-8 col-10">
-                          <div className="banner_content overflow-hidden">
-                            <h5
-                              className="mb-3 staggered-animation font-weight-light"
-                              data-animation="slideInLeft"
-                              data-animation-delay="0.5s"
-                            >
-                              Get up to 50% off Today Only!
-                            </h5>
-                            <h2
-                              className="staggered-animation"
-                              data-animation="slideInLeft"
-                              data-animation-delay="1s"
-                            >
-                              Woman Fashion
-                            </h2>
-                            <a
-                              className="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                              href="shop-left-sidebar.html"
-                              data-animation="slideInLeft"
-                              data-animation-delay="1.5s"
-                            >
-                              Shop Now
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className="carousel-item background_bg"
-                      data-img-src="assets/images/banner5.jpg"
-                    >
-                      <div className="banner_slide_content banner_content_inner">
-                        <div className="col-lg-8 col-10">
-                          <div className="banner_content overflow-hidden">
-                            <h5
-                              className="mb-3 staggered-animation font-weight-light"
-                              data-animation="slideInLeft"
-                              data-animation-delay="0.5s"
-                            >
-                              50% off in all products
-                            </h5>
-                            <h2
-                              className="staggered-animation"
-                              data-animation="slideInLeft"
-                              data-animation-delay="1s"
-                            >
-                              Man Fashion
-                            </h2>
-                            <a
-                              className="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                              href="shop-left-sidebar.html"
-                              data-animation="slideInLeft"
-                              data-animation-delay="1.5s"
-                            >
-                              Shop Now
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className="carousel-item background_bg"
-                      data-img-src="assets/images/banner6.jpg"
-                    >
-                      <div className="banner_slide_content banner_content_inner">
-                        <div className="col-lg-8 col-10">
-                          <div className="banner_content overflow-hidden">
-                            <h5
-                              className="mb-3 staggered-animation font-weight-light"
-                              data-animation="slideInLeft"
-                              data-animation-delay="0.5s"
-                            >
-                              Taking your Viewing Experience to Next Level
-                            </h5>
-                            <h2
-                              className="staggered-animation"
-                              data-animation="slideInLeft"
-                              data-animation-delay="1s"
-                            >
-                              Summer Sale
-                            </h2>
-                            <a
-                              className="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                              href="shop-left-sidebar.html"
-                              data-animation="slideInLeft"
-                              data-animation-delay="1.5s"
-                            >
-                              Shop Now
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <ol className="carousel-indicators indicators_style1">
-                    <li
-                      data-bs-target="#carouselExampleControls"
-                      data-bs-slide-to={0}
-                      className="active"
-                    />
-                    <li
-                      data-bs-target="#carouselExampleControls"
-                      data-bs-slide-to={1}
-                    />
-                    <li
-                      data-bs-target="#carouselExampleControls"
-                      data-bs-slide-to={2}
-                    />
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </>
+      <div>
+        {/* Example usage of the BannerSlider component */}
+        <BannerSlider slides={slides} />
+      </div>
       {/* <!-- END SECTION BANNER --> */}
 
 
