@@ -7,14 +7,7 @@ import Header from '../components/header/Header'
 function Home() {
   return (
     <>
-      {/* <!-- START HEADER --> */}
-      <>
-        <Header />
 
-
-
-      </>
-      {/* <!-- END HEADER --> */}
 
 
       {/* <!-- START SECTION BANNER --> */}
@@ -3707,52 +3700,12 @@ function Home() {
               </div>
             </div>
           </div>
-          {/* END SECTION CLIENT LOGO */}
-          {/* START SECTION SUBSCRIBE NEWSLETTER */}
-          <div className="section bg_dark small_pt small_pb">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-md-6">
-                  <div className="heading_s1 mb-md-0 heading_light">
-                    <h3>Subscribe Our Newsletter</h3>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="newsletter_form">
-                    <form>
-                      <input
-                        type="text"
-                        required=""
-                        className="form-control rounded-0"
-                        placeholder="Enter Email Address"
-                      />
-                      <button
-                        type="submit"
-                        className="btn btn-fill-out rounded-0"
-                        name="submit"
-                        value="Submit"
-                      >
-                        Subscribe
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* START SECTION SUBSCRIBE NEWSLETTER */}
+
         </div>
 
       </>
       {/* END MAIN CONTENT  */}
 
-      {/* START FOOTER  */}
-      <>
-
-        <Footer />
-
-      </>
-      {/* END FOOTER  */}
 
 
 

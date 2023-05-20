@@ -1,10 +1,16 @@
 import React from "react";
+import classes from "./Footer.module.css"
+import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className="bg_gray">
+      <div className={classes.bg}>
+
       <div className="middle_footer">
-        <div className="container">
+       <div className={classes.textt}>
+       <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="shopping_info">
@@ -15,10 +21,9 @@ const Footer = () => {
                         <i className="flaticon-shipped" />
                       </div>
                       <div className="icon_box_content">
-                        <h5>Free Delivery</h5>
+                        <h5>Miễn Phí vận chuyển</h5>
                         <p>
-                          Phasellus blandit massa enim elit of passage varius
-                          nunc.
+                        Miễn phí vận chuyển toàn quốc cho đơn hàng từ 600k.Ship nhanh trong vòng 2h các quận nội thành HCM, phí ship chỉ từ 15-30k.
                         </p>
                       </div>
                     </div>
@@ -29,180 +34,137 @@ const Footer = () => {
                         <i className="flaticon-money-back" />
                       </div>
                       <div className="icon_box_content">
-                        <h5>30 Day Returns Guarantee</h5>
+                        <h5>Dịch vụ sau bán hàng</h5>
                         <p>
-                          Phasellus blandit massa enim elit of passage varius
-                          nunc.
+                        Giải quyết các vấn đề liên quan đến hàng hóa trong vòng 3 ngày kể từ sau khi giao hàng thành công. 
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-4">
+                 
+                 <div className="col-md-4">
                     <div className="icon_box icon_box_style2">
-                      <div className="icon">
+                    <div className="icon" >
                         <i className="flaticon-support" />
                       </div>
                       <div className="icon_box_content">
-                        <h5>27/4 Online Support</h5>
+                        <h5 >hỗ trợ khách hàng 24/7</h5>
                         <p>
-                          Phasellus blandit massa enim elit of passage varius
-                          nunc.
+                        Hỗ trợ giải đáp thắc mắc về sản phẩm và giao hàng nhanh chóng.
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </div>                
                 </div>
               </div>
-            </div>
+            </div>  
           </div>
         </div>
+       </div>
+      </div>
+
       </div>
       <div className="footer_top small_pt pb_20">
         <div className="container">
-          <div className="row">
+         <div className={classes.text_contact}>
+         <div className="row">
             <div className="col-lg-4 col-md-12 col-sm-12">
               <div className="widget">
                 <div className="footer_logo">
-                  <a href="#">
-                    <img src="assets/images/logo_dark.png" alt="logo" />
+                  <a>
+                    <div className={classes.fontt}>
+                   <div className={classes.flex}>
+                   <img src="assets/images/image-141@2x.png" alt="logo" />
+                   <h2 style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Pacifico', fontSize: '36px', fontWeight: 400, lineHeight: '34px',  textAlign: 'left' }}>Tiệm Homie</h2>
+                   </div>
+                    </div>
                   </a>
                 </div>
-                <p className="mb-3">
-                  If you are going to use of Lorem Ipsum need to be sure there
-                  isn't anything hidden of text
-                </p>
+                <h5 >Liên hệ với chúng tôi</h5>
                 <ul className="contact_info">
                   <li>
                     <i className="ti-location-pin" />
-                    <p>123 Street, Old Trafford, NewYork, USA</p>
+                    <p>132 Bến Vân Đồn P6 Q4, TP. Hồ Chí Minh</p>
                   </li>
                   <li>
                     <i className="ti-email" />
-                    <a href="mailto:info@sitename.com">info@sitename.com</a>
+                    <Link className="text-decoration-none" href="mailto:info@sitename.com">
+                    chieunganvo88@gmail.com
+                    </Link>
                   </li>
                   <li>
                     <i className="ti-mobile" />
-                    <p>+ 457 789 789 65</p>
+                    <p>093 839 30 84</p>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col-lg-2 col-md-4 col-sm-6">
               <div className="widget">
-                <h6 className="widget_title">Useful Links</h6>
+                <h6 className="widget_title">FAQS</h6>
                 <ul className="widget_links">
                   <li>
-                    <a href="#">About Us</a>
+                    <a href="#" className="text-decoration-none">About Us</a>
                   </li>
                   <li>
-                    <a href="#">FAQ</a>
+                    <a href="#" className="text-decoration-none">FAQ</a>
                   </li>
                   <li>
-                    <a href="#">Location</a>
+                    <a href="#" className="text-decoration-none">Location</a>
                   </li>
                   <li>
-                    <a href="#">Affiliates</a>
+                    <a href="#" className="text-decoration-none">Affiliates</a>
                   </li>
                   <li>
-                    <a href="#">Contact</a>
+                    <a href="#" className="text-decoration-none">Contact</a>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col-lg-2 col-md-4 col-sm-6">
               <div className="widget">
-                <h6 className="widget_title">My Account</h6>
+                <h6 className="widget_title">about</h6>
                 <ul className="widget_links">
                   <li>
-                    <a href="#">My Account</a>
+                    <a href="#" className="text-decoration-none">About</a>
                   </li>
                   <li>
-                    <a href="#">Discount</a>
+                    <a href="/about" className="text-decoration-none">Discount</a>
                   </li>
                   <li>
-                    <a href="#">Returns</a>
+                    <a href="#" className="text-decoration-none">Returns</a>
                   </li>
                   <li>
-                    <a href="#">Orders History</a>
+                    <a href="#" className="text-decoration-none">Orders History</a>
                   </li>
                   <li>
-                    <a href="#">Order Tracking</a>
+                    <a href="#" className="text-decoration-none">Order Tracking</a>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12">
               <div className="widget">
-                <h6 className="widget_title">Instagram</h6>
-                <ul className="widget_instafeed instafeed_col4">
-                  <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img1.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
+                <h6 className="widget_title">Facebook</h6>
+                <ul className="widget_links">
+                 <div className={classes.link_img}>
+                 <li>
+                    <Link className="text-decoration-none" href="https://www.facebook.com/tiemhomie.sg">
+                       <p >https://www.facebook.com/tiemhomie.sg</p>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img2.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
+                    <Link className="text-decoration-none" href="https://www.facebook.com/tiemhomie.sg">
+                    <img src=".\assets\images\image-29@2x.png" alt="logo" />
+                    </Link>
                   </li>
-                  <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img3.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img4.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img5.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img6.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img7.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="assets/images/insta_img8.jpg" alt="insta_img" />
-                      <span className="insta_icon">
-                        <i className="ti-instagram" />
-                      </span>
-                    </a>
-                  </li>
+                 </div>
+                  
                 </ul>
               </div>
             </div>
           </div>
+         </div>
         </div>
       </div>
 
@@ -211,7 +173,7 @@ const Footer = () => {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <p className="mb-lg-0 text-center">
-                © 2020 All Rights Reserved by Bestwebcreator
+              © 2020 All Rights Reserved by Tiệm Hommie
               </p>
             </div>
             <div className="col-lg-4 order-lg-first">
@@ -222,26 +184,13 @@ const Footer = () => {
                       <i className="ion-social-facebook" />
                     </a>
                   </li>
-                  <li>
-                    <a href="#" className="sc_twitter">
-                      <i className="ion-social-twitter" />
-                    </a>
-                  </li>
+                   
                   <li>
                     <a href="#" className="sc_google">
                       <i className="ion-social-googleplus" />
                     </a>
                   </li>
-                  <li>
-                    <a href="#" className="sc_youtube">
-                      <i className="ion-social-youtube-outline" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="sc_instagram">
-                      <i className="ion-social-instagram-outline" />
-                    </a>
-                  </li>
+                  
                 </ul>
               </div>
             </div>
