@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Poppins&display=swap');
+.bg{
+    background-color: #F79C43;
+   
+}
+
+
+.textt p{
+    color: white;
+  
+    font-size:14px
+    
+}
+
+.textt p{
+    font-family: 'Poppins', sans-serif;
+   
+   
+}
+
+.textt a{
+    font-family: 'Poppins', sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+ 
+.textt h5{
+    font-size: 20px;
+}
+
+ .flex{
+     display: flex;
+    padding-right: 2rem;
+    align-items: center;
+    margin: space-between;
+
+ }
+
+ .flex h2{
+     text-decoration: none;
+     font-family: 'Pacifico', cursive;
+     padding-left: 2px;
+ 
+   
+
+ }
+ .flex h5{
+padding-left: 10px;
+
+}
+ .flex img{
+     
+
+width: 73px;
+height: 73px;
+top:-22px;
+ }
+ 
+ .link_img img{
+    
+    width: 339px;
+    height: 142px;
+    left: 775px;
+    top: 93px;
+     
+ }
+ .link_img li{
+    list-style-type: none;  
+ }
+
+ .text_contact{
+     align-items: none !important
+ }
+
+ .text_contact  h6{
+padding-top: 20px;
+ }
+
+ .text_contact ul{
+     padding-left: 0;
+     padding-right: 1.8rem;  
+ }
