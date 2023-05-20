@@ -5,8 +5,37 @@
 
 .mt_5 {
     margin-top: 5px;
+    color: #000000;
+}
+
+.ml_5 {
+    margin-left: 5px;
+    font-size: 16px;
 }
 
 .bg_primary {
     background-color: #F79C43;
+}
+
+/* .text_bl {
+    color: #000000;
+} */
+
+.text_sb {
+    color: black;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+}
+
+.sidebar_size {
+    padding: 8px;
+    font-size: 16px;
+}
+
+
+.p_0 {
+    padding: 0;
 }

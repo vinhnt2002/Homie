@@ -30,7 +30,7 @@ const Header = () => {
               <form>
                 <div className="input-group">
                   <div className="input-group-prepend">
-                    <div className="custom_select">
+                    <div className={`${styles.custom_select} custom_select`}>
                       <select className="first_null">
                         <option value="">All Category</option>
                         <option value="Dresses">Dresses</option>

@@ -1,7 +1,11 @@
 import React from 'react'
 import styles from './BottomHeader.module.css';
 // import {AiOutlineGift} from 'react-icons/ai';
-
+import { BsGift, BsGithub } from 'react-icons/bs';
+import { BsBrush } from 'react-icons/bs';
+import { SiHappycow } from 'react-icons/si';
+import { BsBalloon } from 'react-icons/bs';
+import { AiFillGithub } from 'react-icons/ai';
 
 const BottomHeader = () => {
   return (
@@ -17,18 +21,18 @@ const BottomHeader = () => {
                   aria-expanded="false"
                   className= {`${styles.mt_5} categories_btn`} 
                 >
-                    <i className="linearicons-menu" />
-                  <span>PHÂN LOẠI </span>
+                    <i className= {`${styles.text_bl} linearicons-menu`} />
+                  <span className= {`${styles.text_sb}`} >PHÂN LOẠI </span>
                 </button>
                 <div id="navCatContent" className="nav_cat navbar collapse">
-                  <ul>
+                  <ul className={styles.p_0}>
                     <li className="dropdown dropdown-mega-menu">
                       <a
-                        className="dropdown-item nav-link dropdown-toggler"
+                        className= {`${styles.sidebar_size} dropdown-item nav-link dropdown-toggler`}
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i className="flaticon-woman" /> <span>Quà Tặng</span>
+                        <i/> <BsGift /> <span  className= {styles.ml_5}>Quà Tặng</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -205,13 +209,14 @@ const BottomHeader = () => {
                         </ul>
                       </div>
                     </li>
+
                     <li className="dropdown dropdown-mega-menu">
                       <a
-                        className="dropdown-item nav-link dropdown-toggler"
+                        className= {`${styles.sidebar_size} dropdown-item nav-link dropdown-toggler`}
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i className="flaticon-boss" /> <span>Trang Trí Nhà Cửa</span>
+                        <i/> <BsBrush /> <span  className= {styles.ml_5}>Trang Trí Nhà Cửa</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -359,17 +364,13 @@ const BottomHeader = () => {
                       </div>
                     </li>
 
-
-
-
-
                     <li className="dropdown dropdown-mega-menu">
                       <a
-                        className="dropdown-item nav-link dropdown-toggler"
+                        className= {`${styles.sidebar_size} dropdown-item nav-link dropdown-toggler`}
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i className="flaticon-friendship" /> <span>Thư Giản</span>
+                        <i/> <SiHappycow /> <span className= {styles.ml_5} >Thư Giản</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -516,14 +517,15 @@ const BottomHeader = () => {
                         </ul>
                       </div>
                     </li>
+
                     <li className="dropdown dropdown-mega-menu">
                       <a
-                        className="dropdown-item nav-link dropdown-toggler"
+                        className= {`${styles.sidebar_size} dropdown-item nav-link dropdown-toggler`}
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i className="flaticon-sunglasses" />{" "}
-                        <span>Tiện Ích</span>
+                        <i/> <BsBalloon />
+                        <span  className= {styles.ml_5}>Tiện Ích</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -665,14 +667,15 @@ const BottomHeader = () => {
                         </ul>
                       </div>
                     </li>
+
                     <li className="dropdown dropdown-mega-menu">
                       <a
-                        className="dropdown-item nav-link dropdown-toggler"
+                        className= {`${styles.sidebar_size} dropdown-item nav-link dropdown-toggler`}
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i className="flaticon-sunglasses" />{" "}
-                        <span>Phụ Kiện</span>
+                        <i/> <BsGithub />
+                        <span  className= {styles.ml_5}>Phụ Kiện</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -874,11 +877,14 @@ const BottomHeader = () => {
                 >
                   <span className="ion-android-menu" />
                 </button>
+
+
+
                 <div
-                  className="collapse navbar-collapse mobile_side_menu"
+                  className= "collapse navbar-collapse mobile_side_menu"
                   id="navbarSidetoggle"
                 >
-                  <ul className="navbar-nav">
+                  <ul className= {`${styles.nav_trans} navbar-nav `}>
                     <li className="dropdown">
                       <a
                         data-bs-toggle="dropdown"
@@ -1365,11 +1371,14 @@ const BottomHeader = () => {
                     </li>
                     <li>
                       <a className="nav-link nav_item" href="contact.html">
-                        Contact Us
+                        Câu Chuyện Thương Hiệu
                       </a>
                     </li>
                   </ul>
                 </div>
+
+
+
                 <ul className="navbar-nav attr-nav align-items-center">
                   <li>
                     <a href="#" className="nav-link">
