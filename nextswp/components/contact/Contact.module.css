@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Poppins&family=Roboto:wght@700&display=swap');
 .bg{
-padding-top: 200px;
+padding-top: 0;
 }   
 .bg .head h1 {
     font-family: Roboto;
