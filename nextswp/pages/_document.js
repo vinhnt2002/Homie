@@ -33,7 +33,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script src="/js/jquery-3.2.1.min.js"></script>
+          <script src="/js/jquery-3.6.0.min.js"></script>
           <script src="/js/popper.min.js"></script>
           <script src="/js/jquery.superslides.min.js"></script>
           <script src="/js/inewsticker.js"></script>
@@ -45,6 +45,21 @@ class MyDocument extends Document {
           <script src="/js/form-validator.min.js"></script>
           <script src="/js/contact-form-script.js"></script>
           <script src="/js/custom.js"></script>
+
+          {/* <script src="assets/js/jquery-3.6.0.min.js"></script>
+          <script src="assets/js/popper.min.js"></script>
+          <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+          <script src="assets/owlcarousel/js/owl.carousel.min.js"></script>
+          <script src="assets/js/magnific-popup.min.js"></script>
+          <script src="assets/js/waypoints.min.js"></script>
+          <script src="assets/js/parallax.js"></script>
+          <script src="assets/js/jquery.countdown.min.js"></script>
+          <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+          <script src="assets/js/isotope.min.js"></script>
+          <script src="assets/js/jquery.dd.min.js"></script>
+          <script src="assets/js/slick.min.js"></script>
+          <script src="assets/js/jquery.elevatezoom.js"></script>
+          <script src="assets/js/scripts.js"></script> */}
         </body>
       </Html>
     );
