@@ -1,3 +1,19 @@
 .custom_select {
     margin-right: 15px;
 }
+
+.custom_select select {
+    background-color: #EFEFEF;
+    color: #6C757D;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 73px;
+    margin-right: 25px;
+}

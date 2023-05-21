@@ -1119,7 +1119,7 @@ button:focus:not(:focus-visible) {
 .dark_skin .navbar .navbar-nav .dropdown-menu li a:hover, 
 .dark_skin .navbar .navbar-nav .dropdown-menu > ul > li:hover > a, 
 .dark_skin .navbar .navbar-nav .dropdown-menu > ul > .mega-menu-col ul > li:hover > a {
-	color: #FF324D;
+	color: #fff;
 }
 .dark_skin .navbar .navbar-nav li > .dropdown-item, 
 .dark_skin .navbar .navbar-nav .dropdown-header,

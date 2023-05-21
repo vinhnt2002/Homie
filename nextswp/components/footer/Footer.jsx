@@ -1,8 +1,6 @@
 import React from "react";
 import classes from "./Footer.module.css"
 import Link from "next/link";
-import Image from "next/image";
-
 const Footer = () => {
   return (
     <footer className="bg_gray">

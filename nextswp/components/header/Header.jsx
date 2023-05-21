@@ -11,20 +11,19 @@ const Header = () => {
         <div className="container">
           <div className="nav_block">
             <a className="navbar-brand" href="index.html">
+              
+              <div className={styles.flex}>
               <img
-                className="logo_light"
-                src="assets/images/logo_light.png"
+                className= {styles.logo}
+                src="assets/images/image-141@2x.png"
                 alt="logo"
               />
-              <img
-                className="logo_dark"
-                src="assets/images/logo_dark.png"
-                alt="logo"
-              />
+                   <h2 style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Pacifico', fontSize: '36px', fontWeight: 400, lineHeight: '34px',  textAlign: 'left' }}>Tiệm Homie</h2>
+                   </div>
             </a>
             <div className="contact_phone order-md-last">
               <i className="linearicons-phone-wave" />
-              <span>123-456-7689</span>
+              <span>093 839 30 84</span>
             </div>
             <div className="product_search_form">
               <form>
@@ -32,7 +31,7 @@ const Header = () => {
                   <div className="input-group-prepend">
                     <div className={`${styles.custom_select} custom_select`}>
                       <select className="first_null">
-                        <option value="">All Category</option>
+                        <option value="">Phân Loại</option>
                         <option value="Dresses">Dresses</option>
                         <option value="Shirt-Tops">Shirt &amp; Tops</option>
                         <option value="T-Shirt">T-Shirt</option>

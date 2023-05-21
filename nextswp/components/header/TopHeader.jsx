@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './TopHeader.module.css';
 
 const TopHeader = () => {
   return (
@@ -8,7 +9,7 @@ const TopHeader = () => {
             <div className="col-lg-6 col-md-8"></div>
             <div className="col-lg-6 col-md-4">
               <div className="d-flex align-items-center justify-content-center justify-content-md-end">
-                <div className="lng_dropdown">
+                {/* <div className="lng_dropdown">
                   <select name="countries" className="custome_select">
                     <option
                       value="en"
@@ -32,9 +33,15 @@ const TopHeader = () => {
                       United States
                     </option>
                   </select>
+                </div> */}
+                <div className={styles.flex}>
+                    <img src="assets/images/engpng@2x.png" alt="" />
+                    <p>VietNam</p>
+                    <p>VND</p>
                 </div>
+
                 <div className="ms-3">
-                  <select name="countries" className="custome_select">
+                  {/* <select name="countries" className="custome_select">
                     <option value="USD" data-title="USD">
                       USD
                     </option>
@@ -44,7 +51,9 @@ const TopHeader = () => {
                     <option value="GBR" data-title="GBR">
                       GBR
                     </option>
-                  </select>
+                  </select> */}
+
+
                 </div>
               </div>
             </div>
