@@ -32,7 +32,7 @@ const BottomHeader = () => {
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i/> <BsGift /> <span  className= {styles.ml_5}>Quà Tặng</span>
+                        <i/> <BsGift className= {styles.sidebar_icon} /> <span  className= {styles.ml_5}>Quà Tặng</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -216,7 +216,7 @@ const BottomHeader = () => {
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i/> <BsBrush /> <span  className= {styles.ml_5}>Trang Trí Nhà Cửa</span>
+                        <i/> <BsBrush className= {styles.sidebar_icon} /> <span  className= {styles.ml_5}>Trang Trí Nhà Cửa</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -370,7 +370,7 @@ const BottomHeader = () => {
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i/> <SiHappycow /> <span className= {styles.ml_5} >Thư Giản</span>
+                        <i/> <SiHappycow className= {styles.sidebar_icon} /> <span className= {styles.ml_5} >Thư Giản</span>
                       </a>
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
@@ -524,7 +524,7 @@ const BottomHeader = () => {
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i/> <BsBalloon />
+                        <i/> <BsBalloon className= {styles.sidebar_icon} />
                         <span  className= {styles.ml_5}>Tiện Ích</span>
                       </a>
                       <div className="dropdown-menu">
@@ -674,7 +674,7 @@ const BottomHeader = () => {
                         href="#"
                         data-bs-toggle="dropdown"
                       >
-                        <i/> <BsGithub />
+                        <i/> <BsGithub className= {styles.sidebar_icon} />
                         <span  className= {styles.ml_5}>Phụ Kiện</span>
                       </a>
                       <div className="dropdown-menu">
@@ -881,7 +881,7 @@ const BottomHeader = () => {
 
 
                 <div
-                  className= "collapse navbar-collapse mobile_side_menu"
+                  className= {`${styles.text_translate_0_10} collapse navbar-collapse mobile_side_menu`}
                   id="navbarSidetoggle"
                 >
                   <ul className= {`${styles.nav_trans} navbar-nav `}>

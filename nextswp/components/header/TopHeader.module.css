@@ -1,0 +1,28 @@
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+color: #000000;
+}
+
+.flex img{
+width: 16px;
+height: 16px;
+margin-right: 5px;
+
+}
+
+.flex p {
+    line-height: 21px;
+    margin-bottom: 0;
+}
+
+.flex :last-child {
+    margin-left: 30px;
+
+}
