@@ -76,6 +76,8 @@ function Home() {
     },
     // Add more products as needed
   ];
+
+
   return (
     <>
       {/* <!-- START SECTION BANNER --> */}
