@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
-import Footer from '../components/footer/Footer'
-import Header from '../components/header/Header'
+
 import Banner from '../components/Banner'
 import BannerSlider from '../components/BannerSlider'
 import FeaturedProductHeader from '../components/FeaturedProductHeader'
@@ -11,7 +10,11 @@ import ProductCard from '../components/ProductCard'
 
 
 function Home() {
-  const shouldShowTabs = true; // Set to true or false based on your condition
+  
+  const [showTabs,setShowTabs] = useState(true)
+  const [showProductActionBox, setShowProductActionBox] = useState(true);
+
+
   const slides = [
     {
       image: 'assets/images/banner4.jpg',
@@ -43,7 +46,7 @@ function Home() {
       price: '$20',
       salePercent: '25%',
       rating: 4.5,
-      del:150000,
+      del: 150000,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
@@ -87,11 +90,12 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pb">
             <div className="container">
-              <FeaturedProductHeader title="Exclusive Products" showTabs={shouldShowTabs} />
+              <FeaturedProductHeader title="Exclusive Products" showTabs={showTabs} />
               <div className="row">
+                
                 {products.map((product, index) => (
                   <div key={index} className="col-md-3">
-                    <ProductCard {...product} />
+                    <ProductCard {...product} showProductActionBox={showProductActionBox} />
                   </div>
                 ))}
 
@@ -133,7 +137,7 @@ function Home() {
               <div className="row">
                 {products.map((product, index) => (
                   <div key={index} className="col-md-3">
-                    <ProductCard {...product} />
+                    <ProductCard {...product}  showProductActionBox={showProductActionBox}  />
                   </div>
                 ))}
 
@@ -145,11 +149,13 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pt pb_20">
             <div className="container">
-              <FeaturedProductHeader title="Hello " showTabs={shouldShowTabs} />
+              <FeaturedProductHeader title="Here is 3 item in one row " showTabs={showTabs} />
               <div className="row">
                 {products.map((product, index) => (
                   <div key={index} className="col-md-4">
-                    <ProductCard {...product} />
+                    {/* <div className='custom-item'>  */}
+                    <ProductCard {...product}  />
+                    {/* </div> */}
                   </div>
                 ))}
 

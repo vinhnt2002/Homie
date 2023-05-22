@@ -1,6 +1,8 @@
-import React from 'react'
+'use client'
 
-const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, description }) => {
+const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, description , showProductActionBox}) => {
+
+
   return (
 
     <div className="item">
@@ -9,6 +11,7 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
           <a href="shop-product-detail.html">
             <img src={imageUrl} alt="product_img" />
           </a>
+          {showProductActionBox && (
           <div className="product_action_box">
             <ul className="list_none pr_action_btn">
               <li className="add-to-cart">
@@ -33,6 +36,7 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
               </li>
             </ul>
           </div>
+          )}
         </div>
         <div className="product_info">
           <h6 className="product_title">
