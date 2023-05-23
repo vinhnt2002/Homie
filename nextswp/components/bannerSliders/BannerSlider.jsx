@@ -52,8 +52,9 @@ function BannerSlider() {
       <div className="button-container">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-md-4 col-sm-6 col-3"></div>
-            <div className="col-lg-9 col-md-8 col-sm-6 col-9">
+            <div className="col-lg-3 col-md-4">
+            </div>
+            <div className="col-lg-9 col-md-8 col-sm-12 col-12">
               <Carousel
                 autoPlay={true}
                 interval={5000}
@@ -80,12 +81,13 @@ function BannerSlider() {
               </Carousel>
               {/* btn icon  */}
               <button variant="primary" className={classes.prevBTN} onClick={onPrevClick}>
-                {/* <FiChevronLeft/>  */}
-                Prev
+                <FiChevronLeft/> 
+                {/* Prev */}
                 {/* here is icon i was let in ipmort  */}
               </button>
-              <button variant="primary" onClick={onNextClick}>
-                Next
+              <button variant="primary" className= {classes.nextBTN} onClick={onNextClick}>
+                {/* Next */}
+                < FiChevronRight />
                 {/* here is icon i was let in ipmort  */}
 
               </button>
