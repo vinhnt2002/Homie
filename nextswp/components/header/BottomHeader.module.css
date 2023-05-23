@@ -1,89 +1,76 @@
-.all_cata {
-    height: 81%;
-    background-color: #F6D18B;
-}
-
-.mt_5 {
-    color: #000000;
-}
-
-.ml_5 {
-    margin-left: 5px;
-    font-size: 16px;
-}
-
-.bg_primary {
-    background-color: #F79C43;
-    height: 68px;
-}
-
-/* .text_bl {
-    color: #000000;
-} */
-
-.text_sb {
-    color: black;
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 24px;
-}
-
-.sidebar_size *{
-    /* padding: px; */
-    font-size: 16px;
-}
-
-.sidebar_icon {
-    font-size: 22px;
-    margin-bottom: 5px;
-}
-
-.ul_padding_0 {
+.navbar_expand_lg nav{
     padding: 0;
 }
 
-.p_0 {
-    padding: 10px;
+.primary_bg{
+    background-color: #F79C43;
 }
 
-.p_0 :not(:first-child) {
-    margin-top: 10px;
+.second_bg {
+    background-color: #F6D18B;
 }
 
-
-
-.text_translate_0_10{
-    transform: translate(0, -10px);
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.text_translate_0_10 li {
-    margin-right: 10px;
-}
-
-.sidebar_li {
-    margin-top: 10px;
-}
-
-.icon_right {
-    margin-top: -15px;
-}
-
-.dropdown_product :hover :last-child,
-.dropdown_product :hover :last-child 
-
- {
-    display: block;
-
+.categories_btn {
+    background-color: #F6D18B;
+    border: 1px solid #F6D18B;
+    padding: 20px 15px;
+    color: #000000;
+    text-align: left;
+    width: 100%;
 }
 
 
-/* .dropdown_product :hover :last-child{
-    border
-} */
+.mobile_side_tx ,
+.mobile_side_tx > a{
+    text-transform: capitalize !important;
+    font-family: 'Roboto' !important;
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    color: #000000 !important;
+}
+
+.mobile_side_tx :hover,
+.mobile_side_tx > a :hover, 
+.mobile_side_tx :active,
+.mobile_side_tx > a :active {
+    color: #fff !important;
+}
 
 
+
+.side_left {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.ul_padding {
+    padding: 0;
+}
+
+.ul_padding > li :hover{
+    background-color: #F79C43;
+}
+
+
+@media only screen and (max-width: 990px) {
+    .search_icon {
+        margin-top: 18px;
+        margin-right: 10px;
+    }
+
+    .mobile_side_menu ul {
+        background-color: #F79C43 !important;
+        
+    }
+
+    .categories_btn i {
+        margin-left: 12px;
+    }
+
+    .side_mobile_img {
+        background-color: #F79C43;
+    }
+
+}
