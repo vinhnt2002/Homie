@@ -489,6 +489,8 @@
 .header_wrap .navbar-collapse.mobile_side_menu.show {
 	right: 0;
 }
+
+
 .header_wrap .navbar-collapse.mobile_side_menu .navbar-nav {
 	height: 100%;
 	max-height: 100vh;
@@ -568,8 +570,8 @@
 }
 .navbar-nav > li > .dropdown-menu, 
 .navbar .navbar-nav li.dropdown-mega-menu .dropdown-menu {
-	padding-left: 10px;
-	padding-right: 10px;
+	/* padding-left: 10px; */
+	/* padding-right: 10px; */
 }
 .mega-menu-col {
 	padding: 0px;
