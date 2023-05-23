@@ -48,7 +48,7 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
           </div>
 
           <div className="product_price">
-            <span className="price">{price}</span>
+            <span className="price">{price} VND</span>
             <del>{del} VND</del>
             <div className="on_sale">
               <span>{salePercent} Off</span>

@@ -19,38 +19,38 @@ function Home() {
 
   const products = [
     {
-      imageUrl: 'assets/images/product_img1.jpg',
+      imageUrl: 'assets/images2/image-14@2x.png',
       title: 'Product 1',
-      price: '$20',
+      price: '190.000',
       salePercent: '25%',
       rating: 4.5,
-      del: 150000,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      del: 200.000,
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa ',
     },
     {
-      imageUrl: 'assets/images/product_img1.jpg',
+      imageUrl: 'assets/images2/image-15@2x.png',
       title: 'Product 2',
-      price: '$30',
+      price: '190.000',
       salePercent: '30%',
       rating: 4.2,
-      description: 'Nullam id varius nunc id varius nunc.',
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
     },
     // Add more products as needed
     {
-      imageUrl: 'assets/images/product_img1.jpg',
+      imageUrl: 'assets/images2/image-16@2x.png',
       title: 'Product 1',
-      price: '$20',
+      price: '190.000',
       salePercent: '25%',
       rating: 4.5,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
     },
     {
-      imageUrl: 'assets/images/product_img1.jpg',
+      imageUrl: 'assets/images2/image-14@2x.png',
       title: 'Product 2',
-      price: '$30',
+      price: '190.000',
       salePercent: '30%',
       rating: 4.2,
-      description: 'Nullam id varius nunc id varius nunc.',
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
     },
     // Add more products as needed
   ];
@@ -70,7 +70,7 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pb">
             <div className="container">
-              <FeaturedProductHeader title="Exclusive Products" showTabs={showTabs} />
+              <FeaturedProductHeader title="Top Sản Phẩm" showTabs={showTabs} />
               <div className="row">
                 
                 {products.map((product, index) => (
@@ -113,7 +113,7 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pt small_pb">
             <div className="container">
-              <FeaturedProductHeader title="Deal Of The Days " />
+              <FeaturedProductHeader title="Hàng Mới Về" />
               <div className="row">
                 {products.map((product, index) => (
                   <div key={index} className="col-md-3">
@@ -129,7 +129,7 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pt pb_20">
             <div className="container">
-              <FeaturedProductHeader title="Here is 3 item in one row " showTabs={showTabs} />
+              <FeaturedProductHeader title="Bán Chạy Tại Hommie" showTabs={showTabs} />
               <div className="row">
                 {products.map((product, index) => (
                   <div key={index} className="col-md-4">

@@ -34,7 +34,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                     aria-controls="arrival"
                     aria-selected="true"
                   >
-                    New Arrival
+                    Hàng Mới Về
                   </a>
                 </li>
                 <li className="nav-item">
@@ -47,7 +47,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                     aria-controls="sellers"
                     aria-selected="false"
                   >
-                    Best Sellers
+                    Bán Chạy
                   </a>
                 </li>
                 <li className="nav-item">
@@ -60,7 +60,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                     aria-controls="featured"
                     aria-selected="false"
                   >
-                    Featured
+                    Đặc Biệt
                   </a>
                 </li>
                 <li className="nav-item">
@@ -73,7 +73,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                     aria-controls="special"
                     aria-selected="false"
                   >
-                    Special Offer
+                    Chỉ Có Tại Hommie
                   </a>
                 </li>
               </ul>
