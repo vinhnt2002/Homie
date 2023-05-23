@@ -40,6 +40,9 @@ line-height: 24px;
     margin-bottom: 5px;
 }
 
+.ul_padding_0 {
+    padding: 0;
+}
 
 .p_0 {
     padding: 10px;
@@ -55,6 +58,7 @@ line-height: 24px;
     transform: translate(0, -10px);
     display: flex;
     justify-content: space-between;
+
 }
 
 .text_translate_0_10 li {
@@ -64,3 +68,22 @@ line-height: 24px;
 .sidebar_li {
     margin-top: 10px;
 }
+
+.icon_right {
+    margin-top: -15px;
+}
+
+.dropdown_product :hover :last-child,
+.dropdown_product :hover :last-child 
+
+ {
+    display: block;
+
+}
+
+
+/* .dropdown_product :hover :last-child{
+    border
+} */
+
+

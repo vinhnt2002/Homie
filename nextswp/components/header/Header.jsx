@@ -31,7 +31,7 @@ const Header = () => {
                   <div className="input-group-prepend">
                     <div className={`${styles.custom_select} custom_select`}>
                       <select className="first_null">
-                        <option value="">Phân Loại</option>
+                        <option value="">Categories</option>
                         <option value="Dresses">Dresses</option>
                         <option value="Shirt-Tops">Shirt &amp; Tops</option>
                         <option value="T-Shirt">T-Shirt</option>

@@ -893,62 +893,10 @@ const BottomHeader = () => {
                       >
                         Trang Chủ
                       </a>
-                      {/* <div className="dropdown-menu">
-                        <ul>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="index.html"
-                            >
-                              Fashion 1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item active"
-                              href="index-2.html"
-                            >
-                              Fashion 2
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="index-3.html"
-                            >
-                              Furniture 1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="index-4.html"
-                            >
-                              Furniture 2
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="index-5.html"
-                            >
-                              Electronics 1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="index-6.html"
-                            >
-                              Electronics 2
-                            </a>
-                          </li>
-                        </ul>
-                      </div> */}
                     </li>
 
                     {/* san pham */}
-                    <li className="dropdown dropdown-mega-menu">
+                    <li className= {`${styles.dropdown_product} dropdown dropdown-mega-menu`}>
                       <a
                         className="dropdown-toggle nav-link"
                         href="#"
@@ -956,17 +904,19 @@ const BottomHeader = () => {
                       >
                         Sản Phẩm
                       </a>
+
+
                       <div className="dropdown-menu">
                         <ul className="mega-menu d-lg-flex">
-                          <li className="mega-menu-col col-lg-3">
-                            <ul>
-                              <li className="dropdown-header">Woman's</li>
+                          <li className="mega-menu-col col-lg-2">
+                            <ul className={styles.ul_padding_0}>
+                              <li className="dropdown-header">Quà Tặng</li>
                               <li>
                                 <a
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-three-columns.html"
                                 >
-                                  Vestibulum sed
+                                  Thú Bông
                                 </a>
                               </li>
                               <li>
@@ -974,7 +924,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-four-columns.html"
                                 >
-                                  Donec porttitor
+                                  Gối Bông
                                 </a>
                               </li>
                               <li>
@@ -982,7 +932,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-grid-view.html"
                                 >
-                                  Donec vitae facilisis
+                                  Chén Đĩa Ly Sứ
                                 </a>
                               </li>
                               <li>
@@ -990,7 +940,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-list-view.html"
                                 >
-                                  Curabitur tempus
+                                  Mèo Gốm
                                 </a>
                               </li>
                               <li>
@@ -998,20 +948,28 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-left-sidebar.html"
                                 >
-                                  Vivamus in tortor
+                                  Mèo
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item nav-link nav_item"
+                                  href="shop-left-sidebar.html"
+                                >
+                                  Túi Xách
                                 </a>
                               </li>
                             </ul>
                           </li>
                           <li className="mega-menu-col col-lg-3">
-                            <ul>
-                              <li className="dropdown-header">Men's</li>
+                            <ul className={styles.ul_padding_0}>
+                              <li className="dropdown-header">Trang Trí Nhà Cửa</li>
                               <li>
                                 <a
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-cart.html"
                                 >
-                                  Donec vitae ante ante
+                                  Thú Bông
                                 </a>
                               </li>
                               <li>
@@ -1019,7 +977,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="checkout.html"
                                 >
-                                  Etiam ac rutrum
+                                  Chén Đĩa Ly Sứ
                                 </a>
                               </li>
                               <li>
@@ -1027,7 +985,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="wishlist.html"
                                 >
-                                  Quisque condimentum
+                                  Mèo Gốm
                                 </a>
                               </li>
                               <li>
@@ -1035,28 +993,20 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="compare.html"
                                 >
-                                  Curabitur laoreet
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  className="dropdown-item nav-link nav_item"
-                                  href="order-completed.html"
-                                >
-                                  Vivamus in tortor
+                                  Mền
                                 </a>
                               </li>
                             </ul>
                           </li>
-                          <li className="mega-menu-col col-lg-3">
-                            <ul>
-                              <li className="dropdown-header">Kid's</li>
+                          <li className="mega-menu-col col-lg-2">
+                            <ul className={styles.ul_padding_0}>
+                              <li className="dropdown-header">Thư Giãn</li>
                               <li>
                                 <a
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail.html"
                                 >
-                                  Donec vitae facilisis
+                                  Thú Bông
                                 </a>
                               </li>
                               <li>
@@ -1064,7 +1014,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail-left-sidebar.html"
                                 >
-                                  Quisque condimentum
+                                  Gối Bông
                                 </a>
                               </li>
                               <li>
@@ -1072,7 +1022,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail-right-sidebar.html"
                                 >
-                                  Etiam ac rutrum
+                                  Mền
                                 </a>
                               </li>
                               <li>
@@ -1080,28 +1030,20 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail-thumbnails-left.html"
                                 >
-                                  Donec vitae ante ante
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  className="dropdown-item nav-link nav_item"
-                                  href="shop-product-detail-accordion-style.html"
-                                >
-                                  Donec porttitor
+                                  Quạt
                                 </a>
                               </li>
                             </ul>
                           </li>
-                          <li className="mega-menu-col col-lg-3">
-                            <ul>
-                              <li className="dropdown-header">Accessories</li>
+                          <li className="mega-menu-col col-lg-2">
+                            <ul className={styles.ul_padding_0}>
+                              <li className="dropdown-header">Tiện Ích</li>
                               <li>
                                 <a
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail.html"
                                 >
-                                  Curabitur tempus
+                                  Chén Đĩa Ly Sứ
                                 </a>
                               </li>
                               <li>
@@ -1109,7 +1051,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail-left-sidebar.html"
                                 >
-                                  Quisque condimentum
+                                  Mền
                                 </a>
                               </li>
                               <li>
@@ -1117,7 +1059,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail-right-sidebar.html"
                                 >
-                                  Vivamus in tortor
+                                  Quạt
                                 </a>
                               </li>
                               <li>
@@ -1125,7 +1067,7 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail-thumbnails-left.html"
                                 >
-                                  Donec vitae facilisis
+                                  Gối Tựa Lưng
                                 </a>
                               </li>
                               <li>
@@ -1133,12 +1075,44 @@ const BottomHeader = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="shop-product-detail-accordion-style.html"
                                 >
-                                  Donec porttitor
+                                  Gối Cổ
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li className="mega-menu-col col-lg-2">
+                            <ul className={styles.ul_padding_0}>
+                              <li className="dropdown-header">Phụ Kiện</li>
+                              <li>
+                                <a
+                                  className="dropdown-item nav-link nav_item"
+                                  href="shop-product-detail.html"
+                                >
+                                  Móc Khoá
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item nav-link nav_item"
+                                  href="shop-product-detail-left-sidebar.html"
+                                >
+                                  Túi Xách
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item nav-link nav_item"
+                                  href="shop-product-detail-right-sidebar.html"
+                                >
+                                  Túi Mỹ Phẩm
                                 </a>
                               </li>
                             </ul>
                           </li>
                         </ul>
+
+
+
                         <div className="d-lg-flex menu_banners row g-3 px-3">
                           <div className="col-lg-6">
                             <div className="header-banner">
@@ -1168,202 +1142,21 @@ const BottomHeader = () => {
                           </div>
                         </div>
                       </div>
+
+                     
+
+
+
+
+
+
+
+
+
+
                     </li>
-                    
-                    {/* <li className="dropdown dropdown-mega-menu">
-                      <a
-                        className="dropdown-toggle nav-link"
-                        href="#"
-                        data-bs-toggle="dropdown"
-                      >
-                        Shop
-                      </a>
-                      <div className="dropdown-menu">
-                        <ul className="mega-menu d-lg-flex">
-                          <li className="mega-menu-col col-lg-9">
-                            <ul className="d-lg-flex">
-                              <li className="mega-menu-col col-lg-4">
-                                <ul>
-                                  <li className="dropdown-header">
-                                    Shop Page Layout
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-list.html"
-                                    >
-                                      shop List view
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-list-left-sidebar.html"
-                                    >
-                                      shop List Left Sidebar
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-list-right-sidebar.html"
-                                    >
-                                      shop List Right Sidebar
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-left-sidebar.html"
-                                    >
-                                      Left Sidebar
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-right-sidebar.html"
-                                    >
-                                      Right Sidebar
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-load-more.html"
-                                    >
-                                      Shop Load More
-                                    </a>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li className="mega-menu-col col-lg-4">
-                                <ul>
-                                  <li className="dropdown-header">
-                                    Other Pages
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-cart.html"
-                                    >
-                                      Cart
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="checkout.html"
-                                    >
-                                      Checkout
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="my-account.html"
-                                    >
-                                      My Account
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="wishlist.html"
-                                    >
-                                      Wishlist
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="compare.html"
-                                    >
-                                      compare
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="order-completed.html"
-                                    >
-                                      Order Completed
-                                    </a>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li className="mega-menu-col col-lg-4">
-                                <ul>
-                                  <li className="dropdown-header">
-                                    Product Pages
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-product-detail.html"
-                                    >
-                                      Default
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-product-detail-left-sidebar.html"
-                                    >
-                                      Left Sidebar
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-product-detail-right-sidebar.html"
-                                    >
-                                      Right Sidebar
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item nav-link nav_item"
-                                      href="shop-product-detail-thumbnails-left.html"
-                                    >
-                                      Thumbnails Left
-                                    </a>
-                                  </li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </li>
-                          <li className="mega-menu-col col-lg-3">
-                            <div className="header_banner">
-                              <div className="header_banner_content">
-                                <div className="shop_banner">
-                                  <div className="banner_img overlay_bg_40">
-                                    <img
-                                      src="assets/images/shop_banner2.jpg"
-                                      alt="shop_banner2"
-                                    />
-                                  </div>
-                                  <div className="shop_bn_content">
-                                    <h6 className="text-uppercase shop_subtitle">
-                                      New Collection
-                                    </h6>
-                                    <h5 className="text-uppercase shop_title">
-                                      Sale 30% Off
-                                    </h5>
-                                    <a
-                                      href="#"
-                                      className="btn btn-white rounded-0 btn-xs text-uppercase"
-                                    >
-                                      Shop Now
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </li> */}
+
+
                     <li>
                       <a className="nav-link nav_item" href="contact.html">
                         Set Quà Tặng
@@ -1379,12 +1172,19 @@ const BottomHeader = () => {
 
 
 
-                <ul className="navbar-nav attr-nav align-items-center">
+                <ul className= {`${styles.icon_right} navbar-nav attr-nav align-items-center`} >
+
+
+
                   <li>
                     <a href="#" className="nav-link">
                       <i className="linearicons-user" />
                     </a>
                   </li>
+
+
+
+
                   <li>
                     <a href="#" className="nav-link">
                       <i className="linearicons-heart" />
