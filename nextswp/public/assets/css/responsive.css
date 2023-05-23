@@ -31,7 +31,7 @@
 /* -------------------------------------------------
   (min-width: 991px) and (max-width: 1199px)
 ---------------------------------------------------*/
-@media only screen and (min-width: 991px) and (max-width: 1199px) {
+@media only screen and (min-width: 990px) and (max-width: 1199px) {
 .nav_cat > ul > li > a, .nav_cat > ul > li > ul > li > a {
 	font-size: 14px;
 	padding: 5px 10px;
@@ -61,7 +61,7 @@
 /* -------------------------------------------------
   (min-width: 767px) and (max-width: 991px)
 ---------------------------------------------------*/
-@media only screen and (min-width: 767px) and (max-width: 991px) {
+@media only screen and (min-width: 767px) and (max-width: 990px) {
 .fb_info {
 	top: 5px;
 	left: 5px;
@@ -449,7 +449,7 @@
 /* -------------------------------------------------
   max-width: 991px
 ---------------------------------------------------*/
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 990px) {
 .md-height-300 {
 	height: 300px !important;
 }
