@@ -4,9 +4,9 @@ import Image from 'next/image'
 import Head from 'next/head'
 
 import Banner from '../components/Banner'
-import BannerSlider from '../components/BannerSlider'
 import FeaturedProductHeader from '../components/FeaturedProductHeader'
 import ProductCard from '../components/ProductCard'
+import BannerSlider from '../components/bannerSliders/BannerSlider'
 
 
 function Home() {
@@ -15,29 +15,7 @@ function Home() {
   const [showProductActionBox, setShowProductActionBox] = useState(true);
 
 
-  const slides = [
-    {
-      image: 'assets/images/banner4.jpg',
-      discount: 'Get up to 50% off Today Only!',
-      title: 'Woman Fashion',
-      buttonLink: 'shop-left-sidebar.html',
-      buttonText: 'Shop Now',
-    },
-    {
-      image: 'assets/images/banner5.jpg',
-      discount: '50% off in all products',
-      title: 'Man Fashion',
-      buttonLink: 'shop-left-sidebar.html',
-      buttonText: 'Shop Now',
-    },
-    {
-      image: 'assets/images/banner6.jpg',
-      discount: 'Taking your Viewing Experience to Next Level',
-      title: 'Summer Sale',
-      buttonLink: 'shop-left-sidebar.html',
-      buttonText: 'Shop Now',
-    },
-  ];
+ 
 
   const products = [
     {
@@ -83,7 +61,7 @@ function Home() {
       {/* <!-- START SECTION BANNER --> */}
       <div>
         {/* Example usage of the BannerSlider component */}
-        <BannerSlider slides={slides} />
+        <BannerSlider  />
       </div>
       {/* <!-- END SECTION BANNER --> */}
       {/* START MAIN CONTENT  */}
