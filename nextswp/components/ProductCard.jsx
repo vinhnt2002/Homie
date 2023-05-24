@@ -1,38 +1,40 @@
+
 'use client'
 
-const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, description , showProductActionBox}) => {
+import Link from "next/link"
 
+const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, description , showProductActionBox}) => {
 
   return (
 
     <div className="item">
       <div className="product">
         <div className="product_img">
-          <a href="shop-product-detail.html">
+          <Link href="/cart">
             <img src={imageUrl} alt="product_img" />
-          </a>
+          </Link>
           {showProductActionBox && (
           <div className="product_action_box">
             <ul className="list_none pr_action_btn">
               <li className="add-to-cart">
-                <a href="#">
+                <Link href="/cart">
                   <i className="icon-basket-loaded" /> Add To Cart
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="shop-compare.html" className="popup-ajax">
+                <Link href="/cart" className="popup-ajax">
                   <i className="icon-shuffle" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="shop-quick-view.html" className="popup-ajax">
+                <Link href="/cart" className="popup-ajax">
                   <i className="icon-magnifier-add" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#">
+                <Link href="/cart">
                   <i className="icon-heart" />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -40,10 +42,10 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
         </div>
         <div className="product_info">
           <h6 className="product_title">
-            <a href="shop-product-detail.html">{title}</a>
+            <Link href="/cart">{title}</Link>
           </h6>
 
-          <div className="pr_desc">
+          <div className="pr_desc d-block">
             <p>{description}</p>
           </div>
 

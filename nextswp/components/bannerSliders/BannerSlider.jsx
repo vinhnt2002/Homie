@@ -79,16 +79,11 @@ function BannerSlider() {
                   </Carousel.Item>
                 ))}
               </Carousel>
-              {/* btn icon  */}
               <button variant="primary" className={classes.prevBTN} onClick={onPrevClick}>
                 <FiChevronLeft/> 
-                {/* Prev */}
-                {/* here is icon i was let in ipmort  */}
               </button>
               <button variant="primary" className= {classes.nextBTN} onClick={onNextClick}>
-                {/* Next */}
                 < FiChevronRight />
-                {/* here is icon i was let in ipmort  */}
 
               </button>
             </div>

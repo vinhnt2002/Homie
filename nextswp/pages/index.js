@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
+import Slider from "react-slick";
 
 import Banner from '../components/Banner'
 import FeaturedProductHeader from '../components/FeaturedProductHeader'
@@ -10,12 +11,33 @@ import BannerSlider from '../components/bannerSliders/BannerSlider'
 
 
 function Home() {
-  
-  const [showTabs,setShowTabs] = useState(true)
+
+  const [showTabs, setShowTabs] = useState(true)
   const [showProductActionBox, setShowProductActionBox] = useState(true);
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
+  };
 
- 
+
 
   const products = [
     {
@@ -61,7 +83,7 @@ function Home() {
       {/* <!-- START SECTION BANNER --> */}
       <div>
         {/* Example usage of the BannerSlider component */}
-        <BannerSlider  />
+        <BannerSlider />
       </div>
       {/* <!-- END SECTION BANNER --> */}
       {/* START MAIN CONTENT  */}
@@ -72,12 +94,11 @@ function Home() {
             <div className="container">
               <FeaturedProductHeader title="Top Sản Phẩm" showTabs={showTabs} />
               <div className="row">
-                
-                {products.map((product, index) => (
-                  <div key={index} className="col-md-3">
-                    <ProductCard {...product} showProductActionBox={showProductActionBox} />
-                  </div>
-                ))}
+                  {products.map((product, index) => (
+                    <div key={index} className="col-md-3">
+                      <ProductCard {...product} showProductActionBox={showProductActionBox} />
+                    </div>
+                  ))}
 
               </div>
             </div>
@@ -117,7 +138,7 @@ function Home() {
               <div className="row">
                 {products.map((product, index) => (
                   <div key={index} className="col-md-3">
-                    <ProductCard {...product}  showProductActionBox={showProductActionBox}  />
+                    <ProductCard {...product} showProductActionBox={showProductActionBox} />
                   </div>
                 ))}
 
@@ -131,13 +152,17 @@ function Home() {
             <div className="container">
               <FeaturedProductHeader title="Bán Chạy Tại Hommie" showTabs={showTabs} />
               <div className="row">
-                {products.map((product, index) => (
-                  <div key={index} className="col-md-4">
-                    {/* <div className='custom-item'>  */}
-                    <ProductCard {...product}  />
-                    {/* </div> */}
-                  </div>
-                ))}
+                {/* <Slider {...settings}> */}
+
+                  {products.map((product, index) => (
+                    <div key={index} className="col-md-4">
+                      {/* <div className='custom-item'>  */}
+                      <ProductCard {...product} />
+                      {/* </div> */}
+                    </div>
+                  ))}
+                {/* </Slider> */}
+
 
               </div>
             </div>

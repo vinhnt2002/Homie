@@ -28,7 +28,7 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="assets/css/slick-theme.css" />
           <link rel="stylesheet" href="assets/css/style.css" />
           <link rel="stylesheet" href="assets/css/responsive.css" />
-          <link rel="stylesheet" href="assets/css/rtl-style.css" />
+          {/* <link rel="stylesheet" href="assets/css/rtl-style.css" /> */}
         </Head>
         <body>
           <Main />
