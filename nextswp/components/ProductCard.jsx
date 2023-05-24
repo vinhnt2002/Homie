@@ -8,7 +8,7 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
   return (
 
     <div className="item">
-      <div className="product">
+      <div className="product m-1 ">
         <div className="product_img">
           <Link href="/cart">
             <img src={imageUrl} alt="product_img" />
