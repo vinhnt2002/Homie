@@ -74,6 +74,46 @@ function Home() {
       rating: 4.2,
       description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
     },
+    {
+      imageUrl: 'assets/images2/image-16@2x.png',
+      title: 'Product 1',
+      price: '190.000',
+      salePercent: '25%',
+      rating: 4.5,
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
+    },
+    {
+      imageUrl: 'assets/images2/image-14@2x.png',
+      title: 'Product 2',
+      price: '190.000',
+      salePercent: '30%',
+      rating: 4.2,
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
+    },
+    {
+      imageUrl: 'assets/images2/image-16@2x.png',
+      title: 'Product 1',
+      price: '190.000',
+      salePercent: '25%',
+      rating: 4.5,
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
+    },
+    {
+      imageUrl: 'assets/images2/image-14@2x.png',
+      title: 'Product 2',
+      price: '190.000',
+      salePercent: '30%',
+      rating: 4.2,
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
+    },
+    {
+      imageUrl: 'assets/images2/image-14@2x.png',
+      title: 'Product 2',
+      price: '190.000',
+      salePercent: '30%',
+      rating: 4.2,
+      description: 'Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa',
+    },
 
     // Add more products as needed
   ];
@@ -95,11 +135,14 @@ function Home() {
             <div className="container">
               <FeaturedProductHeader title="Top Sản Phẩm" showTabs={showTabs} />
               <div className="row">
-                {products.map((product, index) => (
-                  <div key={index} className="col-md-3">
-                    <ProductCard {...product} showProductActionBox={showProductActionBox} />
-                  </div>
-                ))}
+                <Slider {...settings}>
+
+                  {products.map((product, index) => (
+                    <div key={index} className="col-md-3">
+                      <ProductCard {...product} showProductActionBox={showProductActionBox} />
+                    </div>
+                  ))}
+                </Slider>
 
               </div>
             </div>
@@ -137,12 +180,14 @@ function Home() {
             <div className="container">
               <FeaturedProductHeader title="Hàng Mới Về" />
               <div className="row">
+                <Slider {...settings}>
 
-                {products.map((product, index) => (
-                  <div key={index} className="col-md-3">
-                    <ProductCard {...product} showProductActionBox={showProductActionBox} />
-                  </div>
-                ))}
+                  {products.map((product, index) => (
+                    <div key={index} className="col-md-3">
+                      <ProductCard {...product} showProductActionBox={showProductActionBox} />
+                    </div>
+                  ))}
+                </Slider>
 
               </div>
             </div>
@@ -152,19 +197,19 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pt pb_20">
             <div className="container">
-              <FeaturedProductHeader title="Bán Chạy Tại Hommie" showTabs={showTabs} />
+              <FeaturedProductHeader title="Bán Chạy Tại Hommie"  />
               <div className="row">
                 {/* <Slider {...settings}> */}
                 <div className='col-12'>
-                <div class=" product_list d-flex flex-wrap" >
+                  <div class=" product_list d-flex flex-wrap" >
 
-                  {products.map((product, index) => (
-                    <div key={index} className="col-md-4">
-                      <ProductCard {...product} />
-                    </div>
-                  ))}
-                  {/* </Slider> */}
-                </div>
+                    {products.map((product, index) => (
+                      <div key={index} className="col-md-4">
+                        <ProductCard {...product} />
+                      </div>
+                    ))}
+                    {/* </Slider> */}
+                  </div>
                 </div>
               </div>
             </div>
