@@ -42,11 +42,13 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
         </div>
         <div className="product_info">
           <h6 className="product_title">
-            <Link href="/cart">{title}</Link>
+            <Link href="/cart" >
+              <span>{title}</span>
+            </Link>
           </h6>
 
           <div className="pr_desc d-block">
-            <p>{description}</p>
+            <p>{`${description.substring(0,45)}...`} </p>
           </div>
 
           <div className="product_price">

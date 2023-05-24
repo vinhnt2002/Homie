@@ -102,19 +102,19 @@ const Footer = () => {
                 <h6 className="widget_title">FAQS</h6>
                 <ul className="widget_links">
                   <li>
-                    <a href="#" className="text-decoration-none">About Us</a>
+                    <Link href="/about" className="text-decoration-none">About Us</Link>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">FAQ</a>
+                    <Link href="/about" className="text-decoration-none">FAQ</Link>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">Location</a>
+                    <Link href="/about" className="text-decoration-none">Location</Link>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">Affiliates</a>
+                    <Link href="/about" className="text-decoration-none">Affiliates</Link>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">Contact</a>
+                    <Link href="/about" className="text-decoration-none">Contact</Link>
                   </li>
                 </ul>
               </div>
@@ -124,19 +124,19 @@ const Footer = () => {
                 <h6 className="widget_title">about</h6>
                 <ul className="widget_links">
                   <li>
-                    <a href="#" className="text-decoration-none">About</a>
+                  <Link href="/about" className="text-decoration-none">About</Link>
                   </li>
                   <li>
-                    <a href="/about" className="text-decoration-none">Discount</a>
+                  <Link href="/about" className="text-decoration-none">Discount</Link>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">Returns</a>
+                  <Link href="/about" className="text-decoration-none">Returns</Link>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">Orders History</a>
+                  <Link href="/about" className="text-decoration-none">Orders History</Link>
                   </li>
                   <li>
-                    <a href="#" className="text-decoration-none">Order Tracking</a>
+                  <Link href="/about" className="text-decoration-none">Order Tracking</Link>
                   </li>
                 </ul>
               </div>
@@ -178,15 +178,15 @@ const Footer = () => {
               <div className="widget mb-lg-0">
                 <ul className="social_icons text-center text-lg-start">
                   <li>
-                    <a href="#" className="sc_facebook">
+                    <Link href="https://www.facebook.com/tiemhomie.sg" className="sc_facebook">
                       <i className="ion-social-facebook" />
-                    </a>
+                    </Link>
                   </li>
                    
                   <li>
-                    <a href="#" className="sc_google">
+                    <Link href="" className="sc_google">
                       <i className="ion-social-googleplus" />
-                    </a>
+                    </Link>
                   </li>
                   
                 </ul>
@@ -195,35 +195,35 @@ const Footer = () => {
             <div className="col-lg-4">
               <ul className="footer_payment text-center text-lg-end">
                 <li>
-                  <a href="#">
+                  <Link href="/">
                     <img src="assets/images/visa.png" alt="visa" />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link href="/">
                     <img src="assets/images/discover.png" alt="discover" />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link href="/">
                     <img
-                      src="assets/images/master_card.png"
+                    Linksrc="assets/images/master_card.png"
                       alt="master_card"
                     />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link href="/">
                     <img src="assets/images/paypal.png" alt="paypal" />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link href="/">
                     <img
-                      src="assets/images/amarican_express.png"
+                    src="assets/images/amarican_express.png"
                       alt="amarican_express"
                     />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

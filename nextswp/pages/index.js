@@ -15,6 +15,7 @@ function Home() {
   const [showTabs, setShowTabs] = useState(true)
   const [showProductActionBox, setShowProductActionBox] = useState(true);
 
+  
   const settings = {
     dots: true,
     infinite: true,
@@ -178,7 +179,10 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pt small_pb">
             <div className="container">
-              <FeaturedProductHeader title="Hàng Mới Về" />
+              <div className='d-flex justify-content-center'>
+                <FeaturedProductHeader className="d-flex justify-content-center" title="Hàng Mới Về" />
+              </div>
+              
               <div className="row">
                 <Slider {...settings}>
 
@@ -197,7 +201,9 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pt pb_20">
             <div className="container">
-              <FeaturedProductHeader title="Bán Chạy Tại Hommie"  />
+            <div className='d-flex justify-content-center'>
+            <FeaturedProductHeader title="Bán Chạy Tại Hommie"  />
+            </div>
               <div className="row">
                 {/* <Slider {...settings}> */}
                 <div className='col-12'>
