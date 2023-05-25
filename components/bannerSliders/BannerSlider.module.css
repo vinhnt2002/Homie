@@ -1,0 +1,53 @@
+
+.prevBTN {
+    position: absolute;
+    top: 400px;
+    height: 50px;
+    bottom: 0;
+    left: 360px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    /* color: #fff; */
+    color: black;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+}
+
+.nextBTN {
+    position: absolute;
+    top: 400px;
+    height: 50px;
+    bottom: 0;
+    right: 66px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    /* color: #fff; */
+    color: black;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    
+}
+
+@media only screen and (max-width: 990px) {
+    .prevBTN {
+        left: 0;
+    }
+
+    .nextBTN {
+        right: 0;
+    }
+}

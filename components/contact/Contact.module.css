@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Poppins&family=Roboto:wght@700&display=swap');
+.bg{
+padding-top: 0;
+}   
+.bg .head h1 {
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+  }
+
+  .bg .font span{
+  font-family: Roboto;
+  
+font-weight: 700;
+size: 20px;
+line-height: 30px;
+align-items: center;
+  }
+
+  .bg .font p{
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+.bg .font_contact h2{
+    
+    font-family: Roboto;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+}
+
+    

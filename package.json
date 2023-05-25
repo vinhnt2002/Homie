@@ -1,0 +1,25 @@
+{
+  "name": "nextspw",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.7",
+    "@react-icons/all-files": "^4.1.0",
+    "bootstrap": "^5.2.3",
+    "next": "^13.4.2",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.7.4",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "react-slick": "^0.29.0"
+  },
+  "devDependencies": {
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.2"
+  }
+}

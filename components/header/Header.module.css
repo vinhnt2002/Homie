@@ -1,0 +1,51 @@
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex img {
+    width: 73px;
+}
+
+.flex p {
+    color: #000000;
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 34px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.input_classify select{
+    background-color: #EFEFEF;
+}
+
+.input_space {
+    margin-right: 16px;
+}
+
+@media only screen and (max-width: 600px ){
+    .flex img {
+        width: 50px;
+    }
+
+    .flex p {
+        font-size: 26px;
+        margin-left: 5px;
+    }
+}
+
+@media only screen and (max-width: 300px ) {
+    .flex img {
+        width: 50px;
+    }
+
+    .flex p {
+        font-size: 16px;
+        margin-left: 5px;
+    }
+}
