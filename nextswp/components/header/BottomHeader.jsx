@@ -9,7 +9,7 @@ import { AiFillGithub } from "react-icons/ai";
 
 const BottomHeader = () => {
 
-  const [showCategory, setShowCategory] = useState(false);
+  const [showCategory, setShowCategory] = useState(true);
 
   const handleClick = (e) =>{
       e.preventDefault();
