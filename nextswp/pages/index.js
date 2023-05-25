@@ -9,13 +9,11 @@ import FeaturedProductHeader from '../components/FeaturedProductHeader'
 import ProductCard from '../components/ProductCard'
 import BannerSlider from '../components/bannerSliders/BannerSlider'
 
-
 function Home() {
 
   const [showTabs, setShowTabs] = useState(true)
   const [showProductActionBox, setShowProductActionBox] = useState(true);
 
-  
   const settings = {
     dots: true,
     infinite: true,
@@ -123,7 +121,6 @@ function Home() {
     // Add more products as needed
   ];
 
-
   return (
     <>
       {/* <!-- START SECTION BANNER --> */}
@@ -215,7 +212,7 @@ function Home() {
               <div className="row">
                 <div className='col-12'>
                   {/* <Slider {...settings}> */}
-                  <div class=" product_list d-flex flex-wrap" >
+                  <div className=" product_list d-flex flex-wrap" >
 
                     {products.map((product, index) => (
                       <div key={index} className="col-md-4">

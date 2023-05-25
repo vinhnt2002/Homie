@@ -207,7 +207,7 @@ const Footer = () => {
                 <li>
                   <Link href="/">
                     <img
-                    Linksrc="assets/images/master_card.png"
+                    src="assets/images/master_card.png"
                       alt="master_card"
                     />
                   </Link>

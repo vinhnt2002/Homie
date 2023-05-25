@@ -12,6 +12,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
           <link rel="stylesheet" href="css/animate.css" />
+          <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"></link>
           <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="assets/css/all.min.css" />
