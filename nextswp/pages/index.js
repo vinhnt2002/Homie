@@ -18,6 +18,8 @@ function Home() {
   const settings = {
     dots: true,
     infinite: true,
+    arrows: false,
+
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -26,18 +28,20 @@ function Home() {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
+          arrows: false,
+
         }
       },
       {
         breakpoint: 576,
         settings: {
           slidesToShow: 1,
+          arrows: false,
+
         }
       }
     ]
   };
-
-
 
   const products = [
     {
@@ -135,7 +139,7 @@ function Home() {
             <div className="container">
               <FeaturedProductHeader title="Top Sản Phẩm" showTabs={showTabs} />
               <div className="row">
-                <Slider {...settings}>
+                <Slider {...settings} className='overflow-hidden'>
 
                   {products.map((product, index) => (
                     <div key={index} className="col-md-3">
@@ -180,14 +184,16 @@ function Home() {
             <div className="container">
               <FeaturedProductHeader title="Hàng Mới Về" />
               <div className="row">
-                <Slider {...settings}>
+                <div className='col-12'>
+                  <Slider {...settings} className='overflow-hidden'>
 
-                  {products.map((product, index) => (
-                    <div key={index} className="col-md-3">
-                      <ProductCard {...product} showProductActionBox={showProductActionBox} />
-                    </div>
-                  ))}
-                </Slider>
+                    {products.map((product, index) => (
+                      <div key={index} className="col-md-3">
+                        <ProductCard {...product} showProductActionBox={showProductActionBox} />
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
 
               </div>
             </div>
@@ -197,10 +203,10 @@ function Home() {
           {/* START SECTION SHOP */}
           <div className="section small_pt pb_20">
             <div className="container">
-              <FeaturedProductHeader title="Bán Chạy Tại Hommie"  />
+              <FeaturedProductHeader title="Bán Chạy Tại Hommie" />
               <div className="row">
-                {/* <Slider {...settings}> */}
                 <div className='col-12'>
+                  {/* <Slider {...settings}> */}
                   <div class=" product_list d-flex flex-wrap" >
 
                     {products.map((product, index) => (
@@ -208,8 +214,8 @@ function Home() {
                         <ProductCard {...product} />
                       </div>
                     ))}
-                    {/* </Slider> */}
                   </div>
+                  {/* </Slider> */}
                 </div>
               </div>
             </div>

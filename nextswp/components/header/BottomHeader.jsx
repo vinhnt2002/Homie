@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./BottomHeader.module.css";
 // import {AiOutlineGift} from 'react-icons/ai';
 import { BsGift, BsGithub } from "react-icons/bs";
@@ -8,6 +8,13 @@ import { BsBalloon } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
 
 const BottomHeader = () => {
+
+  const [showCategory, setShowCategory] = useState(false);
+
+  const handleClick = (e) =>{
+      e.preventDefault();
+      setShowCategory(!showCategory);
+  }
   return (
     <div className="bottom_header light_skin main_menu_uppercase mb-4">
       <div className={styles.primary_bg}>
@@ -20,11 +27,13 @@ const BottomHeader = () => {
                   data-bs-toggle="collapse"
                   data-bs-target="#navCatContent"
                   aria-expanded="false"
+                  onClick={handleClick}
                   className={`${styles.categories_btn} categories_btn`}
                 >
                   <i className="linearicons-menu" />
                   <span>Phân Loại </span>
                 </button>
+                {showCategory &&
                 <div id="navCatContent" className="nav_cat navbar collapse">
                   <ul>
                     <li className="dropdown dropdown-mega-menu">
@@ -895,6 +904,7 @@ const BottomHeader = () => {
                   </ul>
                   {/* <div className="more_categories">More Categories</div> */}
                 </div>
+                }
               </div>
             </div>
             <div className="col-lg-9 col-md-8 col-sm-6 col-9">
