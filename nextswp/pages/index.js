@@ -140,7 +140,7 @@ function Home() {
             <div className="container">
               <FeaturedProductHeader title="Top Sản Phẩm" showTabs={showTabs} />
               <div className="row">
-                <Slider {...settings} className='overflow-hidden'>
+                <Slider {...settings} >
 
                   {products.map((product, index) => (
                     <div key={index} className="col-md-3">
