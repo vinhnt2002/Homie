@@ -1,3 +1,5 @@
+ 
+import Styles from '../components/FeaturedProductHeader.module.css'
 import React from "react";
 
 const FeaturedProductHeader = ({ title, showTabs }) => {
@@ -5,10 +7,13 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
     <div className="row">
       <div className="col-12">
         <div className="heading_tab_header">
-          <div className="heading_s2">
+         <div className={Styles.titleLeft}>
+         <div className="heading_s2">
             <h2>{title}</h2>
           </div>
-          {showTabs && (
+         </div>
+        <div className={Styles.titleRight}>
+        {showTabs && (
             <div className="tab-style2">
               <button
                 className="navbar-toggler"
@@ -25,7 +30,8 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                 role="tablist"
               >
                 <li className="nav-item">
-                  <a
+                 <div className={Styles.redText}>
+                 <a
                     className="nav-link active"
                     id="arrival-tab"
                     data-bs-toggle="tab"
@@ -36,9 +42,11 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                   >
                     Hàng Mới Về
                   </a>
+                 </div>
                 </li>
                 <li className="nav-item">
-                  <a
+                 <div className={Styles.blackText}>
+                 <a 
                     className="nav-link"
                     id="sellers-tab"
                     data-bs-toggle="tab"
@@ -49,8 +57,10 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                   >
                     Bán Chạy
                   </a>
+                 </div>
                 </li>
                 <li className="nav-item">
+                  <div className={Styles.blackText}>
                   <a
                     className="nav-link"
                     id="featured-tab"
@@ -62,9 +72,11 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                   >
                     Đặc Biệt
                   </a>
+                  </div>
                 </li>
                 <li className="nav-item">
-                  <a
+                 <div className={Styles.blackText}>
+                 <a
                     className="nav-link"
                     id="special-tab"
                     data-bs-toggle="tab"
@@ -75,10 +87,12 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                   >
                     Chỉ Có Tại Hommie
                   </a>
+                 </div>
                 </li>
               </ul>
             </div>
           )}
+        </div>
         </div>
       </div>
     </div>
