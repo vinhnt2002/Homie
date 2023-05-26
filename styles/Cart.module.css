@@ -16,53 +16,6 @@ height: 16px;
 text-align: center;
 }
 
-.customToggle {
-box-sizing: border-box;
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 16px 15.03px 16px 16px;
-gap: 384.97px;
-
-position: absolute;
-height: 52px;
-left: 0px;
-right: 0px;
-top: 0px;
-
-background: #F7F7F7;
-border: 1px solid #E8E8E8;
-  }
-  
-  .customToggle::after {
-    content: "+";
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-weight: bold;
-  }
-  
-  .customToggle[data-bs-toggle="dropdown"][aria-expanded="true"]::after {
-    content: "-";
-  }
-  
-  .customDropdownMenu {
-    min-width: 100%;
-    display: block;
-    padding: 0;
-  }
-  
-  .customDropdownMenu.show {
-    display: block;
-    position: absolute;
-    /* z-index: 1; */
-  }
-  
-  .customDropdownMenu .form-control {
-    width: 100%;
-    margin-bottom: 8px;
-  }
 .btn{
     background-color: #F79C43;
 }
