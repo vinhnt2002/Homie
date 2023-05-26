@@ -53,6 +53,15 @@
     background-color: #F79C43;
 }
 
+.leftsideChild li{
+    font-size: 20px;
+    /* padding: 6px; */
+}
+
+.leftsideChild > li > a {
+    padding: 5px;
+    font-size: 16px;
+}
 
 @media only screen and (max-width: 990px) {
     .search_icon {
@@ -72,5 +81,23 @@
     .side_mobile_img {
         background-color: #F79C43;
     }
+
+    .ul_padding > li,
+    .ul_padding > li > a {
+        color: #000000 !important;   
+    }
+
+    .ul_padding {
+        padding: 0;
+    }
+    .ul_padding > li > a {
+        /* margin-left: 10px; */
+        padding-right: 0 !important;
+    }
+
+    .ul_padding > li :hover{
+        background-color: #000000 ;
+    }
+
 
 }
