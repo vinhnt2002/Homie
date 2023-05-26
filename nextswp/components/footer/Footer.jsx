@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Footer.module.css"
 import Link from "next/link";
 const Footer = () => {
+  const [showFullText, setShowFullText] = useState(false);
+
+  const toggleShowFullText = () => {
+    setShowFullText(!showFullText);
+  };
   return (
     <footer className="bg_gray">
       <div className={classes.bg}>
@@ -12,13 +17,16 @@ const Footer = () => {
               <div className="row">
                 <div className="col-12">
                   <div className="shopping_info">
+                    
                     <div className="row justify-content-center">
-                      <div className="col-md-4">
+
+                      <div className="col-md-4 col-sm-6">
                         <div className="icon_box icon_box_style2 d-flex align-items-start">
                           <div className="icon">
                             <i className="flaticon-shipped"></i>
                           </div>
-                          <div className="icon_box_content">
+                         
+                            <div className="icon_box_content"> 
                             <h5>Miễn Phí vận chuyển</h5>
                             <p>
                               Miễn phí vận chuyển toàn quốc cho đơn hàng từ 600k. Ship nhanh trong vòng 2h các quận nội thành HCM, phí ship chỉ từ 15-30k.
@@ -26,7 +34,8 @@ const Footer = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-4 ">
+
+                      <div className="col-md-4 col-sm-6 ">
                         <div className="icon_box icon_box_style2 d-flex align-items-start">
                           <div className="icon">
                             <i className="flaticon-money-back"></i>
@@ -41,7 +50,7 @@ const Footer = () => {
 
                       </div>
 
-                      <div className="col-md-4 ">
+                      <div className="col-md-4 col-sm-6 ">
                         <div className="icon_box icon_box_style2 d-flex align-items-start">
                           <div className="icon">
                             <i className="flaticon-support"></i>
@@ -54,6 +63,7 @@ const Footer = () => {
                           </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>

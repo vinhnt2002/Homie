@@ -145,14 +145,79 @@ function Home() {
       rating: 4.2,
       description: 'bé xinh vừa mềm êm vừa đáng yêu.',
     },
+    // {
+    //   imageUrl: 'assets/images2/product-img1jpg2@2x.png',
+    //   title: 'Ly giữ nhiệt Funny Party',
+    //   price: '250,000',
+    //   // salePercent: '25%',
+    //   del: '0',
+    //   rating: 4.2,
+    //   description: 'Tặng gì cho crush “mát lòng mát dạ”',
+    // },
     {
-      imageUrl: 'assets/images2/product-img1jpg2@2x.png',
-      title: 'Ly giữ nhiệt Funny Party',
+      imageUrl: 'assets/images2/product-img4jpg3@2x.png',
+      title: 'Thỏ Cà Rốt ',
+      price: '170,000',
+      // salePercent: '25%',
+      del: '0',
+      rating: 4.2,
+      description: '3 em thỏ ngộ nghĩnh tay ôm cà rốt với chi tiết thêu tinh tế',
+    }, {
+      imageUrl: 'assets/images2/product-img3jpg3@2x.png ',
+      title: 'Chú lừa Donkie',
+      price: '350,000',
+      // salePercent: '25%',
+      del: '0',
+      rating: 4.2,
+      description: 'Bộ lông mềm mượt còn gương mặt lại cưng thiệt cưng, tỉ mỉ từng... ',
+    }, {
+      imageUrl: 'assets/images2/product-img6jpg@2x.png ',
+      title: 'Cá mập quần bông',
+      price: '290,000',
+      // salePercent: '25%',
+      del: '0',
+      rating: 4.2,
+      description: 'Có anh ở đây đố đứa nào dám ăn hiếp em nhoa',
+    }, {
+      imageUrl: 'assets/images2/product-img7jpg@2x.png ',
+      title: 'Gối Cầu Vồng',
+      price: '380,000',
+      // salePercent: '25%',
+      del: '0',
+      rating: 4.2,
+      description: 'Vỏ gối bằng chất liệu vải canvas chắc chắn, hoạ tiết cầu vồng...',
+    }, {
+      imageUrl: 'assets/images2/product-img8jpg@2x.png ',
+      title: 'Spa time',
+      price: '150,000',
+      // salePercent: '25%',
+      del: '0',
+      rating: 4.2,
+      description: 'Điều tôi muốn khi bên ngoài nóng hơn 40 độ',
+    }, {
+      imageUrl: 'assets/images2/product-img12jpg@2x.png ',
+      title: 'Smiley Cup',
       price: '250,000',
       // salePercent: '25%',
       del: '0',
       rating: 4.2,
-      description: 'Tặng gì cho crush “mát lòng mát dạ”',
+      description: 'set gồm tách và đĩa sứ    ',
+    }, {
+      imageUrl: 'assets/images2/product-img10jpg@2x.png ',
+      title: 'Khủng long Greenie',
+      price: '250,000',
+      // salePercent: '25%',
+      del: '0',
+      rating: 4.2,
+      description: 'Trong vườn bao nhiêu cây lá nhưng không cây nào xanh...',
+    }, {
+      imageUrl: ' assets/images2/',
+      title: 'Gối cổ kèm bịt mắt mèo',
+      price: '170,000',
+      // salePercent: '25%',
+      del: '0',
+      rating: 4.2,
+      description: 'gồi tàu xe đi chơi lễ sao cho không mỏi và ngủ ngon nè',
     },
     {
       imageUrl: 'assets/images2/product-img4jpg3@2x.png',
@@ -203,7 +268,7 @@ function Home() {
       rating: 4.2,
       description: 'set gồm tách và đĩa sứ    ',
     }, {
-      imageUrl: 'assets/images2/ ',
+      imageUrl: 'assets/images2/product-img10jpg@2x.png ',
       title: 'Khủng long Greenie',
       price: '250,000',
       // salePercent: '25%',
@@ -315,17 +380,21 @@ function Home() {
               <div className="row">
                 <div className='col-12'>
                   {/* <Slider {...settings}> */}
-                  <div className=" product_list d-flex flex-wrap" >
-
+                 <div className={Styles.containerNones}>
+                 <div className=" product_list d-flex flex-wrap"  >
+                  
+                    
                   {products.slice(9, 18).map((product, index) => (
-                      <div key={index} className="col-md-4">
+                      <div key={index} className="col-md-4 justify-content-lg-around " >
                         <div className={Styles.horizon}>
                           
-                          <ProductCard  {...product} />
+                          <ProductCard   {...product}  />
                         </div>
                       </div>
                     ))}
+                  
                   </div>
+                 </div>
                   {/* </Slider> */}
                 </div>
               </div>

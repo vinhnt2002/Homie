@@ -12,7 +12,7 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
         <div className="product m-1 ">
           <div className="product_img">
             <Link href="/cart">
-              <img src={imageUrl} alt="product_img" />
+              <img src={imageUrl} style={{ width: '100%', height: 'auto' }} alt="product_img" />
             </Link>
             {showProductActionBox && (
               <div className="product_action_box">
@@ -64,7 +64,7 @@ const ProductCard = ({ imageUrl, title, price, salePercent, rating, del, descrip
 
               <div className="product_price">
                 <div className="">
-                  <span className="price">{price} VND</span>
+                  <span className="price">{price} VND</span><br></br>
                   <del className="m">{del} VND</del>
                 </div>
                 <div className="on_sale">

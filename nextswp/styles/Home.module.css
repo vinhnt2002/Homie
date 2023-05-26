@@ -1,12 +1,20 @@
 
-
+/* contain 9 items */
+.containerNines{
+    justify-content: center;
+    align-items: center;
+}
+.containerNines .col-md-4 {
+    width: 33.33%;
+    padding: 10px;
+  }
 /* chia bo cuc 9 items */
 .horizon{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin:2px 2px;
+    
+ 
+    height: 100%;
 }
+
 .item{
     width: calc(43.33% - 10px); 
     margin-bottom: 20px;
@@ -29,3 +37,5 @@
   .leftB image{
       margin-left: 10000px;
   }
+  
+  
