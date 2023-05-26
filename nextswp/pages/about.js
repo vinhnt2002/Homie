@@ -1,14 +1,51 @@
 import React from 'react'
-import About from '../components/about/About'
- 
-function about() {
-
+import classes from '../styles/Home.module.css'
+import BreadCrumb from '../components/breadCrumb/BreadCrumb'
+const About = () => {
   return (
-    <div >
-         
-        <About/>
-    </div>
+
+    <>
+      <BreadCrumb className="d-flex justify-content-center" href="/about" title="About us" />
+      {/* START MAIN CONTENT */}
+      <div className="main_content">
+        {/* STAT SECTION ABOUT */}
+        <div className="section">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-6">
+                <div className="about_img scene mb-4 mb-lg-0">
+
+                  <div className={classes.img}>
+                    <img src=" ./assets/images/image-29@2x.png" alt="about_img" />
+                  </div>
+
+                </div>
+              </div>
+              <div className="col-lg-6">
+                <div className="heading_s1">
+                  <h2>Chúng tôi là ai</h2>
+                </div>
+                <p>
+                  Tiệm Homie cung cấp các sản phẩm quà tặng, trang trí nhà cửa, thư giãn và phụ kiện, làm cho cuộc sống của bạn xinh đẹp và dễ chịu hơn.
+                </p>
+                <p>
+                  Facebook: Tiệm Homie
+                  Instagram: tiemhomieHotline/Zalo: 0386660782
+                  Liên hệ xem hàng: Chung cư Masteri Millennium 132 Bến Vân Đồn, phường 6 quận 4, TP.HCM (Nhà riêng , Gọi trước khi qua)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* END SECTION ABOUT */}
+
+
+
+      </div>
+      {/* END MAIN CONTENT */}
+    </>
+
   )
 }
 
-export default about
+export default About

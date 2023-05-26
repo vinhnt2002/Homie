@@ -1,0 +1,31 @@
+
+
+/* chia bo cuc 9 items */
+.horizon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin:2px 2px;
+}
+.item{
+    width: calc(43.33% - 10px); 
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  /* khoang cach giua top product va slidesection */
+  .topProduct{
+      margin-bottom: 5rem;
+  }
+
+/*co dinh kich co cua contact address*/
+  .address p{
+     font-size: 12px;
+  }
+
+  /* edit 2 banner sale 40% */
+
+  .leftB image{
+      margin-left: 10000px;
+  }

@@ -1,5 +1,5 @@
  
-import Styles from '../components/FeaturedProductHeader.module.css'
+import Styles from '../productHeader/FeaturedProductHeader.module.css'
 import React from "react";
 
 const FeaturedProductHeader = ({ title, showTabs }) => {
@@ -7,11 +7,15 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
     <div className="row">
       <div className="col-12">
         <div className="heading_tab_header">
-         <div className={Styles.titleLeft}>
-         <div className="heading_s2">
-            <h2>{title}</h2>
-          </div>
-         </div>
+       <div className="justify-content-center" >
+       <div className={Styles.titleLeft}>
+          
+          <div className="heading_s2">
+       <span>{title}</span>
+      </div>
+    
+     </div>
+       </div>
         <div className={Styles.titleRight}>
         {showTabs && (
             <div className="tab-style2">

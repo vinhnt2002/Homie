@@ -1,0 +1,73 @@
+.container {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  .boxx{
+    size: 4rem;
+  }
+  .upperClass {
+    position: relative;
+  }
+  
+  .image {
+    width: 100%;
+    max-height: 250px;
+  }
+  
+  .product_action_box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .product_info {
+    padding: 10px;
+  }
+  
+  .product_title {
+    margin-bottom: 10px;
+  }
+  
+  .product_price {
+    margin-top: 10px;
+  }
+  
+  .on_sale {
+    font-weight: bold;
+  }
+  
+  .pr_desc {
+    margin-top: 10px;
+  }
+  
+  .desSize {
+    height: 43px; /* Adjust the height as needed */
+    overflow: hidden;
+  }
+  .desSize .overF  p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .desSize .overF{
+    max-height: fit-content;
+  }
+  .downClass .desSize p{
+   
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+     
+    text-align: left;
+    
+    }
+    .downClass h6{
+        text-decoration: none !important;
+        color: #292B2C !important;
+    }
+  
+    .downClass .product_info .product_title a {
+      color: #292B2C !important;
+      text-decoration: none;
+      padding-top: 100000px;
+    }

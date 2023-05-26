@@ -88,3 +88,13 @@ padding-top: 20px;
  .contact   .link-no-decoration {
     text-decoration: none;
   }
+
+  .textt .middleFooter{
+      max-height: 43px;
+  }
+
+  .containSize{
+      height: 227px;
+      width: 350px;
+  }
+

@@ -9,13 +9,14 @@ justify-content: center;
 
  
 
-.titleLeft h2{
+.titleLeft span{
     
 font-family: Roboto;
 font-size: 26px;
 font-weight: 700;
 line-height: 36px;
 color:  #292B2C;
+text-align: center
 
 
 ;
@@ -32,6 +33,7 @@ letter-spacing: 0em;
 text-align: center;
 
   }
+  
   .titleRight .redText a{   
     
     font-family: Roboto;
@@ -42,3 +44,5 @@ text-align: center;
     text-align: center;
     
       }
+
+   
