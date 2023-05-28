@@ -1,0 +1,209 @@
+[
+  {
+  
+    "imageUrl": "assets/images2/image-14@2x.png",
+    "title": "Cá mặt ngơ",
+    "price": "190.000",
+    "salePercent": "5%",
+    "rating": 4.5,
+    "del": " 200,000",
+    "description": "Cá mặt ngơ bơm môi hơi ô dề nhưng mà dễ thưng nhaaa",
+    "category": "Bán Chạy"
+  },
+  {
+      
+    "imageUrl": "assets/images2/image-17@2x.png",
+    "title": "Chén chấm mèo ú",
+    "price": "120,000",
+    "salePercent": "20%",
+    "rating": 4.2,
+    "del": "150,000",
+    "description": "Chén chấm mèo ú kiêm gác đũa",
+    "category": "Đặc Biệt"
+
+  },
+  {
+  
+    "imageUrl": "assets/images2/image-16@2x.png",
+    "title": "Vịt hài hước funny",
+    "price": "220.000",
+    "salePercent": "12%",
+    "rating": 4.5,
+    "del": " 200,000",
+    "description": "Bằng tuổi mình người ta bồng con hết rồi",
+    "category": "Bán Chạy"
+  },
+  {
+      
+    "imageUrl": "assets/images2/image-15@2x.png",
+    "title": "Mèo đội quả quýt",
+    "price": "150,000",
+    "salePercent": "25%",
+    "rating": 4.2,
+    "del": "220,000",
+    "description": "Mèo đội quả quýt được tin là mang lời chúc đại cát đại lợi..",
+    "category": "Đặc Biệt"
+
+  },
+  {
+  
+    "imageUrl": "assets/images2/product-img1jpg@2x.png",
+    "title": "Mèo gốm may mắn để bàn",
+    "price": "220.000",
+   
+    "rating": 4.5,
+    "del": " 0",
+    "description": "kèm thảm lót đỏ và hộp giấy in hoa",
+    "category": "Bán Chạy"
+  },
+  {
+      
+    "imageUrl": "assets/images2//product-img2jpg@2x.png",
+    "title": "Ly sứ Little Girl",
+    "price": "180,000",
+    
+    "rating": 4.2,
+    "del": " 0",
+    "description": "gồm 1 tách sứ & nắp silicon như hình",
+    "category": "Đặc Biệt"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img3jpg@2x.png",
+    "title": "Ong Cánh Hoa",
+    "price": "250.000",
+    "del": "0",
+     
+    "rating": 4.5,
+    "description": "bé xinh vừa mềm êm vừa đáng yêu",
+    "category": "Hàng Mới Về"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img4jpg@2x.png",
+    "title": "Quả bí lông cừu",
+    "price": "320.000",
+     
+    "del": "0",
+    "rating": 4.2,
+    "description": "Màu nắng hay là màu mắt em",
+    "category": "Bán Chạy"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img1jpg1@2x.png",
+    "title": "Smiley Cup",
+    "price": "250,000",
+    "del": "0",
+    
+    "rating": 4.5,
+    "description": "set gồm tách và đĩa sứ",
+    "category": "Hàng Mới Về"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img2jpg1@2x.png",
+    "title": "Cún Milo",
+    "price": "350.000",
+    
+    "del": "0",
+    "rating": 4.2,
+    "description": "Gương mặt này ai nỡ không đối xử dịu dàng cơ chứ, tui còn ôm...",
+    "category": "Bán Chạy"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img3jpg2@2x.png",
+    "title": "Túi đựng mỹ phẩm",
+    "price": "150.000",
+     
+   "del":" 0",
+    "rating": 4.5,
+    "description": "bé xinh vừa mềm êm vừa đáng yêu.",
+    "category": "Hàng Mới Về"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img1jpg2@2x.png",
+    "title": "Ly giữ nhiệt Funny Party",
+    "price": "250.000",
+
+    "del": "0",
+    "rating": 4.2,
+    "description": "Tặng gì cho crush “mát lòng mát dạ”",
+    "category": "Bán Chạy"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img4jpg3@2x.png",
+    "title": "Thỏ Cà Rốt",
+    "price": "170.000",
+    "del": "0",
+    "rating": 4.2,
+    "description": "3 em thỏ ngộ nghĩnh tay ôm cà rốt với chi tiết thêu tinh tế",
+    "category": "Chỉ Có Tại Hommie"
+
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img3jpg3@2x.png",
+    "title": "Chú lừa Donkie",
+    "price": "350.000",
+    "del": "0",
+    "rating": 4.2,
+    "description": "Bộ lông mềm mượt còn gương mặt lại cưng thiệt cưng, tỉ mỉ từng...",
+    "category": "Chỉ Có Tại Hommie"
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img6jpg@2x.png",
+    "title": "Cá mập quần bông",
+    "price": "290.000",
+    "del": "0",
+    "rating": 4.2,
+    "description": "Có anh ở đây đố đứa nào dám ăn hiếp em nhoa",
+    "category": "Chỉ Có Tại Hommie"
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img7jpg@2x.png",
+    "title": "Gối Cầu Vồng",
+    "price": "380,000",
+    "del": "0",
+    "rating": 4.2,
+    "description": "Vỏ gối bằng chất liệu vải canvas chắc chắn, hoạ tiết cầu vồng...",
+    "category": "Chỉ Có Tại Hommie"
+  },
+  {
+      
+    "imageUrl": "assets/images2/product-img8jpg@2x.png",
+    "title": "Spa time",
+    "price": "150.000",
+     
+    "del": "0",
+    "rating": 4.2,
+    "description": "Điều tôi muốn khi bên ngoài nóng hơn 40 độ",
+    "category": "Hàng Mới Về"
+
+  },
+  {
+  
+    "imageUrl": "assets/images2/product-img10jpg@2x.png",
+    "title": "Khủng long Greenie",
+    "price": "250.000",
+    
+    "rating": 4.5,
+    "del": " 0",
+    "description": "Trong vườn bao nhiêu cây lá nhưng không cây nào xanh...",
+    "category": "Đặc Biệt"
+  }
+   
+  
+]  

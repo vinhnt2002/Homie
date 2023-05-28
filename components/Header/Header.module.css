@@ -1,0 +1,51 @@
+.logo {
+    display: flex !important;
+    align-items: center;
+    /* justify-content: space-between; */
+
+}
+
+.logo img {
+    width: 73px;
+    height: 73px;
+}
+
+.logo p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    color: #000000;
+    margin-left: 10px;
+    margin-top: 14px;
+}
+
+.logoTitle {
+    font-family: 'Roboto', sans-serif;
+}
+
+.topLeft {
+    display: flex;
+}
+
+.topLeft :first-child {
+    display: flex;
+}
+
+.topLeft :first-child *,
+.topLeft :last-child * {
+    margin-bottom: 0;
+    margin-left: 6px;
+}
+
+.topLeft *{
+    color: #000000 !important;
+}
+
+.topLeft img{
+    width: 16px;
+    height: 16px;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
