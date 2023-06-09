@@ -1,0 +1,43 @@
+// src/store.js
+import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import counterReducer from './reducers/cartSlice';
+import dataReducer from './reducers/dataSlice';
+import thunkMiddleware from 'redux-thunk';
+
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['cart']
+}
+
+const rootReducer = combineReducers({
+  data: dataReducer,
+  cart: counterReducer,
+}
+
+) 
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+export const store = configureStore({
+  reducer: persistedReducer 
+  ,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ['persist/PERSIST'],
+        // Ignore these field paths in all actions
+        // ignoredActionPaths: ['meta.arg', 'payload.timestamp'],
+        // Ignore these paths in the state
+        // ignoredPaths: ['items.dates'],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);
