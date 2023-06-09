@@ -10,8 +10,8 @@ import { getAllProduct } from "../../action/menuApi";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import classes from "./shop_left.module.css"
-const PriceFilter = () => {
-    const [value, setValue] = useState([80000, 700000]);
+const PriceFilter = ({ products, setData }) => {
+    const [value, setValue] = useState([0, 1000000]);
 
     const handleSliderChange = (newValue) => {
         setValue(newValue);
@@ -42,6 +42,13 @@ const PriceFilter = () => {
     const trackStyle = {
         backgroundColor: "red",
     };
+    useEffect(() => {
+        const filteredData = products.filter(
+            (product) =>
+                product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
+        );
+        setData(filteredData);
+    }, [value, products, setData]);
     return (
         <div>
             <h5>Giá</h5>
@@ -191,7 +198,7 @@ const shopleft = ({ products, categories }) => {
                                     </ul>
                                 </div>
                                 <div className="widget">
-                                    <PriceFilter></PriceFilter>
+                                <PriceFilter products={products} setData={setData} />
                                 </div>
                             </div>
                         </div>
