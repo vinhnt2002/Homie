@@ -154,7 +154,7 @@ const shopleft = ({ products, categories }) => {
                                 <div className="row align-items-center mb-4 pb-1">
                                     <div className="col-12">
                                         <div className="d-flex justify-content-center product_header">
-                                            <ReactPaginate
+                                            {/* <ReactPaginate
                                                 previousLabel={<AiOutlineArrowLeft />}
                                                 nextLabel={<AiOutlineArrowRight />}
                                                 breakLabel="..."
@@ -173,7 +173,7 @@ const shopleft = ({ products, categories }) => {
                                                 containerClassName={classes.pagination} // Apply the imported CSS class
                                                 activeClassName={classes.active} // Apply the imported CSS class
                                                 renderOnZeroPageCount={null}
-                                            />
+                                            /> */}
                                         </div>
                                     </div>
                                 </div>

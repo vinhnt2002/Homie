@@ -40,7 +40,7 @@ const SectionBannerSlider = () => {
                       </h2>
                       <Link
                         className="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                        href="/shop_left"
+                        href="/category"
                         data-animation="slideInLeft"
                         data-animation-delay="1.5s"
                       >
@@ -85,7 +85,7 @@ const SectionBannerSlider = () => {
                       </h2>
                       <Link
                         className="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                        href="/shop_left"
+                        href="/category"
                         data-animation="slideInLeft"
                         data-animation-delay="1.5s"
                         style={{ color: 'white' }}
@@ -131,7 +131,7 @@ const SectionBannerSlider = () => {
                       </h2>
                       <Link
                         className="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                        href="/shop_left"
+                        href="/category"
                         data-animation="slideInLeft"
                         data-animation-delay="1.5s"
                       >

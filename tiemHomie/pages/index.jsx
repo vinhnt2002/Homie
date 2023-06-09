@@ -389,7 +389,7 @@ function Home({ products, categories }) {
                         Bộ sưu tập mới
                       </span>
                     }
-                    buttonLink="shop_left"
+                    buttonLink="/category"
                     buttonText={
                       <span className={styles.bannerL}>Mua ngay</span>
                     }
@@ -419,7 +419,7 @@ function Home({ products, categories }) {
                         SUMMER COMING
                       </span>
                     }
-                    buttonLink="shop_left"
+                    buttonLink="/category"
                     buttonText={
                       <span
                         className={styles.BannerR}

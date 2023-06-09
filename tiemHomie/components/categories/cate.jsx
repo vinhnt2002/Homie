@@ -47,31 +47,31 @@ const CateHome = () => {
                             // centerMode
                             responsive={responsive}>
                                 <div className={`${classes.card}`}>
-                            <Link href="/shop_left">
+                            <Link href="/category">
                                     <FaGift className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Quà tặng</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/shop_left">
+                            <Link href="/category">
                                     <FaHeadphones className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Phụ kiện</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/shop_left">
+                            <Link href="/category">
                                     <FaHome className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Trang trí nhà cửa</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/shop_left">
+                            <Link href="/category">
                                     <FaCoffee className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Thư giãn</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/shop_left">
+                            <Link href="/category">
                                     <FaPuzzlePiece className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Tiện ích</h6>
                             </Link>
