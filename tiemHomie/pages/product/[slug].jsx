@@ -1,29 +1,129 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import productsData from "../../data/product.json";
+// import productsData from "../data/product.json";
 import Image from "next/image";
+import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
 import Link from "next/link";
-import ProductGallery from "../../components/productDetail/ProductGallery";
-import FeaturedProductHeader from "../../components/section/featuredProduct/FeaturedProductHeader";
 import ProductList from "../../components/section/productCard/ProductList";
 import Tabs from "../../components/tabs/Tabs";
-import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
+import ProductGallery from "../../components/productDetail/ProductGallery";
+import FeaturedProductHeader from "../../components/section/featuredProduct/FeaturedProductHeader";
+import { useRef } from "react";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import styles from "../../styles/Home.module.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+// import productData from "../data/product.json";
+import ProductCard from "../../components/section/productCard/ProductCard";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import ImageZoom from 'react-image-zoom';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { addToCart} from "@/redux/reducers/cartSlice";
+import { useDispatch } from "react-redux";
+import { getAllProduct } from "../../action/menuApi";
+
+const notify = () => {
+  toast.success('Thêm vào giỏ hàng thành công!!', {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+}
+
 
 const ProductDetail = ({ product }) => {
+  const formatPrice = (price) => {
+    const formattedPrice = price.toLocaleString().replace(/,/g, ".");
+    return formattedPrice;
+  };
+
+
+  const dispatch = useDispatch();
+  const sliderRef6 = useRef(null);
   const router = useRouter();
+  const productUrl = `https://example.com${router.asPath}`; // Replace with your website URL
+
+  const handleFacebookShare = () => {
+    const url = encodeURIComponent(productUrl);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  };
+  const handleTwitterShare = () => {
+    const text = encodeURIComponent('Check out this awesome product!'); // Replace with your desired tweet text
+    const url = encodeURIComponent(productUrl);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+  };
+
+  const handleGooglePlusShare = () => {
+    const url = encodeURIComponent(productUrl);
+    window.open(`https://plus.google.com/share?url=${url}`, '_blank');
+  };
+
+  const handleYouTubeShare = () => {
+    // Replace with your desired YouTube video URL
+    const videoUrl = 'https://www.youtube.com/watch?v=your-video-id';
+    window.open(`https://www.youtube.com/share?url=${videoUrl}`, '_blank');
+  };
+
+  const handleInstagramShare = () => {
+    // Replace with your desired Instagram sharing URL or handle
+    const instagramUrl = 'https://www.instagram.com/your-instagram-handle';
+    window.open(instagramUrl, '_blank');
+  };
+
   const [showProductActionBox, setShowProductActionBox] = useState(true);
+  const settings = {
+    dots: false,
+    infinite: true,
+    loop: true,
+    arrows: false,
+    speed: 250,
+    slidesToShow: 4,
+    slidesToScroll: 1,
 
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          arrows: false,
+        },
+      },
+    ],
+  };
   console.log([product]);
-
+  const images = [
+    product.picUrl,
+    product.picUrl,
+    product.picUrl,
+    product.picUrl,
+    // product.picUrl,
+    '/assets/images2/image-14@2x.png',
+    // '/assets/images2/image-14@2x.png',
+    // '/assets/images2/image-14@2x.png'
+  ]
   return (
-    // <div>
-    //   <h1>Product Detail: {router.query.slug}</h1>
-    //   <h2>{product.attribute.name}</h2>
-    //   <Image src={product.attribute.imageUrl} alt={product.attribute.name} width={50} height={50} />
-    //   <p>{product.attribute.description}</p>
-    // </div>
-
     <>
+    <ToastContainer />
+
       <BreadCrumb
         descriptionTitle="Chi Tiết Sản Phẩm"
         title="Chi Tiết Sản Phẩm"
@@ -38,36 +138,47 @@ const ProductDetail = ({ product }) => {
             <div className="row">
               <div className="col-lg-6 col-md-6 mb-4 mb-md-0">
                 <div className="product-image">
-                  <div className="product_img_box">
-                    <Image
-                      src={product.attribute.imageUrl2}
-                      width={600}
-                      height={600}
-                      alt="img"
-                      id="product_img"
-                    />
-                    <Link href="#" className="product_img_zoom" title="Zoom">
+                  <div className="">
+
+                    <div>
+                      <Carousel
+                        infiniteLoop
+                        showIndicators={false}
+                        showStatus={false}
+                        thumbWidth={119}
+                        useKeyboardArrows
+                        showArrows={false}
+                        swipeable
+                      // className="productCarousel"
+                      >
+                        {images.map((imgUrl, index) => (
+                          <div><img src={imgUrl} alt="img" key={index}></img></div>
+                        ))}
+
+                      </Carousel>
+                    </div>
+
+                    {/* <Link href="#" className="product_img_zoom" title="Zoom">
                       <span className="linearicons-zoom-in" />
-                    </Link>
+                    </Link> */}
                   </div>
-                  <ProductGallery />
+                  {/* <ProductGallery /> */}
                 </div>
               </div>
               <div className="col-lg-6 col-md-6">
                 <div className="pr_detail">
                   <div className="product_description">
                     <h4 className="product_title">
-                      <Link href="#">{product.attribute.title}</Link>
+                      <Link href="#">{product.name}</Link>
                     </h4>
-                    <div className="product_price">
-                      <span className="price">{product.attribute.price}</span>
+                    <div className="product_price" >
+                    <span className="price" >{formatPrice(product.sellingPrice)} VND</span>
                       <br></br>
-                      <del>{product.attribute.original_price}</del>
                       {/* <div className="on_sale">
                         <span>35% Off</span>
                           </div>   */}
                     </div>
-                    <div className="rating_wrap">
+                    {/* <div className="rating_wrap">
                       <div className="rating">
                         <div
                           className="product_rate"
@@ -75,9 +186,9 @@ const ProductDetail = ({ product }) => {
                         />
                       </div>
                       <span className="rating_num">(21)</span>
-                    </div>
+                    </div> */}
                     <div className="pr_desc">
-                      <p>{product.attribute.description}</p>
+                      <p>{product.description}</p>
                     </div>
 
                     <div className="product_sort_info">
@@ -96,18 +207,18 @@ const ProductDetail = ({ product }) => {
                         </li>
                       </ul>
                     </div>
-                    {/* <div className="pr_switch_wrap">
+                    <div className="pr_switch_wrap">
                       <span className="switch_lable">Color</span>
-                      <div className="product_color_switch">
-                        <span className="active" data-color="#87554B" />
-                        <span data-color="#333333" />
+                      <div className={`${styles.product_color_switch}`}>
+                        <span className={styles.active} data-color="#87554B" />
+                        <span data-color="red" />
                         <span data-color="#DA323F" />
                       </div>
-                    </div> */}
+                    </div>
                     <div className="pr_switch_wrap">
                       <span className="switch_lable">Size</span>
                       <div>
-                        <span className="border border-warning">
+                        <span className={styles.active}>
                           SIZE 15X7 CM
                         </span>
                         {/* <span>s</span>
@@ -142,14 +253,26 @@ const ProductDetail = ({ product }) => {
                       </div>
                     </div>
                     <div className="cart_btn">
-                      <Link href="cart">
+                      
                         <button
-                          className={`btn btn-outline-light btn-sm pb-2 btn-warning`}
+                          className={`btn btn-outline-light btn-sm pb-2`} style={{ backgroundColor: '#F79C43' }}
                           type="button"
+                      onClick={() => {
+                        dispatch(
+                          addToCart({
+                            name: product.name,
+                            sellingPrice: product.sellingPrice,
+                            picUrl: product.picUrl,
+                            attribute: {
+                              amount: 1,
+                            },
+                          }));
+                          notify();
+                      }}
+
                         >
                           <i className="icon-basket-loaded" /> Thêm Vào Giỏ Hàng
                         </button>
-                      </Link>
                       {/* <Link className="add_compare" href="#">
                        <i className="icon-shuffle" />
                                 </Link> */}
@@ -164,12 +287,12 @@ const ProductDetail = ({ product }) => {
                       SKU: <Link href="#">BE45VGRT</Link>
                     </li>
                     <li>
-                      Category: <Link href="#">Phụ kiện</Link>
+                      Category: <Link href="#">gau bong</Link>
                     </li>
                     <li>
                       Tags:{" "}
                       <Link href="#" rel="tag">
-                        {product.attribute.title}
+                        {product.name}
                       </Link>
                     </li>
                   </ul>
@@ -177,27 +300,27 @@ const ProductDetail = ({ product }) => {
                     <span>Share:</span>
                     <ul className="social_icons">
                       <li>
-                        <Link href="#">
+                        <Link href="#" onClick={handleFacebookShare}>
                           <i className="ion-social-facebook" />
                         </Link>
                       </li>
                       <li>
-                        <Link href="#">
+                        <Link href="#" onClick={handleTwitterShare}>
                           <i className="ion-social-twitter" />
                         </Link>
                       </li>
                       <li>
-                        <Link href="#">
+                        <Link href="#" onClick={handleGooglePlusShare}>
                           <i className="ion-social-googleplus" />
                         </Link>
                       </li>
                       <li>
-                        <Link href="#">
+                        <Link href="#" onClick={handleYouTubeShare}>
                           <i className="ion-social-youtube-outline" />
                         </Link>
                       </li>
                       <li>
-                        <Link href="#">
+                        <Link href="#" onClick={handleInstagramShare}>
                           <i className="ion-social-instagram-outline" />
                         </Link>
                       </li>
@@ -210,8 +333,8 @@ const ProductDetail = ({ product }) => {
             {/* The Tabs NEED TO WRITE THE LOGIC  */}
             <Tabs />
 
-            {/* Section Product DONE */}
-            <div className="section small_pt small_pb">
+            {/* Section Product HERE HAVE AN PROBLEM */}
+            {/* <div className="section small_pt small_pb">
               <div className="container">
                 <div className="">
                   <FeaturedProductHeader
@@ -220,24 +343,64 @@ const ProductDetail = ({ product }) => {
                   />
                 </div>
                 <div className="row">
-                <div className="col-md-12">
-                  <div
-                    className="product_slider carousel_slider owl-carousel owl-theme nav_style1"
-                    data-loop="true"
-                    data-dots="false"
-                    data-nav="true"
-                    data-margin={20}
-                    data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'
-                  >
-                    <ProductList
-                      showProductActionBox={showProductActionBox}
-                    />
+                  <div className="col-md-12">
+                    <div className="col-md-12">
+                      <div className={styles.shop} style={{ position: "relative" }}>
+                        <Slider ref={sliderRef6} {...settings}>
+                          {productData.map((product) => (
+                            <div key={product.id} className="item" >
+                              <ProductCard
+                                productData={product}
+                                showProductActionBox={showProductActionBox}
+                              />
+                            </div>
+                          ))}
+                        </Slider>
+                        <div className={styles.buttons}>
+                          <div className={styles.prevB}>
+                            <button
+                              type="button"
+                              role="presentation"
+                              className="custom-prev-button"
+                              onClick={() => sliderRef6.current.slickPrev()}
+                            >
+                              <FaChevronLeft
+                                className={styles.leftA}
+                                onMouseEnter={(e) =>
+                                  (e.target.style.color = "orange")
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.target.style.color = "gray")
+                                }
+                              />
+                            </button>
+                          </div>
+                          <div className={styles.nextB}>
+                            <button
+                              type="button"
+                              role="presentation"
+                              className="custom-next-button"
+                              onClick={() => sliderRef6.current.slickNext()}
+                            >
+                              <FaChevronRight
+                                className={styles.rightA}
+                                onMouseEnter={(e) =>
+                                  (e.target.style.color = "orange")
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.target.style.color = "gray")
+                                }
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>
-            </div>
-            {/* Section Product DONE */}
+            </div> */}
+            {/* Section Product HERE HAVE AN PROBLEM */}
           </div>
         </div>
         {/* END SECTION SHOP */}
@@ -246,11 +409,14 @@ const ProductDetail = ({ product }) => {
     </>
   );
 };
-
 export async function getStaticPaths() {
-  const paths = productsData.map((p) => ({
+
+  const data = await getAllProduct();
+  const products = data.products   // take the products attribute in the menu
+
+  const paths = products.map((p) => ({
     params: {
-      slug: p.attribute.slug,
+      slug: (p.code),
     },
   }));
 
@@ -260,8 +426,21 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { slug } }) {
-  const product = productsData.find((p) => p.attribute.slug === slug);
+export async function getStaticProps({ params }) {
+  const productId = (params.slug);
+
+  const data = await getAllProduct();
+
+  const products = data.products   // take the products attribute in the menu
+
+
+  const product = products.find((p) => p.code === productId);
+
+  if (!product) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -269,5 +448,4 @@ export async function getStaticProps({ params: { slug } }) {
     },
   };
 }
-
 export default ProductDetail;

@@ -39,13 +39,13 @@ const ProductCard = ({
   return (
     <div className="m-1">
     <ToastContainer />
-      <Link href={`/${productData.code}`}>
+      <Link href={`/product/${productData.code}`}>
         <div className="product">
           {/* <span className="pr_flash">New</span> */}
           <div className="product_img text-center">
             <div>
 
-              <Link href="/shop_left">
+              <Link href="/collection">
               <div className={Styles.img}>
                   <Image height={200} width={200}  src={`/${productData.picUrl}`} alt={productData.name} />
                 </div>

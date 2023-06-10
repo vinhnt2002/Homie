@@ -60,7 +60,8 @@ const Header = () => {
               <div className="col-6 col-md-4 col-sm-6 col-xl-4 col-xxl-4 order-md-0 order-xl-0">
                 <div className="d-flex align-items-center justify-content-md-start ">
                   <Link className={style.logo} href="/">
-                    <img src="assets/images/image-141@2x.png" alt="logo" />
+                    {/* <img src="assets/images/image-141@2x.png" alt="logo" /> */}
+                    <img src="/assets/images/image-141@2x.png" alt="logo"/>
                     <h2
                       className="justify-content-center my-0 ms-2"
                       style={{
