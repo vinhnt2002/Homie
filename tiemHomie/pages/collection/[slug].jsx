@@ -12,6 +12,9 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import classes from "./shop_left.module.css"
 import { useRouter } from "next/router";
 
+const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 const PriceFilter = ({ products, setData }) => {
     const [value, setValue] = useState([0, 1000000]);
 
@@ -40,7 +43,7 @@ const PriceFilter = ({ products, setData }) => {
     const handleStyle = {
         border: '1px solid aliceblue',
         borderRadius: '50%',
-        color:'#FFF',
+        color: '#FFF',
         backgroundColor: "#FFF",
     };
     const trackStyle = {
@@ -70,16 +73,17 @@ const PriceFilter = ({ products, setData }) => {
             <div style={valueContainerStyle}>
                 <div style={valueLabelStyle}>Giá:</div>
                 <div className="fw-bold">
-                    {value[0].toLocaleString()}VND-{value[1].toLocaleString()}VND
+                    {formatPrice(value[0])}VND-{formatPrice(value[1])}VND
                 </div>
             </div>
         </div>
     );
 };
 
-const shopleft = ({ products, collections }) => {
+const shopleft = ({ products, collections, productCount, name }) => {
     console.log(products);
     console.log(collections);
+    let i =0;
     const [showProductActionBox, setShowProductActionBox] = useState(true);
     const [data, setData] = useState(products)
     const [selectedSortOption, setSelectedSortOption] = useState('');
@@ -127,8 +131,9 @@ const shopleft = ({ products, collections }) => {
     return (
         <div className="main_content">
             <BreadCrumb
-                descriptionTitle="Tất Cả Sản Phẩm"
-                title="Tất cả sản phẩm"
+                descriptionTitle={name}
+                title={name}
+                middlePath="Danh mục"
             ></BreadCrumb>
             {/* START SECTION SHOP */}
             <div className="section">
@@ -140,7 +145,7 @@ const shopleft = ({ products, collections }) => {
                                     <div className="d-flex justify-content-end product_header">
                                         <div className="me-2 text-start">Sắp xếp theo</div>
                                         <div className="custom_select text-end">
-                                        <select className="form-control form-control-sm" onChange={handleSortOptionChange} value={selectedSortOption}>
+                                            <select className="form-control form-control-sm" onChange={handleSortOptionChange} value={selectedSortOption}>
                                                 <option value="">Mặc định</option>
                                                 <option value="popularity">Nổi bật</option>
                                                 <option value="date">Mới nhất</option>
@@ -196,14 +201,15 @@ const shopleft = ({ products, collections }) => {
                                             <li>
                                                 <Link href={`/collection/${[collection.id]}`}>
                                                     <span className="categories_name">{collection.name}</span>
-                                                    <span className="categories_num">{collection.length}</span>
+                                                    <span className="categories_num">({productCount[i]})</span>
+                                                    <span style={{ display: 'none' }}>{i++}</span>
                                                 </Link>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
                                 <div className="widget">
-                                <PriceFilter products={products} setData={setData} />
+                                    <PriceFilter products={products} setData={setData} />
                                 </div>
                             </div>
                         </div>
@@ -218,35 +224,54 @@ const shopleft = ({ products, collections }) => {
 export default shopleft;
 
 export async function getStaticPaths() {
-  const data = await getAllProduct();
-  const categories = data.collections;
+    const data = await getAllProduct();
+    const categories = data.collections;
 
-  // Generate an array of paths based on the categories
-  const paths = categories.map((collection) => ({
-    params: { slug: collection.id }, // Each path contains the 'slug' parameter
-  }));
+    // Generate an array of paths based on the categories
+    const paths = categories.map((collection) => ({
+        params: { slug: collection.id }, // Each path contains the 'slug' parameter
+    }));
 
-  return {
-    paths, // Specify the paths to pre-render
-    fallback: false, // Set fallback to false to return a 404 if the path doesn't exist
-  };
+    return {
+        paths, // Specify the paths to pre-render
+        fallback: false, // Set fallback to false to return a 404 if the path doesn't exist
+    };
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params; // Retrieve the 'slug' parameter from the route
+    const { slug } = params; // Retrieve the 'slug' parameter from the route
 
-  const data = await getAllProduct();
-  const productFilterList = data.products;
-  const collections = data.collections;
+    const data = await getAllProduct();
+    const productList = data.products;
+    const collections = data.collections;
+    const productCount = [];
 
-  // Filter the products based on the 'slug' parameter
-  const products = productFilterList.filter((product) =>
-    product.collectionIds.includes(slug)
-  );
+    for (let index = 0; index < collections.length; index++) {
+        const collection = collections[index];
+        let count = 0;
+        
+        productList.forEach((product) => {
+            if (product.collectionIds.includes(collection.id)) {
+                count++;
+            }
+        });
 
-  return {
-    props: { products, collections }, // Pass the filtered products and collections as props
-  };
+        productCount[index] = count;
+    }
+
+    // Filter the products based on the 'slug' parameter
+    const products = productList.filter((product) =>
+        product.collectionIds.includes(slug)
+    );
+    let name
+    {collections.map((c) => {
+        if (c.id.includes(slug)) {
+            name = c.name;
+        }
+    })}
+    return {
+        props: { products, collections, productCount, name }, // Pass the filtered products and collections as props
+    };
 }
 
 

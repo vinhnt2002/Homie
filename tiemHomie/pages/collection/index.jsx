@@ -10,6 +10,9 @@ import { getAllProduct } from "../../action/menuApi";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import classes from "./shop_left.module.css"
+const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 const PriceFilter = ({ products, setData }) => {
     const [value, setValue] = useState([0, 1000000]);
 
@@ -32,11 +35,13 @@ const PriceFilter = ({ products, setData }) => {
     };
 
     const valueLabelStyle = {
-        marginRight: "10px",
+        // marginRight: "10px",
         // Add more styles as needed
     };
     const handleStyle = {
-        borderColor: "#FFF",
+        border: '1px solid aliceblue',
+        borderRadius: '50%',
+        color: '#FFF',
         backgroundColor: "#FFF",
     };
     const trackStyle = {
@@ -48,7 +53,7 @@ const PriceFilter = ({ products, setData }) => {
                 product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
         );
         setData(filteredData);
-    }, [value, products, setData]);
+        }, [value, products, setData]);
     return (
         <div>
             <h5>Giá</h5>
@@ -66,14 +71,14 @@ const PriceFilter = ({ products, setData }) => {
             <div style={valueContainerStyle}>
                 <div style={valueLabelStyle}>Giá:</div>
                 <div className="fw-bold">
-                    {value[0].toLocaleString()}VND-{value[1].toLocaleString()}VND
+                {formatPrice(value[0])}VND-{formatPrice(value[1])}VND
                 </div>
             </div>
         </div>
     );
 };
 
-const shopleft = ({ products, collections }) => {
+const shopleft = ({ products, collections, productCount }) => {
     console.log(products);
     console.log(collections);
     const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -119,12 +124,13 @@ const shopleft = ({ products, collections }) => {
     // Apply pagination to the data
     const startIndex = currentPage * itemsPerPage;
     const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
-
+let i =0
     return (
         <div className="main_content">
             <BreadCrumb
                 descriptionTitle="Tất Cả Sản Phẩm"
                 title="Tất cả sản phẩm"
+                middlePath="null"
             ></BreadCrumb>
             {/* START SECTION SHOP */}
             <div className="section">
@@ -192,7 +198,8 @@ const shopleft = ({ products, collections }) => {
                                             <li>
                                                 <Link href={`/collection/${[collection.id]}`}>
                                                     <span className="categories_name">{collection.name}</span>
-                                                    <span className="categories_num">{collection.length}</span>
+                                                    <span className="categories_num">({productCount[i]})</span>
+                                                    <span style={{ display: 'none' }}>{i++}</span>
                                                 </Link>
                                             </li>
                                         ))}
@@ -215,10 +222,26 @@ export default shopleft;
 
 export async function getStaticProps() {
     const data = await getAllProduct();
-    const products = data.products   // take the products attribute in the menu
-    const collections = data.collections
-    return {
-        props: { products, collections }
+    const products = data.products;
+    const collections = data.collections;
+    const productCount = [];
+  
+    for (let index = 0; index < collections.length; index++) {
+      const collection = collections[index];
+      let count = 0;
+  
+      products.forEach((product) => {
+        if (product.collectionIds.includes(collection.id)) {
+          count++;
+        }
+      });
+  
+      productCount[index] = count;
     }
-}
+  
+    return {
+      props: { products, collections, productCount },
+    };
+  }
+  
 

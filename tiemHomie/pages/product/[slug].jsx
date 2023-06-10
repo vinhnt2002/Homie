@@ -119,6 +119,7 @@ const ProductDetail = ({ product }) => {
       <BreadCrumb
         descriptionTitle="Chi Tiết Sản Phẩm"
         title="Chi Tiết Sản Phẩm"
+        // middlePath="null"
       ></BreadCrumb>
 
       {/* START MAIN CONTENT */}

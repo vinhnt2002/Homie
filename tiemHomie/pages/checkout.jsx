@@ -31,22 +31,22 @@ import ProductCardPage from "../components/Header/Cart/ProductCartPage";
 //     }
 // ];
 
-const cartTotal = [
+// const cartTotal = [
   
   
-  {
-    label: "TỔNG CỘNG",
-    amount: "745.000 VND",
-  },
-  {
-    label: "PHÍ VẬN CHUYỂN",
-    amount: "MIỄN PHÍ",
-  },
-  {
-    label: "TỔNG ĐƠN HÀNG",
-    amount: <strong>745.000 VND</strong>,
-  },
-];
+//   {
+//     label: "TỔNG CỘNG",
+//     amount: "745.000 VND",
+//   },
+//   {
+//     label: "PHÍ VẬN CHUYỂN",
+//     amount: "MIỄN PHÍ",
+//   },
+//   {
+//     label: "TỔNG ĐƠN HÀNG",
+//     amount: <strong>745.000 VND</strong>,
+//   },
+// ];
 
 const Coupon = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -54,7 +54,7 @@ const Coupon = () => {
     <article className="question mt-4 mb-1">
       <header>
         <button
-          className="col-12 bg-light text-dark border border-1 d-flex justify-content-between align-items-center p-2"
+          className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
           onClick={() => setShowInfo(!showInfo)}
         >
           <div className="text-start">Mã giảm giá</div>
@@ -96,7 +96,7 @@ const Ship = () => {
     <article className="question mb-1">
       <header>
         <button
-          className="col-12 bg-light text-dark border border-1 d-flex justify-content-between align-items-center p-2"
+          className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
           onClick={() => setShowInfo(!showInfo)}
         >
           <div className="text-start">Giá vận chuyển</div>
@@ -151,7 +151,7 @@ const cart = () => {
       <BreadCrumb
         className="d-flex justify-content-center"
         href="/checkout"
-        title="checkout"
+        title="Checkout"
         descriptionTitle="Giỏ hàng của bạn"
       />
       <div className="main_content">
