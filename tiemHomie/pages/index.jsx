@@ -220,7 +220,7 @@ function Home({ products, categories }) {
                       >
                         <Slider ref={sellersSliderRef} {...settings}>
                         {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[12].products.map((product) => (
+                            filteredProductsCate[6].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                 productData={product}

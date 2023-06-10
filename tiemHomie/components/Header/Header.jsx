@@ -437,9 +437,9 @@ const Header = () => {
                     <li>
                       <Link
                         className={`${
-                          router.pathname === "/shop_left" ? "active" : ""
+                          router.pathname === "/collection" ? "active" : ""
                         } nav-link nav_item mx-3`}
-                        href="shop_left"
+                        href="/collection"
                         passHref
                       >
                         Set Quà Tặng
