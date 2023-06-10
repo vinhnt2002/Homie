@@ -75,6 +75,7 @@ const PriceFilter = ({ products, setData }) => {
 
 const shopleft = ({ products, categories }) => {
     console.log(products);
+    console.log(categories);
     const [showProductActionBox, setShowProductActionBox] = useState(true);
     const [data, setData] = useState(products)
     const [selectedSortOption, setSelectedSortOption] = useState('');
@@ -189,7 +190,7 @@ const shopleft = ({ products, categories }) => {
                                     <ul className="widget_categories">
                                         {categories.map((category) => (
                                             <li>
-                                                <Link href="#">
+                                                <Link href={`/category/${[category.id]}`}>
                                                     <span className="categories_name">{category.name}</span>
                                                     <span className="categories_num">{category.length}</span>
                                                 </Link>
@@ -220,3 +221,4 @@ export async function getStaticProps() {
         props: { products, categories }
     }
 }
+
