@@ -215,8 +215,6 @@ const shopleft = ({ products, categories }) => {
 
 export default shopleft;
 
-// Import the necessary dependencies and functions
-
 export async function getStaticPaths() {
   const data = await getAllProduct();
   const categories = data.collections;

@@ -47,7 +47,7 @@ const ProductCard = ({
 
               <Link href="/shop_left">
               <div className={Styles.img}>
-                  <Image height={200} width={200}  src={productData.picUrl} alt={productData.name} />
+                  <Image height={200} width={200}  src={`/${productData.picUrl}`} alt={productData.name} />
                 </div>
               </Link>
               {showProductActionBox && (
