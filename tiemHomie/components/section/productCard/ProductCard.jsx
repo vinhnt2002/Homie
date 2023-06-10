@@ -32,7 +32,8 @@ const ProductCard = ({
   showSaleOfprice,
 }) => {
   // const {  attribute :  {p, imageUrl, title, price, salePercent, rating, del, description, rating_num} } = productData;
-
+  const images = productData.picUrl.split(";");
+  const firstImage = images[0];
   const dispatch = useDispatch();
 
 
@@ -45,9 +46,9 @@ const ProductCard = ({
           <div className="product_img text-center">
             <div>
 
-              <Link href="/collection">
+              <Link href={`/product/${productData.code}`}>
               <div className={Styles.img}>
-                  <Image height={200} width={200}  src={`/${productData.picUrl}`} alt={productData.name} />
+                  <Image height={200} width={200}  src={firstImage} alt={productData.name} />
                 </div>
               </Link>
               {showProductActionBox && (
@@ -59,7 +60,7 @@ const ProductCard = ({
                         addToCart({
                           name: productData.name,
                           sellingPrice: productData.sellingPrice,
-                          picUrl: productData.picUrl,
+                          picUrl: firstImage,
                           attribute: {
                             amount: 1,
                           },
@@ -103,7 +104,7 @@ const ProductCard = ({
                   style={{ color: "#292B2C", textDecoration: "none" }}
                 >
                   <Link
-                    href="#"
+                    href={`/product/${productData.code}`}
                     style={{ color: "#292B2C", textDecoration: "none" }}
                   >
                     {productData.name}

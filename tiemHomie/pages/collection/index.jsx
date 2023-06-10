@@ -138,10 +138,10 @@ const shopleft = ({ products, collections }) => {
                                         <div className="custom_select text-end">
                                             <select className="form-control form-control-sm" onChange={handleSortOptionChange} value={selectedSortOption}>
                                                 <option value="">Mặc định</option>
-                                                <option value="popularity">Sort by popularity</option>
-                                                <option value="date">Sort by newness</option>
-                                                <option value="price">Sort by price: low to high</option>
-                                                <option value="price-desc">Sort by price: high to low</option>
+                                                <option value="popularity">Nổi bật</option>
+                                                <option value="date">Mới nhất</option>
+                                                <option value="price">Giá tăng dần</option>
+                                                <option value="price-desc">Giá giảm dần</option>
                                             </select>
                                         </div>
                                     </div>
