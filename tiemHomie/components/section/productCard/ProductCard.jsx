@@ -3,13 +3,13 @@ import Image from "next/image";
 import Styles from "../productCard/ProductCard.module.css";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { addToCart} from "@/redux/reducers/cartSlice";
+import { addToCart } from "@/redux/reducers/cartSlice";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const notify = () => {
-  toast.success('Thêm vào giỏ hàng thành công!!', {
+  toast.success("Thêm vào giỏ hàng thành công!!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -18,9 +18,8 @@ const notify = () => {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
-}
-
+  });
+};
 
 const formatPrice = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -36,25 +35,22 @@ const ProductCard = ({
   const firstImage = images[0];
   const dispatch = useDispatch();
 
-
   return (
     <div className="m-1">
-    <ToastContainer />
-      <Link href={`/product/${productData.code}`}>
+      <ToastContainer />
         <div className="product">
           {/* <span className="pr_flash">New</span> */}
-          <div className="product_img text-center">
-            <div>
-
-              <Link href={`/product/${productData.code}`}>
+          <div className="product_img " >
+            <Link href={`/product/${productData.code}`}>
               <div className={Styles.img}>
-                  <Image height={200} width={200}  src={firstImage} alt={productData.name} />
-                </div>
-              </Link>
-              {showProductActionBox && (
-                <div className="product_action_box">
-                  <ul className="list_none pr_action_btn">
-                    <li className="add-to-cart" 
+                <img src={firstImage} alt={productData.name} style={{width: "50%"}}/>
+              </div>
+            </Link>
+            {showProductActionBox && (
+              <div className="product_action_box">
+                <ul className="list_none pr_action_btn">
+                  <li
+                    className="add-to-cart"
                     onClick={() => {
                       dispatch(
                         addToCart({
@@ -64,37 +60,39 @@ const ProductCard = ({
                           attribute: {
                             amount: 1,
                           },
-                        }));
-                        notify();
-
-                    }}>
-                      <Link href="/"
-                      >
-                        
-                        <i className="icon-basket-loaded" onClick={() => {
+                        })
+                      );
+                      notify();
+                    }}
+                  >
+                    <Link href="/">
+                      <i
+                        className="icon-basket-loaded"
+                        onClick={() => {
                           notify();
-                        }} /> Add To Cart
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="#" className="popup-ajax">
-                        <i className="icon-shuffle" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="#" className="popup-ajax">
-                        <i className="icon-magnifier-add" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="#">
-                        <i className="icon-heart" />
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </div>
+                        }}
+                      />{" "}
+                      Add To Cart
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="popup-ajax">
+                      <i className="icon-shuffle" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="popup-ajax">
+                      <i className="icon-magnifier-add" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#">
+                      <i className="icon-heart" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className="product_info ">
             <div className={Styles.downClass}>
@@ -156,7 +154,6 @@ const ProductCard = ({
             </div>
           </div>
         </div>
-      </Link>
     </div>
   );
 };

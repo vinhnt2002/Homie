@@ -110,8 +110,16 @@ const ProductDetail = ({ product }) => {
     ],
   };
   console.log([product]);
-  const images = product.picUrl.split(";");
-  const firstImage = images[0];
+  // const images = product.picUrl.split(";");
+  // const firstImage = images[0];
+
+  const images = [
+    product.picUrl,
+    product.picUrl,
+    product.picUrl,
+    product.picUrl,
+    // '/assets/images2/image-14@2x.png',
+  ]
   return (
     <>
     <ToastContainer />
