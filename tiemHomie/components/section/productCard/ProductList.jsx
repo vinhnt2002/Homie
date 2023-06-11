@@ -35,8 +35,6 @@ const ProductList = ({
   return (
     <div className={Styles.overall}>
     <ToastContainer />
-      <Link href={`/product/${productData.code}`}>
-        {/* <Link href={"detail"}> */}
         <div className="product m-2" style={{ maxHeight: "8rem" }}>
           <span className="pr_flash">New</span>
           <div className="product_img text-center">
@@ -98,8 +96,7 @@ const ProductList = ({
                 <div className="pr_desc d-block">
                   <div className={Styles.overF}>
                     <p>
-                      {/* {productData.description} */}
-                      Màu đỏ cầu sức khoẻ, bình an, xua đuổi các việc không may. Màu trắng kêu gọi tài khí, phúc khí, mời gọi nhân duyên tốt lành, tài lộc cho gia chủ....
+                      {productData.description}
                     </p>
                   </div>
                 </div>
@@ -138,7 +135,6 @@ const ProductList = ({
             </div>
           </div>
         </div>
-      </Link>
     </div>
   );
 };

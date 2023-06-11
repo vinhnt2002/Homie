@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { addToCart} from "@/redux/reducers/cartSlice";
 
 import slugify from 'slugify';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function createSlugFromTitle(title) {
   const slug = slugify(title, {
@@ -17,6 +19,18 @@ function createSlugFromTitle(title) {
 }
 
 
+const notify = () => {
+  toast.success("Thêm vào giỏ hàng thành công!!", {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
 
 const formatPrice = (price) => {
   if (price === undefined) {
@@ -61,13 +75,15 @@ const ProductCard = ({
                           attribute: {
                             amount: 1,
                           },
-                        }));
-
-                    }}>
-                      <Link href="/"
-                      >
-                        
-                        <i className="icon-basket-loaded" onClick={() => {
+                        })
+                      );
+                      notify();
+                    }}
+                  >
+                    <Link href="/">
+                      <i
+                        className="icon-basket-loaded"
+                        onClick={() => {
                           notify();
                         }} /> Add To Cart
                       </Link>
@@ -100,7 +116,7 @@ const ProductCard = ({
                   style={{ color: "#292B2C", textDecoration: "none" }}
                 >
                   <Link
-                    href={`/product/${createSlugFromTitle(productData.name)}-${productData.code}`}
+                    href="#"
                     style={{ color: "#292B2C", textDecoration: "none" }}
                   >
                     {productData.name}

@@ -5138,7 +5138,7 @@ footer .widget_title {
 }
 .product_img::before {
 	content: "";
-	position: absolute;
+	/* position: absolute; */
 	left: 0;
 	right: 0;
 	bottom: 0;
