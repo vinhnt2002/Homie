@@ -90,7 +90,7 @@ const Footer = ({}) => {
                     <a>
                       <div className={classes.fontt}>
                         <div className={classes.flex}>
-                          <img src="assets/images2/image-141@2x.png" alt="logo" />
+                          <img src="/assets/images2/image-141@2x.png" alt="logo" />
                           <h2 style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Pacifico', fontSize: '36px', fontWeight: 400, lineHeight: '34px', textAlign: 'left' }}>Tiệm Homie</h2>
                         </div>
                       </div>
@@ -172,7 +172,8 @@ const Footer = ({}) => {
                       <li>
                        <div className={classes.imgg}>
                        <Link className="text-decoration-none" href="https://www.facebook.com/tiemhomie.sg">
-                          <img src=".\assets\images2\image-29@2x.png" alt="logo" />
+                          {/* <img src="./assets\images2\image-29@2x.png" alt="logo" /> */}
+                          <img src="/assets/images2/image-29@2x.png" alt="logo" />
                         </Link>
                        </div>
                       </li>

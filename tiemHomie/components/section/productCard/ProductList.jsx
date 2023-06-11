@@ -35,13 +35,13 @@ const ProductList = ({
   return (
     <div className={Styles.overall}>
     <ToastContainer />
-      <Link href={`/${productData.code}`}>
+      <Link href={`/product/${productData.code}`}>
         {/* <Link href={"detail"}> */}
         <div className="product m-2" style={{ maxHeight: "8rem" }}>
           <span className="pr_flash">New</span>
           <div className="product_img text-center">
             <div className={Styles.img_container}>
-              <Link href="#">
+              <Link href={`/product/${productData.code}`}>
                 <div className={Styles.img1}>
                   <img src={productData.picUrl} alt={productData.name} />
                 </div>

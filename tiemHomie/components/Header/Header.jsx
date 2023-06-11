@@ -60,7 +60,8 @@ const Header = () => {
               <div className="col-6 col-md-4 col-sm-6 col-xl-4 col-xxl-4 order-md-0 order-xl-0">
                 <div className="d-flex align-items-center justify-content-md-start ">
                   <Link className={style.logo} href="/">
-                    <img src="assets/images/image-141@2x.png" alt="logo" />
+                    {/* <img src="assets/images/image-141@2x.png" alt="logo" /> */}
+                    <img src="/assets/images/image-141@2x.png" alt="logo"/>
                     <h2
                       className="justify-content-center my-0 ms-2"
                       style={{
@@ -437,7 +438,7 @@ const Header = () => {
                           <div className="col-sm-4">
                             <div className="header-banner">
                               <img
-                                src="assets/images/shop-banner-img1jpg@2x.png"
+                                src="/assets/images/shop-banner-img1jpg@2x.png"
                                 alt="menu_banner1"
                               />
                               {/* <div className="banne_info">
@@ -450,7 +451,7 @@ const Header = () => {
                           <div className="col-sm-4">
                             <div className="header-banner">
                               <img
-                                src="assets/images/shop-banner-img2jpg@2x.png"
+                                src="/assets/images/shop-banner-img2jpg@2x.png"
                                 alt="menu_banner2"
                               />
                               {/* <div className="banne_info">
@@ -463,7 +464,7 @@ const Header = () => {
                           <div className="col-sm-4">
                             <div className="header-banner">
                               <img
-                                src="assets/images/shop-banner-img1jpg@2x.png"
+                                src="/assets/images/shop-banner-img1jpg@2x.png"
                                 alt="menu_banner3"
                               />
                               {/* <div className="banne_info">
@@ -479,9 +480,9 @@ const Header = () => {
                     <li>
                       <Link
                         className={`${
-                          router.pathname === "/shop_left" ? "active" : ""
+                          router.pathname === "/collection" ? "active" : ""
                         } nav-link nav_item mx-3`}
-                        href="shop_left"
+                        href="/collection"
                         passHref
                       >
                         Set Quà Tặng

@@ -64,7 +64,7 @@ function Cart({ handleCartClose }) {
               </div>
               <div className={style.checkoutBtn}>
                 <button>
-                  <Link href="cart">Thanh Toán</Link>
+                  <Link href="/checkout">Thanh Toán</Link>
                 </button>
               </div>
             </div>
