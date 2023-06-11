@@ -57,7 +57,7 @@ const ProductCard = ({
           <div className="product_img text-center">
             <div>
 
-              <Link href="/shop_left">
+              <Link href={`/product/${createSlugFromTitle(productData.name)}-${productData.code}`}>
               <div className={Styles.img}>
                   <Image height={200} width={200}  src={productData.picUrl} alt={productData.name} />
                 </div>
@@ -116,7 +116,7 @@ const ProductCard = ({
                   style={{ color: "#292B2C", textDecoration: "none" }}
                 >
                   <Link
-                    href="#"
+                    href={`/product/${createSlugFromTitle(productData.name)}-${productData.code}`}
                     style={{ color: "#292B2C", textDecoration: "none" }}
                   >
                     {productData.name}
