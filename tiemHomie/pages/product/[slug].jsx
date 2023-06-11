@@ -161,16 +161,19 @@ const ProductDetail = ({ product,products,categories }) => {
     ],
   };
   console.log([product]);
-  const images = product.picUrl.split(";");
-  const firstImage = images[0];
+  // const images = product.picUrl.split(";");
+  
 
-  // const images = [
-  //   product.picUrl,
-  //   product.picUrl,
-  //   product.picUrl,
-  //   product.picUrl,
-  //   // '/assets/images2/image-14@2x.png',
-  // ]
+  const images = [
+    product.picUrl.split(";"),
+    product.picUrl,
+    product.picUrl,
+    product.picUrl,
+    product.picUrl,
+    // '/assets/images2/image-14@2x.png',
+  ] 
+  
+  const firstImage = images[0];
   return (
     <>
 
