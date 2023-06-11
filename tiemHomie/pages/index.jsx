@@ -4,12 +4,11 @@ import SectionBannerSlider from "../components/SectionBanner/SectionBannerSlider
 // import ProductList from "../components/section/productCard/ProductList";
 import FeaturedProductHeader from "../components/section/featuredProduct/FeaturedProductHeader";
 import SectionBanner from "../components/SectionBanner/SectionBanner";
-import productData from "../data/product.json";
 import ProductCard from "../components/section/productCard/ProductCard";
 import ProductList from "../components/section/productCard/ProductList";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import CateHome from "../components/categories/cate";
+import Collection from "../components/collection/Collection";
 import Link from "next/link";
 
 import { getAllProduct } from "../action/menuApi";
@@ -136,7 +135,7 @@ function Home({ products, categories }) {
         <div className="single_banner">
           <div className="row">
             <div className="col-12">
-              <CateHome />
+              <Collection />
             </div>
           </div>
         </div>

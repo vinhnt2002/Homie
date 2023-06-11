@@ -6,7 +6,7 @@ import { FaHeadphones } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaCoffee } from "react-icons/fa";
 import { FaPuzzlePiece } from "react-icons/fa";
-import classes from "./cate.module.css"
+import classes from "./Collection.module.css"
 import Link from "next/link";
 const responsive = {
     superLargeDesktop: {
@@ -27,7 +27,7 @@ const responsive = {
         items: 1
     }
 };
-const CateHome = () => {
+const Collection = () => {
     return (
         <div className={`${classes.category}`}>
         <div className="container">
@@ -47,31 +47,31 @@ const CateHome = () => {
                             // centerMode
                             responsive={responsive}>
                                 <div className={`${classes.card}`}>
-                            <Link href="/collection/9ce2f3a4-990b-47e6-bdd9-f459deb04a08">
+                            <Link href="/collection/QAT">
                                     <FaGift className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Quà tặng</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/8e958106-5ab7-4640-a991-c0da32cff90d">
+                            <Link href="/collection/TTNC">
                                     <FaHeadphones className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Phụ kiện</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/a52ae39c-ba7b-4fc8-9484-3869475843e7">
+                            <Link href="/collection/TG">
                                     <FaHome className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Trang trí nhà cửa</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/cae5d56f-f01b-419b-b0b1-24a9accd829b">
+                            <Link href="/collection/TICH">
                                     <FaCoffee className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Thư giãn</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/a210a94f-8e31-4c8b-8ac6-0d65863abe89">
+                            <Link href="/collection/PK">
                                     <FaPuzzlePiece className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Tiện ích</h6>
                             </Link>
@@ -95,4 +95,4 @@ const CateHome = () => {
     //     </div>
     // )
 }
-export default CateHome
+export default Collection
