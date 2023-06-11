@@ -20,7 +20,7 @@ const ButtonCustomer = () => {
         <BsMessenger />
       </Link>
 
-      <Link
+      {/* <Link
         className={`${classes.zalo} rounded-rectangle`}
         href="https://zalo.me/0386660782"
         target="_blank"
@@ -31,7 +31,7 @@ const ButtonCustomer = () => {
             <SiZalo className="m-2" />
           </div>
         </div>
-      </Link>
+      </Link> */}
 
       <Link
         className={`${classes.insta} rounded-rectangle`}

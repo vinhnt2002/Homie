@@ -5,24 +5,23 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToCart} from "@/redux/reducers/cartSlice";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import slugify from 'slugify';
 
-const notify = () => {
-  toast.success('Thêm vào giỏ hàng thành công!!', {
-    position: "top-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    });
+function createSlugFromTitle(title) {
+  const slug = slugify(title, {
+    replacement: '-',
+    lower: true,
+    strict: true
+  });
+  return slug;
 }
 
 
+
 const formatPrice = (price) => {
+  if (price === undefined) {
+    return "undefined"; // or any default value you want to display for undefined prices
+  }
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
@@ -32,23 +31,21 @@ const ProductCard = ({
   showSaleOfprice,
 }) => {
   // const {  attribute :  {p, imageUrl, title, price, salePercent, rating, del, description, rating_num} } = productData;
-  const images = productData.picUrl.split(";");
-  const firstImage = images[0];
+
   const dispatch = useDispatch();
 
 
   return (
     <div className="m-1">
-    <ToastContainer />
-      <Link href={`/product/${productData.code}`}>
+    <Link href={`/product/${createSlugFromTitle(productData.name)}-${productData.code}`}>
         <div className="product">
           {/* <span className="pr_flash">New</span> */}
           <div className="product_img text-center">
             <div>
 
-              <Link href={`/product/${productData.code}`}>
+              <Link href="/shop_left">
               <div className={Styles.img}>
-                  <Image height={200} width={200}  src={firstImage} alt={productData.name} />
+                  <Image height={200} width={200}  src={productData.picUrl} alt={productData.name} />
                 </div>
               </Link>
               {showProductActionBox && (
@@ -60,12 +57,11 @@ const ProductCard = ({
                         addToCart({
                           name: productData.name,
                           sellingPrice: productData.sellingPrice,
-                          picUrl: firstImage,
+                          picUrl: productData.picUrl,
                           attribute: {
                             amount: 1,
                           },
                         }));
-                        notify();
 
                     }}>
                       <Link href="/"
@@ -104,7 +100,7 @@ const ProductCard = ({
                   style={{ color: "#292B2C", textDecoration: "none" }}
                 >
                   <Link
-                    href={`/product/${productData.code}`}
+                    href={`/product/${createSlugFromTitle(productData.name)}-${productData.code}`}
                     style={{ color: "#292B2C", textDecoration: "none" }}
                   >
                     {productData.name}

@@ -269,7 +269,7 @@ function Home({ products, categories }) {
                       >
                         <Slider ref={featuredSliderRef} {...settings}>
                         {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[7].products.map((product) => (
+                            filteredProductsCate[8].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                 productData={product}
@@ -318,7 +318,7 @@ function Home({ products, categories }) {
                       >
                         <Slider ref={specialSliderRef} {...settings}>
                         {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[4].products.map((product) => (
+                            filteredProductsCate[10].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                 productData={product}
@@ -449,7 +449,7 @@ function Home({ products, categories }) {
                   <div className={styles.shop} style={{ position: "relative" }}>
                     <Slider ref={sliderRef5} {...settings}>
                     {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[14].products.map((product) => (
+                            filteredProductsCate[8].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                 productData={product}

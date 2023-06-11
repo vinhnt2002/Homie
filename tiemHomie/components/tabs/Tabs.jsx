@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Tabs = () => {
+const Tabs = ({description}) => {
   return (
     <>
                 <div className="row">
@@ -31,7 +31,7 @@ const Tabs = () => {
                         className="nav-link"
                         id="Reviews-tab"
                         data-bs-toggle="tab"
-                        href="#Reviews"
+                        href="#"
                         role="tab"
                         aria-controls="Reviews"
                         aria-selected="false"
@@ -51,10 +51,7 @@ const Tabs = () => {
                         
                       </p>
                       <p>
-                        Ly Giữ Nhiệt Funny Party
-                        #250k
-                        Sẵn 3 Màu: Hồng, Trắng, Tím
-                        Size 15x7cm Cầm Vừa Tay, Có Dây Treo, dung tíhc 400ml. Lõi Inox giữ nhiệt và đế chống trước chắc chắn, giữ nhiệt tốt 6~12 tiếng
+                        {description}
                       </p>
                     </div>
                     <div
