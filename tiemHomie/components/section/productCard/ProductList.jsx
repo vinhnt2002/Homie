@@ -39,8 +39,7 @@ const ProductList = ({
           <span className="pr_flash">New</span>
           <div className="product_img text-center">
             <div className={Styles.img_container}>
-              {/* <Link href={`/product/${productData.code}`}> */}
-              <Link href="/">
+              <Link href={`/product/${productData.code}`}>
                 <div className={Styles.img1}>
                   <img src={productData.picUrl} alt={productData.name} />
                 </div>
