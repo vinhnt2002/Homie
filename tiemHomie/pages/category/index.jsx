@@ -190,7 +190,7 @@ const shopleft = ({ products, categories }) => {
                                     <ul className="widget_categories">
                                         {categories.map((category) => (
                                             <li>
-                                                <Link href={`/category/${[category.id]}`}>
+                                                <Link href={`/category/${[category.code]}`}>
                                                     <span className="categories_name">{category.name}</span>
                                                     <span className="categories_num">{category.length}</span>
                                                 </Link>
@@ -216,7 +216,7 @@ export default shopleft;
 export async function getStaticProps() {
     const data = await getAllProduct();
     const products = data.products   // take the products attribute in the menu
-    const categories = data.collections
+    const categories = data.categories
     return {
         props: { products, categories }
     }

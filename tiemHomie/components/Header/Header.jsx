@@ -184,7 +184,8 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/TB"
                                 >
                                   Thú Bông
                                 </Link>
@@ -192,7 +193,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/CDLS"
+
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -200,7 +203,8 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/MG"
                                 >
                                   Mèo Gốm
                                 </Link>
@@ -208,7 +212,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/MEN"
+
                                 >
                                   Mền
                                 </Link>
@@ -216,7 +222,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/TX"
+
                                 >
                                   Túi Xách
                                 </Link>
@@ -231,7 +239,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/TB"
+
                                 >
                                   Thú Bông
                                 </Link>
@@ -239,7 +249,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/GB"
+
                                 >
                                   Gối Bông
                                 </Link>
@@ -247,7 +259,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/CDLS"
+
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -255,7 +269,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/MG"
+
                                 >
                                   Mèo Gốm
                                 </Link>
@@ -263,7 +279,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/MEN"
+
                                 >
                                   Mền
                                 </Link>
@@ -276,7 +294,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/TB"
+
                                 >
                                   Thú Bông
                                 </Link>
@@ -284,7 +304,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/GB"
+
                                 >
                                   Gối Bông
                                 </Link>
@@ -292,7 +314,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/MEN"
+
                                 >
                                   Mền
                                 </Link>
@@ -300,7 +324,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/QUAT"
+
                                 >
                                   Quạt
                                 </Link>
@@ -313,7 +339,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/CDLS"
+
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -321,7 +349,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/MEN"
+
                                 >
                                   Mền
                                 </Link>
@@ -329,7 +359,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/QUAT"
+
                                 >
                                   Quạt
                                 </Link>
@@ -337,7 +369,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/goi-tua-lung"
+
                                 >
                                   Gối Tựa Lưng
                                 </Link>
@@ -345,7 +379,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/goi-co"
+                                  
                                 >
                                   Gối Cổ
                                 </Link>
@@ -353,7 +389,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/ly-giu-nhiet"
+
                                 >
                                   Ly Giữ Nhiệt
                                 </Link>
@@ -366,7 +404,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/moc-khoa"
+
                                 >
                                   Móc Khoá
                                 </Link>
@@ -374,7 +414,9 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/TX"
+
                                 >
                                   Túi Xách
                                 </Link>
@@ -382,7 +424,8 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
-                                  href="shop_left"
+                                  // href="shop_left"
+                                  href="/category/tui-my-pham"
                                 >
                                   Túi Mỹ Phẩm
                                 </Link>
@@ -471,7 +514,7 @@ export default Header;
 export async function getStaticProps() {
   const data = await getAllProduct();
   const products = data.products   // take the products attribute in the menu
-  const categories = data.collections
+  const categories = data.categories
   return {
       props: { products, categories }
   }
