@@ -109,7 +109,7 @@ const shopleft = ({
                 </div>
                 <div className="widget">
                   <PriceFilter
-                    products={products}
+                    products={filteredProducts}
                     setData={setData}
                     setSelectedSortOption={setSelectedSortOption}
                   />

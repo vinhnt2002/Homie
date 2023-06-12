@@ -5,7 +5,7 @@ import BreadCrumb from '../components/breadCrumb/BreadCrumb'
 const about = () => {
   return (
     <>
-      <BreadCrumb className="d-flex justify-content-center" href="/about" title="About us" descriptionTitle="Câu chuyện thương hiệu" />
+      <BreadCrumb className="d-flex justify-content-center" href="/about" title="About us" middlePath="" descriptionTitle="Câu chuyện thương hiệu" />
       {/* START MAIN CONTENT */}
       <div className="main_content">
         {/* STAT SECTION ABOUT */}

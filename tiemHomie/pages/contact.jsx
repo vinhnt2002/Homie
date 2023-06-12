@@ -7,7 +7,7 @@ import classes from'../styles/Home.module.css'
 const contact = () => {
   return (
     <>   
-      <BreadCrumb className="d-flex justify-content-center" href="/contact" title="Contact" descriptionTitle="Liên Hệ Với Chúng Tôi" />
+      <BreadCrumb className="d-flex justify-content-center" href="/contact" title="Contact" middlePath="" descriptionTitle="Liên Hệ Với Chúng Tôi" />
     <div className={classes.bg}>
    
 <div className="main_content">
