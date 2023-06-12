@@ -264,7 +264,7 @@ function Home({ products, categories, collections }) {
                       >
                         <Slider ref={featuredSliderRef} {...settings}>
                           {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[8].products.map((product) => (
+                            filteredProductsCate[11].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                   productData={product}
