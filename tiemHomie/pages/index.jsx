@@ -33,10 +33,6 @@ function Home({ products, categories }) {
   const sliderRef6 = useRef(null);
   const sliderRef7 = useRef(null);
 
-
- 
-
-
   const getSliderItems = () => {
     const itemsPerSlide = 3; // Số sản phẩm hiển thị trên mỗi slide
     const totalSlides = Math.ceil(products.length / itemsPerSlide); // Tổng số slide
@@ -161,7 +157,7 @@ function Home({ products, categories }) {
                       >
                         <Slider ref={arrivalSliderRef} {...settings}>
                           {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[5].products.map((product) => (
+                            filteredProductsCate[13].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                 productData={product}

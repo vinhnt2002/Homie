@@ -21,12 +21,12 @@ const BreadCrumb = ({ descriptionTitle, title, middlePath }) => {
               <div className="col-md-6">
                 <ol className="breadcrumb justify-content-md-end">
                   <li className={`breadcrumb-item`}>
-                    <Link href="/" className={classes.linkUnderline}>Home</Link>
+                    <Link href="/" className={classes.linkUnderline}>Trang chủ</Link>
                   </li>
                   {middlePath !== "Danh mục" && (
                     <>
                       <li className={`breadcrumb-item`}>
-                        <Link href="/" className={classes.linkUnderline}>Pages</Link>
+                        <Link href="/" className={classes.linkUnderline}>{middlePath}</Link>
                       </li>
                       <li className={`breadcrumb-item active`}>{title}</li>
                     </>

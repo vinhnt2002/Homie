@@ -128,9 +128,9 @@ const shopleft = ({ products, collections, collection, filteredProducts }) => {
   return (
     <div className="main_content">
       <BreadCrumb
-        // descriptionTitle={name}
-        // title={name}
-        // middlePath="Danh mục"
+        descriptionTitle={collection.name}
+        title={collection.name}
+        middlePath="Danh mục"
       ></BreadCrumb>
       {/* START SECTION SHOP */}
       <div className="section">

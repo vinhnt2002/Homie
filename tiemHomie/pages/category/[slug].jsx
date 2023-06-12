@@ -128,9 +128,9 @@ const shopleft = ({ products, categories, category, filteredProducts }) => {
   return (
     <div className="main_content">
       <BreadCrumb
-      // descriptionTitle={name}
-      // title={name}
-      // middlePath="Danh mục"
+      descriptionTitle={category.name}
+      title={category.name}
+      middlePath="Danh mục"
       ></BreadCrumb>
       {/* START SECTION SHOP */}
       <div className="section">
@@ -166,6 +166,8 @@ const shopleft = ({ products, categories, category, filteredProducts }) => {
                     />
                   </div>
                 ))}
+              
+              {/* relative Product  */}
 
                 {/* {cateCodeObject.length > 0 &&
               cateCodeObject[0].products.map((product) => (
@@ -176,6 +178,7 @@ const shopleft = ({ products, categories, category, filteredProducts }) => {
                   />
                 </div>
               ))} */}
+              
                 <div className="row align-items-center mb-4 pb-1">
                   <div className="col-12">
                     <div className="d-flex justify-content-center product_header">

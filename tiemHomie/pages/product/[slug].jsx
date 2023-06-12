@@ -41,9 +41,6 @@ function createSlugFromTitle(title) {
 const ProductDetail = ({ product,products,categories }) => {
   //  test lay chuoi tu ten
  
-  
- 
-
 
   const [allProducts, setAllProducts] = useState();
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -178,8 +175,9 @@ const ProductDetail = ({ product,products,categories }) => {
     <>
 
       <BreadCrumb
-        descriptionTitle="Chi Tiết Sản Phẩm"
-        title="Chi Tiết Sản Phẩm"
+        middlePath="Chi Tiết Sản Phẩm"
+        title={product.name}
+        descriptionTitle={product.name}
       ></BreadCrumb>
 
       {/* START MAIN CONTENT */}
@@ -535,6 +533,7 @@ export async function getStaticProps({ params }) {
 
   const product = products.find((p) => p.code === productCode);
 
+  // filter cate theo product
   if (!product) {
     return {
       notFound: true,

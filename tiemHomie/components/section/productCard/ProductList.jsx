@@ -6,7 +6,16 @@ import { useDispatch } from "react-redux";
 import { addToCart} from "@/redux/reducers/cartSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import slugify from "slugify";
 
+function createSlugFromTitle(title) {
+  const slug = slugify(title, {
+    replacement: "-",
+    lower: true,
+    strict: true,
+  });
+  return slug;
+}
 const notify = () => {
   toast.success('Thêm vào giỏ hàng thành công!!', {
     position: "top-right",
@@ -39,7 +48,9 @@ const ProductList = ({
           <span className="pr_flash">New</span>
           <div className="product_img text-center">
             <div className={Styles.img_container}>
-              <Link href={`/product/${productData.code}`}>
+              <Link   href={`/product/${createSlugFromTitle(productData.name)}-${
+              productData.code
+            }`}>
                 <div className={Styles.img1}>
                   <img src={productData.picUrl} alt={productData.name} />
                 </div>
@@ -84,7 +95,9 @@ const ProductList = ({
                   style={{ color: "#292B2C", textDecoration: "none" }}
                 >
                   <Link
-                    href="/"
+                      href={`/product/${createSlugFromTitle(productData.name)}-${
+                        productData.code
+                      }`}
                     style={{ color: "#292B2C", textDecoration: "none" }}
                   >
                     {productData.name}
