@@ -2,16 +2,11 @@ import React, { useState, useEffect } from "react";
 import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import ProductCard from "../../components/section/productCard/ProductCard";
-import Link from "next/link";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import ReactPaginate from "react-paginate";
 import { getAllProduct } from "../../action/menuApi";
-import { AiOutlineArrowLeft } from "react-icons/ai";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import classes from "./shop_left.module.css";
 import PriceFilter from "../../components/price/priceFilter";
-
+import Pagination from "../../components/paging/PhanTrang";
+import SapXep from "../../components/sortBySelected/SapXep";
+import DanhMuc from "../../components/DanhMuc/DanhMuc";
 const shopleft = ({ products, collections, productCount }) => {
   console.log(products);
   console.log(collections);
@@ -78,22 +73,7 @@ const shopleft = ({ products, collections, productCount }) => {
             <div className="col-lg-9">
               <div className="row align-items-center mb-4 pb-1">
                 <div className="col-12">
-                  <div className="d-flex justify-content-end product_header">
-                    <div className="me-2 text-start">Sắp xếp theo</div>
-                    <div className="custom_select text-end">
-                      <select
-                        className="form-control form-control-sm"
-                        onChange={handleSortOptionChange}
-                        value={selectedSortOption}
-                      >
-                        <option value="">Mặc định</option>
-                        <option value="popularity">Nổi bật</option>
-                        <option value="date">Mới nhất</option>
-                        <option value="price">Giá tăng dần</option>
-                        <option value="price-desc">Giá giảm dần</option>
-                      </select>
-                    </div>
-                  </div>
+                  <SapXep handleSortOptionChange={handleSortOptionChange} selectedSortOption={selectedSortOption}></SapXep>
                 </div>
               </div>
               <div className="row shop_container">
@@ -105,58 +85,19 @@ const shopleft = ({ products, collections, productCount }) => {
                     />
                   </div>
                 ))}
-                <div className="row align-items-center mb-4 pb-1">
-                  <div className="col-12">
-                    <div className="d-flex justify-content-center product_header">
-                      <ReactPaginate
-                        previousLabel={<AiOutlineArrowLeft />}
-                        nextLabel={<AiOutlineArrowRight />}
-                        breakLabel="..."
-                        pageCount={pageCount}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={5}
-                        onPageChange={handlePageChange}
-                        pageClassName={classes["page-item"]} // Apply the imported CSS class
-                        pageLinkClassName={classes["page-link"]} // Apply the imported CSS class
-                        previousClassName={classes["page-item"]} // Apply the imported CSS class
-                        previousLinkClassName={classes["page-link"]} // Apply the imported CSS class
-                        nextClassName={classes["page-item"]} // Apply the imported CSS class
-                        nextLinkClassName={classes["page-link"]} // Apply the imported CSS class
-                        breakClassName={classes["page-item"]} // Apply the imported CSS class
-                        breakLinkClassName={classes["page-link"]} // Apply the imported CSS class
-                        containerClassName={classes.pagination} // Apply the imported CSS class
-                        activeClassName={classes.active} // Apply the imported CSS class
-                        renderOnZeroPageCount={null}
-                      />
-                    </div>
-                  </div>
+                <Pagination
+                  pageCount={pageCount}
+                  onPageChange={handlePageChange}
+                />              
                 </div>
-              </div>
             </div>
             <div className="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
               <div className="sidebar">
                 <div className="widget">
-                  <Link href={`/collection`}>
-                    <h5 className="widget_title">Danh Mục</h5>
-                  </Link>
-                  <ul className="widget_categories">
-                    {collections.map((collection) => (
-                      <li>
-                        <Link href={`/collection/${[collection.code]}`}>
-                          <span className="categories_name">
-                            {collection.name}
-                          </span>
-                          <span className="categories_num">
-                            ({productCount[i]})
-                          </span>
-                          <span style={{ display: "none" }}>{i++}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <DanhMuc collections={collections} productCount={productCount}></DanhMuc>
                 </div>
                 <div className="widget">
-                <PriceFilter products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} />
+                  <PriceFilter products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} />
                 </div>
               </div>
             </div>

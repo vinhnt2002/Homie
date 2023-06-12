@@ -55,7 +55,7 @@ const PriceFilter = ({ products, setData, setSelectedSortOption }) => {
             <h5>Giá</h5>
             <Slider
                 range
-                step={50000}
+                // step={50000}
                 min={0}
                 max={1000000}
                 value={value}
