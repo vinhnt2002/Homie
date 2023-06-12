@@ -25,7 +25,7 @@ const responsive = {
 };
 
 const Collection = ({ collections }) => {
-  const icons = [<FaGift />, <FaHeadphones />, <FaHome />, <FaCoffee />, <FaPuzzlePiece />];
+  const icons = [<FaGift />, <FaHome />, <FaCoffee />, <FaPuzzlePiece />, <FaHeadphones />];
 
   return (
     <div className={`${classes.category}`}>
