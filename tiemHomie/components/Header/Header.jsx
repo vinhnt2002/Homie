@@ -186,7 +186,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/TB"
+                                  href="/category/thu-bong"
                                 >
                                   Thú Bông
                                 </Link>
@@ -195,7 +195,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/CDLS"
+                                  href="/category/chen-dia-ly-su"
 
                                 >
                                   Chén Đĩa Ly Sứ
@@ -205,7 +205,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/MG"
+                                  href="/category/meo-gom"
                                 >
                                   Mèo Gốm
                                 </Link>
@@ -214,7 +214,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/MEN"
+                                  href="/category/men"
 
                                 >
                                   Mền
@@ -224,7 +224,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/TX"
+                                  href="/category/tui-xach"
 
                                 >
                                   Túi Xách
@@ -241,7 +241,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/TB"
+                                  href="/category/thu-bong"
 
                                 >
                                   Thú Bông
@@ -251,7 +251,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/GB"
+                                  href="/category/goi-bong"
 
                                 >
                                   Gối Bông
@@ -261,7 +261,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/CDLS"
+                                  href="/category/chen-dia-ly-su"
 
                                 >
                                   Chén Đĩa Ly Sứ
@@ -271,7 +271,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/MG"
+                                  href="/category/meo-gom"
 
                                 >
                                   Mèo Gốm
@@ -281,7 +281,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/MEN"
+                                  href="/category/men"
 
                                 >
                                   Mền
@@ -296,7 +296,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/TB"
+                                  href="/category/thu-bong"
 
                                 >
                                   Thú Bông
@@ -306,7 +306,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/GB"
+                                  href="/category/goi-bong"
 
                                 >
                                   Gối Bông
@@ -316,7 +316,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/MEN"
+                                  href="/category/men"
 
                                 >
                                   Mền
@@ -326,7 +326,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/QUAT"
+                                  href="/category/quat"
 
                                 >
                                   Quạt
@@ -341,7 +341,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/CDLS"
+                                  href="/category/chen-dia-ly-su"
 
                                 >
                                   Chén Đĩa Ly Sứ
@@ -351,7 +351,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/MEN"
+                                  href="/category/men"
 
                                 >
                                   Mền
@@ -361,7 +361,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/QUAT"
+                                  href="/category/quat"
 
                                 >
                                   Quạt
@@ -416,7 +416,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   // href="shop_left"
-                                  href="/category/TX"
+                                  href="/category/tui-xach"
 
                                 >
                                   Túi Xách

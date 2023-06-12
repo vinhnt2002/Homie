@@ -41,7 +41,7 @@ const YourPageComponent = () => {
         // setFilteredProducts(filterProductCollection);
         setFilteredProducts(filterProductCate);
 
-        console.log(filterProductCate);
+        console.log(collections);
         // console.log(filterProductCollection);
       } catch (error) {
         console.error("Error fetching products:", error);

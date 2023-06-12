@@ -47,31 +47,31 @@ const Collection = () => {
                             // centerMode
                             responsive={responsive}>
                                 <div className={`${classes.card}`}>
-                            <Link href="/collection/QAT">
+                            <Link href="/collection/qua-tang">
                                     <FaGift className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Quà tặng</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/TTNC">
+                            <Link href="/collection/trang-tri-nha-cua">
                                     <FaHeadphones className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Phụ kiện</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/TG">
+                            <Link href="/collection/thu-gian">
                                     <FaHome className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Trang trí nhà cửa</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/TICH">
+                            <Link href="/collection/tien-ich">
                                     <FaCoffee className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Thư giãn</h6>
                             </Link>
                             </div>
                             <div className={`${classes.card}`}>
-                            <Link href="/collection/PK">
+                            <Link href="/collection/phu-kien">
                                     <FaPuzzlePiece className={`${classes.icon}`} />
                                     <h6 className={`${classes.label}`}>Tiện ích</h6>
                             </Link>
