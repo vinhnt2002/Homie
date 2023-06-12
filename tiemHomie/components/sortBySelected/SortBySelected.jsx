@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SapXep = ({handleSortOptionChange, selectedSortOption}) => {
+const SortBySelected = ({handleSortOptionChange, selectedSortOption}) => {
     return (
         <div className="d-flex justify-content-end product_header">
             <div className="me-2 text-start">Sắp xếp theo</div>
@@ -21,4 +21,4 @@ const SapXep = ({handleSortOptionChange, selectedSortOption}) => {
     )
 }
 
-export default SapXep
+export default SortBySelected

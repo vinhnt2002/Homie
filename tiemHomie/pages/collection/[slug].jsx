@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
-import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import ProductCard from "../../components/section/productCard/ProductCard";
-import Link from "next/link";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import ReactPaginate from "react-paginate";
-import { getAllProduct } from "../../action/menuApi";
-import { AiOutlineArrowLeft } from "react-icons/ai";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import classes from "./shop_left.module.css";
 import { useRouter } from "next/router";
+import "rc-slider/assets/index.css";
+
+import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
+import ProductCard from "../../components/section/productCard/ProductCard";
+import { getAllProduct } from "../../action/menuApi";
 import PriceFilter from "../../components/price/priceFilter";
-import Pagination from "../../components/paging/PhanTrang";
-import SapXep from "../../components/sortBySelected/SapXep";
-import DanhMuc from "../../components/DanhMuc/DanhMuc";
+import Pagination from "../../components/paging/Pagination";
+import SortBySelected from "../../components/sortBySelected/SortBySelected";
+import Tags from "../../components/Tags/Tags";
 const shopleft = ({
   products,
   collections,
@@ -29,8 +23,8 @@ const shopleft = ({
   const [selectedSortOption, setSelectedSortOption] = useState("");
 
   useEffect(() => {
-    setData(filteredProducts);
-  }, [filteredProducts]);
+    setData(data);
+  }, [data]);
 
   const sortData = (sortOption) => {
     let sortedData = [...data];
@@ -86,8 +80,11 @@ const shopleft = ({
           <div className="row">
             <div className="col-lg-9">
               <div className="row align-items-center mb-4 pb-1">
-              <div className="col-12">
-                  <SapXep handleSortOptionChange={handleSortOptionChange} selectedSortOption={selectedSortOption}></SapXep>
+                <div className="col-12">
+                  <SortBySelected
+                    handleSortOptionChange={handleSortOptionChange}
+                    selectedSortOption={selectedSortOption}
+                  />
                 </div>
               </div>
               <div className="row shop_container">
@@ -102,16 +99,20 @@ const shopleft = ({
                 <Pagination
                   pageCount={pageCount}
                   onPageChange={handlePageChange}
-                /> 
+                />
               </div>
             </div>
             <div className="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
               <div className="sidebar">
                 <div className="widget">
-                <DanhMuc collections={collections} productCount={productCount}></DanhMuc>
+                  <Tags collections={collections} productCount={productCount} />
                 </div>
                 <div className="widget">
-                  <PriceFilter products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} />
+                  <PriceFilter
+                    products={products}
+                    setData={setData}
+                    setSelectedSortOption={setSelectedSortOption}
+                  />
                 </div>
               </div>
             </div>

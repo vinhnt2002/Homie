@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-const DanhMuc = ({collections, productCount}) => {
+const Tags = ({collections, productCount}) => {
     let i = 0
     return (
         <>
@@ -26,4 +26,4 @@ const DanhMuc = ({collections, productCount}) => {
     )
 }
 
-export default DanhMuc
+export default Tags

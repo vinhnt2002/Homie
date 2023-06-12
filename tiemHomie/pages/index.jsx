@@ -215,7 +215,7 @@ function Home({ products, categories, collections }) {
                       >
                         <Slider ref={featuredSliderRef} {...settings}>
                           {filteredProductsCollection.length > 0 &&
-                            filteredProductsCollection[1].products.map((product) => (
+                            filteredProductsCollection[2].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                   productData={product}
@@ -239,7 +239,7 @@ function Home({ products, categories, collections }) {
                       >
                         <Slider ref={specialSliderRef} {...settings}>
                           {filteredProductsCollection.length > 0 &&
-                            filteredProductsCollection[3].products.map((product) => (
+                            filteredProductsCollection[4].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                   productData={product}
@@ -345,7 +345,7 @@ function Home({ products, categories, collections }) {
                   <div className={styles.shop} style={{ position: "relative" }}>
                     <Slider ref={sliderRef5} {...settings}>
                       {filteredProductsCollection.length > 0 &&
-                        filteredProductsCollection[1].products.map((product) => (
+                        filteredProductsCollection[2].products.map((product) => (
                           <div key={product.id} className="item">
                             <ProductCard
                               productData={product}
@@ -375,7 +375,7 @@ function Home({ products, categories, collections }) {
                   <div className={styles.shop} style={{ position: "relative" }}>
                     <Slider ref={sliderRef6} {...settings}>
                       {filteredProductsCollection.length > 0 &&
-                        filteredProductsCollection[3].products.map((product) => (
+                        filteredProductsCollection[0].products.map((product) => (
                           <div key={product.id} className="item">
                             <ProductCard
                               productData={product}

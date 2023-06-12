@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import ProductCard from "../../components/section/productCard/ProductCard";
 import { getAllProduct } from "../../action/menuApi";
+
+import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
+import ProductCard from "../../components/section/productCard/ProductCard";
 import PriceFilter from "../../components/price/priceFilter";
-import Pagination from "../../components/paging/PhanTrang";
-import SapXep from "../../components/sortBySelected/SapXep";
-import DanhMuc from "../../components/DanhMuc/DanhMuc";
+import Pagination from "../../components/paging/Pagination";
+import SortBySelected from "../../components/sortBySelected/SortBySelected";
+import Tags from "../../components/Tags/Tags";
+
 const shopleft = ({ products, collections, productCount }) => {
-  console.log(products);
-  console.log(collections);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
   const [data, setData] = useState(products);
   const [selectedSortOption, setSelectedSortOption] = useState("");
@@ -56,8 +55,8 @@ const shopleft = ({ products, collections, productCount }) => {
   };
 
   useEffect(() => {
-    setData(products);
-  }, [products]);
+    setData(data);
+  }, [data]);
 
   return (
     <div className="main_content">
@@ -73,7 +72,10 @@ const shopleft = ({ products, collections, productCount }) => {
             <div className="col-lg-9">
               <div className="row align-items-center mb-4 pb-1">
                 <div className="col-12">
-                  <SapXep handleSortOptionChange={handleSortOptionChange} selectedSortOption={selectedSortOption}></SapXep>
+                  <SortBySelected
+                    handleSortOptionChange={handleSortOptionChange}
+                    selectedSortOption={selectedSortOption}
+                  />
                 </div>
               </div>
               <div className="row shop_container">
@@ -88,16 +90,20 @@ const shopleft = ({ products, collections, productCount }) => {
                 <Pagination
                   pageCount={pageCount}
                   onPageChange={handlePageChange}
-                />              
-                </div>
+                />
+              </div>
             </div>
             <div className="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
               <div className="sidebar">
                 <div className="widget">
-                  <DanhMuc collections={collections} productCount={productCount}></DanhMuc>
+                  <Tags collections={collections} productCount={productCount} />
                 </div>
                 <div className="widget">
-                  <PriceFilter products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} />
+                  <PriceFilter
+                    products={products}
+                    setData={setData}
+                    setSelectedSortOption={setSelectedSortOption}
+                  />
                 </div>
               </div>
             </div>

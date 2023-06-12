@@ -33,7 +33,6 @@ function createSlugFromTitle(title) {
   return slug;
 }
 
-
 const ProductDetail = ({ product, products, categories }) => {
   //  test lay chuoi tu ten
   const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -77,19 +76,19 @@ const ProductDetail = ({ product, products, categories }) => {
     return formattedPrice;
   };
 
-   //'logic sizesss
- const charS = product.size;
- let sizes;
- 
- if (charS === "L") {
-   sizes = " LARGE ";
- } else if (charS === "M") {
-   sizes = " MEDIUM ";
- } else if (charS === "S"){
-   sizes = " SMALL ";
- }else {
-   sizes = " Xem thêm ở phần mô tả sản phẩm "
- }
+  //'logic sizesss
+  const charS = product.size;
+  let sizes;
+
+  if (charS === "L") {
+    sizes = " LARGE ";
+  } else if (charS === "M") {
+    sizes = " MEDIUM ";
+  } else if (charS === "S") {
+    sizes = " SMALL ";
+  } else {
+    sizes = " Xem thêm ở phần mô tả sản phẩm ";
+  }
 
   // const productUrl = `https://example.com${router.asPath}`; // Replace with your website URL
 
@@ -355,7 +354,7 @@ const ProductDetail = ({ product, products, categories }) => {
                     <li>
                       Tags:{" "}
                       <Link href={`/category/${categoryCode}`} rel="tag">
-                      {categoryCode}
+                        {categoryCode}
                       </Link>
                     </li>
                   </ul>
