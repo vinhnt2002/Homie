@@ -16,6 +16,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "../styles/Home.module.css";
+import Arrows from "../components/Button/Arrows";
 
 function Home({ products, categories, collections }) {
   const [showTabs, setShowTabs] = useState(true);
@@ -23,7 +24,7 @@ function Home({ products, categories, collections }) {
   const [showSaleOfprice, setShowSaleOfPrice] = useState(true);
   const [allProducts, setAllProducts] = useState(products);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [filteredProductsCate, setFilteredProductsCate] = useState([]);
+  const [filteredProductsCollection, setFilteredProductsCollection] = useState([]);
 
   const arrivalSliderRef = useRef(null);
   const sellersSliderRef = useRef(null);
@@ -94,7 +95,7 @@ function Home({ products, categories, collections }) {
       {
         breakpoint: 576,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           arrows: false,
         },
       },
@@ -104,19 +105,19 @@ function Home({ products, categories, collections }) {
   // console.log(products);
 
   useEffect(() => {
-    const filterProductCate = categories.map((category) => {
+    const filterProductCate = collections.map((collection) => {
       const filteredProducts = products.filter((product) =>
-        product.categoryId.includes(category.id)
+        product.collectionIds.includes(collection.id)
       );
       return {
-        category: category,
+        collection: collection,
         products: filteredProducts,
       };
     });
-    setFilteredProductsCate(filterProductCate);
+    setFilteredProductsCollection(filterProductCate);
   }, []);
 
-  console.log(filteredProductsCate);
+  console.log(filteredProductsCollection);
 
   // console.log(categories);
 
@@ -131,7 +132,7 @@ function Home({ products, categories, collections }) {
         <div className="single_banner">
           <div className="row">
             <div className="col-12">
-            <Collection collections={collections} />
+              <Collection collections={collections} />
             </div>
           </div>
         </div>
@@ -156,8 +157,8 @@ function Home({ products, categories, collections }) {
                         style={{ position: "relative" }}
                       >
                         <Slider ref={arrivalSliderRef} {...settings}>
-                          {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[13].products.map((product) => (
+                          {filteredProductsCollection.length > 0 &&
+                            filteredProductsCollection[1].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                   productData={product}
@@ -175,32 +176,7 @@ function Home({ products, categories, collections }) {
                             </div>
                           ))} */}
                         </Slider>
-                        <div className={styles.buttons}>
-                          <div className={styles.prevB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-prev-button"
-                              onClick={() =>
-                                arrivalSliderRef.current.slickPrev()
-                              }
-                            >
-                              <FaChevronLeft className={styles.leftA} />
-                            </button>
-                          </div>
-                          <div className={styles.nextB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-next-button"
-                              onClick={() =>
-                                arrivalSliderRef.current.slickNext()
-                              }
-                            >
-                              <FaChevronRight className={styles.rightA} />
-                            </button>
-                          </div>
-                        </div>
+                        <Arrows sliderRef={arrivalSliderRef} />
                       </div>
                     </div>
                     <div
@@ -214,8 +190,8 @@ function Home({ products, categories, collections }) {
                         style={{ position: "relative" }}
                       >
                         <Slider ref={sellersSliderRef} {...settings}>
-                          {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[6].products.map((product) => (
+                          {filteredProductsCollection.length > 0 &&
+                            filteredProductsCollection[3].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                   productData={product}
@@ -224,32 +200,7 @@ function Home({ products, categories, collections }) {
                               </div>
                             ))}
                         </Slider>
-                        <div className={styles.buttons}>
-                          <div className={styles.prevB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-prev-button"
-                              onClick={() =>
-                                sellersSliderRef.current.slickPrev()
-                              }
-                            >
-                              <FaChevronLeft className={styles.leftA} />
-                            </button>
-                          </div>
-                          <div className={styles.nextB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-next-button"
-                              onClick={() =>
-                                sellersSliderRef.current.slickNext()
-                              }
-                            >
-                              <FaChevronRight className={styles.rightA} />
-                            </button>
-                          </div>
-                        </div>
+                        <Arrows sliderRef={sellersSliderRef} />
                       </div>
                     </div>
                     <div
@@ -263,8 +214,8 @@ function Home({ products, categories, collections }) {
                         style={{ position: "relative" }}
                       >
                         <Slider ref={featuredSliderRef} {...settings}>
-                          {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[11].products.map((product) => (
+                          {filteredProductsCollection.length > 0 &&
+                            filteredProductsCollection[1].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                   productData={product}
@@ -273,32 +224,7 @@ function Home({ products, categories, collections }) {
                               </div>
                             ))}
                         </Slider>
-                        <div className={styles.buttons}>
-                          <div className={styles.prevB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-prev-button"
-                              onClick={() =>
-                                featuredSliderRef.current.slickPrev()
-                              }
-                            >
-                              <FaChevronLeft className={styles.leftA} />
-                            </button>
-                          </div>
-                          <div className={styles.nextB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-next-button"
-                              onClick={() =>
-                                featuredSliderRef.current.slickNext()
-                              }
-                            >
-                              <FaChevronRight className={styles.rightA} />
-                            </button>
-                          </div>
-                        </div>
+                        <Arrows sliderRef={featuredSliderRef} />
                       </div>
                     </div>
                     <div
@@ -312,8 +238,8 @@ function Home({ products, categories, collections }) {
                         style={{ position: "relative" }}
                       >
                         <Slider ref={specialSliderRef} {...settings}>
-                          {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[10].products.map((product) => (
+                          {filteredProductsCollection.length > 0 &&
+                            filteredProductsCollection[3].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
                                   productData={product}
@@ -322,32 +248,7 @@ function Home({ products, categories, collections }) {
                               </div>
                             ))}
                         </Slider>
-                        <div className={styles.buttons}>
-                          <div className={styles.prevB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-prev-button"
-                              onClick={() =>
-                                specialSliderRef.current.slickPrev()
-                              }
-                            >
-                              <FaChevronLeft className={styles.leftA} />
-                            </button>
-                          </div>
-                          <div className={styles.nextB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-next-button"
-                              onClick={() =>
-                                specialSliderRef.current.slickNext()
-                              }
-                            >
-                              <FaChevronRight className={styles.rightA} />
-                            </button>
-                          </div>
-                        </div>
+                        <Arrows sliderRef={specialSliderRef} />
                       </div>
                     </div>
                   </div>
@@ -443,8 +344,8 @@ function Home({ products, categories, collections }) {
                 <div className="col-md-12">
                   <div className={styles.shop} style={{ position: "relative" }}>
                     <Slider ref={sliderRef5} {...settings}>
-                      {filteredProductsCate.length > 0 &&
-                        filteredProductsCate[8].products.map((product) => (
+                      {filteredProductsCollection.length > 0 &&
+                        filteredProductsCollection[1].products.map((product) => (
                           <div key={product.id} className="item">
                             <ProductCard
                               productData={product}
@@ -453,28 +354,7 @@ function Home({ products, categories, collections }) {
                           </div>
                         ))}
                     </Slider>
-                    <div className={styles.buttons}>
-                      <div className={styles.prevB}>
-                        <button
-                          type="button"
-                          role="presentation"
-                          className="custom-prev-button"
-                          onClick={() => sliderRef5.current.slickPrev()}
-                        >
-                          <FaChevronLeft className={styles.leftA} />
-                        </button>
-                      </div>
-                      <div className={styles.nextB}>
-                        <button
-                          type="button"
-                          role="presentation"
-                          className="custom-next-button"
-                          onClick={() => sliderRef5.current.slickNext()}
-                        >
-                          <FaChevronRight className={styles.rightA} />
-                        </button>
-                      </div>
-                    </div>
+                    <Arrows sliderRef={sliderRef5} />
                   </div>
                 </div>
               </div>
@@ -494,8 +374,8 @@ function Home({ products, categories, collections }) {
                 <div className="col-md-12">
                   <div className={styles.shop} style={{ position: "relative" }}>
                     <Slider ref={sliderRef6} {...settings}>
-                      {filteredProductsCate.length > 0 &&
-                        filteredProductsCate[4].products.map((product) => (
+                      {filteredProductsCollection.length > 0 &&
+                        filteredProductsCollection[3].products.map((product) => (
                           <div key={product.id} className="item">
                             <ProductCard
                               productData={product}
@@ -504,28 +384,7 @@ function Home({ products, categories, collections }) {
                           </div>
                         ))}
                     </Slider>
-                    <div className={styles.buttons}>
-                      <div className={styles.prevB}>
-                        <button
-                          type="button"
-                          role="presentation"
-                          className="custom-prev-button"
-                          onClick={() => sliderRef6.current.slickPrev()}
-                        >
-                          <FaChevronLeft className={styles.leftA} />
-                        </button>
-                      </div>
-                      <div className={styles.nextB}>
-                        <button
-                          type="button"
-                          role="presentation"
-                          className="custom-next-button"
-                          onClick={() => sliderRef6.current.slickNext()}
-                        >
-                          <FaChevronRight className={styles.rightA} />
-                        </button>
-                      </div>
-                    </div>
+                    <Arrows sliderRef={sliderRef6} />
                   </div>
                 </div>
               </div>

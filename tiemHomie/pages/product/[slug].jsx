@@ -33,6 +33,7 @@ function createSlugFromTitle(title) {
   return slug;
 }
 
+
 const ProductDetail = ({ product, products, categories }) => {
   //  test lay chuoi tu ten
   const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -75,6 +76,20 @@ const ProductDetail = ({ product, products, categories }) => {
     const formattedPrice = price.toLocaleString().replace(/,/g, ".");
     return formattedPrice;
   };
+
+   //'logic sizesss
+ const charS = product.size;
+ let sizes;
+ 
+ if (charS === "L") {
+   sizes = " LARGE ";
+ } else if (charS === "M") {
+   sizes = " MEDIUM ";
+ } else if (charS === "S"){
+   sizes = " SMALL ";
+ }else {
+   sizes = " Xem thêm ở phần mô tả sản phẩm "
+ }
 
   // const productUrl = `https://example.com${router.asPath}`; // Replace with your website URL
 
@@ -266,7 +281,7 @@ const ProductDetail = ({ product, products, categories }) => {
                     <div className="pr_switch_wrap">
                       <span className="switch_lable">Size</span>
                       <div>
-                        <span className={styles.active}>SIZE 15X7 CM</span>
+                        <span className={styles.active}>{sizes}</span>
                         {/* <span>s</span>
                          <span>m</span>
                          <span>l</span>
@@ -329,7 +344,7 @@ const ProductDetail = ({ product, products, categories }) => {
                   <hr />
                   <ul className="product-meta">
                     <li>
-                      SKU: <Link href="#">BE45VGRT</Link>
+                      SKU: <Link href="#">{product.code}</Link>
                     </li>
                     <li>
                       Category:{" "}
@@ -339,8 +354,8 @@ const ProductDetail = ({ product, products, categories }) => {
                     </li>
                     <li>
                       Tags:{" "}
-                      <Link href="#" rel="tag">
-                        {product.name}
+                      <Link href={`/category/${categoryCode}`} rel="tag">
+                      {categoryCode}
                       </Link>
                     </li>
                   </ul>
