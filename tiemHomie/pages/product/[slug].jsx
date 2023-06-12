@@ -510,9 +510,9 @@ export async function getStaticProps({ params }) {
   const product = products.find((p) => p.code === productCode);
 
    // Find the category related to the product's category
-   const productCategory = categories.find(category =>
-    category.id === product.categoryId
-  );
+  //  const productCategory = categories.find(category =>
+  //   category.id === product.categoryId
+  // );
 
   // Access the products of the related category or use an empty array if no match is found
   // const relatedCategoryProducts = productCategory ? productCategory.products : [];
