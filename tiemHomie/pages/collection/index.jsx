@@ -84,6 +84,11 @@ const shopleft = ({ products, collections, productCount }) => {
   const [showProductActionBox, setShowProductActionBox] = useState(true);
   const [data, setData] = useState(products);
   const [selectedSortOption, setSelectedSortOption] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const itemsPerPage = 9;
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
   // Apply pagination to the data
   const startIndex = currentPage * itemsPerPage;
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
@@ -117,14 +122,9 @@ const shopleft = ({ products, collections, productCount }) => {
     sortData(selectedOption); // Pass selectedOption as an argument to sortData
   };
 
-  const itemsPerPage = 9;
-  const pageCount = Math.ceil(data.length / itemsPerPage);
-  const [currentPage, setCurrentPage] = useState(0);
-
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
   };
-
 
   useEffect(() => {
     setData(products);

@@ -43,7 +43,6 @@ const ProductCard = ({
   showProductActionBox,
   showSaleOfprice,
 }) => {
-  // const {  attribute :  {p, imageUrl, title, price, salePercent, rating, del, description, rating_num} } = productData;
 
   const dispatch = useDispatch();
 
