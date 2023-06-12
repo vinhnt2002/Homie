@@ -66,7 +66,7 @@ a {
 	transition: all .3s ease-in-out;
 }
 a:hover {
-	color: whitesmoke;
+	color: rgb(74, 70, 70);
 	text-decoration: none;
 }
 a:focus {
@@ -1884,7 +1884,7 @@ header.light_skin.nav-fixed .social_icons li a:hover {
 .top-header.light_skin .header_list li a:hover, 
 .top-header.light_skin .contact_detail li a:hover, 
 .top-header.light_skin .header_list li a:hover span {
-	color: #fff;
+	color: #6a696995;
 }
 .main_menu_uppercase .navbar-nav > li > .nav-link {
 	text-transform: uppercase;
@@ -2704,10 +2704,10 @@ input.text {
 	transition: all 0.3s ease-in-out;
 }
 .carousel-control-next:focus, .carousel-control-next:hover, .carousel-control-prev:focus, .carousel-control-prev:hover {
-	opacity: 0;
+	opacity: 10;
 }
 .carousel:hover .carousel-control-next, .carousel:hover .carousel-control-prev {
-	opacity: 1;
+	opacity: 10;
 }
 .carousel-control-next {
 	right: 20px;
@@ -3042,7 +3042,7 @@ input.text {
 	content: "";
 	height: 100%;
 	left: 0;
-	opacity: 1;
+	opacity: 20;
 	position: absolute;
 	top: 0;
 	transition: all 0.9s ease 0s;

@@ -9,7 +9,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
     <div className="row" style={{}}>
       <div className="col-12">
         <div className="heading_tab_header">
-          <div className="heading_s2" style={styles}>
+          <div className="heading_s2" style={{ ...styles, opacity: 1 }}>
             <h2>{title}</h2>
           </div>
 
@@ -32,7 +32,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                 <li className="nav-item">
                   <a
                     className="  active"
-                    style={styles}
+                    style={{ ...styles, opacity: 1 }}
                     id="arrival-tab"
                     data-bs-toggle="tab"
                     href="#arrival"
@@ -46,7 +46,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                 <li className="nav-item">
                   <a
                     className=" "
-                    style={styles}
+                    style={{ ...styles, opacity: 1 }}
                     id="sellers-tab"
                     data-bs-toggle="tab"
                     href="#sellers"
@@ -61,7 +61,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                 <li className="nav-item">
                   <a
                     className=" "
-                    style={styles}
+                    style={{ ...styles, opacity: 1 }}
                     id="featured-tab"
                     data-bs-toggle="tab"
                     href="#featured"
@@ -75,7 +75,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                 <li className="nav-item">
                   <a
                     className=" "
-                    style={styles}
+                    style={{ ...styles, opacity: 1 }}
                     id="special-tab"
                     data-bs-toggle="tab"
                     href="#special"

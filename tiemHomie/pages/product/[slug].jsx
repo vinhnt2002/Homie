@@ -129,6 +129,14 @@ const ProductDetail = ({ product,products,categories }) => {
   //   const instagramUrl = 'https://www.instagram.com/your-instagram-handle';
   //   window.open(instagramUrl, '_blank');
   // };
+  const headingStyle = {  //css title product
+    fontFamily: "Roboto",
+    fontSize: "28px",
+    fontWeight: 700,
+    lineHeight: "36px",
+    letterSpacing: "0em",
+    textAlign: "left",
+  };
 
   const [showProductActionBox, setShowProductActionBox] = useState(true);
   const settings = {
@@ -160,17 +168,27 @@ const ProductDetail = ({ product,products,categories }) => {
   console.log([product]);
   // const images = product.picUrl.split(";");
   
+  const picUrls = product.picUrl.split(";");
+  let images;
+  if (picUrls.length === 1) {
+    images = [
+      product.picUrl,
+      product.picUrl,
+      product.picUrl,
+      product.picUrl,
+      product.picUrl,
+    ];
+  } else if (picUrls.length > 1 && picUrls.length < 4) {
+    images = [...picUrls];
 
-  const images = [
-    product.picUrl.split(";"),
-    product.picUrl,
-    product.picUrl,
-    product.picUrl,
-    product.picUrl,
-    // '/assets/images2/image-14@2x.png',
-  ] 
-  
-  const firstImage = images[0];
+    while (images.length < 4) {
+      images.push(...picUrls);
+    }
+  } else if (picUrls.length === 0) {
+    return "undefined";
+  } else {
+    images = picUrls;
+  }
   return (
     <>
 
@@ -222,7 +240,7 @@ const ProductDetail = ({ product,products,categories }) => {
                 <div className="pr_detail">
                   <div className="product_description">
                     <h4 className="product_title">
-                      <Link href="#">{product.name}</Link>
+                      <Link style={headingStyle} href="#">{product.name}</Link>
                     </h4>
                     <div className="product_price" >
                     <span className="price" >{formatPrice(product.sellingPrice)} VND</span>
