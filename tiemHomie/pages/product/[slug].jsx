@@ -23,6 +23,7 @@ import { addToCart } from "@/redux/reducers/cartSlice";
 import { useDispatch } from "react-redux";
 import { getAllProduct } from "../../action/menuApi";
 import slugify from "slugify";
+import SliderSection from "../../components/section/SliderSection/SliderSection";
 
 function createSlugFromTitle(title) {
   const slug = slugify(title, {
@@ -183,7 +184,7 @@ const ProductDetail = ({ product, products, categories }) => {
         middlePath="Chi Tiết Sản Phẩm"
         title={product.name}
         descriptionTitle={product.name}
-      ></BreadCrumb>
+      />
 
       {/* START MAIN CONTENT */}
       <div className="main_content">
@@ -456,61 +457,15 @@ const ProductDetail = ({ product, products, categories }) => {
                 </div>
                 <div className="row">
                   <div className="col-md-12">
-                    <div className="col-md-12">
-                      <div
-                        className={styles.shop}
-                        style={{ position: "relative" }}
-                      >
-                        <Slider ref={sliderRef6} {...settings}>
-                          {products.map((product) => (
-                            <div key={product.id} className="item">
-                              <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
-                            </div>
-                          ))}
-                        </Slider>
-                        <div className={styles.buttons}>
-                          <div className={styles.prevB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-prev-button"
-                              onClick={() => sliderRef6.current.slickPrev()}
-                            >
-                              <FaChevronLeft
-                                className={styles.leftA}
-                                onMouseEnter={(e) =>
-                                  (e.target.style.color = "orange")
-                                }
-                                onMouseLeave={(e) =>
-                                  (e.target.style.color = "gray")
-                                }
-                              />
-                            </button>
-                          </div>
-                          <div className={styles.nextB}>
-                            <button
-                              type="button"
-                              role="presentation"
-                              className="custom-next-button"
-                              onClick={() => sliderRef6.current.slickNext()}
-                            >
-                              <FaChevronRight
-                                className={styles.rightA}
-                                onMouseEnter={(e) =>
-                                  (e.target.style.color = "orange")
-                                }
-                                onMouseLeave={(e) =>
-                                  (e.target.style.color = "gray")
-                                }
-                              />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <SliderSection
+                        sliderRef={sliderRef6}
+                        products={
+                          filteredProductsCate.length > 0
+                            ? filteredProductsCate[4].products
+                            : []
+                        }
+                        showProductActionBox={showProductActionBox}
+                      />
                   </div>
                 </div>
               </div>
@@ -554,6 +509,15 @@ export async function getStaticProps({ params }) {
 
   const product = products.find((p) => p.code === productCode);
 
+   // Find the category related to the product's category
+   const productCategory = categories.find(category =>
+    category.id === product.categoryId
+  );
+
+  // Access the products of the related category or use an empty array if no match is found
+  // const relatedCategoryProducts = productCategory ? productCategory.products : [];
+
+
   // filter cate theo product
   if (!product) {
     return {
@@ -566,6 +530,7 @@ export async function getStaticProps({ params }) {
       product,
       products,
       categories,
+    
     },
   };
 }

@@ -4,12 +4,10 @@ import SectionBannerSlider from "../components/SectionBanner/SectionBannerSlider
 // import ProductList from "../components/section/productCard/ProductList";
 import FeaturedProductHeader from "../components/section/featuredProduct/FeaturedProductHeader";
 import SectionBanner from "../components/SectionBanner/SectionBanner";
-import ProductCard from "../components/section/productCard/ProductCard";
 import ProductList from "../components/section/productCard/ProductList";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import Collection from "../components/collection/Collection";
-import Link from "next/link";
 
 import { getAllProduct } from "../action/menuApi";
 import Slider from "react-slick";
@@ -17,15 +15,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "../styles/Home.module.css";
 import Arrows from "../components/Button/Arrows";
+import SliderSection from "../components/section/SliderSection/SliderSection";
 
 function Home({ products, categories, collections }) {
   const [showTabs, setShowTabs] = useState(true);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
-  const [showSaleOfprice, setShowSaleOfPrice] = useState(true);
-  const [allProducts, setAllProducts] = useState(products);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [filteredProductsCollection, setFilteredProductsCollection] = useState([]);
-
+  const [filteredProductsCollection, setFilteredProductsCollection] = useState(
+    []
+  );
   const arrivalSliderRef = useRef(null);
   const sellersSliderRef = useRef(null);
   const featuredSliderRef = useRef(null);
@@ -46,7 +43,7 @@ function Home({ products, categories, collections }) {
     }
     return sliderItems;
   };
-  console.log(getSliderItems);
+  // console.log(getSliderItems);
 
   const specialSettings = {
     dots: false,
@@ -75,35 +72,6 @@ function Home({ products, categories, collections }) {
     ],
   };
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    loop: true,
-    arrows: false,
-    speed: 250,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-
-    responsive: [
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        },
-      },
-    ],
-  };
-
-  // console.log(products);
-
   useEffect(() => {
     const filterProductCate = collections.map((collection) => {
       const filteredProducts = products.filter((product) =>
@@ -116,10 +84,6 @@ function Home({ products, categories, collections }) {
     });
     setFilteredProductsCollection(filterProductCate);
   }, []);
-
-  console.log(filteredProductsCollection);
-
-  // console.log(categories);
 
   return (
     <div>
@@ -152,32 +116,15 @@ function Home({ products, categories, collections }) {
                       role="tabpanel"
                       aria-labelledby="arrival-tab"
                     >
-                      <div
-                        className={styles.shop}
-                        style={{ position: "relative" }}
-                      >
-                        <Slider ref={arrivalSliderRef} {...settings}>
-                          {filteredProductsCollection.length > 0 &&
-                            filteredProductsCollection[1].products.map((product) => (
-                              <div key={product.id} className="item">
-                                <ProductCard
-                                  productData={product}
-                                  showProductActionBox={showProductActionBox}
-                                />
-                              </div>
-                            ))}
-
-                          {/* {products.map((product) => (
-                            <div key={product.id} className="item ">
-                              <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
-                            </div>
-                          ))} */}
-                        </Slider>
-                        <Arrows sliderRef={arrivalSliderRef} />
-                      </div>
+                      <SliderSection
+                        sliderRef={arrivalSliderRef}
+                        products={
+                          filteredProductsCollection.length > 0
+                            ? filteredProductsCollection[1].products
+                            : []
+                        }
+                        showProductActionBox={showProductActionBox}
+                      />
                     </div>
                     <div
                       className="tab-pane fade"
@@ -185,23 +132,15 @@ function Home({ products, categories, collections }) {
                       role="tabpanel"
                       aria-labelledby="sellers-tab"
                     >
-                      <div
-                        className={styles.shop}
-                        style={{ position: "relative" }}
-                      >
-                        <Slider ref={sellersSliderRef} {...settings}>
-                          {filteredProductsCollection.length > 0 &&
-                            filteredProductsCollection[3].products.map((product) => (
-                              <div key={product.id} className="item">
-                                <ProductCard
-                                  productData={product}
-                                  showProductActionBox={showProductActionBox}
-                                />
-                              </div>
-                            ))}
-                        </Slider>
-                        <Arrows sliderRef={sellersSliderRef} />
-                      </div>
+                      <SliderSection
+                        sliderRef={sellersSliderRef}
+                        products={
+                          filteredProductsCollection.length > 0
+                            ? filteredProductsCollection[3].products
+                            : []
+                        }
+                        showProductActionBox={showProductActionBox}
+                      />
                     </div>
                     <div
                       className="tab-pane fade"
@@ -209,23 +148,15 @@ function Home({ products, categories, collections }) {
                       role="tabpanel"
                       aria-labelledby="featured-tab"
                     >
-                      <div
-                        className={styles.shop}
-                        style={{ position: "relative" }}
-                      >
-                        <Slider ref={featuredSliderRef} {...settings}>
-                          {filteredProductsCollection.length > 0 &&
-                            filteredProductsCollection[2].products.map((product) => (
-                              <div key={product.id} className="item">
-                                <ProductCard
-                                  productData={product}
-                                  showProductActionBox={showProductActionBox}
-                                />
-                              </div>
-                            ))}
-                        </Slider>
-                        <Arrows sliderRef={featuredSliderRef} />
-                      </div>
+                      <SliderSection
+                        sliderRef={featuredSliderRef}
+                        products={
+                          filteredProductsCollection.length > 0
+                            ? filteredProductsCollection[2].products
+                            : []
+                        }
+                        showProductActionBox={showProductActionBox}
+                      />
                     </div>
                     <div
                       className="tab-pane fade"
@@ -233,23 +164,15 @@ function Home({ products, categories, collections }) {
                       role="tabpanel"
                       aria-labelledby="special-tab"
                     >
-                      <div
-                        className={styles.shop}
-                        style={{ position: "relative" }}
-                      >
-                        <Slider ref={specialSliderRef} {...settings}>
-                          {filteredProductsCollection.length > 0 &&
-                            filteredProductsCollection[4].products.map((product) => (
-                              <div key={product.id} className="item">
-                                <ProductCard
-                                  productData={product}
-                                  showProductActionBox={showProductActionBox}
-                                />
-                              </div>
-                            ))}
-                        </Slider>
-                        <Arrows sliderRef={specialSliderRef} />
-                      </div>
+                      <SliderSection
+                        sliderRef={specialSliderRef}
+                        products={
+                          filteredProductsCollection.length > 0
+                            ? filteredProductsCollection[4].products
+                            : []
+                        }
+                        showProductActionBox={showProductActionBox}
+                      />
                     </div>
                   </div>
                 </div>
@@ -342,20 +265,15 @@ function Home({ products, categories, collections }) {
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <div className={styles.shop} style={{ position: "relative" }}>
-                    <Slider ref={sliderRef5} {...settings}>
-                      {filteredProductsCollection.length > 0 &&
-                        filteredProductsCollection[2].products.map((product) => (
-                          <div key={product.id} className="item">
-                            <ProductCard
-                              productData={product}
-                              showProductActionBox={showProductActionBox}
-                            />
-                          </div>
-                        ))}
-                    </Slider>
-                    <Arrows sliderRef={sliderRef5} />
-                  </div>
+                  <SliderSection
+                    sliderRef={sliderRef5}
+                    products={
+                      filteredProductsCollection.length > 0
+                        ? filteredProductsCollection[2].products
+                        : []
+                    }
+                    showProductActionBox={showProductActionBox}
+                  />
                 </div>
               </div>
             </div>
@@ -372,20 +290,15 @@ function Home({ products, categories, collections }) {
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <div className={styles.shop} style={{ position: "relative" }}>
-                    <Slider ref={sliderRef6} {...settings}>
-                      {filteredProductsCollection.length > 0 &&
-                        filteredProductsCollection[0].products.map((product) => (
-                          <div key={product.id} className="item">
-                            <ProductCard
-                              productData={product}
-                              showProductActionBox={showProductActionBox}
-                            />
-                          </div>
-                        ))}
-                    </Slider>
-                    <Arrows sliderRef={sliderRef6} />
-                  </div>
+                  <SliderSection
+                    sliderRef={sliderRef6}
+                    products={
+                      filteredProductsCollection.length > 0
+                        ? filteredProductsCollection[0].products
+                        : []
+                    }
+                    showProductActionBox={showProductActionBox}
+                  />
                 </div>
               </div>
             </div>

@@ -9,7 +9,7 @@ const Tags = ({collections, productCount}) => {
             </Link>
             <ul className="widget_categories">
                 {collections.map((collection) => (
-                    <li>
+                    <li key={collection.id}>
                         <Link href={`/collection/${[collection.code]}`}>
                             <span className="categories_name">
                                 {collection.name}
