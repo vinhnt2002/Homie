@@ -72,7 +72,14 @@ const PriceFilter = () => {
   );
 };
 
-const shopleft = ({ products, categories, category, filteredProducts }) => {
+const shopleft = ({
+  products,
+  categories,
+  category,
+  filteredProducts,
+  productCount,
+  collections,
+}) => {
   const router = useRouter();
 
   const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -124,13 +131,13 @@ const shopleft = ({ products, categories, category, filteredProducts }) => {
   // Apply pagination to the data
   const startIndex = currentPage * itemsPerPage;
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
-
+  let i = 0;
   return (
     <div className="main_content">
       <BreadCrumb
-      descriptionTitle={category.name}
-      title={category.name}
-      middlePath="Danh mục"
+        descriptionTitle={category.name}
+        title={category.name}
+        middlePath="Danh mục"
       ></BreadCrumb>
       {/* START SECTION SHOP */}
       <div className="section">
@@ -166,8 +173,8 @@ const shopleft = ({ products, categories, category, filteredProducts }) => {
                     />
                   </div>
                 ))}
-              
-              {/* relative Product  */}
+
+                {/* relative Product  */}
 
                 {/* {cateCodeObject.length > 0 &&
               cateCodeObject[0].products.map((product) => (
@@ -178,7 +185,7 @@ const shopleft = ({ products, categories, category, filteredProducts }) => {
                   />
                 </div>
               ))} */}
-              
+
                 <div className="row align-items-center mb-4 pb-1">
                   <div className="col-12">
                     <div className="d-flex justify-content-center product_header">
@@ -214,19 +221,19 @@ const shopleft = ({ products, categories, category, filteredProducts }) => {
                     <h5 className="widget_title">Danh Mục</h5>
                   </Link>
                   <ul className="widget_categories">
-                    {/* {collections.map((collection) => (
-                    <li>
-                      <Link href={`/collection/${[collection.id]}`}>
-                        <span className="categories_name">
-                          {collection.name}
-                        </span>
-                        <span className="categories_num">
-                          ({productCount[i]})
-                        </span>
-                        <span style={{ display: "none" }}>{i++}</span>
-                      </Link>
-                    </li>
-                  ))} */}
+                    {collections.map((collection) => (
+                      <li>
+                        <Link href={`/collection/${[collection.code]}`}>
+                          <span className="categories_name">
+                            {collection.name}
+                          </span>
+                          <span className="categories_num">
+                            ({productCount[i]})
+                          </span>
+                          <span style={{ display: "none" }}>{i++}</span>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="widget">
@@ -268,6 +275,19 @@ export async function getStaticProps({ params }) {
   const categories = data.categories;
   const category = categories.find((c) => c.code === categoryId);
   const products = data.products;
+  const collections = data.collections;
+
+  const productCount = collections.map((collection) => {
+    let count = 0;
+
+    products.forEach((product) => {
+      if (product.collectionIds.includes(collection.id)) {
+        count++;
+      }
+    });
+
+    return count;
+  });
 
   // Filter products by categoryIds  LOGIC T THEM NEW O DAY
   const filteredProducts = products.filter((product) =>
@@ -275,6 +295,13 @@ export async function getStaticProps({ params }) {
   );
 
   return {
-    props: { products, categories, category, filteredProducts },
+    props: {
+      products,
+      categories,
+      category,
+      collections,
+      filteredProducts,
+      productCount,
+    },
   };
 }

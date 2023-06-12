@@ -59,12 +59,7 @@ const YourPageComponent = () => {
           <div key={product.id}>
             {product.name}
             <div className="d-flex flex-column m-3 gap-3">
-              <Image
-                src={product.picUrl}
-                alt="img"
-                width={200}
-                height={200}
-              />
+              <Image src={product.picUrl} alt="img" width={200} height={200} />
               <span>{product.sellingPrice}</span>
             </div>
           </div>

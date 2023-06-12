@@ -73,7 +73,13 @@ const PriceFilter = () => {
   );
 };
 
-const shopleft = ({ products, collections, collection, filteredProducts }) => {
+const shopleft = ({
+  products,
+  collections,
+  collection,
+  filteredProducts,
+  productCount,
+}) => {
   const router = useRouter();
 
   const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -124,7 +130,7 @@ const shopleft = ({ products, collections, collection, filteredProducts }) => {
   // Apply pagination to the data
   const startIndex = currentPage * itemsPerPage;
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
-
+  let i = 0;
   return (
     <div className="main_content">
       <BreadCrumb
@@ -202,13 +208,15 @@ const shopleft = ({ products, collections, collection, filteredProducts }) => {
                   </Link>
                   <ul className="widget_categories">
                     {collections.map((collection) => (
-                      <li key={collection.id}>
+                      <li>
                         <Link href={`/collection/${[collection.code]}`}>
                           <span className="categories_name">
                             {collection.name}
                           </span>
-                          {/* <span className="categories_num">({productCount[i]})</span> */}
-                          {/* <span style={{ display: 'none' }}>{i++}</span> */}
+                          <span className="categories_num">
+                            ({productCount[i]})
+                          </span>
+                          <span style={{ display: "none" }}>{i++}</span>
                         </Link>
                       </li>
                     ))}
@@ -254,11 +262,28 @@ export async function getStaticProps({ params }) {
   const collection = collections.find((c) => c.code === collectionId);
   const products = data.products; // take the products attribute in the menu
 
+  const productCount = collections.map((collection) => {
+    let count = 0;
+
+    products.forEach((product) => {
+      if (product.collectionIds.includes(collection.id)) {
+        count++;
+      }
+    });
+
+    return count;
+  });
   // Filter products by categoryIds  LOGIC T THEM NEW O DAY
   const filteredProducts = products.filter((product) =>
     product.collectionIds.includes(collection.id)
   );
   return {
-    props: { products, collections, collection, filteredProducts },
+    props: {
+      products,
+      collections,
+      collection,
+      filteredProducts,
+      productCount,
+    },
   };
 }

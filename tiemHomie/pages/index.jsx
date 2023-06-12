@@ -160,9 +160,9 @@ function Home({ products, categories }) {
                             filteredProductsCate[13].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
+                                  productData={product}
+                                  showProductActionBox={showProductActionBox}
+                                />
                               </div>
                             ))}
 
@@ -214,13 +214,13 @@ function Home({ products, categories }) {
                         style={{ position: "relative" }}
                       >
                         <Slider ref={sellersSliderRef} {...settings}>
-                        {filteredProductsCate.length > 0 &&
+                          {filteredProductsCate.length > 0 &&
                             filteredProductsCate[6].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
+                                  productData={product}
+                                  showProductActionBox={showProductActionBox}
+                                />
                               </div>
                             ))}
                         </Slider>
@@ -263,13 +263,13 @@ function Home({ products, categories }) {
                         style={{ position: "relative" }}
                       >
                         <Slider ref={featuredSliderRef} {...settings}>
-                        {filteredProductsCate.length > 0 &&
+                          {filteredProductsCate.length > 0 &&
                             filteredProductsCate[8].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
+                                  productData={product}
+                                  showProductActionBox={showProductActionBox}
+                                />
                               </div>
                             ))}
                         </Slider>
@@ -312,13 +312,13 @@ function Home({ products, categories }) {
                         style={{ position: "relative" }}
                       >
                         <Slider ref={specialSliderRef} {...settings}>
-                        {filteredProductsCate.length > 0 &&
+                          {filteredProductsCate.length > 0 &&
                             filteredProductsCate[10].products.map((product) => (
                               <div key={product.id} className="item">
                                 <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
+                                  productData={product}
+                                  showProductActionBox={showProductActionBox}
+                                />
                               </div>
                             ))}
                         </Slider>
@@ -443,15 +443,15 @@ function Home({ products, categories }) {
                 <div className="col-md-12">
                   <div className={styles.shop} style={{ position: "relative" }}>
                     <Slider ref={sliderRef5} {...settings}>
-                    {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[8].products.map((product) => (
-                              <div key={product.id} className="item">
-                                <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
-                              </div>
-                            ))}
+                      {filteredProductsCate.length > 0 &&
+                        filteredProductsCate[8].products.map((product) => (
+                          <div key={product.id} className="item">
+                            <ProductCard
+                              productData={product}
+                              showProductActionBox={showProductActionBox}
+                            />
+                          </div>
+                        ))}
                     </Slider>
                     <div className={styles.buttons}>
                       <div className={styles.prevB}>
@@ -494,15 +494,15 @@ function Home({ products, categories }) {
                 <div className="col-md-12">
                   <div className={styles.shop} style={{ position: "relative" }}>
                     <Slider ref={sliderRef6} {...settings}>
-                    {filteredProductsCate.length > 0 &&
-                            filteredProductsCate[4].products.map((product) => (
-                              <div key={product.id} className="item">
-                                <ProductCard
-                                productData={product}
-                                showProductActionBox={showProductActionBox}
-                              />
-                              </div>
-                            ))}
+                      {filteredProductsCate.length > 0 &&
+                        filteredProductsCate[4].products.map((product) => (
+                          <div key={product.id} className="item">
+                            <ProductCard
+                              productData={product}
+                              showProductActionBox={showProductActionBox}
+                            />
+                          </div>
+                        ))}
                     </Slider>
                     <div className={styles.buttons}>
                       <div className={styles.prevB}>
