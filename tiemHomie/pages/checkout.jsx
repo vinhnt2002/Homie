@@ -7,47 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateTotal, removeItem } from "@/redux/reducers/cartSlice";
 import ProductCardPage from "../components/Header/Cart/ProductCartPage";
 
-// const products = [
-//     {
-//         image: "assets/images2/product-img1jpg@2x.png",
-//         name: "Mèo gốm kimono",
-//         price: "145.000",
-//         quantity: 1,
-//         subtotal: "145.000"
-//     },
-//     {
-//         image: "assets/images2/product-img2jpg@2x.png",
-//         name: "Gối nơ thư giãn",
-//         price: "350.000",
-//         quantity: 1,
-//         subtotal: "350.000"
-//     },
-//     {
-//         image: "assets/images2/product-img3jpg@2x.png",
-//         name: "Heo Molly",
-//         price: "350.000",
-//         quantity: 3,
-//         subtotal: "350.000"
-//     }
-// ];
-
-// const cartTotal = [
-  
-  
-//   {
-//     label: "TỔNG CỘNG",
-//     amount: "745.000 VND",
-//   },
-//   {
-//     label: "PHÍ VẬN CHUYỂN",
-//     amount: "MIỄN PHÍ",
-//   },
-//   {
-//     label: "TỔNG ĐƠN HÀNG",
-//     amount: <strong>745.000 VND</strong>,
-//   },
-// ];
-
 const Coupon = () => {
   const [showInfo, setShowInfo] = useState(false);
   return (
@@ -149,10 +108,11 @@ const cart = () => {
   return (
     <div>
       <BreadCrumb
-        className="d-flex justify-content-center"
-        href="/checkout"
-        title="Checkout"
+        // className="d-flex justify-content-center"
+        // href="/checkout"
+        title="Thanh toán"
         descriptionTitle="Giỏ hàng của bạn"
+        middlePath="Giỏ hàng"
       />
       <div className="main_content">
         <div className="section">

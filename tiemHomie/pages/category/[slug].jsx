@@ -12,66 +12,7 @@ import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
 import { getAllProduct } from "../../action/menuApi";
 import { useRouter } from "next/router";
 import classes from "./shop_left.module.css";
-
-const PriceFilter = () => {
-  const [value, setValue] = useState([80000, 700000]);
-
-  const handleSliderChange = (newValue) => {
-    setValue(newValue);
-  };
-
-  const sliderStyle = {
-    width: "100%",
-    margin: "0 auto",
-    // Add more styles as needed
-  };
-
-  const valueContainerStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "10px",
-    // Add more styles as needed
-  };
-
-  const valueLabelStyle = {
-    marginRight: "10px",
-    // Add more styles as needed
-  };
-
-  const handleStyle = {
-    borderColor: "#FFF",
-    backgroundColor: "#FFF",
-  };
-
-  const trackStyle = {
-    backgroundColor: "red",
-  };
-
-  return (
-    <div>
-      <h5>Giá</h5>
-      <Slider
-        range
-        step={50000}
-        min={0}
-        max={1000000}
-        value={value}
-        onChange={handleSliderChange}
-        style={sliderStyle}
-        trackStyle={trackStyle}
-        handleStyle={[handleStyle, handleStyle]} // Apply handle styles to both markers
-      />
-      <div style={valueContainerStyle}>
-        <div style={valueLabelStyle}>Giá:</div>
-        <div className="fw-bold">
-          {value[0].toLocaleString()}VND-{value[1].toLocaleString()}VND
-        </div>
-      </div>
-    </div>
-  );
-};
-
+import PriceFilter from "../../components/price/priceFilter";
 const shopleft = ({
   products,
   categories,
@@ -237,7 +178,7 @@ const shopleft = ({
                   </ul>
                 </div>
                 <div className="widget">
-                  <PriceFilter products={products} setData={setData} />
+                <PriceFilter products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} />
                 </div>
               </div>
             </div>

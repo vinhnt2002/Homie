@@ -17,7 +17,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "../styles/Home.module.css";
 
-function Home({ products, categories }) {
+function Home({ products, categories, collections }) {
   const [showTabs, setShowTabs] = useState(true);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
   const [showSaleOfprice, setShowSaleOfPrice] = useState(true);
@@ -131,7 +131,7 @@ function Home({ products, categories }) {
         <div className="single_banner">
           <div className="row">
             <div className="col-12">
-              <Collection />
+            <Collection collections={collections} />
             </div>
           </div>
         </div>
@@ -626,8 +626,8 @@ export async function getStaticProps() {
 
   const products = data.products; // take the products attribute in the menu
   const categories = data.categories;
-
+  const collections = data.collections;
   return {
-    props: { products, categories },
+    props: { products, categories, collections },
   };
 }

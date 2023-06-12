@@ -10,73 +10,7 @@ import { getAllProduct } from "../../action/menuApi";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import classes from "./shop_left.module.css";
-const formatPrice = (price) => {
-  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-};
-const PriceFilter = ({ products, setData }) => {
-  const [value, setValue] = useState([0, 1000000]);
-
-  const handleSliderChange = (newValue) => {
-    setValue(newValue);
-  };
-
-  const sliderStyle = {
-    width: "100%",
-    margin: "0 auto",
-    // Add more styles as needed
-  };
-
-  const valueContainerStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "10px",
-    // Add more styles as needed
-  };
-
-  const valueLabelStyle = {
-    // marginRight: "10px",
-    // Add more styles as needed
-  };
-  const handleStyle = {
-    border: "1px solid aliceblue",
-    borderRadius: "50%",
-    color: "#FFF",
-    backgroundColor: "#FFF",
-  };
-  const trackStyle = {
-    backgroundColor: "red",
-  };
-  useEffect(() => {
-    const filteredData = products.filter(
-      (product) =>
-        product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
-    );
-    setData(filteredData);
-  }, [value, products, setData]);
-  return (
-    <div>
-      <h5>Giá</h5>
-      <Slider
-        range
-        step={50000}
-        min={0}
-        max={1000000}
-        value={value}
-        onChange={handleSliderChange}
-        style={sliderStyle}
-        trackStyle={trackStyle}
-        handleStyle={[handleStyle, handleStyle]} // Apply handle styles to both markers
-      />
-      <div style={valueContainerStyle}>
-        <div style={valueLabelStyle}>Giá:</div>
-        <div className="fw-bold">
-          {formatPrice(value[0])}VND-{formatPrice(value[1])}VND
-        </div>
-      </div>
-    </div>
-  );
-};
+import PriceFilter from "../../components/price/priceFilter";
 
 const shopleft = ({ products, collections, productCount }) => {
   console.log(products);
@@ -135,7 +69,7 @@ const shopleft = ({ products, collections, productCount }) => {
       <BreadCrumb
         descriptionTitle="Tất Cả Sản Phẩm"
         title="Tất cả sản phẩm"
-        middlePath="Collection"
+        middlePath="Bộ sưu tập"
       ></BreadCrumb>
       {/* START SECTION SHOP */}
       <div className="section">
@@ -222,7 +156,7 @@ const shopleft = ({ products, collections, productCount }) => {
                   </ul>
                 </div>
                 <div className="widget">
-                  <PriceFilter products={products} setData={setData} />
+                <PriceFilter products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} />
                 </div>
               </div>
             </div>
