@@ -70,6 +70,21 @@ const shopleft = ({
   const startIndex = currentPage * itemsPerPage;
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
   let i = 0;
+  //price filter
+  const [value, setValue] = useState([0, 1000000]);
+
+  const handleSliderChange = (newValue) => {
+      setValue(newValue);
+  };
+  useEffect(() => {
+    const filteredData = filteredProducts.filter(
+        (product) =>
+            product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
+    );
+    setData(filteredData);
+    setSelectedSortOption(""); // Reset selected sort option
+
+}, [value, filteredProducts, setData,setSelectedSortOption]);
   return (
     <div className="main_content">
       <BreadCrumb
@@ -106,7 +121,7 @@ const shopleft = ({
                 />
               </div>
             </div>
-            <SideBar collections={collections} productCount={productCount} products={filteredProducts} setData={setData} setSelectedSortOption={setSelectedSortOption} show={show} handleClose={handleClose} />
+            <SideBar collections={collections} productCount={productCount}  show={show} handleClose={handleClose} handleSliderChange={handleSliderChange} value={value}/>
           </div>
         </div>
       </div>

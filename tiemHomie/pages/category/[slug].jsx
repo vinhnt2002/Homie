@@ -75,6 +75,21 @@ const shopleft = ({
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  //price filter 
+  const [value, setValue] = useState([0, 1000000]);
+
+  const handleSliderChange = (newValue) => {
+      setValue(newValue);
+  };
+  useEffect(() => {
+    const filteredData = filteredProducts.filter(
+        (product) =>
+            product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
+    );
+    setData(filteredData);
+    setSelectedSortOption(""); // Reset selected sort option
+
+}, [value, filteredProducts, setData,setSelectedSortOption]);
   return (
     <div className="main_content">
       <BreadCrumb
@@ -94,6 +109,7 @@ const shopleft = ({
                     selectedSortOption={selectedSortOption}
                   />
                   <FilterButton handleShow={handleShow}/>
+
                 </div>
               </div>
               <div className="row shop_container">
@@ -111,7 +127,7 @@ const shopleft = ({
                 ></Pagination>
               </div>
             </div>
-            <SideBar collections={collections} productCount={productCount} products={filteredProducts} setData={setData} setSelectedSortOption={setSelectedSortOption} show={show} handleClose={handleClose} />
+            <SideBar collections={collections} productCount={productCount}  show={show} handleClose={handleClose} handleSliderChange={handleSliderChange} value={value}/>
           </div>
         </div>
       </div>

@@ -6,20 +6,12 @@ import "rc-slider/assets/index.css";
 const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
-const PriceFilter = ({ products, setData, setSelectedSortOption }) => {
-    // const [selectedSortOption, setSelectedSortOption] = useState('');
-    const [value, setValue] = useState([0, 1000000]);
-
-    const handleSliderChange = (newValue) => {
-        setValue(newValue);
-    };
-
+const PriceFilter = ({ handleSliderChange, value}) => {
     const sliderStyle = {
         width: "100%",
         margin: "0 auto",
         // Add more styles as needed
     };
-
     const valueContainerStyle = {
         display: "flex",
         alignItems: "center",
@@ -27,29 +19,17 @@ const PriceFilter = ({ products, setData, setSelectedSortOption }) => {
         marginTop: "10px",
         // Add more styles as needed
     };
-
     const valueLabelStyle = {
         marginRight: "10px",
         // Add more styles as needed
     };
-
     const handleStyle = {
         borderColor: "#FFF",
         backgroundColor: "#FFF",
     };
-
     const trackStyle = {
         backgroundColor: "red",
     };
-    useEffect(() => {
-        const filteredData = products.filter(
-            (product) =>
-                product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
-        );
-        setData(filteredData);
-        setSelectedSortOption(""); // Reset selected sort option
-
-    }, [value, products, setData,setSelectedSortOption]);
     return (
         <div>
             <h5>Giá</h5>

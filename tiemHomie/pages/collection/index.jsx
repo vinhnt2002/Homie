@@ -58,10 +58,26 @@ const shopleft = ({ products, collections, productCount }) => {
   useEffect(() => {
     setData(data);
   }, [data]);
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [value, setValue] = useState([0, 1000000]);
+
+  const handleSliderChange = (newValue) => {
+      setValue(newValue);
+  };
+  useEffect(() => {
+    const filteredData = products.filter(
+        (product) =>
+            product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
+    );
+    setData(filteredData);
+    setSelectedSortOption(""); // Reset selected sort option
+
+}, [value, products, setData,setSelectedSortOption]);
   return (
     <div className="main_content">
       <BreadCrumb
@@ -98,8 +114,8 @@ const shopleft = ({ products, collections, productCount }) => {
                 />
               </div>
             </div>
-            <SideBar collections={collections} productCount={productCount} products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} show={show} handleClose={handleClose}/>
-          </div>
+            <SideBar collections={collections} productCount={productCount}  show={show} handleClose={handleClose} handleSliderChange={handleSliderChange} value={value}/>          
+            </div>
         </div>
       </div>
       {/* END SECTION SHOP */}
