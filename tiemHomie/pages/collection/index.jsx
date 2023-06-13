@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { getAllProduct } from "../../action/menuApi";
-
+import { useRouter } from "next/router";
 import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
 import ProductCard from "../../components/section/productCard/ProductCard";
-import PriceFilter from "../../components/price/priceFilter";
-import Pagination from "../../components/paging/Pagination";
-import SortBySelected from "../../components/sortBySelected/SortBySelected";
-import Tags from "../../components/Tags/Tags";
+import { getAllProduct } from "../../action/menuApi";
+import Pagination from "../../components/FilterProductByComponent/paging/Pagination";
+import SortBySelected from "../../components/FilterProductByComponent/sortBySelected/SortBySelected";
+import { AiFillFilter } from "react-icons/ai";
+import SideBar from "../../components/FilterProductByComponent/sidebar/SideBar";
 
 const shopleft = ({ products, collections, productCount }) => {
   const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -57,7 +57,10 @@ const shopleft = ({ products, collections, productCount }) => {
   useEffect(() => {
     setData(data);
   }, [data]);
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div className="main_content">
       <BreadCrumb
@@ -70,12 +73,15 @@ const shopleft = ({ products, collections, productCount }) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-9">
-              <div className="row align-items-center mb-4 pb-1">
-                <div className="col-12">
+            <div className="row align-items-center mb-4 pb-1">
+                <div className="col-12 d-flex justify-content-between product_header">
                   <SortBySelected
                     handleSortOptionChange={handleSortOptionChange}
                     selectedSortOption={selectedSortOption}
                   />
+                  <button className="btn d-lg-none text-end border" onClick={handleShow}>
+                    <AiFillFilter /> Lọc sản phẩm
+                  </button>
                 </div>
               </div>
               <div className="row shop_container">
@@ -93,20 +99,7 @@ const shopleft = ({ products, collections, productCount }) => {
                 />
               </div>
             </div>
-            <div className="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
-              <div className="sidebar">
-                <div className="widget">
-                  <Tags collections={collections} productCount={productCount} />
-                </div>
-                <div className="widget">
-                  <PriceFilter
-                    products={products}
-                    setData={setData}
-                    setSelectedSortOption={setSelectedSortOption}
-                  />
-                </div>
-              </div>
-            </div>
+            <SideBar collections={collections} productCount={productCount} products={products} setData={setData} setSelectedSortOption={setSelectedSortOption} show={show} handleClose={handleClose}/>
           </div>
         </div>
       </div>

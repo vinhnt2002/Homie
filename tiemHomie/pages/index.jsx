@@ -7,7 +7,7 @@ import SectionBanner from "../components/SectionBanner/SectionBanner";
 import ProductList from "../components/section/productCard/ProductList";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import Collection from "../components/collection/Collection";
+import Collection from "../components/FilterProductByComponent/collection/Collection";
 
 import { getAllProduct } from "../action/menuApi";
 import Slider from "react-slick";

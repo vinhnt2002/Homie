@@ -1,7 +1,7 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import classes from "../../pages/collection/shop_left.module.css";
+import classes from "../../../pages/collection/shop_left.module.css";
 
 const Pagination = ({ pageCount, onPageChange }) => {
   return (
