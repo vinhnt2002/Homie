@@ -429,7 +429,7 @@ const ProductDetail = ({ product, products, categories }) => {
                       </div>
                       <div id="fcta-zalo-tracking" className="fcta-zalo-mess">
                         <span id="fcta-zalo-tracking">
-                          Liên lạc để mua hàng nhanh chóng nhé !
+                          Liên lạc ngay để mua hàng nhanh chóng nhé !
                         </span>
                       </div>
                     </div>
