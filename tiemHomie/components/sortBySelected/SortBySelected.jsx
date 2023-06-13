@@ -2,8 +2,8 @@ import React from 'react'
 
 const SortBySelected = ({handleSortOptionChange, selectedSortOption}) => {
     return (
-        <div className="d-flex justify-content-end product_header">
-            <div className="me-2 text-start">Sắp xếp theo</div>
+        <div className="d-flex justify-content-start product_header">
+            <div className="me-2 text-end">Sắp xếp theo</div>
             <div className="custom_select text-end">
                 <select
                     className="form-control form-control-sm"
