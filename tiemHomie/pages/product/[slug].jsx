@@ -50,12 +50,12 @@ const ProductDetail = ({ product, products, categories }) => {
     console.log("Categories:", categories);
     console.log("Products:", products);
 
-    const filterProductCate = categories.map((category) => {
+    const filterProductCate = categories.map((categoryId) => {
       const filteredProducts = products.filter((product) =>
-        product.categoryId.includes(category.id)
+        product.categoryId.includes(categoryId.id)
       );
       return {
-        category: category,
+        category: categoryId,
         products: filteredProducts,
       };
     });
@@ -205,6 +205,7 @@ const ProductDetail = ({ product, products, categories }) => {
                         useKeyboardArrows
                         showArrows={false}
                         swipeable
+                        preventMovementUntilSwipeScrollTolerance
                         // className="productCarousel"
                       >
                         {images.map((imgUrl, index) => (
