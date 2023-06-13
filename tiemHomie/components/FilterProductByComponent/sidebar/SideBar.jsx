@@ -13,6 +13,9 @@ const SideBar = ({collections, productCount, products, setData, setSelectedSortO
                 {/* Offcanvas for screens smaller than lg */}
                 <div className="d-lg-none">
                     <Offcanvas show={show} onHide={handleClose} responsive="lg">
+                        <Offcanvas.Header closeButton>
+                            Lọc sản phẩm
+                        </Offcanvas.Header>
                         <Offcanvas.Body>
                         <div className='p-5'>
                         <SmallSideBar collections={collections} productCount={productCount} products={products} setData={setData} setSelectedSortOption={setSelectedSortOption}/>

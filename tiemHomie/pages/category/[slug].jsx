@@ -9,6 +9,7 @@ import SortBySelected from "../../components/FilterProductByComponent/sortBySele
 import Pagination from "../../components/FilterProductByComponent/paging/Pagination";
 import SideBar from "../../components/FilterProductByComponent/sidebar/SideBar";
 import { AiFillFilter } from "react-icons/ai";
+import FilterButton from "../../components/FilterProductByComponent/sidebar/FilterButton";
 const shopleft = ({
   products,
   categories,
@@ -92,9 +93,7 @@ const shopleft = ({
                     handleSortOptionChange={handleSortOptionChange}
                     selectedSortOption={selectedSortOption}
                   />
-                  <button className="btn d-lg-none text-end border" onClick={handleShow}>
-                    <AiFillFilter /> Lọc sản phẩm
-                  </button>
+                  <FilterButton handleShow={handleShow}/>
                 </div>
               </div>
               <div className="row shop_container">

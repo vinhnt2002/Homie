@@ -7,6 +7,7 @@ import Pagination from "../../components/FilterProductByComponent/paging/Paginat
 import SortBySelected from "../../components/FilterProductByComponent/sortBySelected/SortBySelected";
 import { AiFillFilter } from "react-icons/ai";
 import SideBar from "../../components/FilterProductByComponent/sidebar/SideBar";
+import FilterButton from "../../components/FilterProductByComponent/sidebar/FilterButton";
 
 const shopleft = ({ products, collections, productCount }) => {
   const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -79,9 +80,7 @@ const shopleft = ({ products, collections, productCount }) => {
                     handleSortOptionChange={handleSortOptionChange}
                     selectedSortOption={selectedSortOption}
                   />
-                  <button className="btn d-lg-none text-end border" onClick={handleShow}>
-                    <AiFillFilter /> Lọc sản phẩm
-                  </button>
+                  <FilterButton handleShow={handleShow}/>
                 </div>
               </div>
               <div className="row shop_container">
