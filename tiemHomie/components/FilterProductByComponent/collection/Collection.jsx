@@ -35,7 +35,7 @@ const Collection = ({ collections }) => {
             <Carousel
               autoPlaySpeed={3000}
               autoPlay
-              minimumTouchDrag={20}
+              minimumTouchDrag={16}
               swipeable
               arrows={false}
               responsive={responsive}
