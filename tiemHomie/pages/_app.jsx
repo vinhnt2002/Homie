@@ -185,7 +185,8 @@ const MyApp = ({ Component, pageProps }) => {
       ) : (
         <>
         
-          <Provider store={store}>
+         <div style={{overflow:'hidden'}}>
+         <Provider store={store}>
           <PersistGate persistor={persistor}>
             <Header />
             <ButtonCustomer />
@@ -195,6 +196,7 @@ const MyApp = ({ Component, pageProps }) => {
           <Footer />
           </PersistGate>
           </Provider>
+         </div>
         </>
       )}
     </>

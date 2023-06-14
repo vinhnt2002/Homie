@@ -205,7 +205,7 @@ const ProductDetail = ({ product, products, categories }) => {
                         useKeyboardArrows
                         showArrows={false}
                         swipeable
-                        swipeScrollTolerance={16}
+                        swipeScrollTolerance={35}
                         preventMovementUntilSwipeScrollTolerance
                         // className="productCarousel"
                       >
