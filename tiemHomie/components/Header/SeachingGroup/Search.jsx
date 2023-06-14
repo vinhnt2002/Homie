@@ -1,7 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./Search.module.css"
 
-function Search() {
+function Search({ history }) {
+
+  const [keyword, setKeyword] = useState('');
+
+  const searchHandler = (e) => {
+    e.preventDefault()
+
+    if(keyword.trim()) {
+      history.pushState(`/search/${keyword}`)
+    } else {
+      history.pushState('/')
+    }
+
+  }
+
   return (
     <div className= {`${style.searchGroup} me-2 mb-2`}>
       {/* <div className="input-group rounded">
@@ -17,8 +31,12 @@ function Search() {
         </span>
       </div> */}
 
-      <form action="" className="nd-header-search-form">
-        <input type="text" name="query" className="search-auto " placeholder="Tìm kiếm..." autoComplete="off" id="" />
+      <form action="" className="nd-header-search-form" onSubmit={searchHandler}>
+        <input type="text" name="query" 
+        className="search-auto " placeholder="Tìm kiếm..." 
+        autoComplete="off" id="" 
+        onChange={(e) => setKeyword(e.target.value)}
+        />
         <input type="hidden" name="type" value="product" />
         <button className="btn btn-default" type="submit" aria-label="Tìm kiếm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">

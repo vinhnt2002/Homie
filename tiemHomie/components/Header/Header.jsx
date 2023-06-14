@@ -15,11 +15,15 @@ const Header = () => {
   const handleCartOpen = (e) => {
     e.preventDefault();
     setIsCartOpen(true);
+    setIsNavbarOpen(false);
+  setIsDropdownOpen(false);
   };
 
   const handleCartClose = (e) => {
     e.preventDefault();
     setIsCartOpen(false);
+    setIsNavbarOpen(false);
+  setIsDropdownOpen(false);
   };
   const router = useRouter();
 
@@ -33,6 +37,14 @@ const Header = () => {
     dispatch(updateTotal());
   }, [products, dispatch]);
 
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+
+  const handleLinkClick = () => {
+    setIsNavbarOpen(false);
+    setIsDropdownOpen(false);
+  };
   return (
     <>
       {isCartOpen ? (
@@ -125,13 +137,15 @@ const Header = () => {
                     )}
                   </li>
 
-                  <button
+                  {/* <button
                     className="navbar-toggler mt-0 mb-2 me-1"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
                     aria-expanded="false"
-                  >
+
+                  > */}
+                  <button className="navbar-toggler mt-0 mb-2 me-1" type="button" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
                     <span
                       className={`${style.toggle} ion-android-menu fs-3`}
                     ></span>
@@ -147,10 +161,14 @@ const Header = () => {
           >
             <div className="container p-0">
               <nav className={`${style.content} navbar navbar-expand-lg`}>
-                <div
+                {/* <div
                   className="collapse navbar-collapse justify-content-center"
                   id="navbarSupportedContent"
+                > */}
+                <div className={`collapse navbar-collapse justify-content-center${isNavbarOpen ? ' show' : ''}`} 
+                // id="navbarSupportedContent"
                 >
+
                   <ul className="navbar-nav">
                     <li className="dropdown mx-3">
                       <Link
@@ -167,21 +185,23 @@ const Header = () => {
                       <a
                         className={`${
                           router.pathname === "/collection" ? "active" : ""
-                        } dropdown-toggle nav-link`}
+                        } dropdown-toggle nav-link nav-item`}
                         href="/collection"
                         data-bs-toggle="dropdown"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                       >
                         Sản Phẩm
                       </a>
-                      <div className="dropdown-menu">
+                      <div className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
                         <ul className="mega-menu d-lg-flex">
                           <li className="mega-menu-col col-lg-2">
                             <ul>
                               <li className="dropdown-header">Quà Tặng</li>
                               <li>
                                 <Link
-                                  className="dropdown-item nav-link nav_item"
+                                  className="dropdown-item nav-link nav-item"
                                   href="/category/thu-bong"
+                                  onClick={handleLinkClick}
                                 >
                                   Thú Bông
                                 </Link>
@@ -190,6 +210,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/chen-dia-ly-su"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -198,6 +220,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/meo-gom"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Mèo Gốm
                                 </Link>
@@ -206,6 +230,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/men"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Mền
                                 </Link>
@@ -214,6 +240,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/tui-xach"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Túi Xách
                                 </Link>
@@ -229,6 +257,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/thu-bong"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Thú Bông
                                 </Link>
@@ -237,6 +267,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/goi-bong"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Gối Bông
                                 </Link>
@@ -245,6 +277,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/chen-dia-ly-su"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -253,6 +287,8 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/meo-gom"
+                                  onClick={handleLinkClick}
+
                                 >
                                   Mèo Gốm
                                 </Link>
@@ -261,6 +297,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/men"
+                                  onClick={handleLinkClick}
                                 >
                                   Mền
                                 </Link>
@@ -274,6 +311,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/thu-bong"
+                                  onClick={handleLinkClick}
                                 >
                                   Thú Bông
                                 </Link>
@@ -282,6 +320,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/goi-bong"
+                                  onClick={handleLinkClick}
                                 >
                                   Gối Bông
                                 </Link>
@@ -290,6 +329,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/men"
+                                  onClick={handleLinkClick}
                                 >
                                   Mền
                                 </Link>
@@ -298,6 +338,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/quat"
+                                  onClick={handleLinkClick}
                                 >
                                   Quạt
                                 </Link>
@@ -311,6 +352,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/chen-dia-ly-su"
+                                  onClick={handleLinkClick}
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -319,6 +361,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/men"
+                                  onClick={handleLinkClick}
                                 >
                                   Mền
                                 </Link>
@@ -327,6 +370,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/quat"
+                                  onClick={handleLinkClick}
                                 >
                                   Quạt
                                 </Link>
@@ -335,6 +379,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/goi-tua-lung"
+                                  onClick={handleLinkClick}
                                 >
                                   Gối Tựa Lưng
                                 </Link>
@@ -343,6 +388,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/goi-co"
+                                  onClick={handleLinkClick}
                                 >
                                   Gối Cổ
                                 </Link>
@@ -351,6 +397,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/ly-giu-nhiet"
+                                  onClick={handleLinkClick}
                                 >
                                   Ly Giữ Nhiệt
                                 </Link>
@@ -364,6 +411,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/moc-khoa"
+                                  onClick={handleLinkClick}
                                 >
                                   Móc Khoá
                                 </Link>
@@ -372,6 +420,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/tui-xach"
+                                  onClick={handleLinkClick}
                                 >
                                   Túi Xách
                                 </Link>
@@ -380,6 +429,7 @@ const Header = () => {
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/tui-my-pham"
+                                  onClick={handleLinkClick}
                                 >
                                   Túi Mỹ Phẩm
                                 </Link>
