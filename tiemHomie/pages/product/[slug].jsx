@@ -201,7 +201,7 @@ const ProductDetail = ({ product, products, categories }) => {
                         infiniteLoop
                         showIndicators={false}
                         showStatus={false}
-                        thumbWidth={119}
+                        thumbWidth={window.innerWidth > 900 ? 119 : 70}
                         useKeyboardArrows
                         showArrows={false}
                         swipeable
