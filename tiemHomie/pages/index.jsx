@@ -84,8 +84,8 @@ function Home({ products, categories, collections }) {
       };
     });
     setFilteredProductsCollection(filterProductCate);
+    console.log(filterProductCate);
   }, []);
-
   return (
     <div>
       <div>
@@ -359,7 +359,7 @@ function Home({ products, categories, collections }) {
                         className="overflow-hidden"
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[5].products
+                            ? filteredProductsCollection[6].products
                             : []
                         }
                       >
