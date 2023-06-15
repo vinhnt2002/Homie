@@ -73,6 +73,7 @@ function Home({ products, categories, collections }) {
   };
 
   useEffect(() => {
+    console.log(collections);
     const filterProductCate = collections.map((collection) => {
       const filteredProducts = products.filter((product) =>
         product.collectionIds.includes(collection.id)
@@ -120,7 +121,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={arrivalSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[1].products
+                            ? filteredProductsCollection[0].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -136,7 +137,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={sellersSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[3].products
+                            ? filteredProductsCollection[5].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -152,7 +153,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={featuredSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[2].products
+                            ? filteredProductsCollection[7].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -168,7 +169,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={specialSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[4].products
+                            ? filteredProductsCollection[6].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -269,7 +270,7 @@ function Home({ products, categories, collections }) {
                     sliderRef={sliderRef5}
                     products={
                       filteredProductsCollection.length > 0
-                        ? filteredProductsCollection[2].products
+                        ? filteredProductsCollection[1].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -294,7 +295,7 @@ function Home({ products, categories, collections }) {
                     sliderRef={sliderRef6}
                     products={
                       filteredProductsCollection.length > 0
-                        ? filteredProductsCollection[0].products
+                        ? filteredProductsCollection[6].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -356,6 +357,11 @@ function Home({ products, categories, collections }) {
                         ref={sliderRef7}
                         {...specialSettings}
                         className="overflow-hidden"
+                        products={
+                          filteredProductsCollection.length > 0
+                            ? filteredProductsCollection[5].products
+                            : []
+                        }
                       >
                         {getSliderItems().map((sliderItems, index) => (
                           <div key={index} className="gridContainer">
