@@ -137,7 +137,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={sellersSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[5].products
+                            ? filteredProductsCollection[7].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -359,7 +359,7 @@ function Home({ products, categories, collections }) {
                         className="overflow-hidden"
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[5].products
+                            ? filteredProductsCollection[7].products
                             : []
                         }
                       >
