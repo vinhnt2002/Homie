@@ -121,7 +121,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={arrivalSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[0].products
+                            ? filteredProductsCollection[7].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -137,7 +137,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={sellersSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[7].products
+                            ? filteredProductsCollection[5].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -153,7 +153,7 @@ function Home({ products, categories, collections }) {
                         sliderRef={featuredSliderRef}
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[7].products
+                            ? filteredProductsCollection[8].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -270,7 +270,7 @@ function Home({ products, categories, collections }) {
                     sliderRef={sliderRef5}
                     products={
                       filteredProductsCollection.length > 0
-                        ? filteredProductsCollection[1].products
+                        ? filteredProductsCollection[7].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -359,7 +359,7 @@ function Home({ products, categories, collections }) {
                         className="overflow-hidden"
                         products={
                           filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[7].products
+                            ? filteredProductsCollection[5].products
                             : []
                         }
                       >

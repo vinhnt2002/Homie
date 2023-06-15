@@ -463,8 +463,8 @@ const ProductDetail = ({ product, products, categories }) => {
                     <SliderSection
                         sliderRef={sliderRef6}
                         products={
-                          filteredProductsCate.length > 0
-                            ? filteredProductsCate[4].products
+                          filteredProductsCate.length > 0 && filteredProductsCate.find(obj => obj.category.name === categoryName)
+                            ? filteredProductsCate.find(obj => obj.category.name === categoryName).products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
