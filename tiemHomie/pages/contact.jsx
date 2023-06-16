@@ -37,7 +37,7 @@ const contact = () => {
           </div>
           <div className="contact_text">
             <span>Địa chỉ Email</span>
-            <a href="mailto:info@sitename.com">chieunganvo88@gmail.com </a>
+            <a href="mailto:info@sitename.com">tiemhomie@gmail.com </a>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ const contact = () => {
           </div>
           <div className="contact_text">
             <span>Điện thoại</span>
-            <p>093 839 30 84</p>
+            <p>0386660782</p>
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@ const contact = () => {
                   id="submitButton"
                   name="submit"
                   value="Submit"
-                  href="/"
+                  href="mailto:tiemhomie@gmail.com"
                 >
                   Gửi
                 </button>
