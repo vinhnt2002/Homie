@@ -100,17 +100,19 @@ const Footer = ({}) => {
                   <ul className="contact_info">
                     <li>
                       <i className="ti-location-pin" />
-                      <p>132 Bến Vân Đồn P6 Q4, TP. Hồ Chí Minh</p>
+                      <p>132 Bến Vân Đồn P6 Q4, TP. Hồ Chí Minh <br>
+                      </br>(Nhà riêng, gọi trước khi qua)</p>
+                      
                     </li>
                     <li>
                       <i className="ti-email" />
                       <Link className="text-decoration-none" href="mailto:info@sitename.com">
-                        chieunganvo88@gmail.com
+                        tiemhomie@gmail.com
                       </Link>
                     </li>
                     <li>
                       <i className="ti-mobile" />
-                      <p>093 839 30 84</p>
+                      <p>0386660782</p>
                     </li>
                   </ul>
                 </div>
