@@ -26,7 +26,7 @@ const Tabs = ({description}) => {
                       </a>
                     </li>
 
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a
                         className="nav-link"
                         id="Reviews-tab"
@@ -38,7 +38,7 @@ const Tabs = ({description}) => {
                       >
                         NHẬN XÉT (2)
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                   <div className="tab-content shop_info_tab">
                     <div
@@ -54,7 +54,7 @@ const Tabs = ({description}) => {
                         {description}
                       </p>
                     </div>
-                    <div
+                    {/* <div
                       className="tab-pane fade"
                       id="Reviews"
                       role="tabpanel"
@@ -193,7 +193,7 @@ const Tabs = ({description}) => {
                           </div>
                         </form>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
