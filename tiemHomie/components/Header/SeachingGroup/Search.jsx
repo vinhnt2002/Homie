@@ -8,11 +8,11 @@ function Search({ history }) {
   const searchHandler = (e) => {
     e.preventDefault()
 
-    if(keyword.trim()) {
-      history.pushState(`/search/${keyword}`)
-    } else {
-      history.pushState('/')
-    }
+    // if(keyword.trim()) {
+    //   history.pushState(`/search/${keyword}`)
+    // } else {
+    //   history.pushState('/')
+    // }
 
   }
 

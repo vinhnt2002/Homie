@@ -90,7 +90,7 @@ const Header = () => {
                 <Search className="me-16 order-sm-last order-md-last" />
               </div>
 
-              <div className="col-6 col-md-2 col-sm-6 col-xl-2 col-xxl-2 d-flex align-items-center justify-content-end order-md-2 order-xl-2">
+              <div className="col-6 col-md-2 col-sm-6 col-xl-2 col-xxl-2 d-flex align-items-center justify-content-end order-md-2 order-xl-2 px-1">
                 <ul className="navbar-nav attr-nav align-items-center">
                   <li className={style.loginBtn}>
                     <a href="/">
@@ -98,7 +98,7 @@ const Header = () => {
                     </a>
                   </li>
 
-                  <li className="cart_hover">
+                  <li className="cart_hover px-1">
                     <a
                       className="nav-link cart_trigger"
                       href="#"
@@ -145,7 +145,7 @@ const Header = () => {
                     aria-expanded="false"
 
                   > */}
-                  <button className="navbar-toggler mt-0 mb-2 me-1" type="button" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
+                  <button className="navbar-toggler mt-0 mb-2 me-1 px-1" type="button" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
                     <span
                       className={`${style.toggle} ion-android-menu fs-3`}
                     ></span>
