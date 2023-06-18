@@ -1,20 +1,22 @@
 import React, {useState} from "react";
 import style from "./Search.module.css"
+import { useRouter } from 'next/navigation';
+
+
+
 
 function Search({ history }) {
 
-  const [keyword, setKeyword] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
-  const searchHandler = (e) => {
-    e.preventDefault()
+  const onSearch = (event) => {
+    event.preventDefault();
 
-    // if(keyword.trim()) {
-    //   history.pushState(`/search/${keyword}`)
-    // } else {
-    //   history.pushState('/')
-    // }
-
+    const encodeSearchQuery = encodeURI(searchQuery);
+    router.push(`/search?q=${encodeSearchQuery}`);
   }
+
 
   return (
     <div className= {`${style.searchGroup} me-2 mb-2`}>
@@ -31,11 +33,11 @@ function Search({ history }) {
         </span>
       </div> */}
 
-      <form action="" className="nd-header-search-form" onSubmit={searchHandler}>
+      <form action="" className="nd-header-search-form" onSubmit={onSearch}>
         <input type="text" name="query" 
         className="search-auto " placeholder="Tìm kiếm..." 
         autoComplete="off" id="" 
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value)}
         />
         <input type="hidden" name="type" value="product" />
         <button className="btn btn-default" type="submit" aria-label="Tìm kiếm">
