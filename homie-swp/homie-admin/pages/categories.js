@@ -188,7 +188,7 @@ function Categories({ swal }) {
           </div>
         </form>
         {!editedCategory && (
-          <table className="basic mt-4">
+          <table className="basic mt-4 border-4">
             <thead>
               <tr>
                 <td>Category name</td>
@@ -198,7 +198,7 @@ function Categories({ swal }) {
             </thead>
             <tbody>
               {categories.length > 0 && categories.map(category => (
-                <tr key={category._id}>
+                <tr key={category._id} className="border-t">
                   <td>{category.name}</td>
                   <td>{category?.parent?.name}</td>
                   <td>

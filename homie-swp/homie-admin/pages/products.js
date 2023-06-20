@@ -29,17 +29,18 @@ export default function Products() {
       </div>
       <div className="mt-5">
         <Link className="btn-primary" href={'/products/new'}>Add new product</Link>
-        <table className="basic mt-2">
-          <thead>
+        <table className="basic mt-2 border-4">
+          <thead className="border-b-1">
             <tr>
               <td>Product name</td>
-              <td></td>
+              <td>Category</td>
             </tr>
           </thead>
           <tbody>
             {products.map(product => (
-              <tr key={product._id}>
+              <tr key={product._id} className="border-t">
                 <td>{product.title}</td>
+                <td>{product?.category?.name}</td>
                 <td>
                   <Link className="btn-default" href={'/products/edit/' + product._id}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
