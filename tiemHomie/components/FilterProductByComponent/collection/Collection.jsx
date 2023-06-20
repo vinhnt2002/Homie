@@ -26,7 +26,7 @@ const responsive = {
 
 const Collection = ({ collections }) => {
   const icons = [<FaGift />, <FaHome />, <FaCoffee />, <FaPuzzlePiece />, <FaHeadphones />];
-
+let i = 0;
   return (
     <div className={`${classes.category}`}>
       <div className="container">
@@ -40,7 +40,7 @@ const Collection = ({ collections }) => {
               arrows={false}
               responsive={responsive}
             >
-              {collections.map((collection, index) => (
+              {collections.slice(0, 5).map((collection, index) => (
                 <div className={`${classes.card}`} key={index}>
                   <Link href={`/collection/${collection.code}`}>
                     <div className={`${classes.icon}`}>{icons[index % icons.length]}</div>
