@@ -180,13 +180,17 @@ export async function getStaticProps({ params }) {
   const filteredProducts = products.filter((product) =>
     product.categoryId.includes(category.id)
   );
-
+  let collectionList = []
+  for (let index = 0; index < 5; index++) {
+    const element = collections[index];
+    collectionList.push(element)
+  }
   return {
     props: {
       products,
       categories,
       category,
-      collections,
+      collections:collectionList,
       filteredProducts,
       productCount,
     },

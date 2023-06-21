@@ -34,11 +34,23 @@ const [filteredData, setFilteredData] = useState([]);
 
 
   useEffect(() => {
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setData(filteredProducts);
+    const normalizeString = (str) => {
+      // Remove accents and special characters
+      const normalizedStr = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   
+      // Remove Unicode characters
+      const removedUnicodeStr = normalizedStr.replace(/[^\x00-\x7F]/g, "");
+  
+      return removedUnicodeStr;
+    };
+  
+    const filteredProducts = products.filter((product) =>
+      normalizeString(product.name.toLowerCase()).includes(
+        normalizeString(searchQuery.toLowerCase())
+      )
+    );
+  
+    setData(filteredProducts);
   
   }, [searchQuery, data]);
 
@@ -172,19 +184,21 @@ export async function getStaticProps() {
   const collections = data.collections;
   const productCount = collections.map((collection) => {
     let count = 0;
-
     products.forEach((product) => {
       if (product.collectionIds.includes(collection.id)) {
         count++;
       }
     });
-
     return count;
   });
-
+  let collectionList = []
+  for (let index = 0; index < 5; index++) {
+    const element = collections[index];
+    collectionList.push(element)
+  }
   //   const filteredCollections = collections.filter((_, index) => productCount[index] > 0);
 
   return {
-    props: { products, collections, productCount },
+    props: { products, collections:collectionList, productCount },
   };
 }

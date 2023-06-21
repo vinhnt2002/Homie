@@ -141,9 +141,13 @@ export async function getStaticProps() {
     return count;
   });
 
-  //   const filteredCollections = collections.filter((_, index) => productCount[index] > 0);
+  let collectionList = []
+  for (let index = 0; index < 5; index++) {
+    const element = collections[index];
+    collectionList.push(element)
+  }
 
   return {
-    props: { products, collections, productCount },
+    props: { products, collections:collectionList, productCount },
   };
 }

@@ -172,10 +172,15 @@ export async function getStaticProps({ params }) {
   const filteredProducts = products.filter((product) =>
     product.collectionIds.includes(collection.id)
   );
+  let collectionList = []
+  for (let index = 0; index < 5; index++) {
+    const element = collections[index];
+    collectionList.push(element)
+  }
   return {
     props: {
       products,
-      collections,
+      collections:collectionList,
       collection,
       filteredProducts,
       productCount,
