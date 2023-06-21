@@ -115,15 +115,30 @@ const [filteredData, setFilteredData] = useState([]);
   
 
 
-//   useEffect(() => {
-//     const filteredData = products.filter((product) =>
-//             product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
-//     );
-//     setData(filteredData);
-//     setSelectedSortOption(""); // Reset selected sort option
+  useEffect(() => {
+
+    const normalizeString = (str) => {
+      // Remove accents and special characters
+      const normalizedStr = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  
+      // Remove Unicode characters
+      const removedUnicodeStr = normalizedStr.replace(/[^\x00-\x7F]/g, "");
+  
+      return removedUnicodeStr;
+    };
+
+    const filteredProducts = products.filter((product) =>
+      normalizeString(product.name.toLowerCase()).includes(
+        normalizeString(searchQuery.toLowerCase())
+      ))
+    const filteredData = filteredProducts.filter((product) =>
+            product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
+    );
+    setData(filteredData);
+    setSelectedSortOption(""); // Reset selected sort option
     
 
-// }, [value, products, setData,setSelectedSortOption, ]);
+}, [value, setData,setSelectedSortOption, ]);
 
 
 
