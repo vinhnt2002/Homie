@@ -40,7 +40,7 @@ const [filteredData, setFilteredData] = useState([]);
     setData(filteredProducts);
   
   
-  }, [searchQuery, products]);
+  }, [searchQuery, data]);
 
   const itemsPerPage = 9;
   const pageCount = Math.ceil(data.length / itemsPerPage);
