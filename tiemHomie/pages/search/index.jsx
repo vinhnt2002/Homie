@@ -34,11 +34,23 @@ const [filteredData, setFilteredData] = useState([]);
 
 
   useEffect(() => {
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setData(filteredProducts);
+    const normalizeString = (str) => {
+      // Remove accents and special characters
+      const normalizedStr = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   
+      // Remove Unicode characters
+      const removedUnicodeStr = normalizedStr.replace(/[^\x00-\x7F]/g, "");
+  
+      return removedUnicodeStr;
+    };
+  
+    const filteredProducts = products.filter((product) =>
+      normalizeString(product.name.toLowerCase()).includes(
+        normalizeString(searchQuery.toLowerCase())
+      )
+    );
+  
+    setData(filteredProducts);
   
   }, [searchQuery, products]);
 
