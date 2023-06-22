@@ -26,9 +26,9 @@ const Coupon = () => {
         <div className="border border-1 p-2">
           <form className="col-12">
             <div className="form-group pb-2">
-              <label htmlFor="inputCoupon">
+              {/* <label htmlFor="inputCoupon">
                 Nhập mã phiếu giảm giá của bạn
-              </label>
+              </label> */}
               <input
                 type="text"
                 className="form-control p-2 me-3"
@@ -67,13 +67,13 @@ const Ship = () => {
       {showInfo && (
         <div className="border border border-1 p-2">
           <form className="col-12">
-            <div className="form-group pd-2">
-              <label htmlFor="inputCoupon">
+            <div className="form-group pb-2">
+              {/* <label htmlFor="inputCoupon">
                 Nhập mã phiếu giảm giá của bạn
-              </label>
+              </label> */}
               <input
                 type="text"
-                className="form-control p-2"
+                className="form-control p-2 me-3"
                 id="inputCoupon"
                 placeholder="Nhập mã phiếu giảm giá của bạn"
               />
@@ -89,7 +89,6 @@ const Ship = () => {
       )}
     </article>
   );
-
 };
 
 const cart = () => {
@@ -114,79 +113,79 @@ const cart = () => {
         descriptionTitle="Giỏ hàng của bạn"
         middlePath="Giỏ hàng"
       />
-      <div className="main_content">
-        <div className="section">
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div className="table-responsive shop_cart_table">
-                  <table className="table">
-                    <thead>
-                      <tr className="border-top border-bottom border-dark">
-                        <th className="px-0 p-5 product-thumbnail">&nbsp;</th>
-                        <th className="product-name">SẢN PHẨM</th>
-                        <th className="product-price">GIÁ</th>
-                        <th className="product-quantity">SỐ LƯỢNG</th>
-                        <th className="product-subtotal">TỔNG CỘNG</th>
-                        <th className="product-remove"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {cartItems.map((item, index) => (
-                        <ProductCardPage
-                          key={new Date().getTime() + Math.random()}
-                          name={item.name}
-                          price={item.sellingPrice}
-                          image={item.picUrl}
-                          amount={item.attribute.amount}
-                        />
-                      ))}
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <td colSpan={6} className="px-0 p-5">
-                          <div className="row g-0 align-items-center">
-                            <div className="col-lg-4 col-md-6 mb-3 mb-md-0 text-start">
-                              <button
-                                className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
-                                type="submit"
-                              >
-                                Giỏ Hàng Trống
-                              </button>
-                            </div>
-                            <div className="col-lg-8 col-md-6 mb-md-0 text-start  text-md-end">
-                              <button
-                                className={`border-danger btn btn-outline-warning text-body btn-sm me-2 ${classes.btn}`}
-                                type="submit"
-                              >
-                                Tiếp tục mua sắm
-                              </button>
-                              <button
+      {amount > 0 ? (
+        <>
+          <div className="main_content">
+            <div className="section">
+              <div className="container">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="table-responsive shop_cart_table">
+                      <table className="table">
+                        <thead>
+                          <tr className="border-top border-bottom border-dark">
+                            <th className="px-0 p-5 product-thumbnail">
+                              &nbsp;
+                            </th>
+                            <th className="product-name">SẢN PHẨM</th>
+                            <th className="product-price">GIÁ</th>
+                            <th className="product-quantity">SỐ LƯỢNG</th>
+                            <th className="product-subtotal">TỔNG CỘNG</th>
+                            <th className="product-remove"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {cartItems.map((item, index) => (
+                            <ProductCardPage
+                              key={new Date().getTime() + Math.random()}
+                              name={item.name}
+                              price={item.sellingPrice}
+                              image={item.picUrl}
+                              amount={item.attribute.amount}
+                              handleQuantityChange={(newQuantity) =>
+                                handleQuantityChange(item.id, newQuantity)
+                              }
+                            />
+                          ))}
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colSpan={6} className="px-0 p-5">
+                              <div className="row g-0 align-items-center">
+                                <div className="col-lg-4 col-md-6 mb-3 mb-md-0 text-start"></div>
+                                <div className="col-lg-8 col-md-6 mb-md-0 text-start  text-md-end">
+                                  <button
+                                    className={`border-danger btn btn-outline-warning text-body btn-sm me-2 ${classes.btn}`}
+                                    type="submit"
+                                  >
+                                    <Link href="/">Tiếp tục mua sắm</Link>
+                                  </button>
+                                  {/* <button
                                 className={`border-danger btn btn-outline-warning text-body btn-sm  ${classes.btn}`}
                                 type="submit"
                               >
                                 Cập Nhật Giỏ Hàng
-                              </button>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tfoot>
-                  </table>
+                              </button> */}
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-5">
-                <Coupon></Coupon>
-                <Ship></Ship>
-              </div>
-              <div className="col-md-7">
-                <div className="mt-4">
-                  <div className="heading_s1 mb-3">
-                    <div className="table-responsive">
-                      <table className="table table-borderless">
-                        <tbody>
+                <div className="row">
+                  <div className="col-md-5">
+                    <Coupon></Coupon>
+                    <Ship></Ship>
+                  </div>
+                  <div className="col-md-7">
+                    <div className="mt-4">
+                      <div className="heading_s1 mb-3">
+                        <div className="table-responsive">
+                          <table className="table table-borderless">
+                            <tbody>
                               <tr>
                                 <td className="cart_total_label text-end">
                                   Tổng cộng
@@ -195,9 +194,7 @@ const cart = () => {
                                   {formattedTotal}
                                 </td>
                               </tr>
-                              <tr
-                                className="border-black border-top border-bottom"
-                              >
+                              <tr className="border-black border-top border-bottom">
                                 <td className="cart_total_label text-end">
                                   Phí vận chuyển
                                 </td>
@@ -205,9 +202,7 @@ const cart = () => {
                                   Miễn phí
                                 </td>
                               </tr>
-                              <tr
-                                className="border-black border-top border-bottom"
-                              >
+                              <tr className="border-black border-top border-bottom">
                                 <td className="cart_total_label text-end">
                                   Tổng đơn hàng
                                 </td>
@@ -215,24 +210,114 @@ const cart = () => {
                                   {formattedTotal}
                                 </td>
                               </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div className="text-end">
-                      <Link
-                        href="#"
-                        className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
-                      >
-                        Hoàn tất thanh toán
-                      </Link>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div className="text-end">
+                          <Link
+                            href="#"
+                            className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
+                          >
+                            Hoàn tất thanh toán
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        <>
+          <div className="main_content">
+            <div className="section">
+              <div className="container">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="table-responsive shop_cart_table">
+                      <table className="table">
+                        <tfoot>
+                          <tr>
+                            <td colSpan={6} className="px-0 p-5">
+                              <div className="row g-0 align-items-center">
+                                <div className="col-lg-6 col-md-6 mb-3 mb-md-0 text-end">
+                                  <p>Giỏ hàng của bạn không có gì</p>
+                                </div>
+                                <div className="col-lg-6 col-md-6 mb-md-0 text-start  text-md-center">
+                                  <button
+                                    className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
+                                    type="submit"
+                                  >
+                                    <Link href="/">Tiếp Tục mua sắm</Link>
+                                    
+                                  </button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className="row">
+                  <div className="col-md-5">
+                    <Coupon></Coupon>
+                    <Ship></Ship>
+                  </div>
+                  <div className="col-md-7">
+                    <div className="mt-4">
+                      <div className="heading_s1 mb-3">
+                        <div className="table-responsive">
+                          <table className="table table-borderless">
+                            <tbody>
+                              <tr>
+                                <td className="cart_total_label text-end">
+                                  Tổng cộng
+                                </td>
+                                <td className="cart_total_amount text-end">
+                                  {formattedTotal}
+                                </td>
+                              </tr>
+                              <tr className="border-black border-top border-bottom">
+                                <td className="cart_total_label text-end">
+                                  Phí vận chuyển
+                                </td>
+                                <td className="cart_total_amount text-end">
+                                  Miễn phí
+                                </td>
+                              </tr>
+                              <tr className="border-black border-top border-bottom">
+                                <td className="cart_total_label text-end">
+                                  Tổng đơn hàng
+                                </td>
+                                <td className="cart_total_amount text-end">
+                                  {formattedTotal}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div className="text-end">
+                          <Link
+                            href="#"
+                            className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
+                          >
+                            Hoàn tất thanh toán
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      ;
     </div>
   );
 };

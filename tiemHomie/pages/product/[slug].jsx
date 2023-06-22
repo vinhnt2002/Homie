@@ -46,6 +46,33 @@ const ProductDetail = ({ product, products, categories }) => {
   const sliderRef6 = useRef(null);
   const router = useRouter();
 
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        name: product.name,
+        sellingPrice: product.sellingPrice,
+        picUrl: product.picUrl,
+        attribute: {
+          amount: quantity,
+        },
+      })
+    );
+  };
+
+
   useEffect(() => {
     console.log("Categories:", categories);
     console.log("Products:", products);
@@ -178,6 +205,12 @@ const ProductDetail = ({ product, products, categories }) => {
     images = picUrls;
   }
 
+
+
+
+
+
+
   return (
     <>
       <BreadCrumb
@@ -300,19 +333,23 @@ const ProductDetail = ({ product, products, categories }) => {
                           type="button"
                           defaultValue="-"
                           className="minus"
+                          onClick={handleDecrease}
                         />
                         <input
                           type="text"
                           name="quantity"
-                          defaultValue={1}
+                          // defaultValue={1}
+                          value={quantity}
                           title="Qty"
                           className="qty"
                           size={4}
+                          readOnly
                         />
                         <input
                           type="button"
                           defaultValue="+"
                           className="plus"
+                          onClick={handleIncrease}
                         />
                       </div>
                     </div>
@@ -321,18 +358,19 @@ const ProductDetail = ({ product, products, categories }) => {
                         className={`btn btn-outline-light btn-sm pb-2`}
                         style={{ backgroundColor: "#F79C43" }}
                         type="button"
-                        onClick={() => {
-                          dispatch(
-                            addToCart({
-                              name: product.name,
-                              sellingPrice: product.sellingPrice,
-                              picUrl: product.picUrl,
-                              attribute: {
-                                amount: 1,
-                              },
-                            })
-                          );
-                        }}
+                        // onClick={() => {
+                        //   dispatch(
+                        //     addToCart({
+                        //       name: product.name,
+                        //       sellingPrice: product.sellingPrice,
+                        //       picUrl: product.picUrl,
+                        //       attribute: {
+                        //         amount: 1,
+                        //       },
+                        //     })
+                        //   );
+                        // }}
+                        onClick={handleAddToCart}
                       >
                         <i className="icon-basket-loaded" /> Thêm Vào Giỏ Hàng
                       </button>

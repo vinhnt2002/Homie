@@ -89,7 +89,10 @@ const ProductList = ({
           </div>
           <div className="product_info " style={{ maxHeight: "4.5rem" }}>
             <div className={Styles.downClass}>
-              <div className={Styles.productTitle}>
+              <Link href={`/product/${createSlugFromTitle(productData.name)}-${
+                        productData.code
+                      }`}>
+                        <div className={Styles.productTitle}>
                 <h6
                   className="product_title"
                   style={{ color: "#292B2C", textDecoration: "none" }}
@@ -145,6 +148,9 @@ const ProductList = ({
                   )}
                 </div>
               </div>
+
+              </Link>
+              
             </div>
           </div>
         </div>

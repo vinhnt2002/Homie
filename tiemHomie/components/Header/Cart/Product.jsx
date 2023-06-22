@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import style from './Cart.module.css';
-import { incrementAmount, decrementAmount, removeItem, updateQuantity} from '@/redux/reducers/cartSlice';
+import { incrementAmount, decrementAmount, removeItem} from '@/redux/reducers/cartSlice';
 
 const Product = ({ name, price, image, amount, handleQuantityChange}) => {
     const dispatch = useDispatch();
@@ -32,9 +32,7 @@ const Product = ({ name, price, image, amount, handleQuantityChange}) => {
                                 dispatch(removeItem({name}));
                                 return;
                              }
-                        
                                 dispatch(decrementAmount({name}))}}>
-                        
                           {" "}
                           -{" "}
                         </button>

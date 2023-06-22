@@ -79,7 +79,7 @@ const ProductCard = ({
                     notify();
                   }}
                 >
-                  <Link href="/">
+                  <Link href="">
                     <i
                       className="icon-basket-loaded"
                       onClick={() => {
@@ -129,19 +129,29 @@ const ProductCard = ({
             <div className={Styles.desSize}>
               <div className="pr_desc d-block">
                 <div className={Styles.overF}>
+
+                <Link href={`/product/${createSlugFromTitle(productData.name)}-${
+                    productData.code
+                  }`}>
                   <p>
                     {productData.description}
                     {/* Màu đỏ cầu sức khoẻ, bình an, xua đuổi các việc không may. Màu trắng kêu gọi tài khí, phúc khí, mời gọi nhân duyên tốt lành, tài lộc cho gia chủ.... */}
                   </p>
+                </Link>
                 </div>
               </div>
             </div>
 
             <div className="product_price">
               <div className="">
+                <Link href={`/product/${createSlugFromTitle(productData.name)}-${
+                    productData.code
+                  }`}>
                 <span className="price">
                   {formatPrice(productData.sellingPrice)} VND
                 </span>
+                </Link>
+                
                 <br></br>
 
                 {/* {productData.orginal_price && (
