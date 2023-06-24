@@ -194,7 +194,7 @@ const Footer = ({}) => {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <p className="mb-lg-0 text-center">
-                © 2020 All Rights Reserved by Tiệm Hommie
+                © 2020 All Rights Reserved by Tiệm Homie
               </p>
             </div>
             <div className="col-lg-4 order-lg-first">
