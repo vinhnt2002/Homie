@@ -24,6 +24,7 @@ import { useDispatch } from "react-redux";
 import { getAllProduct } from "../../action/menuApi";
 import slugify from "slugify";
 import SliderSection from "../../components/section/SliderSection/SliderSection";
+import ProductList from "../../components/section/productCard/ProductList";
 
 function createSlugFromTitle(title) {
   const slug = slugify(title, {
@@ -34,7 +35,49 @@ function createSlugFromTitle(title) {
   return slug;
 }
 
-const ProductDetail = ({ product, products, categories }) => {
+const ProductDetail = ({ product, products, categories, filterProductCate }) => {
+
+  console.log(filterProductCate);
+  
+  const getSliderItems = () => {
+    const itemsPerSlide = 2; // Số sản phẩm hiển thị trên mỗi slide
+    const totalSlides = Math.ceil(filterProducts.length / itemsPerSlide); // Tổng số slide
+    const sliderItems = [];
+    for (let i = 0; i < totalSlides; i++) {
+      const startIndex = i * itemsPerSlide;
+      const endIndex = startIndex + itemsPerSlide;
+      const slideItems = filterProducts.slice(startIndex, endIndex);
+      sliderItems.push(slideItems);
+    }
+    return sliderItems;
+  };
+
+  const specialSettings = {
+    dots: false,
+    infinite: true,
+    arrows: false,
+    speed: 500,
+    slidesToShow: 3, // Show 3 items per slide
+    slidesToScroll: 3, // Scroll 3 items at a time
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+    ],
+  };
   //  test lay chuoi tu ten
   const [showProductActionBox, setShowProductActionBox] = useState(true);
   const [allProducts, setAllProducts] = useState();
@@ -45,7 +88,6 @@ const ProductDetail = ({ product, products, categories }) => {
   const dispatch = useDispatch();
   const sliderRef6 = useRef(null);
   const router = useRouter();
-
 
   const [quantity, setQuantity] = useState(1);
 
@@ -71,7 +113,6 @@ const ProductDetail = ({ product, products, categories }) => {
       })
     );
   };
-
 
   useEffect(() => {
     console.log("Categories:", categories);
@@ -117,35 +158,12 @@ const ProductDetail = ({ product, products, categories }) => {
   } else {
     sizes = " Xem thêm ở phần mô tả sản phẩm ";
   }
+  const filterProducts = filteredProductsCate.length > 0 &&
+  filteredProductsCate.find((obj) => obj.category.name === categoryName)
+    ? filteredProductsCate.find((obj) => obj.category.name === categoryName)
+        .products
+    : [];
 
-  // const productUrl = `https://example.com${router.asPath}`; // Replace with your website URL
-
-  // const handleFacebookShare = () => {
-  //   const url = encodeURIComponent(productUrl);
-  //   window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-  // };
-  // const handleTwitterShare = () => {
-  //   const text = encodeURIComponent('Check out this awesome product!'); // Replace with your desired tweet text
-  //   const url = encodeURIComponent(productUrl);
-  //   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-  // };
-
-  // const handleGooglePlusShare = () => {
-  //   const url = encodeURIComponent(productUrl);
-  //   window.open(`https://plus.google.com/share?url=${url}`, '_blank');
-  // };
-
-  // const handleYouTubeShare = () => {
-  //   // Replace with your desired YouTube video URL
-  //   const videoUrl = 'https://www.youtube.com/watch?v=your-video-id';
-  //   window.open(`https://www.youtube.com/share?url=${videoUrl}`, '_blank');
-  // };
-
-  // const handleInstagramShare = () => {
-  //   // Replace with your desired Instagram sharing URL or handle
-  //   const instagramUrl = 'https://www.instagram.com/your-instagram-handle';
-  //   window.open(instagramUrl, '_blank');
-  // };
 
   const headingStyle = {
     //css title product
@@ -205,12 +223,6 @@ const ProductDetail = ({ product, products, categories }) => {
     images = picUrls;
   }
 
-
-
-
-
-
-
   return (
     <>
       <BreadCrumb
@@ -240,12 +252,12 @@ const ProductDetail = ({ product, products, categories }) => {
                         swipeable
                         swipeScrollTolerance={37}
                         preventMovementUntilSwipeScrollTolerance
-                        
+
                         // className="productCarousel"
                       >
                         {images.map((imgUrl, index) => (
                           <div key={index}>
-                            <img  src={`${imgUrl}`} alt="img" />
+                            <img src={`${imgUrl}`} alt="img" />
                           </div>
                         ))}
                       </Carousel>
@@ -314,16 +326,7 @@ const ProductDetail = ({ product, products, categories }) => {
                         <span data-color="#DA323F" />
                       </div>
                     </div>
-                    <div className="pr_switch_wrap">
-                      <span className="switch_lable">Size</span>
-                      <div>
-                        <span className={styles.active}>{sizes}</span>
-                        {/* <span>s</span>
-                         <span>m</span>
-                         <span>l</span>
-                         <span>xl</span> */}
-                      </div>
-                    </div>
+                 
                   </div>
                   <hr />
                   <div className="cart_extra">
@@ -495,18 +498,87 @@ const ProductDetail = ({ product, products, categories }) => {
                     className="d-flex justify-content-center"
                     title="Có Thể Bạn Cũng Quan Tâm"
                   />
+                   <div
+                    className={styles.buttonsN}
+                    style={{
+                      position: "relative",
+                      display: "flex",
+                      justifyContent: "end",
+                    }}
+                  >
+                    <div className={styles.prevBN}>
+                      <button
+                        type="button"
+                        role="presentation"
+                        className="custom-prev-button"
+                        onClick={() => sliderRef6.current.slickPrev()}
+                      >
+                        <FaChevronLeft className={styles.leftAN} />
+                      </button>
+                    </div>
+                    <div className={styles.nextBN}>
+                      <button
+                        type="button"
+                        role="presentation"
+                        className="custom-next-button"
+                        onClick={() => sliderRef6.current.slickNext()}
+                      >
+                        <FaChevronRight className={styles.rightAN} />
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <div className="row">
                   <div className="col-md-12">
-                    <SliderSection
-                        sliderRef={sliderRef6}
-                        products={
-                          filteredProductsCate.length > 0 && filteredProductsCate.find(obj => obj.category.name === categoryName)
-                            ? filteredProductsCate.find(obj => obj.category.name === categoryName).products
-                            : []
-                        }
-                        showProductActionBox={showProductActionBox}
-                      />
+                    {/* <SliderSection
+                      {...settings}
+                      sliderRef={sliderRef6}
+                      products={
+                        filteredProductsCate.length > 0 &&
+                        filteredProductsCate.find(
+                          (obj) => obj.category.name === categoryName
+                        )
+                          ? filteredProductsCate.find(
+                              (obj) => obj.category.name === categoryName
+                            ).products
+                          : []
+                      }
+                      showProductActionBox={showProductActionBox}
+                    /> */}
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="product_list">
+                      <div className={styles.shop}>
+                        <Slider
+                          ref={sliderRef6}
+                          {...specialSettings}
+                          products={filterProducts}
+                        >
+                          {getSliderItems().map((sliderItems, index) => (
+                            <div key={index} className="gridContainer">
+                              {sliderItems.map((product, innerIndex) => (
+                                <div
+                                  key={innerIndex}
+                                  className="item "
+                                  style={{
+                                    maxHeight: "220px",
+                                    overflow: "hidden",
+                                  }}
+                                >
+                                  <ProductList
+                                    productData={product}
+                                    // showProductActionBox={showProductActionBox}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </Slider>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -548,16 +620,25 @@ export async function getStaticProps({ params }) {
   const products = data.products;
   const categories = data.categories;
 
+  // const productFilters = products.find((item) => item.code === "179")
   const product = products.find((p) => p.code === productCode);
 
-   // Find the category related to the product's category
+  const filterProductCate = categories.map((categoryId) => {
+    const filteredProducts = products.filter((product) =>
+      product.categoryId.includes(categoryId.id)
+    );
+    return {
+      category: categoryId,
+      products: filteredProducts,
+    };
+  });
+  // Find the category related to the product's category
   //  const productCategory = categories.find(category =>
   //   category.id === product.categoryId
   // );
 
   // Access the products of the related category or use an empty array if no match is found
   // const relatedCategoryProducts = productCategory ? productCategory.products : [];
-
 
   // filter cate theo product
   if (!product) {
@@ -571,7 +652,7 @@ export async function getStaticProps({ params }) {
       product,
       products,
       categories,
-    
+      filterProductCate
     },
   };
 }
