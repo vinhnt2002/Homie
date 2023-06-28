@@ -7,89 +7,89 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateTotal, removeItem } from "@/redux/reducers/cartSlice";
 import ProductCardPage from "../components/Header/Cart/ProductCartPage";
 
-const Coupon = () => {
-  const [showInfo, setShowInfo] = useState(false);
-  return (
-    <article className="question mt-4 mb-1">
-      <header>
-        <button
-          className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
-          onClick={() => setShowInfo(!showInfo)}
-        >
-          <div className="text-start">Mã giảm giá</div>
-          <div className="text-end">
-            {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
-          </div>
-        </button>
-      </header>
-      {showInfo && (
-        <div className="border border-1 p-2">
-          <form className="col-12">
-            <div className="form-group pb-2">
-              {/* <label htmlFor="inputCoupon">
-                Nhập mã phiếu giảm giá của bạn
-              </label> */}
-              <input
-                type="text"
-                className="form-control p-2 me-3"
-                id="inputCoupon"
-                placeholder="Nhập mã phiếu giảm giá của bạn"
-              />
-            </div>
-            <button
-              className={`border-danger btn btn-outline-warning text-body btn-sm pb-2 ${classes.btn}`}
-              type="submit"
-            >
-              Áp dụng mã
-            </button>
-          </form>
-        </div>
-      )}
-    </article>
-  );
-};
+// const Coupon = () => {
+//   const [showInfo, setShowInfo] = useState(false);
+//   return (
+//     <article className="question mt-4 mb-1">
+//       <header>
+//         <button
+//           className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
+//           onClick={() => setShowInfo(!showInfo)}
+//         >
+//           <div className="text-start">Mã giảm giá</div>
+//           <div className="text-end">
+//             {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
+//           </div>
+//         </button>
+//       </header>
+//       {showInfo && (
+//         <div className="border border-1 p-2">
+//           <form className="col-12">
+//             <div className="form-group pb-2">
+//               {/* <label htmlFor="inputCoupon">
+//                 Nhập mã phiếu giảm giá của bạn
+//               </label> */}
+//               <input
+//                 type="text"
+//                 className="form-control p-2 me-3"
+//                 id="inputCoupon"
+//                 placeholder="Nhập mã phiếu giảm giá của bạn"
+//               />
+//             </div>
+//             <button
+//               className={`border-danger btn btn-outline-warning text-body btn-sm pb-2 ${classes.btn}`}
+//               type="submit"
+//             >
+//               Áp dụng mã
+//             </button>
+//           </form>
+//         </div>
+//       )}
+//     </article>
+//   );
+// };
 
-const Ship = () => {
-  const [showInfo, setShowInfo] = useState(false);
-  return (
-    <article className="question mb-1">
-      <header>
-        <button
-          className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
-          onClick={() => setShowInfo(!showInfo)}
-        >
-          <div className="text-start">Giá vận chuyển</div>
-          <div className="text-end">
-            {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
-          </div>
-        </button>
-      </header>
-      {showInfo && (
-        <div className="border border border-1 p-2">
-          <form className="col-12">
-            <div className="form-group pb-2">
-              {/* <label htmlFor="inputCoupon">
-                Nhập mã phiếu giảm giá của bạn
-              </label> */}
-              <input
-                type="text"
-                className="form-control p-2 me-3"
-                id="inputCoupon"
-                placeholder="Nhập mã phiếu giảm giá của bạn"
-              />
-            </div>
-            <button
-              className={`border-danger btn btn-outline-warning text-body btn-sm pb-2 ${classes.btn}`}
-              type="submit"
-            >
-              Áp dụng mã
-            </button>
-          </form>
-        </div>
-      )}
-    </article>
-  );
-};
+// const Ship = () => {
+//   const [showInfo, setShowInfo] = useState(false);
+//   return (
+//     <article className="question mb-1">
+//       <header>
+//         <button
+//           className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
+//           onClick={() => setShowInfo(!showInfo)}
+//         >
+//           <div className="text-start">Giá vận chuyển</div>
+//           <div className="text-end">
+//             {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
+//           </div>
+//         </button>
+//       </header>
+//       {showInfo && (
+//         <div className="border border border-1 p-2">
+//           <form className="col-12">
+//             <div className="form-group pb-2">
+//               {/* <label htmlFor="inputCoupon">
+//                 Nhập mã phiếu giảm giá của bạn
+//               </label> */}
+//               <input
+//                 type="text"
+//                 className="form-control p-2 me-3"
+//                 id="inputCoupon"
+//                 placeholder="Nhập mã phiếu giảm giá của bạn"
+//               />
+//             </div>
+//             <button
+//               className={`border-danger btn btn-outline-warning text-body btn-sm pb-2 ${classes.btn}`}
+//               type="submit"
+//             >
+//               Áp dụng mã
+//             </button>
+//           </form>
+//         </div>
+//       )}
+//     </article>
+//   );
+// };
 
 const cart = () => {
   const { cartItems, total, amount } = useSelector((store) => store.cart);
@@ -142,43 +142,38 @@ const cart = () => {
                               price={item.sellingPrice}
                               image={item.picUrl}
                               amount={item.attribute.amount}
+                              sku={item.sku}
                               handleQuantityChange={(newQuantity) =>
                                 handleQuantityChange(item.id, newQuantity)
                               }
                             />
                           ))}
                         </tbody>
-                        <tfoot>
+                        {/* <tfoot>
                           <tr>
                             <td colSpan={6} className="px-0 p-5">
                               <div className="row g-0 align-items-center">
                                 <div className="col-lg-4 col-md-6 mb-3 mb-md-0 text-start"></div>
                                 <div className="col-lg-8 col-md-6 mb-md-0 text-start  text-md-end">
                                   <button
-                                    className={`border-danger btn btn-outline-warning text-body btn-sm me-2 ${classes.btn}`}
-                                    type="submit"
-                                  >
-                                    <Link href="/">Tiếp tục mua sắm</Link>
-                                  </button>
-                                  {/* <button
                                 className={`border-danger btn btn-outline-warning text-body btn-sm  ${classes.btn}`}
                                 type="submit"
                               >
                                 Cập Nhật Giỏ Hàng
-                              </button> */}
+                              </button>
                                 </div>
                               </div>
                             </td>
                           </tr>
-                        </tfoot>
+                        </tfoot> */}
                       </table>
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-5">
-                    <Coupon></Coupon>
-                    <Ship></Ship>
+                    {/* <Coupon></Coupon>
+                    <Ship></Ship> */}
                   </div>
                   <div className="col-md-7">
                     <div className="mt-4">
@@ -188,23 +183,7 @@ const cart = () => {
                             <tbody>
                               <tr>
                                 <td className="cart_total_label text-end">
-                                  Tổng cộng
-                                </td>
-                                <td className="cart_total_amount text-end">
-                                  {formattedTotal}
-                                </td>
-                              </tr>
-                              <tr className="border-black border-top border-bottom">
-                                <td className="cart_total_label text-end">
-                                  Phí vận chuyển
-                                </td>
-                                <td className="cart_total_amount text-end">
-                                  Miễn phí
-                                </td>
-                              </tr>
-                              <tr className="border-black border-top border-bottom">
-                                <td className="cart_total_label text-end">
-                                  Tổng đơn hàng
+                                  Tổng thanh toán({amount} sản phẩm)
                                 </td>
                                 <td className="cart_total_amount text-end">
                                   {formattedTotal}
@@ -213,13 +192,24 @@ const cart = () => {
                             </tbody>
                           </table>
                         </div>
-                        <div className="text-end">
-                          <Link
-                            href="#"
-                            className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
-                          >
-                            Hoàn tất thanh toán
-                          </Link>
+                        <div className="d-flex justify-content-end">
+                          <div className="">
+                            <Link 
+                            href="/" 
+                            className={`border-danger btn btn-outline-warning text-body btn-sm me-4 ${classes.btn}`}>
+                              Tiếp tục mua sắm
+  
+                            </Link>
+                            
+                          </div>
+                          <div className="">
+                            <Link
+                              href="#"
+                              className={`border-danger btn btn-outline-warning text-body btn-sm me-3 ${classes.btn}`}
+                            >
+                              Mua hàng
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -251,7 +241,6 @@ const cart = () => {
                                     type="submit"
                                   >
                                     <Link href="/">Tiếp Tục mua sắm</Link>
-                                    
                                   </button>
                                 </div>
                               </div>

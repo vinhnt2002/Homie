@@ -248,6 +248,14 @@
 }
 
 
+.previousLink {
+    transition: transform 0.3s ease;
+}
+
+/* .previousLink:hover {
+    transform: translateX(-5px);
+} */
+
 /* .cartSidebarClose {
     position: fixed;
     width: 340px;
@@ -263,3 +271,5 @@
     box-shadow: none;
     touch-action: manipulation;
 } */
+
+

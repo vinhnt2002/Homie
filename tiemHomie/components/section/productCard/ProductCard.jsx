@@ -71,6 +71,7 @@ const ProductCard = ({
                         name: productData.name,
                         sellingPrice: productData.sellingPrice,
                         picUrl: productData.picUrl,
+                        sku:productData.code,
                         attribute: {
                           amount: 1,
                         },

@@ -46,6 +46,7 @@ function Cart({ handleCartClose }) {
                       price={item.sellingPrice}
                       image={item.picUrl}
                       amount={item.attribute.amount}
+                      sku={item.code}
                       handleQuantityChange={(newQuantity) => handleQuantityChange(item.id, newQuantity)}
                     />
                     
@@ -64,7 +65,7 @@ function Cart({ handleCartClose }) {
               </div>
               <div className={style.checkoutBtn}>
                 <button>
-                  <Link href="/checkout">Thanh Toán</Link>
+                  <Link href="/cart">Xem giỏ hàng</Link>
                 </button>
               </div>
             </div>

@@ -6,7 +6,7 @@ import { updateTotal, removeItem, incrementAmount, decrementAmount } from "@/red
 import classes from "./CartPage.module.css";
 
 
-const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku }) => {
+const ProductCartSidebar = ({ name, price, image, amount, handleQuantityChange }) => {
   const { products, total } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
 
@@ -14,7 +14,9 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
     dispatch(updateTotal());
   }, [products, useDispatch()]);
 
-  console.log(sku);
+
+  // var formattedTotal = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
+
 
   const formattedPrice =
     price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
@@ -22,7 +24,10 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
   const formatTotalProductPrice =
     totalProductPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
   return (
-    <tr>
+
+    <>
+    
+    {/* <tr>
       <td className="product-thumbnail text-start">
         <Link href="#">
           <img src={image} alt={name} />
@@ -35,7 +40,7 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
           </Link>
         </div>
         <div className="m-2">
-          <h6>SKU: {sku} </h6>
+          <h6>SKU: 290397</h6>
         </div>
         <div className="m-0">
           <p>
@@ -45,14 +50,13 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
       </td>
       <td className="product-price" data-title="Price">
         {formattedPrice}
-        {/* {price} */}
       </td>
       <td className="product-quantity" data-title="Quantity">
         <div className="quantity">
           <input
             type="button"
             defaultValue="-"
-            className="minus p-0"
+            className="minus"
             // onClick={handleDecrease}
             onClick={() => {
               if (amount === 1) {
@@ -74,7 +78,7 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
           <input
             type="button"
             defaultValue="+"
-            className="plus p-0"
+            className="plus"
             // onClick={handleIncrease}
             onClick={() => {dispatch(incrementAmount({name}))}}
           />
@@ -95,8 +99,27 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
           </div>
         </Link>
       </td>
-    </tr>
+    </tr> */}
+
+
+
+                      <tr>
+                        <td>
+                          {name} 
+                          <span className="product-qty"> x {amount} </span>
+                        </td>
+                        <td>
+
+                           {formatTotalProductPrice} 
+                        </td>
+                       
+                      </tr>
+                
+                    
+
+    </>
+    
   );
 };
 
-export default ProductCardPage;
+export default ProductCartSidebar;

@@ -65,12 +65,15 @@ const ProductDetail = ({ product, products, categories }) => {
         name: product.name,
         sellingPrice: product.sellingPrice,
         picUrl: product.picUrl,
+        sku:product.code,
         attribute: {
           amount: quantity,
         },
       })
     );
   };
+
+  
 
 
   useEffect(() => {
