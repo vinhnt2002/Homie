@@ -17,12 +17,10 @@ import styles from "../styles/Home.module.css";
 import Arrows from "../components/Button/Arrows";
 import SliderSection from "../components/section/SliderSection/SliderSection";
 
-function Home({ products, categories, collections }) {
+function Home({  collections, filterProductCollection }) {
   const [showTabs, setShowTabs] = useState(true);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
-  const [filteredProductsCollection, setFilteredProductsCollection] = useState(
-    []
-  );
+
   const arrivalSliderRef = useRef(null);
   const sellersSliderRef = useRef(null);
   const featuredSliderRef = useRef(null);
@@ -33,17 +31,17 @@ function Home({ products, categories, collections }) {
 
   const getSliderItems = () => {
     const itemsPerSlide = 3; // Số sản phẩm hiển thị trên mỗi slide
-    const totalSlides = Math.ceil(products.length / itemsPerSlide); // Tổng số slide
+    const totalSlides = Math.ceil(filterProductCollection[1].products.length / itemsPerSlide); // Tổng số slide
     const sliderItems = [];
     for (let i = 0; i < totalSlides; i++) {
       const startIndex = i * itemsPerSlide;
       const endIndex = startIndex + itemsPerSlide;
-      const slideItems = products.slice(startIndex, endIndex);
+      const slideItems = filterProductCollection[1].products.slice(startIndex, endIndex);
       sliderItems.push(slideItems);
     }
     return sliderItems;
   };
-  // console.log(getSliderItems);
+  console.log(filterProductCollection);
 
   const specialSettings = {
     dots: false,
@@ -72,20 +70,6 @@ function Home({ products, categories, collections }) {
     ],
   };
 
-  useEffect(() => {
-    console.log(collections);
-    const filterProductCate = collections.map((collection) => {
-      const filteredProducts = products.filter((product) =>
-        product.collectionIds.includes(collection.id)
-      );
-      return {
-        collection: collection,
-        products: filteredProducts,
-      };
-    });
-    setFilteredProductsCollection(filterProductCate);
-    console.log(filterProductCate);
-  }, []);
   return (
     <div>
       <div>
@@ -120,8 +104,8 @@ function Home({ products, categories, collections }) {
                       <SliderSection
                         sliderRef={arrivalSliderRef}
                         products={
-                          filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[7].products
+                          filterProductCollection.length > 0
+                            ? filterProductCollection[7].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -136,8 +120,8 @@ function Home({ products, categories, collections }) {
                       <SliderSection
                         sliderRef={sellersSliderRef}
                         products={
-                          filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[5].products
+                          filterProductCollection.length > 0
+                            ? filterProductCollection[5].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -152,8 +136,8 @@ function Home({ products, categories, collections }) {
                       <SliderSection
                         sliderRef={featuredSliderRef}
                         products={
-                          filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[8].products
+                          filterProductCollection.length > 0
+                            ? filterProductCollection[8].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -168,8 +152,8 @@ function Home({ products, categories, collections }) {
                       <SliderSection
                         sliderRef={specialSliderRef}
                         products={
-                          filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[6].products
+                          filterProductCollection.length > 0
+                            ? filterProductCollection[6].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -269,8 +253,8 @@ function Home({ products, categories, collections }) {
                   <SliderSection
                     sliderRef={sliderRef5}
                     products={
-                      filteredProductsCollection.length > 0
-                        ? filteredProductsCollection[7].products
+                      filterProductCollection.length > 0
+                        ? filterProductCollection[7].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -294,8 +278,8 @@ function Home({ products, categories, collections }) {
                   <SliderSection
                     sliderRef={sliderRef6}
                     products={
-                      filteredProductsCollection.length > 0
-                        ? filteredProductsCollection[6].products
+                      filterProductCollection.length > 0
+                        ? filterProductCollection[6].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -358,8 +342,8 @@ function Home({ products, categories, collections }) {
                         {...specialSettings}
                         className="overflow-hidden"
                         products={
-                          filteredProductsCollection.length > 0
-                            ? filteredProductsCollection[6].products
+                          filterProductCollection.length > 0
+                            ? filterProductCollection[6].products
                             : []
                         }
                       >
@@ -403,9 +387,50 @@ export async function getStaticProps() {
   const data = await getAllProduct();
 
   const products = data.products; // take the products attribute in the menu
-  const categories = data.categories;
   const collections = data.collections;
+
+  //this function to Filter PARENT AND SINGLE DONT HAVE CHILD
+  const collectionIds = new Set(collections.map((collection) => collection.id));
+
+  const filterProductCollection = collections
+    .map((collection) => {
+      const filteredProducts = products.reduce((result, product) => {
+        if (
+          product.collectionIds.includes(collection.id) &&
+          product.type !== "CHILD"
+        ) {
+          if (product.type === "PARENT" || product.type === "SINGLE") {
+            const childProducts = products.filter(
+              (childProduct) =>
+                childProduct.type === "CHILD" &&
+                childProduct.parentProductId === product.id
+            );
+
+            const minPrice = Math.min(
+              ...childProducts.map((childProduct) => childProduct.sellingPrice)
+            );
+
+            result.push({
+              ...product,
+              minPrice: minPrice,
+            });
+          } else {
+            result.push(product);
+          }
+        }
+        return result;
+      }, []);
+
+      return {
+        collection: collection,
+        products: filteredProducts,
+      };
+    })
+    .filter((collection) => collectionIds.has(collection.collection.id));
+
+    // End this Function Filter PARENT AND SINGLE DONT HAVE CHILD
+
   return {
-    props: { products, categories, collections },
+    props: { collections, filterProductCollection },
   };
 }

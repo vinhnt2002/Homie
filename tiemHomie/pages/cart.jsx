@@ -238,7 +238,6 @@ const cart = () => {
                                 <div className="col-lg-6 col-md-6 mb-md-0 text-start  text-md-center">
                                   <button
                                     className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
-                                    type="submit"
                                   >
                                     <Link href="/">Tiếp Tục mua sắm</Link>
                                   </button>

@@ -30,7 +30,7 @@ const Footer = ({}) => {
                             <div className="icon_box_content"> 
                             <h5>Miễn Phí vận chuyển</h5>
                             <p >
-                              Miễn phí vận chuyển toàn quốc cho đơn hàng từ 600k. Ship nhanh trong vòng 2h các quận nội thành HCM, phí ship chỉ từ 15-30k.
+                              Miễn phí vận chuyển toàn quốc cho đơn hàng từ 600k.<br></br> Ship nhanh trong vòng 2h các quận nội thành HCM, phí ship chỉ từ 15-30k.
                             </p>
                           </div>
                         </div>
@@ -194,7 +194,7 @@ const Footer = ({}) => {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <p className="mb-lg-0 text-center">
-                © 2020 All Rights Reserved by Tiệm Hommie
+                © 2020 All Rights Reserved by Tiệm Homie
               </p>
             </div>
             <div className="col-lg-4 order-lg-first">
@@ -212,6 +212,11 @@ const Footer = ({}) => {
                     </Link>
                   </li>
 
+                  <li>
+                    <Link href="http://www.instagram.com/tiemhomie" className="sc_instagram ">
+                      <i className="ion-social-instagram " />
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>

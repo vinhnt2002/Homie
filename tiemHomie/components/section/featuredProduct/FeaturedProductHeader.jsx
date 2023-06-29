@@ -83,7 +83,7 @@ const FeaturedProductHeader = ({ title, showTabs }) => {
                     aria-controls="special"
                     aria-selected="false"
                   >
-                    Chỉ Có Tại Hommie
+                    Chỉ Có Tại Homie
                   </a>
                 </li>
               </ul>

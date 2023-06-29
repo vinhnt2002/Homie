@@ -29,6 +29,8 @@ const notify = () => {
     });
 }
 
+
+
 const formatPrice = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
@@ -138,13 +140,14 @@ const ProductList = ({
 
                   {showSaleOfprice && (
                     <del className="">
-                      {formatPrice(productData.sellingPrice)} VND
+                      {formatPrice(productData.minPrice !== null ? productData.minPrice : productData.sellingPrice)} VND
                     </del>
                   )}
                 </div>
                 <div className="on_sale">
                   {showSaleOfprice && (
                     <span>{productData.sellingPrice} Off</span>
+                    // <span>{product.minPrice !== Infinity ? product.minPrice : product.sellingPrice}</span>
                   )}
                 </div>
               </div>
