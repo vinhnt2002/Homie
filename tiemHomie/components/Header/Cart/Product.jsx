@@ -41,6 +41,7 @@ const Product = ({ name, price, image, amount, handleQuantityChange}) => {
                           className={style.productQuantity}
                           value={amount}
                           onChange={(event) => handleQuantityChange(event.target.value)}
+                          readOnly
                         />
                         <button type="button" className={style.btnPlus} 
                         onClick={() => {dispatch(incrementAmount({name}))}}>
