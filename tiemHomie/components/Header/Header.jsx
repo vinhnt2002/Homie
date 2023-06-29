@@ -69,7 +69,7 @@ const Header = () => {
                 <div className="d-flex align-items-center justify-content-md-start mb-2">
                   <Link className={style.logo} href="/">
                     {/* <img src="assets/images/image-141@2x.png" alt="logo" /> */}
-                    <img src="/assets/images/image-141@2x.png" alt="logo" />
+                    <img src="/assets/images2/logo_title.png" alt="logo" />
                     <h2
                       className="justify-content-center my-0 ms-2"
                       style={{

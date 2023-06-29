@@ -90,7 +90,7 @@ const Footer = ({}) => {
                     <a>
                       <div className={classes.fontt}>
                         <div className={classes.flex}>
-                          <img src="/assets/images2/image-141@2x.png" alt="logo" />
+                          <img src="/assets/images2/logo_title.png" alt="logo" />
                           <h2 style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Pacifico', fontSize: '36px', fontWeight: 400, lineHeight: '34px', textAlign: 'left' }}>Tiệm Homie</h2>
                         </div>
                       </div>
@@ -100,8 +100,7 @@ const Footer = ({}) => {
                   <ul className="contact_info">
                     <li>
                       <i className="ti-location-pin" />
-                      <p>132 Bến Vân Đồn P6 Q4, TP. Hồ Chí Minh <br>
-                      </br>(Nhà riêng, gọi trước khi qua)</p>
+                      <p>132 Bến Vân Đồn P6 Q4, TP. Hồ Chí Minh (Nhà riêng, gọi trước khi qua)</p>
                       
                     </li>
                     <li>

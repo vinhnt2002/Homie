@@ -35,7 +35,7 @@ let i = 0;
             <Carousel
               autoPlaySpeed={3000}
               autoPlay
-              minimumTouchDrag={16}
+              minimumTouchDrag={6}
               swipeable
               arrows={false}
               responsive={responsive}
