@@ -18,73 +18,86 @@ const shopleft = ({
   const router = useRouter();
 
   const [showProductActionBox, setShowProductActionBox] = useState(true);
-  const [data, setData] = useState(filteredProducts);
+  const [data, setData] = useState([]);
   const [selectedSortOption, setSelectedSortOption] = useState("");
+  const itemsPerPage = 9;
+  const [currentPage, setCurrentPage] = useState(0);
 
+  // Apply pagination to the data
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedData = data.slice(startIndex, endIndex);
+const pageCount = Math.ceil(data.length / itemsPerPage);
+  // LOGIC TO FETCH DATA
   useEffect(() => {
-    setData(data);
-  }, [data]);
-  //sort by select option
+    setData(filteredProducts);
+  }, [filteredProducts]);
+
   const sortData = (sortOption) => {
     let sortedData = [...data];
 
     switch (sortOption) {
-      //   case 'popularity':
-      //     sortedData = sortedData.sort((a, b) => a.popularity - b.popularity);
-      //     break;
-      //   case 'date':
-      //     sortedData = sortedData.sort((a, b) => a.date - b.date);
-      //     break;
       case "price":
-        sortedData = sortedData.sort((a, b) => a.sellingPrice - b.sellingPrice);
+        sortedData = sortedData.sort(
+          (a, b) => a.sellingPrice - b.sellingPrice
+        );
         break;
       case "price-desc":
-        sortedData = sortedData.sort((a, b) => b.sellingPrice - a.sellingPrice);
+        sortedData = sortedData.sort(
+          (a, b) => b.sellingPrice - a.sellingPrice
+        );
         break;
       default:
-        sortedData = products;
         break;
     }
 
     setData(sortedData);
   };
+
   const handleSortOptionChange = (event) => {
     const selectedOption = event.target.value;
     setSelectedSortOption(selectedOption);
-    sortData(selectedOption); // Pass selectedOption as an argument to sortData
+    sortData(selectedOption);
   };
-  //paging
-  const itemsPerPage = 9;
-  const pageCount = Math.ceil(data.length / itemsPerPage);
-  const [currentPage, setCurrentPage] = useState(0);
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
   };
-  //sidebar (offCanvas)
+
+  // Sidebar (offCanvas)
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // Apply pagination to the data
-  const startIndex = currentPage * itemsPerPage;
-  const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
-  let i = 0;
-  //price filter
+
+  // Price filter
   const [value, setValue] = useState([0, 1000000]);
 
   const handleSliderChange = (newValue) => {
-      setValue(newValue);
+    setValue(newValue);
   };
+
   useEffect(() => {
     const filteredData = filteredProducts.filter(
-        (product) =>
-            product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
+      (product) =>
+        product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
     );
-    setData(filteredData);
-    setSelectedSortOption(""); // Reset selected sort option
-
-}, [value, filteredProducts, setData,setSelectedSortOption]);
+  
+    let sortedData = [...filteredData];
+    if (selectedSortOption === "price") {
+      sortedData = filteredData.sort(
+        (a, b) => a.sellingPrice - b.sellingPrice
+      );
+    } else if (selectedSortOption === "price-desc") {
+      sortedData = filteredData.sort(
+        (a, b) => b.sellingPrice - a.sellingPrice
+      );
+      //more types sorted here
+    }
+  
+    setData(sortedData);
+  }, [value, products, selectedSortOption, setData,setSelectedSortOption]);
+  
   return (
     <div className="main_content">
       <BreadCrumb

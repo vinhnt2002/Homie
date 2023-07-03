@@ -561,7 +561,7 @@ const CheckoutForm = () => {
           </div>
         </div>
 
-        <div className="billingDetail bg-white mt-3 pt-3">
+        <div className={`${classes.tableProduct} billingDetail bg-white mt-3 pt-3`}>
           <div className="text-body">
             <table className="table">
               <thead>
