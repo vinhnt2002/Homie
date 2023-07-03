@@ -7,8 +7,6 @@ import SectionBanner from "../components/SectionBanner/SectionBanner";
 import ProductList from "../components/section/productCard/ProductList";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import Collection from "../components/FilterProductByComponent/collection/Collection";
-
 import { getAllProduct } from "../action/menuApi";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -16,6 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "../styles/Home.module.css";
 import Arrows from "../components/Button/Arrows";
 import SliderSection from "../components/section/SliderSection/SliderSection";
+import CollBar from "../components/FilterProductByComponent/collection/Collection";
 
 function Home({  collections, filterProductCollection }) {
   const [showTabs, setShowTabs] = useState(true);
@@ -81,7 +80,7 @@ function Home({  collections, filterProductCollection }) {
         <div className="single_banner">
           <div className="row">
             <div className="col-12">
-              <Collection collections={collections} />
+              <CollBar collections={collections} />
             </div>
           </div>
         </div>

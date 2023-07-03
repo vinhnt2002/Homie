@@ -55,10 +55,6 @@ const shopleft = ({ products, collections, productCount }) => {
     setCurrentPage(selected);
   };
 
-  useEffect(() => {
-    setData(data);
-  }, [data]);
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -71,13 +67,25 @@ const shopleft = ({ products, collections, productCount }) => {
   };
   useEffect(() => {
     const filteredData = products.filter(
-        (product) =>
-            product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
+      (product) =>
+        product.sellingPrice >= value[0] && product.sellingPrice <= value[1]
     );
-    setData(filteredData);
-    setSelectedSortOption(""); // Reset selected sort option
+  
+    let sortedData = [...filteredData];
+    if (selectedSortOption === "price") {
+      sortedData = filteredData.sort(
+        (a, b) => a.sellingPrice - b.sellingPrice
+      );
+    } else if (selectedSortOption === "price-desc") {
+      sortedData = filteredData.sort(
+        (a, b) => b.sellingPrice - a.sellingPrice
+      );
+      //more types sorted here
+    }
+  
+    setData(sortedData);
 
-}, [value, products, setData,setSelectedSortOption]);
+  }, [value, products, selectedSortOption, setData,setSelectedSortOption]);
   return (
     <div className="main_content">
       <BreadCrumb
