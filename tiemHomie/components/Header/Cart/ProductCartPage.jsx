@@ -1,20 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { TbEdit } from "react-icons/tb";
 import { useSelector, useDispatch } from "react-redux";
-import { updateTotal, removeItem, incrementAmount, decrementAmount } from "@/redux/reducers/cartSlice";
+import {
+  updateTotal,
+  removeItem,
+  incrementAmount,
+  decrementAmount,
+} from "@/redux/reducers/cartSlice";
 import classes from "./CartPage.module.css";
+import { addProduct, removeProduct } from "@/redux/reducers/checkoutSlice";
 
 
-const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku }) => {
+const ProductCardPage = ({
+  name,
+  price,
+  image,
+  amount,
+  handleQuantityChange,
+  sku,
+}) => {
   const { products, total } = useSelector((store) => store.cart);
+  const { products: checkoutProducts } = useSelector(
+    (store) => store.checkout
+  );
   const dispatch = useDispatch();
+  const [isChecked, setIsChecked] = useState(checkoutProducts.some((p) => p.sku === sku));
+
+  
+  const handleCheckboxChange = (event) => {
+    const checked = event.target.checked;
+    setIsChecked(checked);
+
+    if (checked) {
+      dispatch(addProduct({ product: {image, name, price, amount, sku } }));
+    } else {
+      dispatch(removeProduct({ productId: sku }));
+    }
+  };
 
   useEffect(() => {
     dispatch(updateTotal());
   }, [products, useDispatch()]);
 
-  console.log(sku);
+
 
   const formattedPrice =
     price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
@@ -23,6 +52,16 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
     totalProductPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
   return (
     <tr>
+      <td className="product-thumbnail text-start">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id="check1"
+          name="option1"
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+        />
+      </td>
       <td className="product-thumbnail text-start">
         <Link href="#">
           <img src={image} alt={name} />
@@ -56,10 +95,11 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
             // onClick={handleDecrease}
             onClick={() => {
               if (amount === 1) {
-                 dispatch(removeItem({name}));
-                 return;
+                dispatch(removeItem({ name }));
+                return;
               }
-                 dispatch(decrementAmount({name}))}}
+              dispatch(decrementAmount({ name }));
+            }}
           />
           <input
             type="text"
@@ -76,7 +116,9 @@ const ProductCardPage = ({ name, price, image, amount, handleQuantityChange, sku
             defaultValue="+"
             className="plus p-0"
             // onClick={handleIncrease}
-            onClick={() => {dispatch(incrementAmount({name}))}}
+            onClick={() => {
+              dispatch(incrementAmount({ name }));
+            }}
           />
         </div>
       </td>

@@ -1,7 +1,8 @@
 // src/store.js
 import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import counterReducer from './reducers/cartSlice';
+import cartReducer from './reducers/cartSlice';
 import dataReducer from './reducers/dataSlice';
+import checkoutReducer from './reducers/checkoutSlice';
 import thunkMiddleware from 'redux-thunk';
 
 import { persistStore, persistReducer } from 'redux-persist'
@@ -12,12 +13,13 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart']
+  whitelist: ['cart', 'checkout'],
 }
 
 const rootReducer = combineReducers({
   data: dataReducer,
-  cart: counterReducer,
+  cart: cartReducer,
+  checkout: checkoutReducer,
 }
 
 ) 
