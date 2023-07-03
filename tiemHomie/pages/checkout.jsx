@@ -458,7 +458,6 @@ const CheckoutForm = () => {
       </div> */}
 
       <div className="container bg-light pb-3">
-        
         <div className="billingAddress bg-white py-4">
           <div className="d-flex align-items-center billingTitle p-2">
             <MdLocationPin style={{ color: "#f79c43" }} />
@@ -466,23 +465,23 @@ const CheckoutForm = () => {
               Địa chỉ nhận hàng
             </h5>
           </div>
-          <div className="billingInformation d-flex justify-content-between text-body">
+          <div className="billingInformation d-flex justify-content-between flex-wrap text-body">
             <form action="" className="d-flex ">
               <div className="container w-60">
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between flex-wrap">
                   <input
                     className="form-control"
                     type="text"
                     placeholder="Họ và tên"
                   />
                   <input
-                    className="form-control ms-2"
+                    className="form-control mt-3"
                     type="text"
                     placeholder="Số điện thoại"
                   />
                 </div>
-                <div className="d-flex mt-3">
-                  <div className="form-group mb-3 me-2" id="province">
+                <div className=" container d-flex flex-wrap px-0 mt-3">
+                  <div className="form-group mb-3 w-100 " id="province">
                     {/* <label htmlFor="province"></label> */}
                     <div className="custom_select">
                       <select
@@ -502,7 +501,7 @@ const CheckoutForm = () => {
                     </div>
                   </div>
                   <div
-                    className="form-group mb-3 me-2"
+                    className="form-group mb-3 w-100"
                     id="city"
                     onChange={handleDistrictChange}
                     disabled={!provinces.length}
@@ -525,7 +524,7 @@ const CheckoutForm = () => {
                   </div>
 
                   <div
-                    className="form-group mb-3"
+                    className="form-group mb-3 w-100"
                     id="district"
                     disabled={!districts.length || !provinces.length}
                   >
@@ -550,9 +549,9 @@ const CheckoutForm = () => {
                   />
                 </div>
               </div>
-              <div className="form-group w-50 container ">
+              <div className="form-group w-50 ">
                 <textarea
-                  rows={7}
+                  rows={14}
                   className="form-control"
                   placeholder="Ghi chú (tuỳ chọn)"
                   defaultValue={""}
@@ -591,7 +590,7 @@ const CheckoutForm = () => {
                 ))}
               </tbody>
             </table>
-            <div className="">
+            <div className="container">
               <div className="d-flex justify-content-end me-5">
                 <p className="me-5">
                   Tổng thanh toán ({checkoutAmount} sản phẩm):
@@ -602,58 +601,59 @@ const CheckoutForm = () => {
           </div>
         </div>
 
-        <div className="bg-white mt-3 d-flex">
-          <div className="d-grid ms-2 col-6">
-            <div className="heading_s1">
-              <h4>Phương thức thanh toán</h4>
-            </div>
-            <div className="payment_option">
-              <div className="custome-radio">
-                <input
-                  className="form-check-input"
-                  required
-                  type="radio"
-                  name="payment_option"
-                  id="exampleRadios3"
-                  defaultValue="option3"
-                  defaultChecked
-                />
-                <label
-                  className="form-check-label text-muted"
-                  htmlFor="exampleRadios3"
-                >
-                  Chuyển khoản qua ngân hàng
-                </label>
+        <div className="bg-white mt-3 ">
+          <div className="heading_s1 p-2">
+            <h4 className="w-100 ">Phương thức thanh toán</h4>
+          </div>
+          <div className="d-flex pb-3">
+            <div className="d-grid ms-2 col-6">
+              <div className="payment_option">
+                <div className="custome-radio">
+                  <input
+                    className="form-check-input"
+                    required
+                    type="radio"
+                    name="payment_option"
+                    id="exampleRadios3"
+                    defaultValue="option3"
+                    defaultChecked
+                  />
+                  <label
+                    className="form-check-label text-muted"
+                    htmlFor="exampleRadios3"
+                  >
+                    Chuyển khoản qua ngân hàng
+                  </label>
 
-                <div>
-                  Chuyển khoản vào STK: 123456789 <br />
-                  Ngân Hàng :
-                </div>
-                {/* <p data-method="option3" className="payment-text">
+                  <div>
+                    Chuyển khoản vào STK: 123456789 <br />
+                    Ngân Hàng :
+                  </div>
+                  {/* <p data-method="option3" className="payment-text">
                         There are many variations of passages of Lorem Ipsum
                         available, but the majority have suffered alteration.{" "}
                       </p> */}
-              </div>
-              <div className="custome-radio">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="payment_option"
-                  id="exampleRadios4"
-                  defaultValue="option4"
-                />
-                <label
-                  className="form-check-label text-muted"
-                  htmlFor="exampleRadios4"
-                >
-                  Thanh toán khi nhận hàng (COD)
-                </label>
-                {/* <p data-method="option4" className="payment-text">
+                </div>
+                <div className="custome-radio">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="payment_option"
+                    id="exampleRadios4"
+                    defaultValue="option4"
+                  />
+                  <label
+                    className="form-check-label text-muted"
+                    htmlFor="exampleRadios4"
+                  >
+                    Thanh toán khi nhận hàng (COD)
+                  </label>
+                  {/* <p data-method="option4" className="payment-text">
                         Please send your cheque to Store Name, Store Street,
                         Store Town, Store State / County, Store Postcode.
                       </p> */}
-              </div>
-              {/* <div className="custome-radio">
+                </div>
+                {/* <div className="custome-radio">
                       <input
                         className="form-check-input"
                         type="radio"
@@ -668,12 +668,13 @@ const CheckoutForm = () => {
                         Paypal
                       </label>
                     </div> */}
+              </div>
             </div>
-          </div>
-          <div className="d-flex align-items-center justify-content-center col-6">
-            <Link href="#" className="btn btn-fill-out">
-              Đặt hàng
-            </Link>
+            <div className="d-flex align-items-center justify-content-center col-6">
+              <Link href="#" className="btn btn-fill-out">
+                Đặt hàng
+              </Link>
+            </div>
           </div>
         </div>
       </div>

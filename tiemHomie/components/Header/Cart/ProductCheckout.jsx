@@ -54,7 +54,7 @@ const ProductCheckout = ({
     <tr>
       <td className="product-thumbnail text-start">
         <Link href="#">
-          <img src={image} alt={name} style={{ width: '55%', height: '55%' }} />
+          <img src={image} alt={name} style={{ width: '60%', height: '55%' }} />
         </Link>
       </td>
       <td className="product-name" data-title="Product">
@@ -73,7 +73,7 @@ const ProductCheckout = ({
       <td className="product-quantity text-center" data-title="Quantity">
         {amount}
       </td>
-      <td className="product-subtotal text-center" data-title="Total">
+      <td className="product-subtotal text-center px-0" data-title="Total">
         {formatTotalProductPrice}
       </td>
     </tr>
