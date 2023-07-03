@@ -5952,7 +5952,7 @@ label.label_info {
 }
 .payment_method {
 	margin-bottom: 30px;
-	display: inline-block;
+	/* display: inline-block; */
 	width: 100%;
 }
 .payment_option .custome-radio {
