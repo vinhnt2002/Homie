@@ -158,8 +158,9 @@ export default ShopLeft;
 
 
 export async function getStaticPaths() {
-  const data = await getAllProduct();
-  const categories = data.categories;
+  const response = await fetch('http://localhost:3000/api/menu');
+  let data = await response.json();
+  data = data[0];  const categories = data.categories;
 
   const paths = categories.map((c) => ({
     params: {
@@ -174,8 +175,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getAllProduct();
-
+  const response = await fetch('http://localhost:3000/api/menu');
+  let data = await response.json();
+  data = data[0];
   // here is match the code with code of the collections in the url
   const categoryId = params.slug;
   const categories = data.categories;

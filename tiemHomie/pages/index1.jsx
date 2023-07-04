@@ -1,30 +1,32 @@
 import React from 'react';
 
-function MenuPage({ menu }) {
-  // Render the menu data or perform any desired operations
+function index1({ menu }) {
   console.log(menu);
 
   return (
     <div>
       <h1>Menu Page</h1>
-      {/* Render the menu data */}
-      {menu.map(menuItem => (
-        <div key={menuItem._id}>
-          <h3>{menuItem.code}</h3>
+      {menu && (
+        <div>
+          <h3>{menu.code}</h3>
+          {menu.collections.map((coll) => (
+            <div>{coll.code}</div>
+          ))}
           {/* Render other menu item fields as needed */}
         </div>
-      ))}
+      )}
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  const response = await fetch('http://localhost:3000/api/menu'); // Replace with your API route URL
-  const menu = await response.json();
+  const response = await fetch('http://localhost:3000/api/menu');
+  const data = await response.json();
+  const menu = data[0];
 
   return {
     props: { menu },
   };
 }
 
-export default MenuPage;
+export default index1;

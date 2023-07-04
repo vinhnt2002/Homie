@@ -28,6 +28,7 @@ async function fetchData() {
 
     const db = await connectToMongoDB();
     const collection = db.collection('menus'); // name to collections
+    await collection.deleteMany({});
     await collection.insertMany(Array.isArray(data) ? data : [data]); // check case array === null
     console.log('Data inserted into MongoDB Atlas');
     console.log('Connection closed');

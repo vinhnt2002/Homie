@@ -134,9 +134,12 @@ const shopleft = ({ products, collections, productCount }) => {
 export default shopleft;
 
 export async function getStaticProps() {
-  const data = await getAllProduct();
-  const products = data.products;
-  const collections = data.collections;
+  const response = await fetch('http://localhost:3000/api/menu');
+  let data = await response.json();
+  data = data[0];
+
+  const products = menu.products;
+  const collections = menu.collections;
   const productCount = collections.map((collection) => {
     let count = 0;
 

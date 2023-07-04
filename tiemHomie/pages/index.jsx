@@ -383,8 +383,9 @@ function Home({  collections, filterProductCollection }) {
 export default Home;
 
 export async function getStaticProps() {
-  const data = await getAllProduct();
-
+  const response = await fetch('http://localhost:3000/api/menu');
+  let data = await response.json();
+  data = data[0];
   const products = data.products; // take the products attribute in the menu
   const collections = data.collections;
 

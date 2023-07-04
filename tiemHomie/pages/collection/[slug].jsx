@@ -146,8 +146,10 @@ const pageCount = Math.ceil(data.length / itemsPerPage);
 export default shopleft;
 
 export async function getStaticPaths() {
-  const data = await getAllProduct();
-  const collections = data.collections;
+  const response = await fetch('http://localhost:3000/api/menu');
+  let data = await response.json();
+  data = data[0];
+  const collections = menu.collections;
 
   const paths = collections.map((c) => ({
     params: {
@@ -162,7 +164,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getAllProduct();
+  const response = await fetch('http://localhost:3000/api/menu');
+  let data = await response.json();
+  data = data[0];
 
   // here is match the code with code of the collections in the url
   const collectionId = params.slug;
