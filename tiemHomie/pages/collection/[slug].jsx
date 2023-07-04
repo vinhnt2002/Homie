@@ -148,7 +148,7 @@ export default shopleft;
 export async function getStaticPaths() {
   const response = await fetch('http://localhost:3000/api/menu');
   let data = await response.json();
-  data = data[0];
+  const menu = data[0];
   const collections = menu.collections;
 
   const paths = collections.map((c) => ({

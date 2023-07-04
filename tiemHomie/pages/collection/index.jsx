@@ -21,7 +21,6 @@ const shopleft = ({ products, collections, productCount }) => {
   // Apply pagination to the data
   const startIndex = currentPage * itemsPerPage;
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
-  let i = 0;
   const sortData = (sortOption) => {
     let sortedData = [...data];
 
@@ -136,7 +135,7 @@ export default shopleft;
 export async function getStaticProps() {
   const response = await fetch('http://localhost:3000/api/menu');
   let data = await response.json();
-  data = data[0];
+  const menu = data[0];
 
   const products = menu.products;
   const collections = menu.collections;

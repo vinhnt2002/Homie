@@ -20,6 +20,7 @@
     "mongodb": "^5.6.0",
     "mongoose": "^7.3.1",
     "next": "13.4.4",
+    "node-fetch": "^3.3.1",
     "query-string": "^8.1.0",
     "range-slider-input": "^2.4.4",
     "rc-slider": "^10.2.0",

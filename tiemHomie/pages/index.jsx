@@ -16,10 +16,10 @@ import Arrows from "../components/Button/Arrows";
 import SliderSection from "../components/section/SliderSection/SliderSection";
 import CollBar from "../components/FilterProductByComponent/collection/Collection";
 
-function Home({  collections, filterProductCollection }) {
+function Home({  collections, filterProductCollection , data}) {
   const [showTabs, setShowTabs] = useState(true);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
-
+  console.log(data);
   const arrivalSliderRef = useRef(null);
   const sellersSliderRef = useRef(null);
   const featuredSliderRef = useRef(null);
@@ -431,6 +431,6 @@ export async function getStaticProps() {
     // End this Function Filter PARENT AND SINGLE DONT HAVE CHILD
 
   return {
-    props: { collections, filterProductCollection },
+    props: { collections, filterProductCollection , data},
   };
 }
