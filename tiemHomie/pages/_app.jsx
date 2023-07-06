@@ -8,8 +8,9 @@ import ButtonCustomer from "../components/Button/ButtonCustomer";
 import { Provider } from "react-redux";
 import { store, persistor } from "../src/redux/store";
 import { PersistGate } from 'redux-persist/integration/react'
-
-const MyApp = ({ Component, pageProps }) => {
+import { SessionProvider } from "next-auth/react"
+import Login from "../components/Login";
+const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -188,12 +189,15 @@ const MyApp = ({ Component, pageProps }) => {
          <div style={{overflow:'hidden'}}>
          <Provider store={store}>
           <PersistGate persistor={persistor}>
+          <SessionProvider session={session}>
+            <Login/>
             <Header />
             <ButtonCustomer />
 
             <Component {...pageProps} />
           
           <Footer />
+          </SessionProvider>
           </PersistGate>
           </Provider>
          </div>
