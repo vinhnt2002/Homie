@@ -6,8 +6,10 @@ import Cart from "./Cart/Cart";
 import Search from "./SeachingGroup/Search";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTotal } from "@/redux/reducers/cartSlice";
+import { addUser, updateTotal, userInfo } from "@/redux/reducers/cartSlice";
 import Backdrop from "./Backdrop/Backdrop";
+import { useSession } from "next-auth/react";
+import UserDrop from "./userDrop/UserDrop";
 
 const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -16,22 +18,48 @@ const Header = () => {
     e.preventDefault();
     setIsCartOpen(true);
     setIsNavbarOpen(false);
-  setIsDropdownOpen(false);
+    setIsDropdownOpen(false);
+    setIsUserDropdown(false);
   };
 
   const handleCartClose = (e) => {
     e.preventDefault();
     setIsCartOpen(false);
     setIsNavbarOpen(false);
-  setIsDropdownOpen(false);
+    setIsDropdownOpen(false);
+    setIsUserDropdown(false);
   };
+
+  const [isUserDropdown, setIsUserDropdown] = useState(false);
+
+  const handleUserDropdown = (e) => {
+    e.preventDefault();
+    setIsUserDropdown(!isUserDropdown);
+  }
+
+
   const router = useRouter();
+
+  const { data: session } = useSession();
 
   //Redux
   const amount = useSelector((store) => store.cart.amount);
 
   const { products } = useDispatch((store) => store.counter);
+  const { userInfo } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (session) {
+      dispatch(
+        addUser({
+          name: session?.user?.name,
+          email: session?.user?.email,
+          image: session?.user?.image,
+        })
+      );
+    }
+  }, [session]);
 
   useEffect(() => {
     dispatch(updateTotal());
@@ -39,7 +67,6 @@ const Header = () => {
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
 
   const handleLinkClick = () => {
     setIsNavbarOpen(false);
@@ -93,9 +120,18 @@ const Header = () => {
               <div className="col-6 col-md-2 col-sm-6 col-xl-2 col-xxl-2 d-flex align-items-center justify-content-end order-md-2 order-xl-2 px-1">
                 <ul className="navbar-nav attr-nav align-items-center">
                   <li className={style.loginBtn}>
-                    <a href="/">
-                      <i className="ti-user"></i>
-                    </a>
+                    {userInfo ? (
+                      <div onClick={handleUserDropdown}>
+                      <img src={userInfo.image} alt="userImage" class={style.userInfo} />
+                      </div>
+                    ) : (
+                      <><Link href="login">
+                        <i className="ti-user"></i>
+                      </Link></>
+                    )}
+
+                    { isUserDropdown ? <> <UserDrop /></> : <></> }
+
                   </li>
 
                   <li className="cart_hover px-1">
@@ -145,7 +181,11 @@ const Header = () => {
                     aria-expanded="false"
 
                   > */}
-                  <button className="navbar-toggler mt-0 mb-2 me-1 px-1" type="button" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
+                  <button
+                    className="navbar-toggler mt-0 mb-2 me-1 px-1"
+                    type="button"
+                    onClick={() => setIsNavbarOpen(!isNavbarOpen)}
+                  >
                     <span
                       className={`${style.toggle} ion-android-menu fs-3`}
                     ></span>
@@ -165,10 +205,12 @@ const Header = () => {
                   className="collapse navbar-collapse justify-content-center"
                   id="navbarSupportedContent"
                 > */}
-                <div className={`collapse navbar-collapse justify-content-center${isNavbarOpen ? ' show' : ''}`} 
-                // id="navbarSupportedContent"
+                <div
+                  className={`collapse navbar-collapse justify-content-center${
+                    isNavbarOpen ? " show" : ""
+                  }`}
+                  // id="navbarSupportedContent"
                 >
-
                   <ul className="navbar-nav">
                     <li className="dropdown mx-3">
                       <Link
@@ -192,7 +234,11 @@ const Header = () => {
                       >
                         Sản Phẩm
                       </a>
-                      <div className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
+                      <div
+                        className={`dropdown-menu ${
+                          isDropdownOpen ? "show" : ""
+                        }`}
+                      >
                         <ul className="mega-menu d-lg-flex">
                           <li className="mega-menu-col col-lg-2">
                             <ul>
@@ -211,7 +257,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/chen-dia-ly-su"
                                   onClick={handleLinkClick}
-
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -221,7 +266,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/meo-gom"
                                   onClick={handleLinkClick}
-
                                 >
                                   Mèo Gốm
                                 </Link>
@@ -231,7 +275,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/men"
                                   onClick={handleLinkClick}
-
                                 >
                                   Mền
                                 </Link>
@@ -241,7 +284,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/tui-xach"
                                   onClick={handleLinkClick}
-
                                 >
                                   Túi Xách
                                 </Link>
@@ -258,7 +300,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/thu-bong"
                                   onClick={handleLinkClick}
-
                                 >
                                   Thú Bông
                                 </Link>
@@ -268,7 +309,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/goi-bong"
                                   onClick={handleLinkClick}
-
                                 >
                                   Gối Bông
                                 </Link>
@@ -278,7 +318,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/chen-dia-ly-su"
                                   onClick={handleLinkClick}
-
                                 >
                                   Chén Đĩa Ly Sứ
                                 </Link>
@@ -288,7 +327,6 @@ const Header = () => {
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/meo-gom"
                                   onClick={handleLinkClick}
-
                                 >
                                   Mèo Gốm
                                 </Link>

@@ -14,8 +14,8 @@ import { addProduct, removeProduct } from "@/redux/reducers/checkoutSlice";
 
 const ProductCheckout = ({
   name,
-  price,
-  image,
+  sellingPrice,
+  picUrl,
   amount,
   handleQuantityChange,
   sku,
@@ -33,7 +33,7 @@ const ProductCheckout = ({
     setIsChecked(checked);
 
     if (checked) {
-      dispatch(addProduct({ product: {image, name, price, amount, sku } }));
+      dispatch(addProduct({ product: {picUrl, name, sellingPrice, attribute:{amount}, sku } }));
     } else {
       dispatch(removeProduct({ productId: sku }));
     }
@@ -46,15 +46,15 @@ const ProductCheckout = ({
 
 
   const formattedPrice =
-    price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
-  const totalProductPrice = price * amount;
+    sellingPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
+  const totalProductPrice = sellingPrice * amount;
   const formatTotalProductPrice =
     totalProductPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
   return (
     <tr>
       <td className="product-thumbnail text-start">
         <Link href="#">
-          <img src={image} alt={name} style={{ width: '60%', height: '55%' }} />
+          <img src={picUrl} alt={name} style={{ width: '60%', height: '55%' }} />
         </Link>
       </td>
       <td className="product-name" data-title="Product">

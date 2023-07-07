@@ -9,13 +9,13 @@ import {
   decrementAmount,
 } from "@/redux/reducers/cartSlice";
 import classes from "./CartPage.module.css";
-import { addProduct, removeProduct } from "@/redux/reducers/checkoutSlice";
+import { addProduct, removeProduct, incrementCheckoutAmount, decrementCheckoutAmount } from "@/redux/reducers/checkoutSlice";
 
 
 const ProductCardPage = ({
   name,
-  price,
-  image,
+  sellingPrice,
+  picUrl,
   amount,
   handleQuantityChange,
   sku,
@@ -33,11 +33,26 @@ const ProductCardPage = ({
     setIsChecked(checked);
 
     if (checked) {
-      dispatch(addProduct({ product: {image, name, price, amount, sku } }));
+      dispatch(addProduct({ product: {picUrl, name, sellingPrice, attribute:{amount}, sku } }));
     } else {
       dispatch(removeProduct({ productId: sku }));
     }
   };
+
+  const handleDecrease = (e) => {
+    if (amount === 1) {
+      dispatch(removeItem({ name }));
+      dispatch(removeProduct({ productId: sku }));
+      return;
+    }else
+    dispatch(decrementAmount({ name }));
+    dispatch(decrementCheckoutAmount({ name }));
+  }
+
+  const handleIncrease = (e) => {
+    dispatch(incrementAmount({ name }));
+    dispatch(incrementCheckoutAmount({ name }));
+  }
 
   useEffect(() => {
     dispatch(updateTotal());
@@ -46,8 +61,8 @@ const ProductCardPage = ({
 
 
   const formattedPrice =
-    price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
-  const totalProductPrice = price * amount;
+    sellingPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
+  const totalProductPrice = sellingPrice * amount;
   const formatTotalProductPrice =
     totalProductPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
   return (
@@ -64,7 +79,7 @@ const ProductCardPage = ({
       </td>
       <td className="product-thumbnail text-start">
         <Link href="#">
-          <img src={image} alt={name} />
+          <img src={picUrl} alt={name} />
         </Link>
       </td>
       <td className="product-name" data-title="Product">
@@ -92,14 +107,14 @@ const ProductCardPage = ({
             type="button"
             defaultValue="-"
             className="minus p-0"
-            // onClick={handleDecrease}
-            onClick={() => {
-              if (amount === 1) {
-                dispatch(removeItem({ name }));
-                return;
-              }
-              dispatch(decrementAmount({ name }));
-            }}
+            onClick={handleDecrease}
+            // onClick={() => {
+            //   if (amount === 1) {
+            //     dispatch(removeItem({ name }));
+            //     return;
+            //   }
+            //   dispatch(decrementAmount({ name }));
+            // }}
           />
           <input
             type="text"
@@ -115,10 +130,10 @@ const ProductCardPage = ({
             type="button"
             defaultValue="+"
             className="plus p-0"
-            // onClick={handleIncrease}
-            onClick={() => {
-              dispatch(incrementAmount({ name }));
-            }}
+            onClick={handleIncrease}
+            // onClick={() => {
+            //   dispatch(incrementAmount({ name }));
+            // }}
           />
         </div>
       </td>

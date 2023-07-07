@@ -13,104 +13,29 @@ import {addAllToCheckout, removeAllFromCheckout, updateTotalCheckout} from "@/re
 
 import ProductCardPage from "../components/Header/Cart/ProductCartPage";
 
-// const Coupon = () => {
-//   const [showInfo, setShowInfo] = useState(false);
-//   return (
-//     <article className="question mt-4 mb-1">
-//       <header>
-//         <button
-//           className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
-//           onClick={() => setShowInfo(!showInfo)}
-//         >
-//           <div className="text-start">Mã giảm giá</div>
-//           <div className="text-end">
-//             {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
-//           </div>
-//         </button>
-//       </header>
-//       {showInfo && (
-//         <div className="border border-1 p-2">
-//           <form className="col-12">
-//             <div className="form-group pb-2">
-//               {/* <label htmlFor="inputCoupon">
-//                 Nhập mã phiếu giảm giá của bạn
-//               </label> */}
-//               <input
-//                 type="text"
-//                 className="form-control p-2 me-3"
-//                 id="inputCoupon"
-//                 placeholder="Nhập mã phiếu giảm giá của bạn"
-//               />
-//             </div>
-//             <button
-//               className={`border-danger btn btn-outline-warning text-body btn-sm pb-2 ${classes.btn}`}
-//               type="submit"
-//             >
-//               Áp dụng mã
-//             </button>
-//           </form>
-//         </div>
-//       )}
-//     </article>
-//   );
-// };
-
-// const Ship = () => {
-//   const [showInfo, setShowInfo] = useState(false);
-//   return (
-//     <article className="question mb-1">
-//       <header>
-//         <button
-//           className="col-12 text-dark border border-1 d-flex justify-content-between align-items-center p-2"
-//           onClick={() => setShowInfo(!showInfo)}
-//         >
-//           <div className="text-start">Giá vận chuyển</div>
-//           <div className="text-end">
-//             {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
-//           </div>
-//         </button>
-//       </header>
-//       {showInfo && (
-//         <div className="border border border-1 p-2">
-//           <form className="col-12">
-//             <div className="form-group pb-2">
-//               {/* <label htmlFor="inputCoupon">
-//                 Nhập mã phiếu giảm giá của bạn
-//               </label> */}
-//               <input
-//                 type="text"
-//                 className="form-control p-2 me-3"
-//                 id="inputCoupon"
-//                 placeholder="Nhập mã phiếu giảm giá của bạn"
-//               />
-//             </div>
-//             <button
-//               className={`border-danger btn btn-outline-warning text-body btn-sm pb-2 ${classes.btn}`}
-//               type="submit"
-//             >
-//               Áp dụng mã
-//             </button>
-//           </form>
-//         </div>
-//       )}
-//     </article>
-//   );
-// };
-
 const cart = () => {
   const [isChecked, setIsChecked] = useState(false);
   const { cartItems, total, amount } = useSelector((store) => store.cart);
   const {products, totalPriceCheckout, checkoutAmount} = useSelector((store) => store.checkout);
+  const { userInfo } = useSelector((store) => store.cart);
+
   const dispatch = useDispatch();
 
   const handleCheckboxChange = () => {
     if (isChecked) {
       dispatch(removeAllFromCheckout());
     } else {
-      dispatch(addAllToCheckout());
+      dispatch(removeAllFromCheckout());
+      dispatch(addAllToCheckout(cartItems));
     }
     setIsChecked(!isChecked);
   };
+
+  const handleClearCart = (e) => {
+      e.preventDefault();
+      dispatch(clearCart());
+      dispatch(removeAllFromCheckout());
+  }
 
   useEffect(() => {
     dispatch(updateTotal());
@@ -162,8 +87,8 @@ const cart = () => {
                             <ProductCardPage
                               key={new Date().getTime() + Math.random()}
                               name={item.name}
-                              price={item.sellingPrice}
-                              image={item.picUrl}
+                              sellingPrice={item.sellingPrice}
+                              picUrl={item.picUrl}
                               amount={item.attribute.amount}
                               sku={item.sku}
                               handleQuantityChange={(newQuantity) =>
@@ -197,7 +122,7 @@ const cart = () => {
                       <button
                         className="btn btn-outline-danger btn-sm"
                         type="button"
-                        // onClick={clearCart}
+                        onClick={handleClearCart}
                       >
                         Xoá tất cả
                       </button>
@@ -219,7 +144,10 @@ const cart = () => {
                           Tiếp tục mua sắm
                         </Link>
                       </div>
-                      <div className="">
+
+
+                      { userInfo ? (<>
+                        <div className="">
                         <Link
                           href="/checkout"
                           className={`border-danger btn btn-outline-warning text-body btn-sm me-3 ${classes.btn}`}
@@ -227,6 +155,20 @@ const cart = () => {
                           Mua hàng
                         </Link>
                       </div>
+                      </>):
+                       (<>
+                       <div className="">
+                        <Link
+                          href="/checkout"
+                          className={`border-danger btn btn-secondary text-body btn-sm me-3 pe-none ${classes.btn}`}
+                        >
+                          Mua hàng
+                        </Link>
+                        <p className="pt-1 text-danger" > <Link className="text-danger" href="login">Đăng nhập</Link>  để có thể mua hàng</p>
+                      </div>
+                       </>)}
+
+                      
                     </div>
 
                     {/* <div className="mt-4">

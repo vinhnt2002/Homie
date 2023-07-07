@@ -24,6 +24,12 @@
     margin-bottom: 0;
 }
 
+.userInfo {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
 .topLeft {
     display: flex;
 }
@@ -118,7 +124,10 @@
 
 
 
+.loginBtn {
+    cursor: pointer;
 
+}
 
 .loginBtn a{
     padding: 20px 5px;
