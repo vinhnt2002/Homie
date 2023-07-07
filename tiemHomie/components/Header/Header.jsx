@@ -122,7 +122,7 @@ const Header = () => {
                   <li className={style.loginBtn}>
                     {userInfo ? (
                       <div onClick={handleUserDropdown}>
-                      <img src={userInfo.image} alt="userImage" class={style.userInfo} />
+                      <img src={userInfo.image} alt="userImage" className={style.userInfo} />
                       </div>
                     ) : (
                       <><Link href="login">
