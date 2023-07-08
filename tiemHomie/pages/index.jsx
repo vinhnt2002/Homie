@@ -30,12 +30,12 @@ function Home({  collections, filterProductCollection }) {
 
   const getSliderItems = () => {
     const itemsPerSlide = 3; // Số sản phẩm hiển thị trên mỗi slide
-    const totalSlides = Math.ceil(filterProductCollection[1].products.length / itemsPerSlide); // Tổng số slide
+    const totalSlides = Math.ceil(filterProductCollection[2].products.length / itemsPerSlide); // Tổng số slide
     const sliderItems = [];
     for (let i = 0; i < totalSlides; i++) {
       const startIndex = i * itemsPerSlide;
       const endIndex = startIndex + itemsPerSlide;
-      const slideItems = filterProductCollection[1].products.slice(startIndex, endIndex);
+      const slideItems = filterProductCollection[2].products.slice(startIndex, endIndex);
       sliderItems.push(slideItems);
     }
     return sliderItems;
@@ -104,7 +104,7 @@ function Home({  collections, filterProductCollection }) {
                         sliderRef={arrivalSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[7].products
+                            ? filterProductCollection[1].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -120,7 +120,7 @@ function Home({  collections, filterProductCollection }) {
                         sliderRef={sellersSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[5].products
+                            ? filterProductCollection[1].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -136,7 +136,7 @@ function Home({  collections, filterProductCollection }) {
                         sliderRef={featuredSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[8].products
+                            ? filterProductCollection[1].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -152,7 +152,7 @@ function Home({  collections, filterProductCollection }) {
                         sliderRef={specialSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[6].products
+                            ? filterProductCollection[1].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -253,7 +253,7 @@ function Home({  collections, filterProductCollection }) {
                     sliderRef={sliderRef5}
                     products={
                       filterProductCollection.length > 0
-                        ? filterProductCollection[7].products
+                        ? filterProductCollection[1].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -278,7 +278,7 @@ function Home({  collections, filterProductCollection }) {
                     sliderRef={sliderRef6}
                     products={
                       filterProductCollection.length > 0
-                        ? filterProductCollection[6].products
+                        ? filterProductCollection[1].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -342,7 +342,7 @@ function Home({  collections, filterProductCollection }) {
                         className="overflow-hidden"
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[6].products
+                            ? filterProductCollection[1].products
                             : []
                         }
                       >

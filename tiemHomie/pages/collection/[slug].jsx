@@ -16,7 +16,6 @@ const shopleft = ({
   productCount,
 }) => {
   const router = useRouter();
-
   const [showProductActionBox, setShowProductActionBox] = useState(true);
   const [data, setData] = useState([]);
   const [selectedSortOption, setSelectedSortOption] = useState("");
@@ -31,6 +30,7 @@ const pageCount = Math.ceil(data.length / itemsPerPage);
   // LOGIC TO FETCH DATA
   useEffect(() => {
     setData(filteredProducts);
+    console.log(data);
   }, [filteredProducts]);
 
   const sortData = (sortOption) => {
