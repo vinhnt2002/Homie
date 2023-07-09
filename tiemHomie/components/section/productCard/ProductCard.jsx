@@ -3,7 +3,7 @@ import Image from "next/image";
 import Styles from "../productCard/ProductCard.module.css";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/redux/reducers/cartSlice";
+import { addToCart, addToWishList } from "@/redux/reducers/cartSlice";
 
 import slugify from "slugify";
 import { ToastContainer, toast } from "react-toastify";
@@ -31,6 +31,12 @@ const notify = () => {
   });
 };
 
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  // }
+
+  
+
 const formatPrice = (price) => {
   if (price === undefined) {
     return "undefined"; // or any default value you want to display for undefined prices
@@ -45,6 +51,40 @@ const ProductCard = ({
 }) => {
 
   const dispatch = useDispatch();
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+  
+    dispatch(
+      addToCart({
+        name: productData.name,
+        sellingPrice: productData.sellingPrice,
+        picUrl: productData.picUrl,
+        sku: productData.code,
+        attribute: {
+          amount: 1,
+        },
+      })
+    );
+    notify();
+  };
+
+  const handleAddToWishList = (e) => {
+    e.preventDefault();
+  
+    dispatch(
+      addToWishList({
+        name: productData.name,
+        sellingPrice: productData.sellingPrice,
+        picUrl: productData.picUrl,
+        sku: productData.code,
+        attribute: {
+          amount: 1,
+        },
+      })
+    );
+    notify();
+  };
 
   return (
     <div className="m-1">
@@ -65,27 +105,27 @@ const ProductCard = ({
               <ul className="list_none pr_action_btn">
                 <li
                   className="add-to-cart"
-                  onClick={() => {
-                    dispatch(
-                      addToCart({
-                        name: productData.name,
-                        sellingPrice: productData.sellingPrice,
-                        picUrl: productData.picUrl,
-                        sku:productData.code,
-                        attribute: {
-                          amount: 1,
-                        },
-                      })
-                    );
-                    notify();
-                  }}
+                  // onClick={() => {
+                  //   dispatch(
+                  //     addToCart({
+                  //       name: productData.name,
+                  //       sellingPrice: productData.sellingPrice,
+                  //       picUrl: productData.picUrl,
+                  //       sku:productData.code,
+                  //       attribute: {
+                  //         amount: 1,
+                  //       },
+                  //     })
+                  //   );
+                  //   notify();
+                  // }}
                 >
-                  <Link href="">
+                  <Link href="" onClick={handleAddToCart}>
                     <i
                       className="icon-basket-loaded"
-                      onClick={() => {
-                        notify();
-                      }}
+                      // onClick={() => {
+                      //   // notify();
+                      // }}
                     />{" "}
                     Add To Cart
                   </Link>
@@ -101,7 +141,7 @@ const ProductCard = ({
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
+                  <Link href="#" onClick={handleAddToWishList}>
                     <i className="icon-heart" />
                   </Link>
                 </li>

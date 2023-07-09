@@ -4,9 +4,6 @@ import { TbEdit } from "react-icons/tb";
 import { useSelector, useDispatch } from "react-redux";
 import {
   updateTotal,
-  removeItem,
-  incrementAmount,
-  decrementAmount,
 } from "@/redux/reducers/cartSlice";
 import classes from "./CartPage.module.css";
 import { addProduct, removeProduct } from "@/redux/reducers/checkoutSlice";

@@ -10,6 +10,9 @@ import { addUser, updateTotal, userInfo } from "@/redux/reducers/cartSlice";
 import Backdrop from "./Backdrop/Backdrop";
 import { useSession } from "next-auth/react";
 import UserDrop from "./userDrop/UserDrop";
+import { set } from "mongoose";
+import WishList from "./Wishlish/WishList";
+import WishListForm from "./Wishlish/WishListForm";
 
 const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -20,6 +23,7 @@ const Header = () => {
     setIsNavbarOpen(false);
     setIsDropdownOpen(false);
     setIsUserDropdown(false);
+    setIsWishListDropdown(false);
   };
 
   const handleCartClose = (e) => {
@@ -28,6 +32,7 @@ const Header = () => {
     setIsNavbarOpen(false);
     setIsDropdownOpen(false);
     setIsUserDropdown(false);
+    setIsWishListDropdown(false);
   };
 
   const [isUserDropdown, setIsUserDropdown] = useState(false);
@@ -37,6 +42,13 @@ const Header = () => {
     setIsUserDropdown(!isUserDropdown);
   }
 
+  const [isWishListDropdown, setIsWishListDropdown] = useState(false);
+
+  const handleWishListDropdown = (e) => {
+    e.preventDefault();
+    setIsWishListDropdown(!isWishListDropdown);
+  }
+
 
   const router = useRouter();
 
@@ -44,9 +56,10 @@ const Header = () => {
 
   //Redux
   const amount = useSelector((store) => store.cart.amount);
+  const wishListAmount = useSelector((store) => store.cart.wishlistAmount);
 
   const { products } = useDispatch((store) => store.counter);
-  const { userInfo } = useSelector((store) => store.cart);
+  const { userInfo, wishList } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -64,6 +77,8 @@ const Header = () => {
   useEffect(() => {
     dispatch(updateTotal());
   }, [products, dispatch]);
+
+
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -83,6 +98,16 @@ const Header = () => {
           <Backdrop handleCartClose={handleCartClose} isCartOpen={isCartOpen} />
         </>
       )}
+
+      {/* {isWishListDropdown ? (
+        <>
+          <Backdrop handleCartClose={handleCartClose} isCartOpen={isCartOpen} />
+        </>
+      ) : (
+        <>
+          <Backdrop handleCartClose={handleCartClose} isCartOpen={isCartOpen} />
+        </>
+      ) } */}
 
       <header
         className="header_wrap "
@@ -121,20 +146,51 @@ const Header = () => {
                 <ul className="navbar-nav attr-nav align-items-center">
                   <li className={style.loginBtn}>
                     {userInfo ? (
-                      <div onClick={handleUserDropdown}>
-                      <img src={userInfo.image} alt="userImage" className={style.userInfo} />
+                      <div className="pe-1" onClick={handleUserDropdown}>
+                        <img
+                          src={userInfo.image}
+                          alt="userImage"
+                          className={style.userInfo}
+                        />
                       </div>
                     ) : (
-                      <><Link href="login">
-                        <i className="ti-user"></i>
-                      </Link></>
+                      <>
+                        <Link href="login">
+                          <i className="ti-user"></i>
+                        </Link>
+                      </>
                     )}
 
-                    { isUserDropdown ? <> <UserDrop /></> : <></> }
-
+                    {isUserDropdown ? (
+                      <>
+                        {" "}
+                        <UserDrop />
+                      </>
+                    ) : (
+                      <></>
+                    )}
                   </li>
 
-                  <li className="cart_hover px-1">
+                  <li className="cart_hover">
+                    <a href="#" className="nav-link" onClick={handleWishListDropdown}>
+                      <i className="linearicons-heart" />
+                      <span className="wishlist_count"> {wishListAmount} </span>
+                    </a>
+                  </li>
+
+                      {isWishListDropdown ? (
+                        <>
+                        <div className={`${style.cartSidebarOpen} `}>
+                          <WishListForm handleWishListDropdown = {handleWishListDropdown} />
+                        </div>
+                        
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+
+                  <li className="cart_hover">
                     <a
                       className="nav-link cart_trigger"
                       href="#"
@@ -145,14 +201,7 @@ const Header = () => {
                       <span className="cart_count"> {amount} </span>
                     </a>
 
-                    {/* {isCartOpen && (
-                    <div className="slide-in-left">
-                    <div className={`${style.cartSidebarOpen} `}>
-                      <Cart handleCartClose={handleCartClose} />
-
-                      </div>
-                      </div>
-                  )} */}
+                 
 
                     {isCartOpen ? (
                       <>

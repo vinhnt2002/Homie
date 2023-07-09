@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "../src/redux/store";
 import { PersistGate } from 'redux-persist/integration/react'
 import { SessionProvider } from "next-auth/react"
+import { ToastContainer } from "react-toastify";
 import Login from "../components/Login";
 const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -170,6 +171,8 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
 
   return (
     <>
+      <ToastContainer />
+
       <Head>
         {/* SITE TITLE */}
         <title>Homie</title>

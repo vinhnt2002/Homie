@@ -16,6 +16,7 @@ import Arrows from "../components/Button/Arrows";
 import SliderSection from "../components/section/SliderSection/SliderSection";
 import CollBar from "../components/FilterProductByComponent/collection/Collection";
 
+
 function Home({  collections, filterProductCollection }) {
   const [showTabs, setShowTabs] = useState(true);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
