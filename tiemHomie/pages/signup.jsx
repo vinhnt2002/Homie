@@ -1,7 +1,38 @@
-import Link from "next/link";
-import React from "react";
+import React, { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import Link from 'next/link';
 
-const signup = () => {
+const Signup = () => {
+  const [error, setError] = useState(null);
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: '',
+    password: '',
+    imageURL:'/assets/images2/user.png',
+  });
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('/api/auth/register', inputs);
+      console.log(res);
+      router.push('/login');
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError('An error occurred');
+      }
+    }
+  };
+
   return (
     <>
       <div className="login_register_wrap section">
@@ -16,15 +47,17 @@ const signup = () => {
                   <form method="post">
                     <div className="form-group mb-3">
                       <input
+                        onChange={handleChange}
                         type="text"
                         required
                         className="form-control"
-                        name="name"
+                        name="username"
                         placeholder="Nhập họ và tên"
                       />
                     </div>
                     <div className="form-group mb-3">
                       <input
+                        onChange={handleChange}
                         type="text"
                         required
                         className="form-control"
@@ -34,6 +67,7 @@ const signup = () => {
                     </div>
                     <div className="form-group mb-3">
                       <input
+                        onChange={handleChange}
                         className="form-control"
                         required
                         type="password"
@@ -43,11 +77,12 @@ const signup = () => {
                     </div>
                     <div className="form-group mb-3">
                       <input
+                        onChange={handleChange}
                         className="form-control"
                         required
-                        type="password"
-                        name="password"
-                        placeholder="Nhập lại mật khẩu"
+                        type="text"
+                        name="imageURL"
+                        placeholder="Nhập url anh dai dien"
                       />
                     </div>
                     <div className="login_footer form-group mb-3">
@@ -60,23 +95,29 @@ const signup = () => {
                             id="exampleCheckbox2"
                             defaultValue
                           />
-                          <label
+                          {/* <label
                             className="form-check-label"
                             htmlFor="exampleCheckbox2"
                           >
                             <span>Tôi đồng ý với điều khoản &amp; chính sách .</span>
-                          </label>
+                          </label> */}
                         </div>
                       </div>
                     </div>
                     <div className="form-group mb-3">
                       <button
+                        onClick={handleSubmit}
                         type="submit"
                         className="btn btn-fill-out btn-block"
                         name="register"
                       >
                         Đăng kí
                       </button>
+                      {error && <p>{error}</p>}
+                      <span>
+                        Do you have an account?
+                        <Link href="/login">Login</Link>
+                      </span>
                     </div>
                   </form>
                   <div className="different_login">
@@ -84,20 +125,29 @@ const signup = () => {
                   </div>
                   <ul className="btn-login list_none text-center">
                     <li>
-                      <a href="#" className="btn btn-facebook">
+                      <button className="btn btn-facebook text-white" 
+                      onClick={() => {signIn('facebook', { callbackUrl: 'http://localhost:3000' })}}>
                         <i className="ion-social-facebook" />
                         Facebook
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a href="#" className="btn btn-google">
+                      <button
+                        className="btn btn-google text-white"
+                        onClick={() => {
+                          signIn("google", {
+                            callbackUrl: "http://localhost:3000",
+                          });
+                        }}
+                      >
                         <i className="ion-social-googleplus" />
                         Google
-                      </a>
+                      </button>
                     </li>
                   </ul>
                   <div className="form-note text-center">
-                    Đã có tài khoản? <Link href="login">Đăng nhập</Link>
+                    Đã có tài khoản?
+                    <Link href="/login"> Đăng nhập ngay</Link>
                   </div>
                 </div>
               </div>
@@ -109,4 +159,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;

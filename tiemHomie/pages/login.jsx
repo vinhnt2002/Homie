@@ -1,10 +1,35 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { signIn, signOut } from "next-auth/react";
+import { useFormik } from "formik";
+import { useRouter } from "next/router";
+// import login_validate from "../lib/validate";
+import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
 
 
+export default function Login() {
+  const [show, setShow] = useState(false);
+  const router = useRouter();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    // validate: login_validate,
+    onSubmit,
+  });
+  async function onSubmit(values) {
+    const status = await signIn("credentials", {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: "/",
+    });
+     console.log(status);
+    if (status.ok) router.push(status.url);
+  }
+ 
 
-const login = () => {
   return (
     <>
       <div className="login_register_wrap section">
@@ -16,24 +41,51 @@ const login = () => {
                   <div className="heading_s1">
                     <h3>Login</h3>
                   </div>
-                  <form method="post">
-                    <div className="form-group mb-3">
-                      <input
-                        type="text"
-                        required
-                        className="form-control"
-                        name="email"
-                        placeholder="Email"
-                      />
+                  <form method="post" onSubmit={formik.handleSubmit}>
+                    <div className="form-group mb-3 ">
+                      <div
+                        className={`  ${
+                          formik.errors.email && formik.touched.email
+                            ? "border-rose-600"
+                            : ""
+                        }`}
+                      >
+                        <input
+                          type="email"
+                          required
+                          className="form-control"
+                          name="email"
+                          placeholder="Email"
+                          {...formik.getFieldProps("email")}
+                        />
+                        <span className="icon flex items-center px-4">
+                          <HiAtSymbol size={25} />
+                        </span>
+                      </div>
                     </div>
                     <div className="form-group mb-3">
-                      <input
-                        className="form-control"
-                        required
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                      />
+                      <div
+                        className={`  ${
+                          formik.errors.password && formik.touched.password
+                            ? "border-rose-600"
+                            : ""
+                        }`}
+                      >
+                        <input
+                          className="form-control"
+                          required
+                          type={`${show ? "text" : "password"}`}
+                          name="password"
+                          placeholder="Password"
+                          {...formik.getFieldProps("password")}
+                        />
+                        <span
+                          className="icon flex items-center px-4"
+                          onClick={() => setShow(!show)}
+                        >
+                          <HiFingerPrint size={25} />
+                        </span>
+                      </div>
                     </div>
                     <div className="login_footer form-group mb-3">
                       <div className="chek-form">
@@ -65,13 +117,20 @@ const login = () => {
                       </button>
                     </div>
                   </form>
+
                   <div className="different_login">
                     <span> or</span>
                   </div>
                   <ul className="btn-login list_none text-center">
                     <li>
-                      <button className="btn btn-facebook text-white" 
-                      onClick={() => {signIn('facebook', { callbackUrl: 'http://localhost:3000' })}}>
+                      <button
+                        className="btn btn-facebook text-white"
+                        onClick={() => {
+                          signIn("facebook", {
+                            callbackUrl: "http://localhost:3000",
+                          });
+                        }}
+                      >
                         <i className="ion-social-facebook" />
                         Facebook
                       </button>
@@ -79,7 +138,11 @@ const login = () => {
                     <li>
                       <button
                         className="btn btn-google text-white"
-                        onClick={() => {signIn("google", { callbackUrl: 'http://localhost:3000' })}}
+                        onClick={() => {
+                          signIn("google", {
+                            callbackUrl: "http://localhost:3000",
+                          });
+                        }}
                       >
                         <i className="ion-social-googleplus" />
                         Google
@@ -98,6 +161,4 @@ const login = () => {
       </div>
     </>
   );
-};
-
-export default login;
+}

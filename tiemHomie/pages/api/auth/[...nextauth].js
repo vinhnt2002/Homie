@@ -3,7 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import User from "../../../models/user";
 import { connectToDB } from "../../../utils/database";
-
+import CredentialsProvider from "next-auth/providers/credentials";
+import { compare } from "bcrypt";
 export default NextAuth({
   providers: [
     GoogleProvider({
@@ -12,7 +13,35 @@ export default NextAuth({
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      
+      async authorize(credentials, req) {
+        connectToDB().catch((error) => {
+          error: "Connection Failed...!";
+        });
+
+        // check user existance
+        const result = await User.findOne({ email: credentials.email });
+        if (!result) {
+          throw new Error("No user Found with Email Please Sign Up...!");
+        }
+
+        // compare()
+        const checkPassword = await compare(
+          credentials.password,
+          result.password
+        );
+
+        // incorrect password
+        if (!checkPassword || result.email !== credentials.email) {
+          throw new Error("Username or Password doesn't match");
+        }
+
+        return result;
+      },
     }),
   ],
   callbacks: {
@@ -23,27 +52,30 @@ export default NextAuth({
 
       return session;
     },
-    async signIn({ account, profile, user, credentials }) {
+    async signIn({ account, profile, email,provider }) {
+ 
+
       try {
         await connectToDB();
-
-        // check if user already exists
-        const userExists = await User.findOne({ email: profile.email });
-
-        // if not, create a new document and save user in MongoDB
+    
+        // Check if user already exists
+        const userExists = await User.find({ email: email });
+    
+        // If not, create a new document and save user in MongoDB
         if (!userExists) {
           await User.create({
-            email: profile.email,
+            email: email,
             username: profile.name.replace(" ", "").toLowerCase(),
             image: profile.picture,
           });
         }
-
-        return true
+    
+        return true;
       } catch (error) {
         console.log("Error checking if user exists: ", error.message);
-        return false
+        return false;
       }
-    },
-  }
+    }
+    
+  },
 });

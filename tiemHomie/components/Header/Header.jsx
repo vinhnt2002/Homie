@@ -147,11 +147,11 @@ const Header = () => {
                   <li className={style.loginBtn}>
                     {userInfo ? (
                       <div className="pe-1" onClick={handleUserDropdown}>
-                        <img
-                          src={userInfo.image}
-                          alt="userImage"
-                          className={style.userInfo}
-                        />
+                       <img
+  src={userInfo.image || "/assets/images2/user.png"}
+  alt=""
+  className={style.userInfo}
+/>
                       </div>
                     ) : (
                       <>
