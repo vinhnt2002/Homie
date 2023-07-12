@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from "./UserDrop.module.css"
 import { signOut } from 'next-auth/react';
 import { removeUser } from '@/redux/reducers/cartSlice';
+import Link from 'next/link';
 
 const UserDrop = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const UserDrop = () => {
     <>
       <div className= {style.dropdown} >
         <div className= {style.btn}>
-            Thông tin
+          <Link href={`/profile`}>Thông tin</Link>
         </div>
         <div className= {style.btn}>
         <div onClick={handleSignOut}>Đăng xuất</div>
