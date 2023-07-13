@@ -21,7 +21,7 @@ const profile = () => {
 
   const getUser = async (session) => {
     const email = session.user.email;
-    const response = await fetch('http://localhost:3000/api/users', {
+    const response = await fetch('http://localhost:3000/api/user', {
       method: 'GET',
       headers: {
         email: email,
@@ -44,7 +44,7 @@ const profile = () => {
 
     if (validateForm()) {
       try {
-        const response = await fetch('http://localhost:3000/api/users', {
+        const response = await fetch('http://localhost:3000/api/user', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const profile = () => {
 
   const validateForm = () => {
     let isValid = true;
-    let errors = { ...error_init };
+    let errors = { ...errorInitState };
     if (username.trim() === '' || username.length < 2) {
       errors.username_err = 'Name is required';
       if (username.length < 2) {
@@ -162,20 +162,3 @@ const profile = () => {
 }
 
 export default profile
-
-// export async function getServerSideProps() {
-//   const { data: session } = useSession();
-//   const email = session.user.email;
-// // const email = "minhkieu702@gmail.com";
-//   const response = await fetch('http://localhost:3000/api/users',{
-//     method: 'GET',
-//           headers: {
-//             email:email
-//           },
-//   }); 
-  
-//   let user = await response.json();
-//   return {
-//     props: { user },
-//   };
-// }

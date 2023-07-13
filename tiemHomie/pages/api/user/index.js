@@ -3,10 +3,10 @@ import { connectToDB } from "../../../utils/database";
 import { useSession } from "next-auth/react";
 export default async function handler(req, res) {
   if (req.method === "GET") {
-// const { email } = req.headers;
+const { email } = req.headers;
       try {
         await connectToDB();
-        const user = await User.find({  });
+        const user = await User.findOne({ email: email });
         res.status(200).json(user);
       } catch (error) {
         console.log(error);
