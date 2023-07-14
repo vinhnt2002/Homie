@@ -98,7 +98,7 @@ export default function Login() {
                         </span>
                       </div>
                     </div>
-                    <div className="login_footer form-group mb-3">
+                    {/* <div className="login_footer form-group mb-3">
                       <div className="chek-form">
                         <div className="custome-checkbox">
                           <input
@@ -117,7 +117,7 @@ export default function Login() {
                         </div>
                       </div>
                       <a href="#">Quên mật khẩu?</a>
-                    </div>
+                    </div> */}
                     <div className="form-group mb-3">
                       <button
                         type="submit"
@@ -163,7 +163,12 @@ export default function Login() {
                   </ul>
                   <div className="form-note text-center">
                     Chưa có tài khoản?
-                    <Link href="signup"> Đăng kí ngay</Link>
+                    <Link href="signup">
+                      <h10 style={{ font: "roboto", color: "#F79C43" }}>
+                        {" "}
+                        Đăng kí ngay
+                      </h10>
+                    </Link>{" "}
                   </div>
                 </div>
               </div>

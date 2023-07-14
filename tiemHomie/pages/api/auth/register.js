@@ -4,7 +4,7 @@ import { connectToDB } from "../../../utils/database";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { email, username, password } = req.body;
+    const { email, username, password,image } = req.body;
 
     try {
       await connectToDB();
@@ -22,6 +22,7 @@ export default async function handler(req, res) {
         email,
         username,
         password: hashPassword, // Remember to hash the password before saving it in production
+        image,
       });
 
       return res.status(201).json({ message: "User registered successfully", user: newUser });

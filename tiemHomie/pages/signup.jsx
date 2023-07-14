@@ -11,6 +11,8 @@ const Signup = () => {
     email: '',
     password: '',
     image:'',
+    
+    
   });
   const router = useRouter();
 
@@ -98,6 +100,7 @@ const Signup = () => {
                         placeholder="Nhập url ảnh đại diện"
                       />
                     </div>
+               
                     <div className="login_footer form-group mb-3">
                       <div className="chek-form">
                         <div className="custome-checkbox">
@@ -156,8 +159,13 @@ const Signup = () => {
                     </li>
                   </ul>
                   <div className="form-note text-center">
-                    Đã có tài khoản?
-                    <Link href="/login"> Đăng nhập ngay</Link>
+                    Chưa có tài khoản?
+                    <Link href="login">
+                      <h10 style={{ font: "roboto", color: "#F79C43" }}>
+                        {" "}
+                        Đăng nhập ngay
+                      </h10>
+                    </Link>{" "}
                   </div>
                 </div>
               </div>

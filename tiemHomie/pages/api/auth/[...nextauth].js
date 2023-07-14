@@ -66,7 +66,7 @@ export default NextAuth({
           await User.create({
             email: email,
             username: profile.name.replace(" ", "").toLowerCase(),
-            image: profile.picture,
+            image: profile.image,
           });
         }
     
