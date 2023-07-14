@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { signIn, signOut } from "next-auth/react";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-// import login_validate from "../lib/validate";
+
 import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
 
-
 export default function Login() {
+  const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
   const router = useRouter();
   const formik = useFormik({
@@ -15,20 +15,31 @@ export default function Login() {
       email: "",
       password: "",
     },
-    // validate: login_validate,
+
     onSubmit,
   });
   async function onSubmit(values) {
-    const status = await signIn("credentials", {
-      redirect: false,
-      email: values.email,
-      password: values.password,
-      callbackUrl: "/",
-    });
-     console.log(status);
-    if (status.ok) router.push(status.url);
+    try {
+      // Perform sign-in
+      const status = await signIn("credentials", {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+        callbackUrl: "/",
+      });
+
+      console.log(status);
+      if (status.ok) {
+        router.push(status.url);
+      } else if (values.password.includes(" ")) {
+        setError("Password must not contains blank");
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (error) {
+      setError("An error occurred.");
+    }
   }
- 
 
   return (
     <>
@@ -115,6 +126,7 @@ export default function Login() {
                       >
                         Đăng nhập
                       </button>
+                      {error && <p>{error}</p>}
                     </div>
                   </form>
 
