@@ -65,7 +65,7 @@ const Signup = () => {
                         required
                         className="form-control"
                         name="username"
-                        placeholder="Nhập họ và tên"
+                        placeholder="Nhập tên đăng nhập"
                       />
                     </div>
                     <div className="form-group mb-3">
