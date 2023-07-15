@@ -19,7 +19,11 @@ const UserSchema = new Schema({
   },
   image: {
     type: String,
-    default: "/assets/images2/user.png"
+    default: ""
+  },
+  imageUrl: {
+    type: String,
+    default: ""
   }
 });
 

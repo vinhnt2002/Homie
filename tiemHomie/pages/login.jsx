@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { signIn, signOut } from "next-auth/react";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-// import login_validate from "../lib/validate";
+
 import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
 
-
 export default function Login() {
+  const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
   const router = useRouter();
   const formik = useFormik({
@@ -15,20 +15,31 @@ export default function Login() {
       email: "",
       password: "",
     },
-    // validate: login_validate,
+
     onSubmit,
   });
   async function onSubmit(values) {
-    const status = await signIn("credentials", {
-      redirect: false,
-      email: values.email,
-      password: values.password,
-      callbackUrl: "/",
-    });
-     console.log(status);
-    if (status.ok) router.push(status.url);
+    try {
+      // Perform sign-in
+      const status = await signIn("credentials", {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+        callbackUrl: "/",
+      });
+
+      console.log(status);
+      if (status.ok) {
+        router.push(status.url);
+      } else if (values.password.includes(" ")) {
+        setError("Password must not contains blank");
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (error) {
+      setError("An error occurred.");
+    }
   }
- 
 
   return (
     <>
@@ -87,7 +98,7 @@ export default function Login() {
                         </span>
                       </div>
                     </div>
-                    <div className="login_footer form-group mb-3">
+                    {/* <div className="login_footer form-group mb-3">
                       <div className="chek-form">
                         <div className="custome-checkbox">
                           <input
@@ -106,7 +117,7 @@ export default function Login() {
                         </div>
                       </div>
                       <a href="#">Quên mật khẩu?</a>
-                    </div>
+                    </div> */}
                     <div className="form-group mb-3">
                       <button
                         type="submit"
@@ -115,6 +126,7 @@ export default function Login() {
                       >
                         Đăng nhập
                       </button>
+                      {error && <p>{error}</p>}
                     </div>
                   </form>
 
@@ -151,7 +163,12 @@ export default function Login() {
                   </ul>
                   <div className="form-note text-center">
                     Chưa có tài khoản?
-                    <Link href="signup"> Đăng kí ngay</Link>
+                    <Link href="signup">
+                      <h10 style={{ font: "roboto", color: "#F79C43" }}>
+                        {" "}
+                        Đăng kí ngay
+                      </h10>
+                    </Link>{" "}
                   </div>
                 </div>
               </div>

@@ -10,7 +10,9 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    imageURL:'/assets/images2/user.png',
+    image:'',
+    
+    
   });
   const router = useRouter();
 
@@ -21,17 +23,30 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/auth/register', inputs);
-      console.log(res);
-      router.push('/login');
+      if (!inputs.username.match(/^(?=.{4,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/)) {
+        setError('Username invalid, it should contain 4-40 alphanumeric letters, non-blank, and be unique!');
+      }
+       else if (inputs.password.length < 4 || inputs.password.length > 20) {
+        setError('Password must be between 4 and 20 characters');
+      } 
+      else {
+        const res = await axios.post('/api/auth/register', inputs);
+        console.log(res);
+        if (res.data.userExists) {
+          setError('User already exists'); // Set specific error message for user existence
+        } else {
+          router.push('/login');
+        }
+      }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         setError(error.response.data.message);
       } else {
-        setError('An error occurred');
+        setError('An error occurred, please make sure email not existed');
       }
     }
   };
+  
 
   return (
     <>
@@ -52,7 +67,7 @@ const Signup = () => {
                         required
                         className="form-control"
                         name="username"
-                        placeholder="Nhập họ và tên"
+                        placeholder="Nhập tên đăng nhập"
                       />
                     </div>
                     <div className="form-group mb-3">
@@ -81,10 +96,11 @@ const Signup = () => {
                         className="form-control"
                         required
                         type="text"
-                        name="imageURL"
-                        placeholder="Nhập url anh dai dien"
+                        name="image"
+                        placeholder="Nhập url ảnh đại diện"
                       />
                     </div>
+               
                     <div className="login_footer form-group mb-3">
                       <div className="chek-form">
                         <div className="custome-checkbox">
@@ -114,10 +130,7 @@ const Signup = () => {
                         Đăng kí
                       </button>
                       {error && <p>{error}</p>}
-                      <span>
-                        Do you have an account?
-                        <Link href="/login">Login</Link>
-                      </span>
+                      
                     </div>
                   </form>
                   <div className="different_login">
@@ -146,8 +159,13 @@ const Signup = () => {
                     </li>
                   </ul>
                   <div className="form-note text-center">
-                    Đã có tài khoản?
-                    <Link href="/login"> Đăng nhập ngay</Link>
+                    Chưa có tài khoản?
+                    <Link href="login">
+                      <h10 style={{ font: "roboto", color: "#F79C43" }}>
+                        {" "}
+                        Đăng nhập ngay
+                      </h10>
+                    </Link>{" "}
                   </div>
                 </div>
               </div>

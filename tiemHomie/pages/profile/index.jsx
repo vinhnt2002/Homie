@@ -1,29 +1,50 @@
-import React, { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
+
 const initialState = {
   username: '',
   email: '',
   image: '',
-}
-const error_init = {
+};
+
+const errorInitState = {
   username_err: '',
   email_err: '',
   image_err: '',
-}
-const profile = ({ user }) => {
+};
+
+const profile = () => {
   const [state, setState] = useState(initialState);
   const { username, email, image } = state;
-  const [errors, setErrors] = useState(error_init);
+  const [errors, setErrors] = useState(errorInitState);
+  const { data: session } = useSession();
+
+  const getUser = async (session) => {
+    const email = session.user.email;
+    const response = await fetch('http://localhost:3000/api/user', {
+      method: 'GET',
+      headers: {
+        email: email,
+      },
+    });
+    let user = await response.json();
+    return user;
+  };
 
   useEffect(() => {
-    setState(user);
-  }, [user]);
+    if (session) {
+      getUser(session).then((user) => {
+        setState(user);
+      });
+    }
+  }, [session]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (validateForm()) {
       try {
-        const response = await fetch('http://localhost:3000/api/users', {
+        const response = await fetch('http://localhost:3000/api/user', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -55,7 +76,7 @@ const profile = ({ user }) => {
 
   const validateForm = () => {
     let isValid = true;
-    let errors = { ...error_init };
+    let errors = { ...errorInitState };
     if (username.trim() === '' || username.length < 2) {
       errors.username_err = 'Name is required';
       if (username.length < 2) {
@@ -63,10 +84,10 @@ const profile = ({ user }) => {
       }
       isValid = false;
     }
-    if (email.trim() === '') {
-      errors.email_err = 'Email is required'
-      isValid = false;
-    }
+    // if (email.trim() === '') {
+    //   errors.email_err = 'Email is required'
+    //   isValid = false;
+    // }
     if (image.trim() === '') {
       errors.image_err = 'Image URL is required'
       isValid = false;
@@ -105,6 +126,7 @@ const profile = ({ user }) => {
                     className="form-control"
                     name="email"
                     value={state.email}
+                    readOnly
                   />
                   {errors.email_err && <span className='error text-danger'>{errors.email_err}</span>}
                 </div>
@@ -140,11 +162,3 @@ const profile = ({ user }) => {
 }
 
 export default profile
-
-export async function getServerSideProps() {
-  const response = await fetch('http://localhost:3000/api/users'); // Replace with your API route URL
-  let user = await response.json();
-  return {
-    props: { user },
-  };
-}
