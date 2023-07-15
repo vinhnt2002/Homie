@@ -40,15 +40,32 @@ const Header = () => {
   const handleUserDropdown = (e) => {
     e.preventDefault();
     setIsUserDropdown(!isUserDropdown);
-  }
+  };
 
   const [isWishListDropdown, setIsWishListDropdown] = useState(false);
 
-  const handleWishListDropdown = (e) => {
-    e.preventDefault();
-    setIsWishListDropdown(!isWishListDropdown);
-  }
+  // const handleWishListDropdown = (e) => {
+  //   e.preventDefault();
+  //   setIsWishListDropdown(!isWishListDropdown);
+  // };
 
+  const handleWishlistOpen = (e) => {
+    e.preventDefault();
+    setIsWishListDropdown(true);
+    setIsCartOpen(false);
+    setIsNavbarOpen(false);
+    setIsDropdownOpen(false);
+    setIsUserDropdown(false);
+  };
+
+  const handleWishlistClose = (e) => {
+    e.preventDefault();
+    setIsWishListDropdown(false);
+    setIsCartOpen(false);
+    setIsNavbarOpen(false);
+    setIsDropdownOpen(false);
+    setIsUserDropdown(false);
+  };
 
   const router = useRouter();
 
@@ -78,8 +95,6 @@ const Header = () => {
     dispatch(updateTotal());
   }, [products, dispatch]);
 
-
-
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -91,11 +106,21 @@ const Header = () => {
     <>
       {isCartOpen ? (
         <>
-          <Backdrop handleCartClose={handleCartClose} isCartOpen={isCartOpen} />
+          <Backdrop
+            handleCartClose={handleCartClose}
+            handleWishlistClose={handleWishlistClose}
+            isCartOpen={isCartOpen}
+            isWishListDropdown={isWishListDropdown}
+          />
         </>
       ) : (
         <>
-          <Backdrop handleCartClose={handleCartClose} isCartOpen={isCartOpen} />
+          <Backdrop
+            handleCartClose={handleCartClose}
+            handleWishlistClose={handleWishlistClose}
+            isCartOpen={isCartOpen}
+            isWishListDropdown={isWishListDropdown}
+          />
         </>
       )}
 
@@ -147,11 +172,11 @@ const Header = () => {
                   <li className={style.loginBtn}>
                     {userInfo ? (
                       <div className="pe-1" onClick={handleUserDropdown}>
-                       <img
-  src={userInfo.image || "/assets/images2/user.png"}
-  alt=""
-  className={style.userInfo}
-/>
+                        <img
+                          src={userInfo.image || "/assets/images2/user.png"}
+                          alt=""
+                          className={style.userInfo}
+                        />
                       </div>
                     ) : (
                       <>
@@ -172,23 +197,32 @@ const Header = () => {
                   </li>
 
                   <li className="cart_hover">
-                    <a href="#" className="nav-link" onClick={handleWishListDropdown}>
+                    <a
+                      href="#"
+                      className="nav-link"
+                      onClick={handleWishlistOpen}
+                    >
                       <i className="linearicons-heart" />
                       <span className="wishlist_count"> {wishListAmount} </span>
                     </a>
                   </li>
 
-                      {isWishListDropdown ? (
-                        <>
-                        <div className={`${style.cartSidebarOpen} `}>
-                          <WishListForm handleWishListDropdown = {handleWishListDropdown} />
-                        </div>
-                        
-                        </>
-                      ) : (
-                        <></>
-                      )}
-
+                  {isWishListDropdown ? (
+                    <>
+                      <div className={`${style.cartSidebarOpen} `}>
+                        <WishListForm
+                          handleWishlistClose={handleWishlistClose}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                    <div className={`${style.cartSidebarClose} `}>
+                        <WishListForm
+                        />
+                      </div>
+                    </>
+                  )}
 
                   <li className="cart_hover">
                     <a
@@ -200,8 +234,6 @@ const Header = () => {
                       <i className="linearicons-cart"></i>
                       <span className="cart_count"> {amount} </span>
                     </a>
-
-                 
 
                     {isCartOpen ? (
                       <>

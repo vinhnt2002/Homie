@@ -1,11 +1,18 @@
 import React from 'react'
 import style from './Backdrop.module.css'
 
-const Backdrop = ( {handleCartClose, isCartOpen} ) => {
+const Backdrop = ( {handleCartClose, isCartOpen, handleWishlistClose, isWishListDropdown} ) => {
 
-    const backdropClass = isCartOpen ? `${style.backDrop} ${style.active}` : style.backDrop;
+    const backdropClass = isCartOpen || isWishListDropdown ? `${style.backDrop} ${style.active}` : style.backDrop;
 
-    return <div className={backdropClass} onClick={handleCartClose}></div>;
+
+    return <>
+    
+    {isCartOpen && (<div className={backdropClass} onClick={handleCartClose}></div>)}
+    
+    {isWishListDropdown && (<div className={backdropClass} onClick={handleWishlistClose}></div>)}
+    </>
+
 }
 
 export default Backdrop

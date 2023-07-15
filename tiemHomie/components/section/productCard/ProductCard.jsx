@@ -21,7 +21,7 @@ function createSlugFromTitle(title) {
 const notify = () => {
   toast.success("Thêm vào giỏ hàng thành công!!", {
     position: "top-right",
-    autoClose: 3000,
+    autoClose: 1500,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -29,6 +29,19 @@ const notify = () => {
     progress: undefined,
     theme: "light",
   });
+};
+
+const notifyWishlist = () => {
+  toast('❤️ Đã thêm vào danh sách ưa thích!', {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
 };
 
   // const handleClick = (e) => {
@@ -83,7 +96,7 @@ const ProductCard = ({
         },
       })
     );
-    notify();
+    notifyWishlist();
   };
 
   return (
