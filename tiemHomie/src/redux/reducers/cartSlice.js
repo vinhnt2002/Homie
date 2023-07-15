@@ -29,15 +29,29 @@ const cartSlice = createSlice({
       state.amount += product.attribute.amount;
     },
 
-    addToWishList: (state, action) => {
-      console.log(action.payload); // Add this line
-      const product = action.payload;
-      const existingProduct = state.wishList.find((item) => item.name === product.name);
+    // addToWishList: (state, action) => {
+    //   const product = action.payload;
+    //   const existingProduct = state.wishList.find((item) => item.name === product.name);
 
-      if (!existingProduct) {
+    //   if (!existingProduct) {
+    //     state.wishList.push({ ...product });
+    //     state.wishlistAmount += 1;
+    //   }
+    // },
+    addToWishList: (state, action) => {
+      const product = action.payload;
+      if (state.wishList) {
+        const existingProduct = state.wishList.find((item) => item.name === product.name);
+        if (!existingProduct) {
+          state.wishList.push({ ...product });
+          state.wishlistAmount += 1;
+        }
+      }else {
         state.wishList.push({ ...product });
         state.wishlistAmount += 1;
       }
+
+      
     },
     
     
