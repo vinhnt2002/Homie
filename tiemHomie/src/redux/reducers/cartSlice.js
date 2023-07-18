@@ -18,7 +18,7 @@ const cartSlice = createSlice({
 
     addToCart: (state, action) => {
       const product = action.payload;
-      const existingProduct = state.cartItems.find((item) => item.name === product.name);
+      const existingProduct = state.cartItems.find((item) => item.id === product.id);
     
       if (existingProduct) {
         existingProduct.attribute.amount += product.attribute.amount;
@@ -70,8 +70,8 @@ const cartSlice = createSlice({
       }
     },
     removeItem: (state, action) => {
-      const { name } = action.payload;
-      state.cartItems = state.cartItems.filter((item) => item.name !== name);
+      const { id } = action.payload;
+      state.cartItems = state.cartItems.filter((item) => item.id !== id);
     },
     removeWishListItem: (state, action) => {
       const { name } = action.payload;

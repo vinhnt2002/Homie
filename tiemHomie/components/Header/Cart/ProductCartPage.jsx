@@ -13,6 +13,7 @@ import { addProduct, removeProduct, incrementCheckoutAmount, decrementCheckoutAm
 
 
 const ProductCardPage = ({
+  id,
   name,
   sellingPrice,
   picUrl,
@@ -29,19 +30,21 @@ const ProductCardPage = ({
 
   
   const handleCheckboxChange = (event) => {
+    event.preventDefault();
     const checked = event.target.checked;
     setIsChecked(checked);
 
     if (checked) {
-      dispatch(addProduct({ product: {picUrl, name, sellingPrice, attribute:{amount}, sku } }));
+      dispatch(addProduct({ product: {id, picUrl, name, sellingPrice, attribute:{amount}, sku } }));
     } else {
       dispatch(removeProduct({ productId: sku }));
     }
   };
 
   const handleDecrease = (e) => {
+    e.preventDefault();
     if (amount === 1) {
-      dispatch(removeItem({ name }));
+      dispatch(removeItem({ id }));
       dispatch(removeProduct({ productId: sku }));
       return;
     }else
@@ -50,8 +53,15 @@ const ProductCardPage = ({
   }
 
   const handleIncrease = (e) => {
+    e.preventDefault();
     dispatch(incrementAmount({ name }));
     dispatch(incrementCheckoutAmount({ name }));
+  }
+
+  const handleRemove = (e) => {
+    e.preventDefault();
+    dispatch(removeItem({ id }));
+    dispatch(removeProduct({ productId: sku }));
   }
 
   useEffect(() => {
@@ -144,9 +154,7 @@ const ProductCardPage = ({
         <Link href="#">
           <div
             className={classes.remove}
-            onClick={() => {
-              dispatch(removeItem({ name }));
-            }}
+            onClick={handleRemove}
           >
             <i className="ti-close" />
           </div>

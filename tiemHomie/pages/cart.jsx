@@ -86,6 +86,7 @@ const cart = () => {
                           {cartItems.map((item, index) => (
                             <ProductCardPage
                               key={new Date().getTime() + Math.random()}
+                              id = {item.id}
                               name={item.name}
                               sellingPrice={item.sellingPrice}
                               picUrl={item.picUrl}
@@ -170,43 +171,6 @@ const cart = () => {
 
                       
                     </div>
-
-                    {/* <div className="mt-4">
-                      <div className="heading_s1 mb-3">
-                        <div className="table-responsive">
-                          <table className="table table-borderless">
-                            <tbody>
-                              <tr>
-                                <td className="cart_total_label text-end">
-                                  Tổng thanh toán({amount} sản phẩm)
-                                </td>
-                                <td className="cart_total_amount text-end">
-                                  {formattedTotal}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div className="d-flex justify-content-end">
-                          <div className="">
-                            <Link
-                              href="/"
-                              className={`border-danger btn btn-outline-warning text-body btn-sm me-4 ${classes.btn}`}
-                            >
-                              Tiếp tục mua sắm
-                            </Link>
-                          </div>
-                          <div className="">
-                            <Link
-                              href="#"
-                              className={`border-danger btn btn-outline-warning text-body btn-sm me-3 ${classes.btn}`}
-                            >
-                              Mua hàng
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               </div>
@@ -244,56 +208,6 @@ const cart = () => {
                     </div>
                   </div>
                 </div>
-                {/* <div className="row">
-                  <div className="col-md-5">
-                    <Coupon></Coupon>
-                    <Ship></Ship>
-                  </div>
-                  <div className="col-md-7">
-                    <div className="mt-4">
-                      <div className="heading_s1 mb-3">
-                        <div className="table-responsive">
-                          <table className="table table-borderless">
-                            <tbody>
-                              <tr>
-                                <td className="cart_total_label text-end">
-                                  Tổng cộng
-                                </td>
-                                <td className="cart_total_amount text-end">
-                                  {formattedTotal}
-                                </td>
-                              </tr>
-                              <tr className="border-black border-top border-bottom">
-                                <td className="cart_total_label text-end">
-                                  Phí vận chuyển
-                                </td>
-                                <td className="cart_total_amount text-end">
-                                  Miễn phí
-                                </td>
-                              </tr>
-                              <tr className="border-black border-top border-bottom">
-                                <td className="cart_total_label text-end">
-                                  Tổng đơn hàng
-                                </td>
-                                <td className="cart_total_amount text-end">
-                                  {formattedTotal}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div className="text-end">
-                          <Link
-                            href="#"
-                            className={`border-danger btn btn-outline-warning text-body btn-sm ${classes.btn}`}
-                          >
-                            Hoàn tất thanh toán
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>

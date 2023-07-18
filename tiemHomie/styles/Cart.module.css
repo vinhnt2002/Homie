@@ -22,3 +22,9 @@ text-align: center;
 .btn{
     background-color: #F79C43;
 }
+
+.errorMessage {
+    color: #ff6d6d;
+    padding: 0;
+    margin: 0;
+}

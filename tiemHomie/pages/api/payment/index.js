@@ -6,13 +6,14 @@ export default function handler(req, res) {
   if (req.method === 'GET') {
     if (req.query.action === 'create_payment_url') {
       res.json({ title: 'Tạo mới đơn hàng', amount: 10000 });
-    } else if (req.query.action === 'querydr') {
-      res.json({ title: 'Truy vấn kết quả thanh toán' });
-    } else if (req.query.action === 'refund') {
-      res.json({ title: 'Hoàn tiền giao dịch thanh toán' });
-    } else {
-      res.json({ title: 'Danh sách đơn hàng' });
-    }
+    } 
+    // else if (req.query.action === 'querydr') {
+    //   res.json({ title: 'Truy vấn kết quả thanh toán' });
+    // } else if (req.query.action === 'refund') {
+    //   res.json({ title: 'Hoàn tiền giao dịch thanh toán' });
+    // } else {
+    //   res.json({ title: 'Danh sách đơn hàng' });
+    // }
   } else if (req.method === 'POST') {
     process.env.TZ = 'Asia/Ho_Chi_Minh';
 
@@ -25,12 +26,18 @@ export default function handler(req, res) {
       req.socket.remoteAddress ||
       req.connection.socket.remoteAddress;
 
-    const tmnCode = process.env.VNPAY_TMN_CODE; // Replace with your VNPay TmnCode
-    const secretKey = process.env.VNPAY_SECRET_KEY; // Replace with your VNPay Secret Key
-    const vnpUrl = process.env.VNPAY_URL; // Replace with your VNPay URL
-    const returnUrl = process.env.VNPAY_RETURN_URL; // Replace with your VNPay Return URL
+    // const tmnCode = process.env.VNPAY_TMN_CODE; // Replace with your VNPay TmnCode
+    // const secretKey = process.env.VNPAY_SECRET_KEY; // Replace with your VNPay Secret Key
+    // const vnpUrl = process.env.VNPAY_URL; // Replace with your VNPay URL
+    // const returnUrl = process.env.VNPAY_RETURN_URL; // Replace with your VNPay Return URL
+
+
+    const tmnCode = "HLMX0123"; // Replace with your VNPay TmnCode
+    const secretKey = "LVRQSNQNGYSHLIAWBHFLXDTHCGWGRANP"; // Replace with your VNPay Secret Key
+    const vnpUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; // Replace with your VNPay URL
+    const returnUrl = "http://localhost:3000/order/vnpay_return"; // Replace with your VNPay Return URL
     const orderId = moment(date).format('DDHHmmss');
-    const amount = req.body.amount;
+    const amount = req.body.vnp_Amount;
     const bankCode = req.body.bankCode;
 
     let locale = req.body.language;

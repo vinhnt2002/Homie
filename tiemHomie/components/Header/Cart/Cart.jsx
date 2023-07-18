@@ -42,6 +42,7 @@ function Cart({ handleCartClose }) {
                   cartItems.map((item) => (
                     <Product
                       key={new Date().getTime() + Math.random()}
+                      id={item.id}
                       name={item.name}
                       price={item.sellingPrice}
                       image={item.picUrl}

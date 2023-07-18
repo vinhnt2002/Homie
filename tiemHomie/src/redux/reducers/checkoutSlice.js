@@ -5,6 +5,21 @@ const initialState = {
   products: [],
   checkoutAmount: 0,
   totalPriceCheckout: 0,
+  shippingAddress: {
+        //cai nay la dia chi
+  },
+  paymentMethod: '',
+  //loai thanh toan
+  shippingPrice: 0,
+  totalPrice: 0,
+  user:'', 
+  //cho user thi them thong tin nguoi mua bao gom ten va so dien thoai, email
+  isPaid:'',
+  //trang thai thanh toan
+  paidAt:'',
+  isDelivered:'',
+  deliveredAt: '',
+  isSucessOrder: false,
 };
 
 const checkoutSlice = createSlice({

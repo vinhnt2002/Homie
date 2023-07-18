@@ -104,6 +104,7 @@ const ProductDetail = ({ product, products, categories, filterProductCate }) => 
   const handleAddToCart = () => {
     dispatch(
       addToCart({
+        id: product.id,
         name: product.name,
         sellingPrice: product.sellingPrice,
         picUrl: product.picUrl,

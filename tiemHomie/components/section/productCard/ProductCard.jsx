@@ -70,6 +70,7 @@ const ProductCard = ({
   
     dispatch(
       addToCart({
+        id: productData.id,
         name: productData.name,
         sellingPrice: productData.sellingPrice,
         picUrl: productData.picUrl,
@@ -87,6 +88,7 @@ const ProductCard = ({
   
     dispatch(
       addToWishList({
+        id: productData.id,
         name: productData.name,
         sellingPrice: productData.sellingPrice,
         picUrl: productData.picUrl,

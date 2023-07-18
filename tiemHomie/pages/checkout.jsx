@@ -11,6 +11,8 @@ import ProductCardPage from "../components/Header/Cart/ProductCartPage";
 import ProductCartSidebar from "../components/Header/Cart/ProductCartSidebar";
 import axios from "axios";
 import ProductCheckout from "../components/Header/Cart/ProductCheckout";
+import { store } from "@/redux/store";
+import {removeAllFromCheckout} from "@/redux/reducers/checkoutSlice"
 
 const CheckoutForm = () => {
   const [data, setData] = useState([]);
@@ -18,6 +20,69 @@ const CheckoutForm = () => {
   const [districts, setDistricts] = useState([]);
   const [ward, setWard] = useState([]);
   const [showOtherAddress, setShowOtherAddress] = useState(false);
+
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phoneNumber: "",
+    billingProvince: "",
+    billingDistrict: "",
+    billingWard: "",
+    billingAddress: "",
+    notes: "",
+  });
+
+  const [errors, setErrors] = useState({
+    fullName: "",
+    phoneNumber: "",
+    billingProvince: "",
+    billingDistrict: "",
+    billingWard: "",
+    billingAddress: "",
+  });
+
+  // Validation rules
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = { ...errors };
+
+    // Check if fields are empty
+    if (formData.fullName.trim() === "") {
+      newErrors.fullName = "Họ và tên không được để trống";
+      isValid = false;
+    }
+
+    const phoneNumberPattern = /^[0][0-9]{9}$/;
+    if (!phoneNumberPattern.test(formData.phoneNumber)) {
+      newErrors.phoneNumber =
+        "Số điện thoại phải bắt đầu bằng số 0 và gồm 10 chữ số";
+      isValid = false;
+    }
+
+    if (formData.billingProvince.trim() === "") {
+      newErrors.billingProvince = "Vui lòng chọn Tỉnh thành";
+      isValid = false;
+    }
+
+    if (formData.billingDistrict.trim() === "") {
+      newErrors.billingDistrict = "Vui lòng chọn Quận, huyện";
+      isValid = false;
+    }
+
+    if (formData.billingWard.trim() === "") {
+      newErrors.billingWard = "Vui lòng chọn Phường, xã";
+      isValid = false;
+    }
+
+    if (formData.billingAddress.trim() === "") {
+      newErrors.billingAddress = "Vui lòng nhập địa chỉ cụ thể";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
 
   const handleShowOtherAddress = () => {
     setShowOtherAddress(!showOtherAddress);
@@ -37,6 +102,10 @@ const CheckoutForm = () => {
 
   const handleProvinceChange = (event) => {
     const selectedProvinceCode = event.target.value;
+    setFormData((prevData) => ({
+      ...prevData,
+      billingProvince: selectedProvinceCode,
+    }));
 
     // Gọi API để lấy danh sách quận, huyện dựa trên tỉnh, thành phố đã chọn
     axios
@@ -47,13 +116,16 @@ const CheckoutForm = () => {
         setDistricts(response.data.districts);
       })
       .catch((error) => {
-        console.error("Error fetching cities:", error);
+        console.error("Error fetching districts:", error);
       });
   };
 
   const handleDistrictChange = (event) => {
     const selectedCity = event.target.value;
-
+    setFormData((prevData) => ({
+      ...prevData,
+      billingDistrict: selectedCity,
+    }));
     // Gọi API để lấy danh sách xã dựa trên quận, huyện đã chọn
     axios
       .get(`https://provinces.open-api.vn/api/d/${selectedCity}?depth=2`)
@@ -61,8 +133,16 @@ const CheckoutForm = () => {
         setWard(response.data.wards);
       })
       .catch((error) => {
-        console.error("Error fetching districts:", error);
+        console.error("Error fetching wards:", error);
       });
+  };
+
+  const handleWardChange = (event) => {
+    const selectedWard = event.target.value;
+    setFormData((prevData) => ({
+      ...prevData,
+      billingWard: selectedWard,
+    }));
   };
 
   // console.log(districts)
@@ -70,6 +150,8 @@ const CheckoutForm = () => {
   const { products, totalPriceCheckout, checkoutAmount } = useSelector(
     (store) => store.checkout
   );
+  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -80,6 +162,33 @@ const CheckoutForm = () => {
     totalPriceCheckout.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
   var formattedNum =
     totalPriceCheckout.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
+
+
+    const onCheckout = async () => {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+        productIds: products.map((item) => item.id)
+      })
+    }
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Form is valid, perform submission logic here
+      console.log("Form is valid:", formData);
+    } else {
+      // Form is not valid, display error messages or handle them as needed
+      console.log("Form is not valid. Please check the fields.");
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   return (
     <>
@@ -102,19 +211,31 @@ const CheckoutForm = () => {
             </h5>
           </div>
           <div className="billingInformation d-flex justify-content-between flex-wrap text-body">
-            <form action="" className="d-flex ">
+            <form action="" className="d-flex" onSubmit={handleSubmit}>
               <div className="container w-60">
                 <div className="d-flex justify-content-between flex-wrap">
                   <input
                     className="form-control"
                     type="text"
                     placeholder="Họ và tên"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
                   />
+                  {errors.fullName && (
+                    <p className= {classes.errorMessage} >{errors.fullName}</p>
+                  )}
                   <input
                     className="form-control mt-3"
                     type="text"
                     placeholder="Số điện thoại"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
                   />
+                  {errors.phoneNumber && (
+                    <p className={classes.errorMessage}>{errors.phoneNumber}</p>
+                  )}
                 </div>
                 <div className=" container d-flex flex-wrap px-0 mt-3">
                   <div className="form-group mb-3 w-100 " id="province">
@@ -124,8 +245,10 @@ const CheckoutForm = () => {
                         className="form-control"
                         id="billingProvince"
                         onChange={handleProvinceChange}
+                        name="billingProvince"
+                        value={formData.billingProvince}
                       >
-                        <option value="" placeholder="">
+                        <option value="" disabled selected>
                           Tỉnh thành
                         </option>
                         {provinces.map((province) => (
@@ -136,6 +259,9 @@ const CheckoutForm = () => {
                       </select>
                     </div>
                   </div>
+                  {errors.billingProvince && (
+                    <p className={classes.errorMessage}>{errors.billingProvince}</p>
+                  )}
                   <div
                     className="form-group mb-3 w-100"
                     id="city"
@@ -146,8 +272,10 @@ const CheckoutForm = () => {
                     <div className="custom_select">
                       <select
                         className="form-control"
-                        id="billingCity"
+                        id="billingDistrict"
                         onChange={handleDistrictChange}
+                        name="billingDistrict"
+                        value={formData.billingDistrict}
                       >
                         <option value="">Quận, huyện</option>
                         {districts.map((district) => (
@@ -158,7 +286,9 @@ const CheckoutForm = () => {
                       </select>
                     </div>
                   </div>
-
+                  {errors.billingDistrict && (
+                    <p className={classes.errorMessage}>{errors.billingDistrict}</p>
+                  )}
                   <div
                     className="form-group mb-3 w-100"
                     id="district"
@@ -166,7 +296,13 @@ const CheckoutForm = () => {
                   >
                     {/* <label htmlFor="district"></label> */}
                     <div className="custom_select">
-                      <select className="form-control" id="billingDistrict">
+                      <select
+                        className="form-control"
+                        id="billingWard"
+                        name="billingWard"
+                        onChange={handleWardChange}
+                        value={formData.billingWard}
+                      >
                         <option value="">Phường, xã</option>
                         {ward.map((district) => (
                           <option key={district.code} value={district.code}>
@@ -175,6 +311,9 @@ const CheckoutForm = () => {
                         ))}
                       </select>
                     </div>
+                    {errors.billingWard && (
+                      <p className={classes.errorMessage}>{errors.billingWard}</p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -182,7 +321,13 @@ const CheckoutForm = () => {
                     className="form-control"
                     type="text"
                     placeholder="Địa chỉ cụ thể"
+                    name="billingAddress"
+                    id="billingAddress"
+                    value={formData.billingAddress}
+                    onChange={handleInputChange}
                   />
+                    <p className={classes.errorMessage}>{errors.billingAddress}</p>
+
                 </div>
               </div>
               <div className="form-group w-50 ">
@@ -191,6 +336,7 @@ const CheckoutForm = () => {
                   className="form-control"
                   placeholder="Ghi chú (tuỳ chọn)"
                   defaultValue={""}
+                  
                 />
               </div>
             </form>
@@ -309,9 +455,14 @@ const CheckoutForm = () => {
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-center col-6">
-              <Link href="#" className="btn btn-fill-out">
+              <button className="btn btn-fill-out" onClick={handleSubmit}>
+
+              Đặt hàng 
+
+              </button>
+              {/* <Link href="/payment" className="btn btn-fill-out">
                 Đặt hàng
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
