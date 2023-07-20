@@ -13,61 +13,64 @@ import axios from "axios";
 import ProductCheckout from "../components/Header/Cart/ProductCheckout";
 import { useSearchParams } from "next/navigation";
 import { removeAllFromCheckout } from "@/redux/reducers/checkoutSlice";
-import { toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
+import { Toaster, toast } from "react-hot-toast";
+
 
 
 const CheckoutForm = () => {
-  const [data, setData] = useState([]);
-  const [provinces, setProvinces] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [ward, setWard] = useState([]);
-  const [showOtherAddress, setShowOtherAddress] = useState(false);
+  // const [data, setData] = useState([]);
+  // const [provinces, setProvinces] = useState([]);
+  // const [districts, setDistricts] = useState([]);
+  // const [ward, setWard] = useState([]);
+  // const [showOtherAddress, setShowOtherAddress] = useState(false);
 
-  const handleShowOtherAddress = () => {
-    setShowOtherAddress(!showOtherAddress);
-  };
 
-  useEffect(() => {
-    // Gọi API để lấy danh sách tỉnh, thành phố
-    axios
-      .get(`https://provinces.open-api.vn/api/`)
-      .then((response) => {
-        setProvinces(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching provinces:", error);
-      });
-  }, []);
+  // const handleShowOtherAddress = () => {
+  //   setShowOtherAddress(!showOtherAddress);
+  // };
 
-  const handleProvinceChange = (event) => {
-    const selectedProvinceCode = event.target.value;
+  // useEffect(() => {
+  //   // Gọi API để lấy danh sách tỉnh, thành phố
+  //   axios
+  //     .get(`https://provinces.open-api.vn/api/`)
+  //     .then((response) => {
+  //       setProvinces(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching provinces:", error);
+  //     });
+  // }, []);
 
-    // Gọi API để lấy danh sách quận, huyện dựa trên tỉnh, thành phố đã chọn
-    axios
-      .get(
-        `https://provinces.open-api.vn/api/p/${selectedProvinceCode}?depth=2`
-      )
-      .then((response) => {
-        setDistricts(response.data.districts);
-      })
-      .catch((error) => {
-        console.error("Error fetching cities:", error);
-      });
-  };
+  // const handleProvinceChange = (event) => {
+  //   const selectedProvinceCode = event.target.value;
 
-  const handleDistrictChange = (event) => {
-    const selectedCity = event.target.value;
+  //   // Gọi API để lấy danh sách quận, huyện dựa trên tỉnh, thành phố đã chọn
+  //   axios
+  //     .get(
+  //       `https://provinces.open-api.vn/api/p/${selectedProvinceCode}?depth=2`
+  //     )
+  //     .then((response) => {
+  //       setDistricts(response.data.districts);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching cities:", error);
+  //     });
+  // };
 
-    // Gọi API để lấy danh sách xã dựa trên quận, huyện đã chọn
-    axios
-      .get(`https://provinces.open-api.vn/api/d/${selectedCity}?depth=2`)
-      .then((response) => {
-        setWard(response.data.wards);
-      })
-      .catch((error) => {
-        console.error("Error fetching districts:", error);
-      });
-  };
+  // const handleDistrictChange = (event) => {
+  //   const selectedCity = event.target.value;
+
+  //   // Gọi API để lấy danh sách xã dựa trên quận, huyện đã chọn
+  //   axios
+  //     .get(`https://provinces.open-api.vn/api/d/${selectedCity}?depth=2`)
+  //     .then((response) => {
+  //       setWard(response.data.wards);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching districts:", error);
+  //     });
+  // };
 
   // console.log(districts)
 
@@ -87,26 +90,18 @@ const CheckoutForm = () => {
 
   const searchParams = useSearchParams();
 
-
-
   useEffect(() => {
     if (searchParams.get("success")) {
-      toast.success('Hoàn tất thanh toán!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
+      
+
+      toast.success('Hoàn tất thanh toán!');
+        removeAllFromCheckout();
     }
 
     if (searchParams.get("canceled")) {
-      toast.error("Có lỗi xảy ra trong quá trình thanh toán!!");
+      toast.error('Có lỗi xảy ra trong quá trình thanh toán!!!');
     }
-  }, [useSearchParams, removeAllFromCheckout]);
+  }, [searchParams, dispatch]);
 
   const onCheckout = async () => {
     const response = await axios.post(`https://shop-eccomerce-admin.vercel.app/api/checkout`,
@@ -135,6 +130,7 @@ const CheckoutForm = () => {
   return (
     <>
       <div>
+      <Toaster />
         <BreadCrumb
           // className="d-flex justify-content-center"
           // href="/checkout"
@@ -333,7 +329,7 @@ const CheckoutForm = () => {
                     className="form-check-label text-muted"
                     htmlFor="exampleRadios4"
                   >
-                    Thanh toán qua visa
+                    Thanh toán quốc tế
                   </label>
                   {/* <p data-method="option4" className="payment-text">
                         Please send your cheque to Store Name, Store Street,
