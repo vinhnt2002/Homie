@@ -11,6 +11,10 @@ import ProductCardPage from "../components/Header/Cart/ProductCartPage";
 import ProductCartSidebar from "../components/Header/Cart/ProductCartSidebar";
 import axios from "axios";
 import ProductCheckout from "../components/Header/Cart/ProductCheckout";
+import { useSearchParams } from "next/navigation";
+import { removeAllFromCheckout } from "@/redux/reducers/checkoutSlice";
+import { toast } from "react-toastify";
+
 
 const CheckoutForm = () => {
   const [data, setData] = useState([]);
@@ -81,6 +85,53 @@ const CheckoutForm = () => {
   var formattedNum =
     totalPriceCheckout.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
 
+  const searchParams = useSearchParams();
+
+
+
+  useEffect(() => {
+    if (searchParams.get("success")) {
+      toast.success('Hoàn tất thanh toán!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+
+    if (searchParams.get("canceled")) {
+      toast.error("Có lỗi xảy ra trong quá trình thanh toán!!");
+    }
+  }, [useSearchParams, removeAllFromCheckout]);
+
+  const onCheckout = async () => {
+    const response = await axios.post(`https://shop-eccomerce-admin.vercel.app/api/checkout`,
+    // const response = await axios.post(`https://localhost:3000/api/checkout`,
+      {
+        productIds: products.map((item) => item.id),
+      }
+    );
+    window.location = response.data.url;
+
+    // try {
+      
+  
+    //   const response = await axios.post('/checkout', {
+    //         productIds: products.map((item) => item.id),
+    //       });
+    //   window.location = response.data.url;
+
+    // } catch (error) {
+    //   console.error('Error during checkout:', error);
+    // }
+
+
+
+  };
   return (
     <>
       <div>
@@ -94,7 +145,7 @@ const CheckoutForm = () => {
       </div>
 
       <div className="container bg-light pb-3">
-        <div className="billingAddress bg-white py-4">
+        {/* <div className="billingAddress bg-white py-4">
           <div className="d-flex align-items-center billingTitle p-2">
             <MdLocationPin style={{ color: "#f79c43" }} />
             <h5 style={{ color: "#f79c43" }} className="m-0">
@@ -118,7 +169,6 @@ const CheckoutForm = () => {
                 </div>
                 <div className=" container d-flex flex-wrap px-0 mt-3">
                   <div className="form-group mb-3 w-100 " id="province">
-                    {/* <label htmlFor="province"></label> */}
                     <div className="custom_select">
                       <select
                         className="form-control"
@@ -142,7 +192,6 @@ const CheckoutForm = () => {
                     onChange={handleDistrictChange}
                     disabled={!provinces.length}
                   >
-                    {/* <label htmlFor="city"></label> */}
                     <div className="custom_select">
                       <select
                         className="form-control"
@@ -164,7 +213,6 @@ const CheckoutForm = () => {
                     id="district"
                     disabled={!districts.length || !provinces.length}
                   >
-                    {/* <label htmlFor="district"></label> */}
                     <div className="custom_select">
                       <select className="form-control" id="billingDistrict">
                         <option value="">Phường, xã</option>
@@ -195,7 +243,7 @@ const CheckoutForm = () => {
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
 
         <div
           className={`${classes.tableProduct} billingDetail bg-white mt-3 pt-3`}
@@ -246,7 +294,7 @@ const CheckoutForm = () => {
           <div className="d-flex pb-3">
             <div className="d-grid ms-2 col-6">
               <div className="payment_option">
-                <div className="custome-radio">
+                {/* <div className="custome-radio">
                   <input
                     className="form-check-input"
                     required
@@ -267,11 +315,11 @@ const CheckoutForm = () => {
                     Chuyển khoản vào STK: 123456789 <br />
                     Ngân Hàng :
                   </div>
-                  {/* <p data-method="option3" className="payment-text">
+                  <p data-method="option3" className="payment-text">
                         There are many variations of passages of Lorem Ipsum
                         available, but the majority have suffered alteration.{" "}
-                      </p> */}
-                </div>
+                      </p>
+                </div> */}
                 <div className="custome-radio">
                   <input
                     className="form-check-input"
@@ -279,12 +327,13 @@ const CheckoutForm = () => {
                     name="payment_option"
                     id="exampleRadios4"
                     defaultValue="option4"
+                    defaultChecked
                   />
                   <label
                     className="form-check-label text-muted"
                     htmlFor="exampleRadios4"
                   >
-                    Thanh toán khi nhận hàng (COD)
+                    Thanh toán qua visa
                   </label>
                   {/* <p data-method="option4" className="payment-text">
                         Please send your cheque to Store Name, Store Street,
@@ -309,9 +358,12 @@ const CheckoutForm = () => {
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-center col-6">
-              <Link href="#" className="btn btn-fill-out">
+              {/* <Link href="#" className="btn btn-fill-out">
                 Đặt hàng
-              </Link>
+              </Link> */}
+              <button className="btn btn-fill-out" onClick={onCheckout}>
+                Đặt hàng
+              </button>
             </div>
           </div>
         </div>

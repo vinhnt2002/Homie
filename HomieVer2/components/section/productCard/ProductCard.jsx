@@ -70,6 +70,7 @@ const ProductCard = ({
   
     dispatch(
       addToCart({
+        id:productData.id,
         name: productData.name,
         sellingPrice: productData.price,
         picUrl: productData.images[0].url,

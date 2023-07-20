@@ -86,6 +86,7 @@ const cart = () => {
                           {cartItems.map((item, index) => (
                             <ProductCardPage
                               key={new Date().getTime() + Math.random()}
+                              id= {item.id}
                               name={item.name}
                               sellingPrice={item.sellingPrice}
                               picUrl={item.picUrl}

@@ -62,6 +62,7 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
   const handleAddToCart = () => {
     dispatch(
       addToCart({
+        id:product.id,
         name: product.name,
         sellingPrice: product.price,
         picUrl: product.images[0].url,

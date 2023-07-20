@@ -13,6 +13,7 @@ import { addProduct, removeProduct, incrementCheckoutAmount, decrementCheckoutAm
 
 
 const ProductCardPage = ({
+  id,
   name,
   sellingPrice,
   picUrl,
@@ -33,7 +34,7 @@ const ProductCardPage = ({
     setIsChecked(checked);
 
     if (checked) {
-      dispatch(addProduct({ product: {picUrl, name, sellingPrice, attribute:{amount}, sku } }));
+      dispatch(addProduct({ product: {id, picUrl, name, sellingPrice, attribute:{amount}, sku } }));
     } else {
       dispatch(removeProduct({ productId: sku }));
     }
