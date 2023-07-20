@@ -23,7 +23,7 @@ const about = () => {
               </div>
               <div className="col-lg-6">
                 <div className="heading_s1">
-                  <h2>Chúng tôi là ai</h2>
+                  <h2>Chúng Tôi Là Ai</h2>
                 </div>
                 <p>
                   Tiệm Homie cung cấp các sản phẩm quà tặng, trang trí nhà cửa, thư giãn và phụ kiện, làm cho cuộc sống của bạn xinh đẹp và dễ chịu hơn.

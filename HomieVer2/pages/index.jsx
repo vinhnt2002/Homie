@@ -29,14 +29,14 @@ console.log(filterProductCollection);
   const sliderRef6 = useRef(null);
   const sliderRef7 = useRef(null);
 
-  const getSliderItems = () => {
+ const getSliderItems = () => {
     const itemsPerSlide = 3; // Số sản phẩm hiển thị trên mỗi slide
-    const totalSlides = Math.ceil(filterProductCollection[3].products.length / itemsPerSlide); // Tổng số slide
+    const totalSlides = Math.ceil(filterProductCollection[0].products.length / itemsPerSlide); // Tổng số slide
     const sliderItems = [];
     for (let i = 0; i < totalSlides; i++) {
       const startIndex = i * itemsPerSlide;
       const endIndex = startIndex + itemsPerSlide;
-      const slideItems = filterProductCollection[3].products.slice(startIndex, endIndex);
+      const slideItems = filterProductCollection[0].products.slice(startIndex, endIndex);
       sliderItems.push(slideItems);
     }
     return sliderItems;
@@ -69,6 +69,7 @@ console.log(filterProductCollection);
       },
     ],
   };
+
 
   return (
     <div>
@@ -105,7 +106,7 @@ console.log(filterProductCollection);
                         sliderRef={arrivalSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[0].products
+                            ? filterProductCollection[5].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -121,7 +122,7 @@ console.log(filterProductCollection);
                         sliderRef={sellersSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[2].products
+                            ? filterProductCollection[0].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -137,7 +138,7 @@ console.log(filterProductCollection);
                         sliderRef={featuredSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[1].products
+                            ? filterProductCollection[6].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -153,7 +154,7 @@ console.log(filterProductCollection);
                         sliderRef={specialSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[3].products
+                            ? filterProductCollection[4].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -254,7 +255,7 @@ console.log(filterProductCollection);
                     sliderRef={sliderRef5}
                     products={
                       filterProductCollection.length > 0
-                        ? filterProductCollection[0].products
+                        ? filterProductCollection[5].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -279,7 +280,7 @@ console.log(filterProductCollection);
                     sliderRef={sliderRef6}
                     products={
                       filterProductCollection.length > 0
-                        ? filterProductCollection[3].products
+                        ? filterProductCollection[4].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -291,7 +292,7 @@ console.log(filterProductCollection);
           {/* END SECTION SHOP */}
 
           {/* START SECTION SHOP  */}
-          <div className="section small_pt pb_20">
+              <div className="section small_pt pb_20">
             <div className="container col-12">
               <div className="heading-tab-header  ">
                 <div className="">
@@ -343,7 +344,7 @@ console.log(filterProductCollection);
                         className="overflow-hidden"
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[3].products
+                            ? filterProductCollection[0].products
                             : []
                         }
                       >

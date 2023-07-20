@@ -220,7 +220,7 @@ const Footer = ({}) => {
               </div>
             </div>
             <div className="col-lg-4">
-              <ul className="footer_payment text-center text-lg-end">
+              {/* <ul className="footer_payment text-center text-lg-end">
                 <li>
                   <Link href="/">
                     <img src="assets/images/visa.png" alt="visa" />
@@ -252,7 +252,7 @@ const Footer = ({}) => {
                     />
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>
