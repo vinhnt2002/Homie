@@ -14,7 +14,7 @@ const BreadCrumb = ({ descriptionTitle, title, middlePath }) => {
               <div className="col-md-6">
                 <div className={classes.head}>
                   <div className="page-title">
-                    <h1>{descriptionTitle}</h1>
+                    <h2>{descriptionTitle}</h2>
                   </div>
                 </div>
               </div>

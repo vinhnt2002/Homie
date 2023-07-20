@@ -50,9 +50,9 @@
 }
 
 .product_action_box {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: absolute; 
+  top: 10% !important;
+  right: 60% !important;
 }
 
 .product_info {

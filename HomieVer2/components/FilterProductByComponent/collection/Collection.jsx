@@ -91,7 +91,7 @@ const CollBar = ({ collections }) => {
       },
     ],
   };
-  const icons = [<FaGift />, <FaHome />, <FaCoffee />, <FaPuzzlePiece />, <FaHeadphones />];
+  const icons = [<FaHome />, <FaGift />, <FaCoffee />, <FaPuzzlePiece />, <FaHeadphones />];
 
   return (
     <div className={`${classes.category}`}>

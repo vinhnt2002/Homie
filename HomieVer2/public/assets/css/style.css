@@ -1412,7 +1412,7 @@ button:focus:not(:focus-visible) {
 	padding: 35px 5px;
 }
 .navbar .attr-nav li .nav-link.sidetoggle i {
-	font-size: 28px;
+	font-size: 60px;
 }
 .pr_search_icon {
 	float: right;
@@ -3687,7 +3687,7 @@ h6.blog_title {
   10.START NEWLETTER STYLE
 *===================================*/
 .newsletter_small {
-	padding: 70px 0;
+	padding: 35px 0;
 }
 .newsletter_form form,
 .newsletter_form2 form {
@@ -5117,8 +5117,8 @@ footer .widget_title {
 }
 .product_action_box {
 	position: absolute;
-	top: 50%;
-	left: 0;
+	top: 10%;
+	left: 60%;
 	z-index: 2;
 	right: 0;
 	text-align: center;
