@@ -14,7 +14,6 @@ import ProductCheckout from "../components/Header/Cart/ProductCheckout";
 import { useSearchParams } from "next/navigation";
 import { removeAllFromCheckout } from "@/redux/reducers/checkoutSlice";
 // import { ToastContainer, toast } from "react-toastify";
-import { Toaster, toast } from "react-hot-toast";
 
 
 
@@ -90,18 +89,18 @@ const CheckoutForm = () => {
 
   const searchParams = useSearchParams();
 
-  useEffect(() => {
-    if (searchParams.get("success")) {
+  // useEffect(() => {
+  //   if (searchParams.get("success")) {
       
 
-      toast.success('Hoàn tất thanh toán!');
-        removeAllFromCheckout();
-    }
+  //     toast.success('Hoàn tất thanh toán!');
+        
+  //   }
 
-    if (searchParams.get("canceled")) {
-      toast.error('Có lỗi xảy ra trong quá trình thanh toán!!!');
-    }
-  }, [searchParams, dispatch]);
+  //   if (searchParams.get("canceled")) {
+  //     toast.error('Có lỗi xảy ra trong quá trình thanh toán!!!');
+  //   }
+  // }, [searchParams]);
 
   const onCheckout = async () => {
     const response = await axios.post(`https://shop-eccomerce-admin.vercel.app/api/checkout`,
@@ -130,7 +129,6 @@ const CheckoutForm = () => {
   return (
     <>
       <div>
-      <Toaster />
         <BreadCrumb
           // className="d-flex justify-content-center"
           // href="/checkout"
