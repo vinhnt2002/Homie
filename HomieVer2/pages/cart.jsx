@@ -18,6 +18,9 @@ const cart = () => {
   const { cartItems, total, amount } = useSelector((store) => store.cart);
   const {products, totalPriceCheckout, checkoutAmount} = useSelector((store) => store.checkout);
   const { userInfo } = useSelector((store) => store.cart);
+  // const [formattedTotalCheckout, setFormattedTotalCheckout] = useState(0);
+
+
 
   const dispatch = useDispatch();
 

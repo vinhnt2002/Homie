@@ -12,9 +12,9 @@ import ProductCartSidebar from "../components/Header/Cart/ProductCartSidebar";
 import axios from "axios";
 import ProductCheckout from "../components/Header/Cart/ProductCheckout";
 import { useSearchParams } from "next/navigation";
-import { removeAllFromCheckout } from "@/redux/reducers/checkoutSlice";
-// import { ToastContainer, toast } from "react-toastify";
-
+import { removeAllFromCheckout, updateTotalCheckout } from "@/redux/reducers/checkoutSlice";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const CheckoutForm = () => {
@@ -82,25 +82,56 @@ const CheckoutForm = () => {
     dispatch(updateTotal());
   }, [products, useDispatch()]);
 
+
+  useEffect(() => {
+    dispatch(updateTotalCheckout());
+  }, [products, useDispatch()]);
+
   var formattedTotalCheckout =
     totalPriceCheckout.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
-  var formattedNum =
-    totalPriceCheckout.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
+  // var formattedNum =
+  //   totalPriceCheckout.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₫";
+
+
+
 
   const searchParams = useSearchParams();
+  const customId = "custom-id-yes";
 
-  // useEffect(() => {
-  //   if (searchParams.get("success")) {
+  useEffect(() => {
+    if (searchParams.get("success")) {
       
-
-  //     toast.success('Hoàn tất thanh toán!');
+      toast.success('Thanh toán thành công!', {
+        toastId: customId,
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
         
-  //   }
+        dispatch(removeAllFromCheckout());
+        
+        formattedTotalCheckout=0;
+    }
 
-  //   if (searchParams.get("canceled")) {
-  //     toast.error('Có lỗi xảy ra trong quá trình thanh toán!!!');
-  //   }
-  // }, [searchParams]);
+    if (searchParams.get("canceled")) {
+      toast.error('Có lỗi xảy ra trong quá trình thanh toán!', {
+        toastId: customId,
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+  }, [searchParams]);
 
   const onCheckout = async () => {
     const response = await axios.post(`https://shop-eccomerce-admin.vercel.app/api/checkout`,
@@ -355,9 +386,21 @@ const CheckoutForm = () => {
               {/* <Link href="#" className="btn btn-fill-out">
                 Đặt hàng
               </Link> */}
+
+              {checkoutAmount ? 
+              (<>
               <button className="btn btn-fill-out" onClick={onCheckout}>
                 Đặt hàng
               </button>
+              </>):
+               (<>
+               <button className="btn btn-fill-out">
+                <Link href="/">
+                  Về trang chủ
+                </Link>
+              </button>
+               </>)}
+              
             </div>
           </div>
         </div>

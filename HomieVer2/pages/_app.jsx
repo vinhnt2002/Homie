@@ -171,13 +171,13 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
 
   return (
     <>
-      <ToastContainer />
+      
 
       <Head>
         {/* SITE TITLE */}
         <title>Homie</title>
       </Head>
-
+      <ToastContainer />
       {isLoading ? (
         <div className="preloader">
           <div className="lds-ellipsis">
