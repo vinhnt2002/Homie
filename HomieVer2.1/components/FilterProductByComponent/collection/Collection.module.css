@@ -1,0 +1,36 @@
+.icon{
+    font-size: 3rem;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.category{
+    height: 100%;
+    padding: 5px;
+    background-color: #F79C43;
+
+}
+
+.card{
+    padding-top: 6px;
+}
+
+
+/* cate.module.css */
+
+.card {
+    text-align: center;
+  }
+  
+  .card .icon {
+    /* Styles for the icon */
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .card .label {
+    /* Styles for the label text */
+    font-size: 16px;
+    color: #333;
+  }
+  
