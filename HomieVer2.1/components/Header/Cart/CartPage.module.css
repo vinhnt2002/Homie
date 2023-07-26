@@ -11,9 +11,19 @@ font-style: normal;
 }
 
 .remove i{
-    width: 11px;
-height: 16px;
-text-align: center;
+    height: 30px;
+	width: 30px;
+	color: #292b2c;
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 100%;
+	font-size: 14px;
+}
+
+.remove :hover {
+	background-color: #F79C43;
+	color: #fff;
 }
 
 .btn{

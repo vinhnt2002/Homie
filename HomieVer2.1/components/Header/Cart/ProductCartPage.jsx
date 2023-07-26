@@ -55,6 +55,12 @@ const ProductCardPage = ({
     dispatch(incrementCheckoutAmount({ name }));
   }
 
+  const handleRemove = (e) => {
+    e.preventDefault();
+    dispatch(removeItem({ name }))
+    dispatch(removeProduct({ productId: sku }));
+  }
+
   useEffect(() => {
     dispatch(updateTotal());
   }, [products, useDispatch()]);
@@ -132,16 +138,14 @@ const ProductCardPage = ({
         {formatTotalProductPrice}
       </td>
       <td className="product-remove" data-title="Remove">
-        <Link href="#">
+
           <div
             className={classes.remove}
-            onClick={() => {
-              dispatch(removeItem({ name }));
-            }}
+            onClick={handleRemove}
           >
             <i className="ti-close" />
           </div>
-        </Link>
+
       </td>
     </tr>
   );
