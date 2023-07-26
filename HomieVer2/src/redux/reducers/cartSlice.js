@@ -108,7 +108,7 @@ export const { addToCart, updateQuantity, incrementAmount, decrementAmount, remo
    clearCart, addUser, removeUser, addToWishList, removeWishListItem } =
   cartSlice.actions;
 
-  export const selectAllProducts = (state) => state.cartItems;
+export const selectAllProducts = (state) => state.cartItems;
   
 
 
