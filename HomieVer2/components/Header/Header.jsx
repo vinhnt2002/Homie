@@ -453,7 +453,7 @@ const Header = () => {
                                   Mền
                                 </Link>
                               </li>
-                              <li>
+                              {/* <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/quat"
@@ -461,7 +461,7 @@ const Header = () => {
                                 >
                                   Quạt
                                 </Link>
-                              </li>
+                              </li> */}
                             </ul>
                           </li>
                           <li className="mega-menu-col col-lg-2">
@@ -485,7 +485,7 @@ const Header = () => {
                                   Mền
                                 </Link>
                               </li>
-                              <li>
+                              {/* <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/quat"
@@ -493,7 +493,7 @@ const Header = () => {
                                 >
                                   Quạt
                                 </Link>
-                              </li>
+                              </li> */}
                               <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
@@ -544,7 +544,7 @@ const Header = () => {
                                   Túi Xách
                                 </Link>
                               </li>
-                              <li>
+                              {/* <li>
                                 <Link
                                   className="dropdown-item nav-link nav_item"
                                   href="/category/tui-my-pham"
@@ -552,7 +552,7 @@ const Header = () => {
                                 >
                                   Túi Mỹ Phẩm
                                 </Link>
-                              </li>
+                              </li> */}
                             </ul>
                           </li>
                         </ul>

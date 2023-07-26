@@ -147,7 +147,7 @@ export default shopleft;
 
 
 export async function getStaticPaths() {
-  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/collections`);
+  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
   const collections = await collectionsResponse.json();
 
   const paths = collections.map((c) => ({
@@ -163,15 +163,18 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/products`);
+  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
-  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/collections`);
+  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
   const collections = await collectionsResponse.json();
 
   const collectionId = params.slug;
   const collection = collections.find((c) => c.code === collectionId);
 
   const filteredProducts = [];
+  // collection.products.map((product) => (
+  //   filteredProducts.push(product.product)
+  // ))
 for (let index = 0; index < products.length; index++) {
   const product = products[index];
   for (let innerIndex = 0; innerIndex < product.collections.length; innerIndex++) {
@@ -181,6 +184,7 @@ for (let index = 0; index < products.length; index++) {
     }
   }
 }
+
 const productCount = collections.map((collection) => {
   let count = 0;
   collection.products.map(() => count++)

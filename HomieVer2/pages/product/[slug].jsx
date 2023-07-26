@@ -24,7 +24,7 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
 
   const settings = {
     dots: true,
-    // infinite: true,
+    infinite: false,
     loop: true,
     speed: 250,
     slidesToShow: 5,
@@ -78,17 +78,17 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
-  const charS = product.sizes[0].size.name;
-  let sizes;
-  if (charS === "L") {
-    sizes = " LARGE ";
-  } else if (charS === "M") {
-    sizes = " MEDIUM ";
-  } else if (charS === "S") {
-    sizes = " SMALL ";
-  } else {
-    sizes = " Xem thêm ở phần mô tả sản phẩm ";
-  }
+  // const charS = product.size.name;
+  // let sizes;
+  // if (charS === "L") {
+  //   sizes = " LARGE ";
+  // } else if (charS === "M") {
+  //   sizes = " MEDIUM ";
+  // } else if (charS === "S") {
+  //   sizes = " SMALL ";
+  // } else {
+  //   sizes = " Xem thêm ở phần mô tả sản phẩm ";
+  // }
 
   const headingStyle = {
     //css title product
@@ -310,7 +310,7 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
 };
 
 export async function getStaticPaths() {
-  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/products`);
+  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
 
   const paths = products.map((p) => ({
@@ -328,10 +328,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const productCode = params.slug;
 
-  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/products`);
+  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
 
-  const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/categories`);
+  const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
   const categories = await categoriesResponse.json();
 
   const product = products.find((product) => product.code === productCode);

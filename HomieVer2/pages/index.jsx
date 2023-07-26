@@ -386,9 +386,9 @@ export default Home;
 
 
 export async function getStaticProps() {
-  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/products`);
+  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
-  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/collections`);
+  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
   const collections = await collectionsResponse.json();
 
   const filterProductCollection = collections.map((collection) => {

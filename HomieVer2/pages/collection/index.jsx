@@ -130,10 +130,10 @@ const shopleft = ({ products, collections, productCount }) => {
 export default shopleft;
 
 export async function getStaticProps() {
-  const productsResponse = await fetch(`${process.env.NEXTAUTH_URL}/api/products`);
+  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
 
-  const collectionsResponse = await fetch(`${process.env.NEXTAUTH_URL}/api/collections`);
+  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
   const collections = await collectionsResponse.json();
 
 const productCount = collections.map((collection) => {
