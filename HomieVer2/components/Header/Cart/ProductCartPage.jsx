@@ -30,6 +30,7 @@ const ProductCardPage = ({
 
   
   const handleCheckboxChange = (event) => {
+    event.preventDefault();
     const checked = event.target.checked;
     setIsChecked(checked);
 
@@ -41,6 +42,7 @@ const ProductCardPage = ({
   };
 
   const handleDecrease = (e) => {
+    e.preventDefault();
     if (amount === 1) {
       dispatch(removeItem({ name }));
       dispatch(removeProduct({ productId: sku }));
@@ -51,8 +53,15 @@ const ProductCardPage = ({
   }
 
   const handleIncrease = (e) => {
+    e.preventDefault();
     dispatch(incrementAmount({ name }));
     dispatch(incrementCheckoutAmount({ name }));
+  }
+
+  const handleRemove = (e) => {
+    e.preventDefault();
+    dispatch(removeItem({ name }))
+    dispatch(removeProduct({ productId: sku }));
   }
 
   useEffect(() => {
@@ -100,7 +109,6 @@ const ProductCardPage = ({
       </td>
       <td className="product-price" data-title="Price">
         {formattedPrice}
-        {/* {price} */}
       </td>
       <td className="product-quantity" data-title="Quantity">
         <div className="quantity">
@@ -109,13 +117,6 @@ const ProductCardPage = ({
             defaultValue="-"
             className="minus p-0"
             onClick={handleDecrease}
-            // onClick={() => {
-            //   if (amount === 1) {
-            //     dispatch(removeItem({ name }));
-            //     return;
-            //   }
-            //   dispatch(decrementAmount({ name }));
-            // }}
           />
           <input
             type="text"
@@ -132,9 +133,6 @@ const ProductCardPage = ({
             defaultValue="+"
             className="plus p-0"
             onClick={handleIncrease}
-            // onClick={() => {
-            //   dispatch(incrementAmount({ name }));
-            // }}
           />
         </div>
       </td>
@@ -142,16 +140,12 @@ const ProductCardPage = ({
         {formatTotalProductPrice}
       </td>
       <td className="product-remove" data-title="Remove">
-        <Link href="#">
           <div
             className={classes.remove}
-            onClick={() => {
-              dispatch(removeItem({ name }));
-            }}
+            onClick={handleRemove}
           >
             <i className="ti-close" />
           </div>
-        </Link>
       </td>
     </tr>
   );

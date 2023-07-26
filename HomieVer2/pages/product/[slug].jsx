@@ -16,6 +16,7 @@ import { addToCart } from "@/redux/reducers/cartSlice";
 import { useDispatch } from "react-redux";
 import ProductList from "../../components/section/productCard/ProductList";
 import ProductCard from "../../components/section/productCard/ProductCard";
+import { toast } from "react-toastify";
 
 const ProductDetail = ({ product, category, filteredProducts }) => {
   console.log(product);
@@ -45,6 +46,20 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
     ],
   };
 
+  const notify = () => {
+    toast.success("Thêm vào giỏ hàng thành công!!", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+
   const dispatch = useDispatch();
   // const sliderRef6 = useRef(null);
 
@@ -72,6 +87,7 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
         },
       })
     );
+    notify();
   };
 
   const formatPrice = (price) => {
