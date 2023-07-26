@@ -24,7 +24,8 @@ const cart = () => {
 
   const dispatch = useDispatch();
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = (e) => {
+    // e.preventDefault();
     if (isChecked) {
       dispatch(removeAllFromCheckout());
     } else {
