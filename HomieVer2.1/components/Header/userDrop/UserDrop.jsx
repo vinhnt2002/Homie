@@ -15,7 +15,7 @@ const UserDrop = () => {
     <>
       <div className= {style.dropdown} >
         <div className= {style.btn}>
-          <Link href={`/profile`}>Thông tin</Link>
+          <Link href={`/checkouthistory`}>Lịch sử mua hàng</Link>
         </div>
         <div className= {style.btn}>
         <div onClick={handleSignOut}>Đăng xuất</div>

@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,6 +18,8 @@ model Collection {
   name      String
   code      String
   products  CollectionProduct[]
+
+  // @@index([id]) // Add an index on the `id` field
 }
 
 model Product {
@@ -23,12 +28,13 @@ model Product {
   updatedAt   DateTime            @updatedAt
   name        String
   price       Decimal
-  description String              @db.LongText
+  // orginalPrice Decimal
+  description String
   code        String
-  categoryId  String
+  categoryId  String // fk key
   category    Category            @relation(fields: [categoryId], references: [id])
   collections CollectionProduct[]
-  orderItems  OrderItem[]
+  orderItems  OrderItem[] // Relation to Order model
   sizes       ProductSize[]
   colors      ProductColor[]
   images      Image[]
@@ -37,10 +43,11 @@ model Product {
 }
 
 model CollectionProduct {
-  collectionId String
-  productId    String
+  // id           String     @id @default(uuid())
   collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  collectionId String
   product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    String
 
   @@id([productId, collectionId])
   @@index([productId])
@@ -58,10 +65,10 @@ model Category {
 
 model ProductSize {
   productId String
-  sizeId    String
-  price     Decimal
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sizeId    String
   size      Size    @relation(fields: [sizeId], references: [id], onDelete: Cascade)
+  price     Decimal
 
   @@id([productId, sizeId])
   @@index([productId])
@@ -71,17 +78,17 @@ model ProductSize {
 model Size {
   id        String        @id @default(uuid())
   name      String
+  products  ProductSize[] // Relation to Product mode
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
-  products  ProductSize[]
 }
 
 model ProductColor {
   productId String
-  colorId   String
-  price     Decimal
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  colorId   String
   color     Color   @relation(fields: [colorId], references: [id], onDelete: Cascade)
+  price     Decimal
 
   @@id([productId, colorId])
   @@index([productId])
@@ -91,37 +98,47 @@ model ProductColor {
 model Color {
   id        String         @id @default(uuid())
   name      String
+  products  ProductColor[] // relation to Product mode
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
-  products  ProductColor[]
 }
 
 model Image {
   id        String   @id @default(uuid())
-  url       String
+  url       String // URL of the image
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  productId String
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
 
   @@index([productId])
 }
 
 model Order {
   id         String      @id @default(uuid())
+  // storeId     String    // Foreign Key to Store
+  // store       Store     @relation("StoreToOrder", fields: [storeId], references: [id])
+  orderItems OrderItem[] // Relation to OrderItem model
   isPaid     Boolean     @default(false)
   phone      String      @default("")
   address    String      @default("")
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
-  orderItems OrderItem[]
+  userId     String
+
+  user User @relation(fields: [userId], references: [id])
+
+  // @@index([storeId])
+
+  @@index([userId])
 }
 
+// Intermediary for a many-to-many relationship
 model OrderItem {
   id        String  @id @default(uuid())
-  orderId   String
-  productId String
+  orderId   String // Foreign Key to Order
   order     Order   @relation(fields: [orderId], references: [id])
+  productId String // Foreign Key to Product
   product   Product @relation(fields: [productId], references: [id])
 
   @@index([orderId])
@@ -129,15 +146,15 @@ model OrderItem {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  username  String?   
-  email     String?   
-  image     String?   
-  password  String?   
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  accounts Account[]
+  id        String    @id @default(uuid())
+  username  String?
+  email     String?
+  image     String?
+  password  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  orders    Order[]
+  accounts  Account[]
 }
 
 model Account {
