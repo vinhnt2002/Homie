@@ -1,0 +1,161 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Collection {
+  id        String              @id @default(uuid())
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+  name      String
+  code      String
+  products  CollectionProduct[]
+}
+
+model Product {
+  id          String              @id @default(uuid())
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  name        String
+  price       Decimal
+  description String              @db.LongText
+  code        String
+  categoryId  String
+  category    Category            @relation(fields: [categoryId], references: [id])
+  collections CollectionProduct[]
+  orderItems  OrderItem[]
+  sizes       ProductSize[]
+  colors      ProductColor[]
+  images      Image[]
+
+  @@index([categoryId])
+}
+
+model CollectionProduct {
+  collectionId String
+  productId    String
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([productId, collectionId])
+  @@index([productId])
+  @@index([collectionId])
+}
+
+model Category {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String
+  code      String
+  products  Product[]
+}
+
+model ProductSize {
+  productId String
+  sizeId    String
+  price     Decimal
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  size      Size    @relation(fields: [sizeId], references: [id], onDelete: Cascade)
+
+  @@id([productId, sizeId])
+  @@index([productId])
+  @@index([sizeId])
+}
+
+model Size {
+  id        String        @id @default(uuid())
+  name      String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  products  ProductSize[]
+}
+
+model ProductColor {
+  productId String
+  colorId   String
+  price     Decimal
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  color     Color   @relation(fields: [colorId], references: [id], onDelete: Cascade)
+
+  @@id([productId, colorId])
+  @@index([productId])
+  @@index([colorId])
+}
+
+model Color {
+  id        String         @id @default(uuid())
+  name      String
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  products  ProductColor[]
+}
+
+model Image {
+  id        String   @id @default(uuid())
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+}
+
+model Order {
+  id         String      @id @default(uuid())
+  isPaid     Boolean     @default(false)
+  phone      String      @default("")
+  address    String      @default("")
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  orderItems OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String?   
+  email     String?   
+  image     String?   
+  password  String?   
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  accounts Account[]
+}
+
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}

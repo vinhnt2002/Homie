@@ -10,7 +10,7 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    image:'',
+    // image:'',
     
     
   });
@@ -90,7 +90,7 @@ const Signup = () => {
                         placeholder="Mật khẩu"
                       />
                     </div>
-                    <div className="form-group mb-3">
+                    {/* <div className="form-group mb-3">
                       <input
                         onChange={handleChange}
                         className="form-control"
@@ -99,7 +99,7 @@ const Signup = () => {
                         name="image"
                         placeholder="Nhập url ảnh đại diện"
                       />
-                    </div>
+                    </div> */}
                
                     <div className="login_footer form-group mb-3">
                       <div className="chek-form">
