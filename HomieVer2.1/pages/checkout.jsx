@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { removeAllFromCheckout, updateTotalCheckout } from "@/redux/reducers/checkoutSlice";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import { useSession } from "next-auth/react";
 
 
 const CheckoutForm = () => {
@@ -67,11 +68,13 @@ const CheckoutForm = () => {
       });
     }
   }, [searchParams]);
+  const { data: session } = useSession();
 
   const onCheckout = async () => {
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
         productIds: products.map((item) => item.id),
+        userId: session.user?.id
       }
     );
     window.location = response.data.url;

@@ -23,7 +23,7 @@ model Product {
   updatedAt   DateTime            @updatedAt
   name        String
   price       Decimal
-  description String              @db.LongText
+  description String
   code        String
   categoryId  String
   category    Category            @relation(fields: [categoryId], references: [id])
@@ -114,7 +114,10 @@ model Order {
   address    String      @default("")
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
+  userId     String
   orderItems OrderItem[]
+
+  @@index([userId])
 }
 
 model OrderItem {
@@ -129,15 +132,14 @@ model OrderItem {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  username  String?   
-  email     String?   
-  image     String?   
-  password  String?   
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  accounts Account[]
+  id        String    @id @default(uuid())
+  username  String?
+  email     String?
+  image     String?
+  password  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  accounts  Account[]
 }
 
 model Account {
@@ -153,8 +155,7 @@ model Account {
   scope             String?
   id_token          String? @db.Text
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@index([userId])
