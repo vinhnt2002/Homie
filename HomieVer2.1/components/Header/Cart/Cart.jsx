@@ -63,11 +63,11 @@ function Cart({ handleCartClose }) {
                 </div>
               </div>
               <div className={style.checkoutBtn}>
-                <button onClick={(e) => {
-                  e.preventDefault();
-                }}>
-                  <Link href="/cart">Xem giỏ hàng</Link>
+              <Link href="/cart">
+                <button>
+                  Xem giỏ hàng
                 </button>
+                </Link>
               </div>
             </div>
               </>
