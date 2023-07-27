@@ -3,6 +3,8 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import Link from 'next/link';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [error, setError] = useState(null);
@@ -10,9 +12,6 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    // image:'',
-    
-    
   });
   const router = useRouter();
 
@@ -35,7 +34,12 @@ const Signup = () => {
         if (res.data.userExists) {
           setError('User already exists'); // Set specific error message for user existence
         } else {
-          router.push('/login');
+          // router.push('/login');
+          toast.success("Đăng kí tài khoản thành công!", {
+            onClose: () => {
+              router.push('/login');
+            },
+          });
         }
       }
     } catch (error) {
@@ -90,17 +94,6 @@ const Signup = () => {
                         placeholder="Mật khẩu"
                       />
                     </div>
-                    {/* <div className="form-group mb-3">
-                      <input
-                        onChange={handleChange}
-                        className="form-control"
-                        required
-                        type="text"
-                        name="image"
-                        placeholder="Nhập url ảnh đại diện"
-                      />
-                    </div> */}
-               
                     <div className="login_footer form-group mb-3">
                       <div className="chek-form">
                         <div className="custome-checkbox">

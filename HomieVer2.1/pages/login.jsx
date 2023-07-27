@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { signIn, signOut } from "next-auth/react";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [error, setError] = useState(null);
@@ -26,16 +28,38 @@ export default function Login() {
         callbackUrl: "/",
       });
 
-      console.log(status);
+      // console.log(status);
       if (status.ok) {
-        router.push(status.url);
+        toast.success("Đăng nhập thành công!", {
+          onClose: () => {
+            router.push(status.url);
+          },
+        });
       } else if (values.password.includes(" ")) {
-        setError("Password must not contains blank");
+        setError("Mật khẩu không được để trống!!!");
       } else {
-        setError("Invalid email or password");
+        setError("Email hoặc mật khẩu bị sai!!!");
       }
     } catch (error) {
       setError("An error occurred.");
+    }
+  }
+
+  async function signInWithProvider(provider) {
+    try {
+      const status = await signIn(provider, {
+        callbackUrl: "/",
+      });
+
+      if (status.ok) {
+        toast.success(`Đăng nhập với ${provider} thành công!`, {
+          onClose: () => {
+            router.push(status.url);
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error logging in with provider:", error);
     }
   }
 
@@ -113,11 +137,7 @@ export default function Login() {
                     <li>
                       <button
                         className="btn btn-facebook text-white"
-                        onClick={() => {
-                          signIn("facebook", {
-                            callbackUrl: process.env.NEXTAUTH_URL,
-                          });
-                        }}
+                        onClick={() => signInWithProvider("facebook")}
                       >
                         <i className="ion-social-facebook" />
                         Facebook
@@ -126,11 +146,7 @@ export default function Login() {
                     <li>
                       <button
                         className="btn btn-google text-white"
-                        onClick={() => {
-                          signIn("google", {
-                            callbackUrl: process.env.NEXTAUTH_URL,
-                          });
-                        }}
+                        onClick={() => signInWithProvider("google")}
                       >
                         <i className="ion-social-googleplus" />
                         Google
