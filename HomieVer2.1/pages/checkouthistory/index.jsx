@@ -6,16 +6,7 @@ import { useEffect } from "react";
 import { getSession } from "next-auth/react";
 
 const index = ({ order }) => {
-  const [userId, setUserId] = useState('');
-
-  useEffect(() => {
-    // Fetch the userId and set it in the state
-    getSession().then((session) => {
-      const userId = session?.user?.id || '';
-      setUserId(userId);
-    });
-  }, []);
-
+  console.log(order);
 
   return (
     <>
@@ -26,34 +17,30 @@ const index = ({ order }) => {
         middlePath=""
         descriptionTitle="Lịch sử mua hàng"
       />
-      <div className='container'>
-        {userId ? (
-          <table className='table'>
-            <thead>
-              <tr>
-                <th scope='col'>Sản phẩm</th>
-                <th scope='col'>Số điện thoại</th>
-                <th scope='col'>Địa chỉ</th>
-                <th scope='col'>Giá tiền thanh toán</th>
-                <th scope='col'>Trạng thái thanh toán</th>
-              </tr>
-            </thead>
-            <tbody>
-              {order.map((order) => (
-                <CheckoutRow
-                  key={order.id}
-                  products={order.orderItems}
-                  phone={order.phone}
-                  address={order.address}
-                  total={order.totalPrice}
-                    isPaid={order.isPaid}
-                />
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No order information available. Please log in to view your orders.</p>
-        )}
+      <div className="container">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Sản phẩm</th>
+              <th scope="col">Số điện thoại</th>
+              <th scope="col">Địa chỉ</th>
+              <th scope="col">Giá tiền thanh toán</th>
+              <th scope="col">Trạng thái thanh toán</th>
+            </tr>
+          </thead>
+          <tbody>
+            {order.map((order) => (
+              <CheckoutRow
+                key={order.id}
+                products={order.orderItems}
+                phone={order.phone}
+                address={order.address}
+                total={order.totalPrice}
+                isPaid={order.isPaid}
+              />
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
@@ -80,7 +67,6 @@ export async function getServerSideProps(context) {
     // where: {},
     include: {
       // userId: userId,
-      // isPaid,
       orderItems: {
         include: {
           product: {
@@ -97,7 +83,7 @@ export async function getServerSideProps(context) {
       createdAt: "desc",
     },
   });
-  // console.log(orders);
+  console.log(orders);
 
   // Convert Date objects to strings before returning the data
   const fotmatOrder = orders.map((order) => ({
@@ -113,7 +99,6 @@ export async function getServerSideProps(context) {
         // Add other serializable properties of product here if needed
       },
     })),
-    // order.isPaid,
     totalPrice: formatter.format(
       order.orderItems.reduce((total, item) => {
         return total + Number(item.product.price.d[0]);
