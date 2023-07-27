@@ -79,6 +79,10 @@ export default NextAuth({
       }
     },
   },
+
+  //test
+  baseUrl: "https://homie-sable.vercel.app",
+
 });
 
 
