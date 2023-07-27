@@ -1,52 +1,64 @@
 import React from "react";
 import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
 import CheckoutRow from "../../components/checkoutHistory/CheckoutRow";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getSession } from "next-auth/react";
+import prisma from "../../lib/prismadb";
 
-const index = ({ order }) => {
-  console.log(order);
+const Index = ({ order }) => {
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    // Fetch the userId and set it in the state
+    getSession().then((session) => {
+      const userId = session?.user?.id || '';
+      setUserId(userId);
+    });
+  }, []);
 
   return (
     <>
       <BreadCrumb
         className="d-flex justify-content-center"
         href="/checkouthistory"
-        title="Lịch sử mua hàng"
+        title="Order History"
         middlePath=""
-        descriptionTitle="Lịch sử mua hàng"
+        descriptionTitle="Order History"
       />
-      <div className="container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Sản phẩm</th>
-              <th scope="col">Số điện thoại</th>
-              <th scope="col">Địa chỉ</th>
-              <th scope="col">Giá tiền thanh toán</th>
-              <th scope="col">Trạng thái thanh toán</th>
-            </tr>
-          </thead>
-          <tbody>
-            {order.map((order) => (
-              <CheckoutRow
-                key={order.id}
-                products={order.orderItems}
-                phone={order.phone}
-                address={order.address}
-                total={order.totalPrice}
-                isPaid={order.isPaid}
-              />
-            ))}
-          </tbody>
-        </table>
+      <div className='container'>
+        {userId ? (
+          <table className='table'>
+            <thead>
+              <tr>
+                <th scope='col'>Product</th>
+                <th scope='col'>Phone</th>
+                <th scope='col'>Address</th>
+                <th scope='col'>Payment Amount</th>
+                <th scope='col'>Payment Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {order.map((orderItem) => (
+                <CheckoutRow
+                  key={orderItem.id}
+                  products={orderItem.orderItems}
+                  phone={orderItem.phone}
+                  address={orderItem.address}
+                  total={orderItem.totalPrice}
+                  isPaid={orderItem.isPaid}
+                />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No order information available. Please log in to view your orders.</p>
+        )}
       </div>
     </>
   );
 };
 
-export default index;
+export default Index;
 
 export async function getServerSideProps(context) {
   const formatter = new Intl.NumberFormat("en-US", {
@@ -54,19 +66,12 @@ export async function getServerSideProps(context) {
     currency: "VND",
   });
   const session = await getSession(context); // Using getSession instead of useSession to get the session data
-  //   console.log(session);
+  console.log(session);
   const userId = session?.user?.id;
-
-  //   const user = await prisma.user.findMany({
-  //     where:{id: userId},
-  //   })
-  //   console.log(user);
 
   const orders = await prisma.order.findMany({
     where: { userId: userId },
-    // where: {},
     include: {
-      // userId: userId,
       orderItems: {
         include: {
           product: {
@@ -83,10 +88,9 @@ export async function getServerSideProps(context) {
       createdAt: "desc",
     },
   });
-  console.log(orders);
 
   // Convert Date objects to strings before returning the data
-  const fotmatOrder = orders.map((order) => ({
+  const formattedOrders = orders.map((order) => ({
     ...order,
     createdAt: order.createdAt.toString(),
     updatedAt: order.updatedAt.toString(),
@@ -95,19 +99,19 @@ export async function getServerSideProps(context) {
       product: {
         ...orderItem.product,
         createdAt: orderItem.product.createdAt.toString(),
-        price: orderItem.product.price.d[0].toString(),
-        // Add other serializable properties of product here if needed
+        price: orderItem.product.price.toString(),
+        // Add other serializable properties of the product here if needed
       },
     })),
     totalPrice: formatter.format(
       order.orderItems.reduce((total, item) => {
-        return total + Number(item.product.price.d[0]);
+        return total + Number(item.product.price);
       }, 0)
     ),
     // Add any other properties that might be of non-serializable types here
   }));
 
   return {
-    props: { order: fotmatOrder },
+    props: { order: formattedOrders },
   };
 }
