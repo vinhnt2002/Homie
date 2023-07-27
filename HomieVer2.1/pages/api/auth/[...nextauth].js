@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-import { connectToDB } from "../../../utils/database";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
 import prisma from "../../../lib/prismadb";

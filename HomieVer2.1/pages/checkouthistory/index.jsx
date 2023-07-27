@@ -1,74 +1,93 @@
-import React from 'react'
-import BreadCrumb from '../../components/breadCrumb/BreadCrumb'
-import CheckoutRow from '../../components/checkoutHistory/CheckoutRow'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { getSession } from 'next-auth/react';
+import React from "react";
+import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
+import CheckoutRow from "../../components/checkoutHistory/CheckoutRow";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getSession } from "next-auth/react";
 
-const index = ( {order} ) => {
+const index = ({ order }) => {
+  const [userId, setUserId] = useState('');
 
+  useEffect(() => {
+    // Fetch the userId and set it in the state
+    getSession().then((session) => {
+      const userId = session?.user?.id || '';
+      setUserId(userId);
+    });
+  }, []);
 
-    
-
-console.log(order);
 
   return (
     <>
-      <BreadCrumb className="d-flex justify-content-center" href="/checkouthistory" title="Lịch sử mua hàng" middlePath="" descriptionTitle="Lịch sử mua hàng" />
+      <BreadCrumb
+        className="d-flex justify-content-center"
+        href="/checkouthistory"
+        title="Lịch sử mua hàng"
+        middlePath=""
+        descriptionTitle="Lịch sử mua hàng"
+      />
       <div className='container'>
-        <table className='table'>
+        {userId ? (
+          <table className='table'>
             <thead>
-                <tr>
-                    <th scope='col'>Sản phẩm</th>
-                    <th scope='col'>Số điện thoại</th>
-                    <th scope='col'>Địa chỉ</th>
-                    <th scope='col'>Giá tiền thanh toán</th>
-                    <th scope='col'>Trạng thái thanh toán</th>
-                </tr>
+              <tr>
+                <th scope='col'>Sản phẩm</th>
+                <th scope='col'>Số điện thoại</th>
+                <th scope='col'>Địa chỉ</th>
+                <th scope='col'>Giá tiền thanh toán</th>
+                <th scope='col'>Trạng thái thanh toán</th>
+              </tr>
             </thead>
             <tbody>
-            {order.map((order) => (
+              {order.map((order) => (
                 <CheckoutRow
                   key={order.id}
                   products={order.orderItems}
                   phone={order.phone}
                   address={order.address}
                   total={order.totalPrice}
-                //   isPaid={order.isPaid}
+                    isPaid={order.isPaid}
                 />
               ))}
             </tbody>
-        </table>
+          </table>
+        ) : (
+          <p>No order information available. Please log in to view your orders.</p>
+        )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default index
+export default index;
 
 export async function getServerSideProps(context) {
-    const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'VND' });
-    const session = await getSession(context); // Using getSession instead of useSession to get the session data
-//   console.log(session);
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "VND",
+  });
+  const session = await getSession(context); // Using getSession instead of useSession to get the session data
+  //   console.log(session);
   const userId = session?.user?.id;
 
-//   const user = await prisma.user.findMany({
-//     where:{id: userId},
-//   })
-//   console.log(user);
-    
+  //   const user = await prisma.user.findMany({
+  //     where:{id: userId},
+  //   })
+  //   console.log(user);
+
   const orders = await prisma.order.findMany({
-    where: {userId: userId},
+    where: { userId: userId },
     // where: {},
     include: {
-        // userId: userId,
+      // userId: userId,
+      // isPaid,
       orderItems: {
         include: {
           product: {
             select: {
               createdAt: true,
               price: true,
-              name:true,
+              name: true,
             },
           },
         },
@@ -78,7 +97,7 @@ export async function getServerSideProps(context) {
       createdAt: "desc",
     },
   });
-  console.log(orders);
+  // console.log(orders);
 
   // Convert Date objects to strings before returning the data
   const fotmatOrder = orders.map((order) => ({
@@ -94,9 +113,12 @@ export async function getServerSideProps(context) {
         // Add other serializable properties of product here if needed
       },
     })),
-    totalPrice: formatter.format(order.orderItems.reduce((total, item) => {
+    // order.isPaid,
+    totalPrice: formatter.format(
+      order.orderItems.reduce((total, item) => {
         return total + Number(item.product.price.d[0]);
-      }, 0)),
+      }, 0)
+    ),
     // Add any other properties that might be of non-serializable types here
   }));
 

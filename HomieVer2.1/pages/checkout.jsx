@@ -19,8 +19,6 @@ const CheckoutForm = () => {
   );
   // const { userInfo } = useSelector((store) => store.cart);
 
-  const {data: session}  = useSession();
-
   // console.log(session.user?.id);
 
   const dispatch = useDispatch();
@@ -77,8 +75,8 @@ const CheckoutForm = () => {
   const { data: session } = useSession();
 
   const onCheckout = async () => {
-    // const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-    const response = await axios.post(`http://localhost:3001/api/checkout`,
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+    // const response = await axios.post(`http://localhost:3001/api/checkout`,
       {
         productIds: products.map((item) => item.id),
         userId: session.user?.id
