@@ -74,13 +74,18 @@ const CheckoutForm = () => {
       });
     }
   }, [searchParams]);
+  const { data: session } = useSession();
 
   const onCheckout = async () => {
     // const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,
     const response = await axios.post(`http://localhost:3001/api/checkout`,
       {
         productIds: products.map((item) => item.id),
+<<<<<<< HEAD
         userId: session.user?.id,
+=======
+        userId: session.user?.id
+>>>>>>> 6839f448aff0794cfd3aba0526e9d94446772bfd
       }
     );
     window.location = response.data.url;
