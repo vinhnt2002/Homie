@@ -1,21 +1,10 @@
 import React from "react";
 import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
 import CheckoutRow from "../../components/checkoutHistory/CheckoutRow";
-import { useState, useEffect } from "react";
 import { getSession } from "next-auth/react";
 import prisma from "../../lib/prismadb";
 
 const Index = ({ order }) => {
-  const [userId, setUserId] = useState('');
-
-  useEffect(() => {
-    // Fetch the userId and set it in the state
-    getSession().then((session) => {
-      const userId = session?.user?.id || '';
-      setUserId(userId);
-    });
-  }, []);
-
   return (
     <>
       <BreadCrumb
@@ -25,34 +14,30 @@ const Index = ({ order }) => {
         middlePath=""
         descriptionTitle="Order History"
       />
-      <div className='container'>
-        {userId ? (
-          <table className='table'>
-            <thead>
-              <tr>
-                <th scope='col'>Product</th>
-                <th scope='col'>Phone</th>
-                <th scope='col'>Address</th>
-                <th scope='col'>Payment Amount</th>
-                <th scope='col'>Payment Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {order.map((orderItem) => (
-                <CheckoutRow
-                  key={orderItem.id}
-                  products={orderItem.orderItems}
-                  phone={orderItem.phone}
-                  address={orderItem.address}
-                  total={orderItem.totalPrice}
-                  isPaid={orderItem.isPaid}
-                />
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No order information available. Please log in to view your orders.</p>
-        )}
+      <div className="container">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Sản phẩm</th>
+              <th scope="col">SDT</th>
+              <th scope="col">Địa chỉ</th>
+              <th scope="col">Tổng hóa đơn</th>
+              <th scope="col">Trạng thái thanh toán</th>
+            </tr>
+          </thead>
+          <tbody>
+            {order.map((orderItem) => (
+              <CheckoutRow
+                key={orderItem.id}
+                products={orderItem.orderItems}
+                phone={orderItem.phone}
+                address={orderItem.address}
+                total={orderItem.totalPrice}
+                isPaid={orderItem.isPaid}
+              />
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
@@ -65,9 +50,19 @@ export async function getServerSideProps(context) {
     style: "currency",
     currency: "VND",
   });
+
   const session = await getSession(context); // Using getSession instead of useSession to get the session data
-  console.log(session);
-  const userId = session?.user?.id;
+  if (!session?.user?.id) {
+    // If the user is not authenticated, redirect to login or handle the case as needed
+    return {
+      redirect: {
+        destination: "/login", // Redirect to the login page
+        permanent: false,
+      },
+    };
+  }
+
+  const userId = session.user.id;
 
   const orders = await prisma.order.findMany({
     where: { userId: userId },
