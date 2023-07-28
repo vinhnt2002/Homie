@@ -158,12 +158,12 @@ export async function getStaticPaths() {
   const paths = categories.map((c) => ({
     params: {
       slug: c.code,
-    },
+    }
   }));
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
