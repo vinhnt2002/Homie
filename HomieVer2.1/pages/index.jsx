@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import React, { useState } from "react";
 import SectionBannerSlider from "../components/SectionBanner/SectionBannerSlider";
 // import ProductList from "../components/section/productCard/ProductList";
@@ -13,9 +13,20 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "../styles/Home.module.css";
 import SliderSection from "../components/section/SliderSection/SliderSection";
 import CollBar from "../components/FilterProductByComponent/collection/Collection";
+import axios from "axios";
 
 
 function Home({  collections, filterProductCollection }) {
+
+  useEffect(() => {
+    const fetchData = async ()=>{
+      const res = await axios.get("/api/products")
+      console.log(await res.data);
+    }
+
+    fetchData();
+  }, [])
+
   const [showTabs, setShowTabs] = useState(true);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
 console.log(filterProductCollection);
