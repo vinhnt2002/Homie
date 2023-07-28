@@ -273,7 +273,7 @@ const notify = () => {
                 <Slider {...settings}>
                   {filteredProducts.map((product, index) => (
                     <div key={index}>
-                      <ProductCard productData={product} showProductActionBox={showProductActionBox}/>
+                      <ProductCard productData={product} showProductActionBox={!showProductActionBox}/>
                     </div>
                   ))}
                 </Slider>
