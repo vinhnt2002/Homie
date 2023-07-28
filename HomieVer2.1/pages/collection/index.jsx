@@ -126,7 +126,7 @@ const shopleft = ({ products, collections, productCount }) => {
 
 export default shopleft;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
 

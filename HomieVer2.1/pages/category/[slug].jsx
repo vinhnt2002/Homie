@@ -14,7 +14,6 @@ const ShopLeft = ({
   productCount,
   collections,
 }) => {
-
   const [showProductActionBox, setShowProductActionBox] = useState(true);
   const [data, setData] = useState([]);
   const [selectedSortOption, setSelectedSortOption] = useState("");
@@ -36,14 +35,10 @@ const ShopLeft = ({
 
     switch (sortOption) {
       case "price":
-        sortedData = sortedData.sort(
-          (a, b) => a.price - b.price
-        );
+        sortedData = sortedData.sort((a, b) => a.price - b.price);
         break;
       case "price-desc":
-        sortedData = sortedData.sort(
-          (a, b) => b.price - a.price
-        );
+        sortedData = sortedData.sort((a, b) => b.price - a.price);
         break;
       default:
         break;
@@ -77,19 +72,14 @@ const ShopLeft = ({
 
   useEffect(() => {
     const filteredData = filteredProducts.filter(
-      (product) =>
-        product.price >= value[0] && product.price <= value[1]
+      (product) => product.price >= value[0] && product.price <= value[1]
     );
 
     let sortedData = [...filteredData];
     if (selectedSortOption === "price") {
-      sortedData = filteredData.sort(
-        (a, b) => a.price - b.price
-      );
+      sortedData = filteredData.sort((a, b) => a.price - b.price);
     } else if (selectedSortOption === "price-desc") {
-      sortedData = filteredData.sort(
-        (a, b) => b.price - a.price
-      );
+      sortedData = filteredData.sort((a, b) => b.price - a.price);
       //more types sorted here
     }
 
@@ -150,45 +140,81 @@ const ShopLeft = ({
 
 export default ShopLeft;
 
+// export async function getStaticPaths() {
+//   const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+//   const categories = await categoriesResponse.json();
 
-export async function getStaticPaths() {
-  const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+//   const paths = categories.map((c) => ({
+//     params: {
+//       slug: c.code,
+//     }
+//   }));
+
+//   return {
+//     paths,
+//     fallback: "blocking",
+//   };
+// }
+
+// export async function getStaticProps({ params }) {
+
+//   const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+//   const categories = await categoriesResponse.json();
+//   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+//   const products = await productsResponse.json();
+//   const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
+//   const collections = await collectionsResponse.json();
+
+//   const categoryId = params.slug;
+//   const category = categories.find((c) => c.code === categoryId);
+
+//   const filteredProducts = products.filter((product) =>
+//     product.categoryId.includes(category.id)
+//   );
+//   const productCount = collections.map((collection) => {
+//     let count = 0;
+//     collection.products.map(() => count++)
+//     return count;
+//     }
+//   )
+
+//   return {
+//     props: {
+//       products,
+//       category,
+//       collections,
+//       filteredProducts,
+//       productCount,
+//     },
+//   };
+// }
+export async function getServerSideProps({ params }) {
+  const categoriesResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/categories`
+  );
   const categories = await categoriesResponse.json();
 
-  const paths = categories.map((c) => ({
-    params: {
-      slug: c.code,
-    }
-  }));
-
-  return {
-    paths,
-    fallback: "blocking",
-  };
-}
-
-export async function getStaticProps({ params }) {
-  
-  const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
-  const categories = await categoriesResponse.json();
-  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+  const productsResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/products`
+  );
   const products = await productsResponse.json();
-  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
+
+  const collectionsResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/collections`
+  );
   const collections = await collectionsResponse.json();
-  
+
   const categoryId = params.slug;
   const category = categories.find((c) => c.code === categoryId);
-  
+
   const filteredProducts = products.filter((product) =>
     product.categoryId.includes(category.id)
   );
+
   const productCount = collections.map((collection) => {
-    let count = 0;
-    collection.products.map(() => count++)
+    let count = collection.products.length;
     return count;
-    }
-  )
-  
+  });
 
   return {
     props: {
@@ -200,5 +226,3 @@ export async function getStaticProps({ params }) {
     },
   };
 }
-
-

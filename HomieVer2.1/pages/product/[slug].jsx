@@ -271,23 +271,50 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-  const products = await productsResponse.json();
+// export async function getStaticPaths() {
+//   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+//   const products = await productsResponse.json();
 
-  const paths = products.map((p) => ({
-    params: {
-      slug: p.code,
-    },
-  }));
+//   const paths = products.map((p) => ({
+//     params: {
+//       slug: p.code,
+//     },
+//   }));
 
-  return {
-    paths,
-    fallback: "blocking",
-  };
-}
+//   return {
+//     paths,
+//     fallback: "blocking",
+//   };
+// }
 
-export async function getStaticProps({ params }) {
+// export async function getStaticProps({ params }) {
+//   const productCode = params.slug;
+
+//   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+//   const products = await productsResponse.json();
+
+//   const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+//   const categories = await categoriesResponse.json();
+
+//   const product = products.find((product) => product.code === productCode);
+//   const cateCode = product.category.code;
+
+//   const category = categories.find((category) => category.code === cateCode)
+//   const filteredProducts = products.filter((p) => p.category.code === cateCode
+//     && p.code !== productCode);
+
+//   return {
+//     props: {
+//       product,
+//       filteredProducts,
+//       category
+//     },
+//   };
+// }
+
+// export default ProductDetail;
+export default ProductDetail;
+export async function getServerSideProps({ params }) {
   const productCode = params.slug;
 
   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
@@ -299,17 +326,16 @@ export async function getStaticProps({ params }) {
   const product = products.find((product) => product.code === productCode);
   const cateCode = product.category.code;
 
-  const category = categories.find((category) => category.code === cateCode)
-  const filteredProducts = products.filter((p) => p.category.code === cateCode
-    && p.code !== productCode);
+  const category = categories.find((category) => category.code === cateCode);
+  const filteredProducts = products.filter(
+    (p) => p.category.code === cateCode && p.code !== productCode
+  );
 
   return {
     props: {
       product,
       filteredProducts,
-      category
+      category,
     },
   };
 }
-
-export default ProductDetail;

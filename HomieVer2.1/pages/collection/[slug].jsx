@@ -142,25 +142,63 @@ const pageCount = Math.ceil(data.length / itemsPerPage);
 export default shopleft;
 
 
-export async function getStaticPaths() {
-  const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
-  const collections = await collectionsResponse.json();
+// export async function getStaticPaths() {
+//   const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
+//   const collections = await collectionsResponse.json();
 
-  const paths = collections.map((c) => ({
-    params: {
-      slug: c.code,
-    },
-  }));
+//   const paths = collections.map((c) => ({
+//     params: {
+//       slug: c.code,
+//     },
+//   }));
 
-  return {
-    paths,
-    fallback: "blocking",
-  };
-}
+//   return {
+//     paths,
+//     fallback: "blocking",
+//   };
+// }
 
-export async function getStaticProps({ params }) {
+// export async function getStaticProps({ params }) {
+//   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+//   const products = await productsResponse.json();
+//   const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
+//   const collections = await collectionsResponse.json();
+
+//   const collectionId = params.slug;
+//   const collection = collections.find((c) => c.code === collectionId);
+
+//   const filteredProducts = [];
+// for (let index = 0; index < products.length; index++) {
+//   const product = products[index];
+//   for (let innerIndex = 0; innerIndex < product.collections.length; innerIndex++) {
+//     const colOfProduct = product.collections[innerIndex].collection;
+//     if (colOfProduct.code === collectionId) {
+//       filteredProducts.push(product);
+//     }
+//   }
+// }
+
+// const productCount = collections.map((collection) => {
+//   let count = 0;
+//   collection.products.map(() => count++)
+//   return count;
+//   }
+// )
+
+//   return {
+//     props: {
+//       products,
+//       collections,
+//       collection,
+//       filteredProducts,
+//       productCount,
+//     },
+//   };
+// }
+export async function getServerSideProps({ params }) {
   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
+  
   const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
   const collections = await collectionsResponse.json();
 
@@ -168,22 +206,21 @@ export async function getStaticProps({ params }) {
   const collection = collections.find((c) => c.code === collectionId);
 
   const filteredProducts = [];
-for (let index = 0; index < products.length; index++) {
-  const product = products[index];
-  for (let innerIndex = 0; innerIndex < product.collections.length; innerIndex++) {
-    const colOfProduct = product.collections[innerIndex].collection;
-    if (colOfProduct.code === collectionId) {
-      filteredProducts.push(product);
+  for (let index = 0; index < products.length; index++) {
+    const product = products[index];
+    for (let innerIndex = 0; innerIndex < product.collections.length; innerIndex++) {
+      const colOfProduct = product.collections[innerIndex].collection;
+      if (colOfProduct.code === collectionId) {
+        filteredProducts.push(product);
+      }
     }
   }
-}
 
-const productCount = collections.map((collection) => {
-  let count = 0;
-  collection.products.map(() => count++)
-  return count;
-  }
-)
+  const productCount = collections.map((collection) => {
+    let count = 0;
+    collection.products.map(() => count++)
+    return count;
+  });
 
   return {
     props: {

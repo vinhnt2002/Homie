@@ -18,14 +18,14 @@ import axios from "axios";
 
 function Home({  collections, filterProductCollection }) {
 
-  useEffect(() => {
-    const fetchData = async ()=>{
-      const res = await axios.get("/api/products")
-      console.log(await res.data);
-    }
+  // useEffect(() => {
+  //   const fetchData = async ()=>{
+  //     const res = await axios.get("/api/products")
+  //     console.log(await res.data);
+  //   }
 
-    fetchData();
-  }, [])
+  //   fetchData();
+  // }, [])
 
   const [showTabs, setShowTabs] = useState(true);
   const [showProductActionBox, setShowProductActionBox] = useState(true);
@@ -394,7 +394,7 @@ console.log(filterProductCollection);
 export default Home;
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products = await productsResponse.json();
   const collectionsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`);
