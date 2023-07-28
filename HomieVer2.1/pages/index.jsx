@@ -370,7 +370,7 @@ console.log(filterProductCollection);
                               >
                                 <ProductList
                                   productData={product}
-                                  showProductActionBox={showProductActionBox}
+                                  showProductActionBox={!showProductActionBox}
                                 />
                               </div>
                             ))}
