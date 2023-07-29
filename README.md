@@ -11,4 +11,6 @@ You can choose the product that you want to process to checkout instead of buyin
 You can process payment for your order with stripe payment.
 
 Link deploy:
-https://homie-sable.vercel.app (TiemHomie E-commerce website)
+
+https://homie-seven.vercel.app   (TiemHomie E-commerce website)
+
