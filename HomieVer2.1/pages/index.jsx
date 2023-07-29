@@ -163,7 +163,7 @@ console.log(filterProductCollection);
                         sliderRef={specialSliderRef}
                         products={
                           filterProductCollection.length > 0
-                            ? filterProductCollection[4].products
+                            ? filterProductCollection[2].products
                             : []
                         }
                         showProductActionBox={showProductActionBox}
@@ -289,7 +289,7 @@ console.log(filterProductCollection);
                     sliderRef={sliderRef6}
                     products={
                       filterProductCollection.length > 0
-                        ? filterProductCollection[4].products
+                        ? filterProductCollection[2].products
                         : []
                     }
                     showProductActionBox={showProductActionBox}
@@ -370,7 +370,7 @@ console.log(filterProductCollection);
                               >
                                 <ProductList
                                   productData={product}
-                                  showProductActionBox={showProductActionBox}
+                                  showProductActionBox={!showProductActionBox}
                                 />
                               </div>
                             ))}

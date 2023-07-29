@@ -11,6 +11,8 @@ import { Carousel } from "react-responsive-carousel";
 import { addToCart } from "@/redux/reducers/cartSlice";
 import { useDispatch } from "react-redux";
 import ProductCard from "../../components/section/productCard/ProductCard";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetail = ({ product, category, filteredProducts }) => {
   console.log(product);
@@ -54,6 +56,19 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
     }
   };
 
+const notify = () => {
+  toast.success("Thêm vào giỏ hàng thành công!!", {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
+  
   const handleAddToCart = () => {
     dispatch(
       addToCart({
@@ -67,6 +82,7 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
         },
       })
     );
+    notify();
   };
 
   const formatPrice = (price) => {
@@ -257,7 +273,7 @@ const ProductDetail = ({ product, category, filteredProducts }) => {
                 <Slider {...settings}>
                   {filteredProducts.map((product, index) => (
                     <div key={index}>
-                      <ProductCard productData={product} showProductActionBox={showProductActionBox}/>
+                      <ProductCard productData={product} showProductActionBox={!showProductActionBox}/>
                     </div>
                   ))}
                 </Slider>
