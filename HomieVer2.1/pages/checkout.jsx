@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateTotal, } from "@/redux/reducers/cartSlice";
 import axios from "axios";
 import ProductCheckout from "../components/Header/Cart/ProductCheckout";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { removeAllFromCheckout, updateTotalCheckout } from "@/redux/reducers/checkoutSlice";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -73,8 +73,10 @@ const CheckoutForm = () => {
     }
   }, [searchParams]);
   const { data: session } = useSession();
+  const router = useRouter();
 
   const onCheckout = async () => {
+    
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,
     // const response = await axios.post(`http://localhost:3001/api/checkout`,
       {
