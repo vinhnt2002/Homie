@@ -12,5 +12,5 @@ You can process payment for your order with stripe payment.
 
 Link deploy:
 
-https://homie-seven.vercel.app   (TiemHomie E-commerce website)
-
+https://homie-seven.vercel.app   (TiemHomie E-commerce website was build with api)
+https://tiemhomie.com (TiemHomie E-commerce website working for business)
